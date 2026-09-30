@@ -1,0 +1,7 @@
+﻿{
+    "singleProcessPerCommandMs":  3430,
+    "command":  "help",
+    "oneSequentialBatchMs":  795,
+    "count":  5,
+    "note":  "Same commands and receipts, no GUI. Local shell/transport measurement; not an end-to-end session prediction."
+}

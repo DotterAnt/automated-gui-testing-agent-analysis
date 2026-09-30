@@ -1,0 +1,54 @@
+﻿{
+    "ok":  true,
+    "timestamp":  "2026-09-30T13:13:38.0389103+02:00",
+    "tests":  [
+                  {
+                      "output":  "CLI private regression checks: 23 passed\nCLI entry/help checks: 2 passed\nCLI stream checks: 1 passed\nCLI stream failure-stop check: passed",
+                      "exitCode":  0,
+                      "elapsedMs":  3038,
+                      "test":  "potato-cli\\tests\\Regression.Tests.ps1"
+                  },
+                  {
+                      "output":  "Interaction checks: 54 passed",
+                      "exitCode":  0,
+                      "elapsedMs":  1700,
+                      "test":  "potato-cli\\tests\\Interaction.Tests.ps1"
+                  },
+                  {
+                      "output":  "Drag checks: 3 passed (release on failure, incomplete endpoint, missing target)",
+                      "exitCode":  0,
+                      "elapsedMs":  646,
+                      "test":  "potato-cli\\tests\\Drag.Tests.ps1"
+                  },
+                  {
+                      "output":  "PDF checks: 17 passed (PowerShell 5.1.22621.2506)",
+                      "exitCode":  0,
+                      "elapsedMs":  1026,
+                      "test":  "potato-cli\\tests\\Pdf.Tests.ps1"
+                  },
+                  {
+                      "output":  "External PDF checks: 4 passed (quoted path, fallback with provenance, strict builtin, invalid PDF)",
+                      "exitCode":  0,
+                      "elapsedMs":  1626,
+                      "test":  "potato-cli\\tests\\Pdf.External.Tests.ps1"
+                  },
+                  {
+                      "output":  "Runtime checks: 39 passed",
+                      "exitCode":  0,
+                      "elapsedMs":  6079,
+                      "test":  "automated-gui-testing-agent-framework\\tests\\Runtime.Regression.Tests.ps1"
+                  },
+                  {
+                      "output":  "Authoring checks: 31 passed",
+                      "exitCode":  0,
+                      "elapsedMs":  3305,
+                      "test":  "automated-gui-testing-agent-framework\\tests\\Authoring.Regression.Tests.ps1"
+                  },
+                  {
+                      "output":  "GUI smoke: literal/focused input, relative click, Tab/ShiftTab focus, screenshot directory, visible save, actual selector drag/drop payload, modal discovery, and scoped close passed.",
+                      "exitCode":  0,
+                      "elapsedMs":  8731,
+                      "test":  "potato-cli\\tests\\Gui.Smoke.Tests.ps1"
+                  }
+              ]
+}

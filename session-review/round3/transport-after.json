@@ -1,0 +1,22 @@
+﻿{
+    "powershell":  "5.1.22621.2506",
+    "policy":  "GuiNavigation",
+    "command":  "wait-file existing fixture",
+    "note":  "Local transport microbenchmark; no GUI or end-to-end session speed claim.",
+    "measurements":  [
+                         {
+                             "transport":  "Process",
+                             "count":  10,
+                             "elapsedMs":  7244,
+                             "wrapperMs":  7030,
+                             "backendMs":  2076
+                         },
+                         {
+                             "transport":  "InProcess",
+                             "count":  10,
+                             "elapsedMs":  566,
+                             "wrapperMs":  425,
+                             "backendMs":  216
+                         }
+                     ]
+}

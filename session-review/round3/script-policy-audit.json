@@ -1,0 +1,98 @@
+[
+  {
+    "run": "test27-cli-frm-excel-28m",
+    "ok": true,
+    "script": "C:\\Users\\DottedAnt\\Downloads\\results\\test27-cli-frm-excel-28m\\MicrosoftExcel.Generated.ps1",
+    "issues": []
+  },
+  {
+    "run": "test28-cli-frm-excel-15m-failed",
+    "ok": false,
+    "script": "C:\\Users\\DottedAnt\\Downloads\\results\\test28-cli-frm-excel-15m-failed\\MicrosoftExcel.Generated.ps1",
+    "issues": [
+      "Line 56: application COM automation bypasses the required GUI route. Use recorded CLI actions.",
+      "Line 53: direct 'GetActiveObject' can bypass GUI input or create expected data. Use the CLI for actions and read-only artifact checks for verification."
+    ]
+  },
+  {
+    "run": "test29-cli-frm-excel-23m",
+    "ok": true,
+    "script": "C:\\Users\\DottedAnt\\Downloads\\results\\test29-cli-frm-excel-23m\\MicrosoftExcel.Generated.ps1",
+    "issues": []
+  },
+  {
+    "run": "test30-cli-frm-excel-21m",
+    "ok": true,
+    "script": "C:\\Users\\DottedAnt\\Downloads\\results\\test30-cli-frm-excel-21m\\MicrosoftExcel.Generated.ps1",
+    "issues": []
+  },
+  {
+    "run": "test30-cli-frm-excel-23m",
+    "ok": true,
+    "script": "C:\\Users\\DottedAnt\\Downloads\\results\\test30-cli-frm-excel-23m\\MicrosoftExcel.Generated.ps1",
+    "issues": []
+  },
+  {
+    "run": "test31-cli-frm-access-15m-failed",
+    "ok": false,
+    "script": "C:\\Users\\DottedAnt\\Downloads\\results\\test31-cli-frm-access-15m-failed\\MicrosoftAccess.Generated.ps1",
+    "issues": [
+      "Line 130: printing a synthetic document bypasses the target application's print route. Print the actual document through its GUI.",
+      "Line 43: embedded mutation/input/artifact-generation code requires removal; expected outputs must be produced through the tested GUI.",
+      "Line 130: embedded mutation/input/artifact-generation code requires removal; expected outputs must be produced through the tested GUI."
+    ]
+  },
+  {
+    "run": "test32-cli-frm-access-17m-failed",
+    "ok": false,
+    "script": "C:\\Users\\DottedAnt\\Downloads\\results\\test32-cli-frm-access-17m-failed\\MicrosoftAccess.Generated.ps1",
+    "issues": [
+      "Line 344: application COM automation bypasses the required GUI route. Use recorded CLI actions.",
+      "Line 43: direct 'SendWait' can bypass GUI input or create expected data. Use the CLI for actions and read-only artifact checks for verification.",
+      "Line 74: direct 'ExecuteNonQuery' can bypass GUI input or create expected data. Use the CLI for actions and read-only artifact checks for verification."
+    ]
+  },
+  {
+    "run": "test33-cli-frm-access-31m-failed",
+    "ok": false,
+    "script": "C:\\Users\\DottedAnt\\Downloads\\results\\test33-cli-frm-access-31m-failed\\MicrosoftAccess.Generated.ps1",
+    "issues": [
+      "Line 47: generated scripts must not compile/load private input backends. Use type, press-key, or relative click through the CLI.",
+      "Line 49: direct 'SendText' can bypass GUI input or create expected data. Use the CLI for actions and read-only artifact checks for verification.",
+      "Line 94: direct 'ExecuteNonQuery' can bypass GUI input or create expected data. Use the CLI for actions and read-only artifact checks for verification.",
+      "Line 105: direct 'ExecuteNonQuery' can bypass GUI input or create expected data. Use the CLI for actions and read-only artifact checks for verification.",
+      "Line 115: direct 'ExecuteNonQuery' can bypass GUI input or create expected data. Use the CLI for actions and read-only artifact checks for verification.",
+      "Line 122: direct 'ExecuteNonQuery' can bypass GUI input or create expected data. Use the CLI for actions and read-only artifact checks for verification.",
+      "Line 166: embedded mutation/input/artifact-generation code requires removal; expected outputs must be produced through the tested GUI."
+    ]
+  },
+  {
+    "run": "test6-cli-frm-word-16m",
+    "ok": true,
+    "script": "C:\\Users\\DottedAnt\\Downloads\\results\\test6-cli-frm-word-16m\\Test-MicrosoftWord.ps1",
+    "issues": []
+  },
+  {
+    "run": "test7-cli-frm-excel-17m",
+    "ok": true,
+    "script": "C:\\Users\\DottedAnt\\Downloads\\results\\test7-cli-frm-excel-17m\\MicrosoftExcel.Generated.ps1",
+    "issues": []
+  },
+  {
+    "run": "test8-cli-frm-edge-26m-old",
+    "ok": false,
+    "script": "C:\\Users\\DottedAnt\\Downloads\\results\\test8-cli-frm-edge-26m-old\\MicrosoftEdge.Generated.ps1",
+    "issues": [
+      "Line 108: use recorded CLI start for executable launches and the GUI Open route for documents; direct Start-Process bypasses ownership and route checks.",
+      "Line 78: direct 'SendWait' can bypass GUI input or create expected data. Use the CLI for actions and read-only artifact checks for verification."
+    ]
+  },
+  {
+    "run": "test9-cli-frm-edge-19m-followup",
+    "ok": false,
+    "script": "C:\\Users\\DottedAnt\\Downloads\\results\\test9-cli-frm-edge-19m-followup\\MicrosoftEdge.Generated.ps1",
+    "issues": [
+      "Line 42: direct 'SendWait' can bypass GUI input or create expected data. Use the CLI for actions and read-only artifact checks for verification."
+    ]
+  }
+]

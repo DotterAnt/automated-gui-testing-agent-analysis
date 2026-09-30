@@ -1,0 +1,170 @@
+[
+  {
+    "archive": "C:\\diplomamunka\\outputs\\potato-cli-improved-20260930.zip",
+    "sha256": "527a141f62b4b2a7fa40e43d354fc7eea4150a6e17b20d80b8af0cd791ad93e7",
+    "files": [
+      {
+        "path": "potato-cli/.gitignore",
+        "sha256": "e1601fd0a063ca79c6bb9abefdc560f2009cabd1526b1fbe5e54314be66e4ee3"
+      },
+      {
+        "path": "potato-cli/commands.json",
+        "sha256": "615fe8ba66d71db7f51e951465a126216073f3fd401cc6012dbd2ffc4fefeac4"
+      },
+      {
+        "path": "potato-cli/potato-stream.ps1",
+        "sha256": "541c51d7a92ec3027e34cead3e01d1d9e904e58bdc1a0070936cdd0a2f3c78b8"
+      },
+      {
+        "path": "potato-cli/potato.ps1",
+        "sha256": "2fcf4ac884d7d64946687ef8e4d3e56e91c20ac8995b3b2b9416af0a963fd9f0"
+      },
+      {
+        "path": "potato-cli/PoTAToCli/Interaction.ps1",
+        "sha256": "ce4b2d50e1c23eb151e6d795ca21151b205e28b3817b61786c65dca5d624b6da"
+      },
+      {
+        "path": "potato-cli/PoTAToCli/LiteralInput.cs",
+        "sha256": "a6eb2d2466ef1be64e9f4a2396b2c160ba249509b289ec12a98ff21fcfb5c218"
+      },
+      {
+        "path": "potato-cli/PoTAToCli/Pdf.ps1",
+        "sha256": "cff63d47dc676bdddfb0a07e603c2023554c62d681e71fd37f9a51074481b9bd"
+      },
+      {
+        "path": "potato-cli/PoTAToCli/PoTAToCli.psm1",
+        "sha256": "38f346cb9822a8197b909e60522c5cbb8d612c2370d6bb6f6aee5770e9b950b1"
+      },
+      {
+        "path": "potato-cli/PoTAToCli/ReadPdf.py",
+        "sha256": "29b63c77f72bdd72060d4e0e481854b57db380f4844f2b24b2c0d4544af7122d"
+      },
+      {
+        "path": "potato-cli/PoTAToCli/WindowIdentity.cs",
+        "sha256": "bdb151410deabbf485137d771d9bf1754401081519c9d5d8a761da3456a34361"
+      },
+      {
+        "path": "potato-cli/README.md",
+        "sha256": "927209539467750e7cf96548cffd3d1b6bd47709a128b370c935f55a385b7b57"
+      },
+      {
+        "path": "potato-cli/tests/Drag.Tests.ps1",
+        "sha256": "35448fdfb276a3b160f2d766b9b3999bf2e3894f63b5b9041a96af982f8540e6"
+      },
+      {
+        "path": "potato-cli/tests/Gui.Smoke.Tests.ps1",
+        "sha256": "7af376a10c4cab8b1b887d87aa1717c911b13d248747380903639ac831c8ec9c"
+      },
+      {
+        "path": "potato-cli/tests/Interaction.Tests.ps1",
+        "sha256": "02ba95b7e28711fb2c1ea5ca8ee973d1cc7e93c15dd6620f7b077c709b6ab900"
+      },
+      {
+        "path": "potato-cli/tests/Pdf.External.Tests.ps1",
+        "sha256": "ec7df91fa983dfe7a98b4010a658ad6574da5e8a3b778867ed24e0118b7603a2"
+      },
+      {
+        "path": "potato-cli/tests/Pdf.Tests.ps1",
+        "sha256": "d2fc52ba4c53635eed01b4b7c1081bfb0c8c2596b1804cb9ae373d5c6f475b06"
+      },
+      {
+        "path": "potato-cli/tests/Regression.Tests.ps1",
+        "sha256": "2b49c78eba1ea9ac693db4608ef45a0b17648b858a8c6820a059e5f5e1cd37af"
+      }
+    ]
+  },
+  {
+    "archive": "C:\\diplomamunka\\outputs\\automated-gui-testing-agent-framework-improved-20260930.zip",
+    "sha256": "7a635babee94e4fc3a95c699bb04596578759de4a3d74698d48a079982196555",
+    "files": [
+      {
+        "path": "automated-gui-testing-agent-framework/.gitignore",
+        "sha256": "810bf250974a84e44d607dedd5422fb93cb5f319c9b1ef709b1932de12b6356c"
+      },
+      {
+        "path": "automated-gui-testing-agent-framework/AGENTS.md",
+        "sha256": "e3c4c24020dddc9de6b19b4b1a740eca05b1336f8674c0bf248cc5c55e7ff5b6"
+      },
+      {
+        "path": "automated-gui-testing-agent-framework/docs/AUTHORING.md",
+        "sha256": "1c197583e14e0e1bd5c3d1ed23628e154687c8a4ba183831bc85d9b65336c5e1"
+      },
+      {
+        "path": "automated-gui-testing-agent-framework/docs/GENERATED_SCRIPT_CONTRACT.md",
+        "sha256": "2322276de5f4c6d8ca5910a74e55c72b74ca107bde1b5bcd218a2f209d68ba86"
+      },
+      {
+        "path": "automated-gui-testing-agent-framework/Framework/ArtifactAssertions.ps1",
+        "sha256": "c3dab6a8886ea00f8b5e5acffcd38b2a6810114dffdbc772275239df30ac7ef6"
+      },
+      {
+        "path": "automated-gui-testing-agent-framework/Framework/AutomatedGuiTestingAgentFramework.psm1",
+        "sha256": "0c81ab9ce822eff4d7f619054cd671254fc5c80d9c4cb2f486981a7990dbe04d"
+      },
+      {
+        "path": "automated-gui-testing-agent-framework/Framework/Exploration.ps1",
+        "sha256": "f124b09fb72c33845d60e1982c53780d89a6204cb029699da8cd01e6c5282082"
+      },
+      {
+        "path": "automated-gui-testing-agent-framework/Framework/GeneratedScriptPreflight.ps1",
+        "sha256": "bfdd733c0744e646fd7a2c671391997dd3ef04caadf95aae2a9afd6c86ef5071"
+      },
+      {
+        "path": "automated-gui-testing-agent-framework/Framework/GeneratedScriptRuntime.ps1",
+        "sha256": "d698d7dc3e68dd01921581459a3a33f15c3316a47931b5669007e37b81706710"
+      },
+      {
+        "path": "automated-gui-testing-agent-framework/Get-RuntimeHelp.ps1",
+        "sha256": "8046d1953a1b7e9e8085a90fdd5fc5dd4fd6e309835afeeb99d725b6b3508c57"
+      },
+      {
+        "path": "automated-gui-testing-agent-framework/Invoke-AgentAuthoring.ps1",
+        "sha256": "20f04d51a95daafc80c1b534950b8939a1d69d8b40231239cc8431a4fbc8c724"
+      },
+      {
+        "path": "automated-gui-testing-agent-framework/Invoke-AgentAuthoringGui.ps1",
+        "sha256": "628a7be526e911d73e8cf9fac1c64556d74503fdd6b58ca2e173c51a98c69844"
+      },
+      {
+        "path": "automated-gui-testing-agent-framework/Invoke-Exploration.ps1",
+        "sha256": "03cd44897c65bc33a1a98efbe3971892bdf731c99339eca802067458dac80165"
+      },
+      {
+        "path": "automated-gui-testing-agent-framework/Microsoft Paint.csv",
+        "sha256": "247208fb8aa2e9af00a9c7f8f4e086fcf4d5ed40f7332ae9af318e03331d223c"
+      },
+      {
+        "path": "automated-gui-testing-agent-framework/prompts/SESSION_AGENT_PROMPT.md",
+        "sha256": "001e16bef20cb050138d807856bd0035d620f401f795228cc6e8b07e6d6e56ea"
+      },
+      {
+        "path": "automated-gui-testing-agent-framework/README.md",
+        "sha256": "194f26c3b19337ee8c2965ecd7aa01879fc0e28ad136001a00ba8f71e716e07d"
+      },
+      {
+        "path": "automated-gui-testing-agent-framework/templates/GeneratedScript.Template.ps1",
+        "sha256": "8586eee5615df85068f20562c08ed45a8f83ae0281a60e9a7f901dff47c9216a"
+      },
+      {
+        "path": "automated-gui-testing-agent-framework/Test-GeneratedScript.ps1",
+        "sha256": "d41b75ddf7a170b35bb0af902d06da0f11d0771bcec988eded9b4e6958b5f8f5"
+      },
+      {
+        "path": "automated-gui-testing-agent-framework/tests/Authoring.Regression.Tests.ps1",
+        "sha256": "3ff6b6d21be4ca87a57739a5b42ff1be796d310e482c21de11a631fca367c53f"
+      },
+      {
+        "path": "automated-gui-testing-agent-framework/tests/Measure-Exploration.ps1",
+        "sha256": "e8c14a10212158f90d871d13a9c71b7305e46d3df1f24fbb09380baf9cb2bbfa"
+      },
+      {
+        "path": "automated-gui-testing-agent-framework/tests/Measure-Transport.ps1",
+        "sha256": "75fba151613f22ebaf57850b23a531a74e1e7ac0ffacce436c04b6ece0459a77"
+      },
+      {
+        "path": "automated-gui-testing-agent-framework/tests/Runtime.Regression.Tests.ps1",
+        "sha256": "55b28bafa79419297060a2412f4446e56d4d8d821b6ff563b6c6b5264de687dc"
+      }
+    ]
+  }
+]
