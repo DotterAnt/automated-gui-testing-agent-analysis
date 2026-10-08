@@ -1,0 +1,15 @@
+{
+  "tests": [
+    {
+      "output": "Lifecycle checks: 17 passed",
+      "test": "potato-cli/tests/Lifecycle.Tests.ps1",
+      "exitCode": 0
+    },
+    {
+      "output": "GUI lifecycle: immediate-exit handoff, shared-host/GUI-handoff ownership, stale/preexisting-window rejection, native Edit path readback/selection, sibling input rejection, framework window-only cleanup and exploration completion passed.",
+      "test": "potato-cli/tests/Gui.Lifecycle.Tests.ps1",
+      "exitCode": 0
+    }
+  ],
+  "ok": true
+}

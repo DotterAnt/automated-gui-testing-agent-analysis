@@ -1,0 +1,248 @@
+{
+  "toolCalls": 85,
+  "toolCounts": {
+    "shell_command": 75,
+    "view_image": 8,
+    "apply_patch": 2
+  },
+  "cliCommands": 110,
+  "commandCounts": {
+    "help": 3,
+    "start": 1,
+    "observe": 20,
+    "click": 26,
+    "wait-element": 2,
+    "screenshot": 11,
+    "click-coordinate": 9,
+    "type": 11,
+    "select": 6,
+    "press-key": 2,
+    "focus": 1,
+    "windows": 4,
+    "wait-file": 4,
+    "read": 8,
+    "read-pdf": 2
+  },
+  "backendSeconds": 301.43,
+  "failures": [
+    {
+      "line": 88,
+      "command": "type",
+      "error": {
+        "message": "Text input requires an enabled control with confirmed keyboard focus.",
+        "type": "System.Management.Automation.RuntimeException",
+        "category": "OperationStopped"
+      }
+    },
+    {
+      "line": 103,
+      "command": "type",
+      "error": {
+        "message": "Expected focused control did not become ready; no input was sent. Observe focus and prefer writable type -PreDelete -Verify when the control exposes text patterns. Do not click a selected filename just to wait for it.",
+        "type": "System.Management.Automation.RuntimeException",
+        "category": "OperationStopped"
+      }
+    },
+    {
+      "line": 109,
+      "command": "type",
+      "error": {
+        "message": "Target is not a confirmed writable text control. For an observed opaque editor, use type -TargetMode Focused with FallbackReason/FallbackEvidence after visibly focusing it; assert the committed result separately.",
+        "type": "System.Management.Automation.RuntimeException",
+        "category": "OperationStopped"
+      }
+    },
+    {
+      "line": 121,
+      "command": "type",
+      "error": {
+        "message": "Text input requires an enabled control with confirmed keyboard focus.",
+        "type": "System.Management.Automation.RuntimeException",
+        "category": "OperationStopped"
+      }
+    },
+    {
+      "line": 131,
+      "command": "press-key",
+      "error": {
+        "message": "Input requires enabled keyboard focus in the working application or its owned dialog. Observe and visibly focus the target before retrying.",
+        "type": "System.Management.Automation.RuntimeException",
+        "category": "OperationStopped"
+      }
+    },
+    {
+      "line": 137,
+      "command": "press-key",
+      "error": {
+        "message": "Input requires enabled keyboard focus in the working application or its owned dialog. Observe and visibly focus the target before retrying.",
+        "type": "System.Management.Automation.RuntimeException",
+        "category": "OperationStopped"
+      }
+    },
+    {
+      "line": 152,
+      "command": "type",
+      "error": {
+        "message": "Text input requires an enabled control with confirmed keyboard focus.",
+        "type": "System.Management.Automation.RuntimeException",
+        "category": "OperationStopped"
+      }
+    },
+    {
+      "line": 166,
+      "command": "type",
+      "error": {
+        "message": "Expected focused control did not become ready; no input was sent. Observe focus and prefer writable type -PreDelete -Verify when the control exposes text patterns. Do not click a selected filename just to wait for it.",
+        "type": "System.Management.Automation.RuntimeException",
+        "category": "OperationStopped"
+      }
+    },
+    {
+      "line": 177,
+      "command": "click",
+      "error": {
+        "message": "No visible enabled element matches the selector.",
+        "type": "System.Management.Automation.RuntimeException",
+        "category": "OperationStopped"
+      }
+    },
+    {
+      "line": 189,
+      "command": "click",
+      "error": {
+        "message": "No visible enabled element matches the selector.",
+        "type": "System.Management.Automation.RuntimeException",
+        "category": "OperationStopped"
+      }
+    },
+    {
+      "line": 253,
+      "command": "click",
+      "error": {
+        "message": "No visible enabled element matches the selector.",
+        "type": "System.Management.Automation.RuntimeException",
+        "category": "OperationStopped"
+      }
+    },
+    {
+      "line": 295,
+      "command": "read",
+      "error": {
+        "message": "No matching element was found.",
+        "type": "System.Management.Automation.RuntimeException",
+        "category": "OperationStopped"
+      }
+    },
+    {
+      "line": 325,
+      "command": "click",
+      "error": {
+        "message": "No visible enabled element matches the selector.",
+        "type": "System.Management.Automation.RuntimeException",
+        "category": "OperationStopped"
+      }
+    },
+    {
+      "line": 331,
+      "command": "click",
+      "error": {
+        "message": "No visible enabled element matches the selector.",
+        "type": "System.Management.Automation.RuntimeException",
+        "category": "OperationStopped"
+      }
+    },
+    {
+      "line": 381,
+      "command": "read-pdf",
+      "error": {
+        "message": "Exception calling \"ReadAllBytes\" with \"1\" argument(s): \"The process cannot access the file 'C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\PowerPointOutput\\PowerPointTest.pdf' because it is being used by another process.\"",
+        "type": "PdfReadError"
+      }
+    }
+  ],
+  "executions": [
+    {
+      "line": 439,
+      "ok": false,
+      "timing": {
+        "commandCount": 22,
+        "wrapperMs": 17230,
+        "backendMs": 16577,
+        "waitMs": 1372,
+        "cleanupMs": 6918,
+        "totalMs": 18526,
+        "commandOverheadMs": 653,
+        "otherMs": 1296
+      },
+      "summary": {
+        "total": 5,
+        "passed": 2,
+        "failed": 1,
+        "skipped": 2,
+        "cleanupOk": true,
+        "failedSteps": [
+          {
+            "error": "Could not enter the presentation save path. Text input requires an enabled control with confirmed keyboard focus.",
+            "stepIndex": 3
+          }
+        ]
+      },
+      "cleanupOk": true
+    },
+    {
+      "line": 457,
+      "ok": true,
+      "timing": {
+        "commandCount": 46,
+        "wrapperMs": 31129,
+        "backendMs": 30133,
+        "waitMs": 9413,
+        "cleanupMs": 960,
+        "totalMs": 32352,
+        "commandOverheadMs": 996,
+        "otherMs": 1223
+      },
+      "summary": {
+        "total": 5,
+        "passed": 5,
+        "failed": 0,
+        "skipped": 0,
+        "cleanupOk": true,
+        "failedSteps": []
+      },
+      "cleanupOk": true
+    }
+  ],
+  "phases": [
+    {
+      "phase": "Preparation",
+      "seconds": 79.645
+    },
+    {
+      "phase": "Full GUI walkthrough",
+      "seconds": 1296.129
+    },
+    {
+      "phase": "Generation and first preflight",
+      "seconds": 118.296
+    },
+    {
+      "phase": "Replay and repair",
+      "seconds": 116.355
+    },
+    {
+      "phase": "Delivery",
+      "seconds": 7.733
+    }
+  ],
+  "elapsedSeconds": 1618.158,
+  "createToSuccessfulTitleSeconds": 492.868,
+  "firstInputAttemptToSuccessSeconds": 412.384,
+  "failedTypingBackendMs": 10668,
+  "successfulTitleTypingMs": 308,
+  "notes": [
+    "Source commands were read, never executed. Elapsed phases use timestamps, not summed overlapping shell durations.",
+    "CLI counts/timings cover intact direct envelopes; nested replay commands are represented by execution timing separately.",
+    "No native keyboard-focus snapshot was captured by the old CLI; the new fallback is verified by a deliberately inconsistent accessibility fixture, not a fresh PowerPoint session."
+  ]
+}

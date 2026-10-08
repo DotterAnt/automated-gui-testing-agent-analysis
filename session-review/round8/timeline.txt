@@ -1,0 +1,971 @@
+L11 2026-09-30T14:13:53.663Z shell_command wall=5.0
+Get-ChildItem -Force
+
+L12 2026-09-30T14:13:53.665Z shell_command wall=4.9
+rg --files
+
+L13 2026-09-30T14:13:53.684Z shell_command wall=3.7
+Get-Content -Path 'C:\Users\testuser\Desktop\Microsoft PowerPoint.csv' -TotalCount 80
+
+L21 2026-09-30T14:14:10.186Z shell_command wall=5.8
+Get-Content -Path 'C:\diplomamunka\automated-gui-testing-agent-framework\README.md'
+
+L22 2026-09-30T14:14:10.186Z shell_command wall=6.4
+Get-Content -Path 'C:\diplomamunka\automated-gui-testing-agent-framework\docs\GENERATED_SCRIPT_CONTRACT.md'
+
+L23 2026-09-30T14:14:10.188Z shell_command wall=4.6
+Get-Content -Path 'C:\diplomamunka\automated-gui-testing-agent-framework\templates\GeneratedScript.Template.ps1'
+
+L24 2026-09-30T14:14:10.230Z shell_command wall=4.5
+Get-Content -Path 'C:\diplomamunka\automated-gui-testing-agent-framework\Microsoft Paint.csv' -TotalCount 120
+
+L33 2026-09-30T14:14:24.051Z shell_command wall=4.1
+Get-Content -Path 'C:\diplomamunka\automated-gui-testing-agent-framework\AGENTS.md'
+
+L34 2026-09-30T14:14:24.051Z shell_command wall=5.1
+Get-Content -Path 'C:\diplomamunka\automated-gui-testing-agent-framework\docs\AUTHORING.md'
+
+L35 2026-09-30T14:14:24.052Z shell_command wall=7.4
+Get-Content -Path 'C:\diplomamunka\automated-gui-testing-agent-framework\Framework\GeneratedScriptRuntime.ps1'
+
+L43 2026-09-30T14:14:40.694Z shell_command wall=7.5
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ..\potato-cli\potato.ps1 help -Topics start,observe,click,type,press-key,wait-element,wait-file,read,read-pdf,close-window,windows,select,screenshot
+
+{"command": "help", "ok": true, "durationMs": 732, "error": null}
+
+L44 2026-09-30T14:14:40.695Z shell_command wall=6.8
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Get-RuntimeHelp.ps1 -Names Invoke-StepCommand,Invoke-StepClick,Assert-TextContains,Assert-FileWait,Read-AGTAArtifactBytes,Assert-ArtifactPrefix
+
+L51 2026-09-30T14:14:54.660Z shell_command wall=5.0
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Begin -RunRoot .\runs\powerpoint-csv-walkthrough -TestCaseCsv 'C:\Users\testuser\Desktop\Microsoft PowerPoint.csv'
+
+Exit code: 0
+Wall time: 5 seconds
+Output:
+{"runRoot":"C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough","ok":true,"explorationEvidenceRoot":"C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration","explorationPath":"C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\logs\\exploration.json","steps":[{"Action":"Open PowerPoint","Data":"Launch the installed desktop version of Microsoft PowerPoint.","Expected Result":"PowerPoint is open and ready to create a blank presentation."},{"Action":"Create Test Presentation","Data":"Create a blank presentation with one title slide. Set the text on the slide to \"PowerPoint GUI Test\"","Expected Result":"The presentation contains one slide with the exact text."},{"Action":"Save Test Presentation","Data":"Save as PowerPointTest.pptx in a new output folder for this run, using PowerPoint Presentation (.pptx) format.","Expected Result":"PowerPointTest.pptx exists, is non-empty, and PowerPoint shows the saved filename."},{"Action":"Open Created Presentation","Data":"Close the presentation. Use PowerPoint to open PowerPointTest.pptx from this run\u0027s output folder.","Expected Result":"The saved presentation reopens with one slide containing the exact text."},{"Action":"Print Test Presentation","Data":"Print the reopened presentation as full-page slides using Microsoft Print to PDF. Save as PowerPointTest.pdf in this run\u0027s output folder.","Expected Result":"PowerPointTest.pdf opens successfully and contains one printed slide with the complete text."}],"next":"Build GUI output filenames inside the existing explorationEvidenceRoot and add type -PathKind SaveFile/OpenFile. Set $OutputEncoding to UTF8Encoding(false), then pipe a JSON request array to powershell.exe -NoProfile -ExecutionPolicy Bypass -File Invoke-Exploration.ps1 -Action Batch -RunRoot \u003cthis-root\u003e -RequestsStdin. This com
+
+L57 2026-09-30T14:15:06.876Z shell_command wall=19.9
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":1,"command":"start","arguments":["-ProcessName","POWERPNT.EXE","-Maximize","-WaitForWindowMs","20000"]},
+  {"stepIndex":1,"command":"observe","arguments":["-Depth","4","-MaxElements","120"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "start", "ok": true, "durationMs": 11265, "error": null}
+
+{"command": "observe", "ok": true, "durationMs": 1959, "error": null}
+
+L63 2026-09-30T14:15:35.345Z shell_command wall=23.7
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":2,"command":"click","arguments":["-Name","Blank Presentation","-ControlType","ListItem","-Method","Auto","-TimeoutMs","5000"]},
+  {"stepIndex":2,"command":"wait-element","arguments":["-Name","Click to add title","-TimeoutMs","15000"]},
+  {"stepIndex":2,"command":"observe","arguments":["-Depth","6","-MaxElements","160"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "click", "ok": true, "durationMs": 1467, "error": null, "data": {"clicked": true, "verified": null, "verificationPerformed": false, "action": "InvokePattern", "point": null, "element": {"name": "Blank Presentation", "automationId": "", "className": "NetUIListViewItem", "localizedControlType": "List Item", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": true, "isKeyboardFocusable": true, "controlType": "ListItem", "processName": "POWERPNT", "boundingRectangle": {"x": 235, "y": 176, "width": 225, "height": 190}, "boundsStatus": "valid", "supportedPatterns": ["Invoke", "SelectionItem", "ScrollItem"], "isModal": false, "propertyErrors": []}}}
+
+{"command": "wait-element", "ok": true, "durationMs": 15533, "error": null, "data": {"exists": false, "count": 0, "elements": []}}
+
+L69 2026-09-30T14:16:06.055Z shell_command wall=8.5
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":2,"command":"observe","arguments":["-Depth","8","-MaxElements","220"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "observe", "ok": true, "durationMs": 2502, "error": null}
+
+L75 2026-09-30T14:16:23.237Z shell_command wall=5.7
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":2,"command":"screenshot","arguments":["-OutFile","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\slide-editor.png"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "screenshot", "ok": true, "durationMs": 784, "error": null}
+
+L78 2026-09-30T14:16:33.973Z view_image wall=None
+{'path': 'C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\slide-editor.png', 'detail': 'high'}
+
+L82 2026-09-30T14:16:41.196Z shell_command wall=4.4
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ..\potato-cli\potato.ps1 help -Topics click-coordinate
+
+{"command": "help", "ok": true, "durationMs": 401, "error": null}
+
+L88 2026-09-30T14:16:55.829Z shell_command wall=6.2
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":2,"command":"click-coordinate","arguments":["-X","1096","-Y","463"]},
+  {"stepIndex":2,"command":"type","arguments":["-Text","PowerPoint GUI Test","-TargetMode","Focused","-FallbackReason","PowerPoint exposes the slide canvas as an opaque pane while the screenshot shows the title placeholder selected by coordinate.","-FallbackEvidence","runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\slide-editor.png"]},
+  {"stepIndex":2,"command":"screenshot","arguments":["-OutFile","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\title-entered.png"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "click-coordinate", "ok": true, "durationMs": 786, "error": null, "data": {"clicked": true, "point": {"x": 1096, "y": 463}, "button": "Left", "action": "Mouse"}}
+
+{"command": "type", "ok": false, "durationMs": 338, "error": {"message": "Text input requires an enabled control with confirmed keyboard focus.", "type": "System.Management.Automation.RuntimeException", "category": "OperationStopped"}, "data": {}}
+
+L94 2026-09-30T14:17:10.255Z shell_command wall=7.3
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":2,"command":"screenshot","arguments":["-OutFile","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\after-title-click.png"]},
+  {"stepIndex":2,"command":"observe","arguments":["-Depth","5","-MaxElements","120"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "screenshot", "ok": true, "durationMs": 776, "error": null}
+
+{"command": "observe", "ok": true, "durationMs": 894, "error": null}
+
+L97 2026-09-30T14:17:21.141Z view_image wall=None
+{'path': 'C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\after-title-click.png', 'detail': 'high'}
+
+L103 2026-09-30T14:17:31.686Z shell_command wall=8.8
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":2,"command":"type","arguments":["-Text","PowerPoint GUI Test","-TargetMode","Focused","-ExpectedFocusJson","{\"AutomationId\":\"3244\"}","-FocusTimeoutMs","3000","-FallbackReason","PowerPoint exposes the active slide text insertion point through the focused opaque document pane AutomationId 3244 after a coordinate click on the title placeholder.","-FallbackEvidence","runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\after-title-click.png"]},
+  {"stepIndex":2,"command":"screenshot","arguments":["-OutFile","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\title-entered.png"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "type", "ok": false, "durationMs": 3786, "error": {"message": "Expected focused control did not become ready; no input was sent. Observe focus and prefer writable type -PreDelete -Verify when the control exposes text patterns. Do not click a selected filename just to wait for it.", "type": "System.Management.Automation.RuntimeException", "category": "OperationStopped"}, "data": {}}
+
+L109 2026-09-30T14:17:49.652Z shell_command wall=6.9
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":2,"command":"type","arguments":["-Text","PowerPoint GUI Test","-AutomationId","3244","-TimeoutMs","3000"]},
+  {"stepIndex":2,"command":"screenshot","arguments":["-OutFile","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\title-entered.png"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "type", "ok": false, "durationMs": 1241, "error": {"message": "Target is not a confirmed writable text control. For an observed opaque editor, use type -TargetMode Focused with FallbackReason/FallbackEvidence after visibly focusing it; assert the committed result separately.", "type": "System.Management.Automation.RuntimeException", "category": "OperationStopped"}, "data": {}}
+
+L115 2026-09-30T14:18:09.773Z shell_command wall=8.5
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":2,"command":"observe","arguments":["-AutomationId","3244","-Depth","12","-MaxElements","300"]},
+  {"stepIndex":2,"command":"select","arguments":["-SelectorJson","{\"Name\":[\"*PowerPoint*\",\"*title*\",\"*Click*\",\"*Text*\"]}","-TimeoutMs","0","-MaxResults","20"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "observe", "ok": true, "durationMs": 1389, "error": null}
+
+{"command": "select", "ok": true, "durationMs": 1368, "error": null, "data": {"count": 6, "elements": [{"name": "‪Presentation1‬  -  PowerPoint", "automationId": "", "className": "NetUIOfficeCaption", "localizedControlType": "Title Bar", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": false, "controlType": "TitleBar", "processName": "POWERPNT", "boundingRectangle": {"x": 376, "y": 0, "width": 365, "height": 60}, "boundsStatus": "valid", "supportedPatterns": [], "isModal": false, "propertyErrors": []}, {"name": "‪Presentation1‬  -  PowerPoint", "automationId": "", "className": "NetUISimpleButton", "localizedControlType": "Button", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "Button", "processName": "POWERPNT", "boundingRectangle": {"x": 376, "y": 0, "width": 217, "height": 60}, "boundsStatus": "valid", "supportedPatterns": ["Invoke"], "isModal": false, "propertyErrors": []}, {"name": "Text Highlight Color", "automationId": "TextHighlightColorPickerLicensed", "className": "NetUISplitButtonAnchor", "localizedControlType": "SplitButton", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "SplitButton", "processName": "POWERPNT", "boundingRectangle": {"x": 664, "y": 152, "width": 49, "height": 30}, "boundsStatus": "valid", "supportedPatterns": ["Invoke", "Value", "ExpandCollapse", "Toggle"], "isModal": false, "propertyErrors": []}, {"name": "Text Highlight Color Yellow", "automationId": "", "className": "NetUIRibbonButton", "localizedControlType": "Button", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": false, "controlType": "Button", "processName": "POWERPNT", "boundingRectangle": {"x": 664, "y": 152, "width": 30, "height": 30}, "boundsStatus": "valid", "supportedPatterns": ["Toggle"], "isModal": false, "propertyErrors": []}, {"name": "Text Direction", "automationId": "TextDirectionGallery", "className": "NetUIAnchor", "localizedControlType": "Menu Item", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "MenuItem", "processName": "POWERPNT", "boundingRectangle": {"x": 1002, "y": 102, "width": 50, "height": 30}, "boundsStatus": "valid", "supportedPatterns": ["ExpandCollapse"], "isModal": false, "propertyErrors": []}, {"name": "Align Text", "automationId": "TextAlignGallery", "className": "NetUIAnchor", "localizedControlType": "Menu Item", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "MenuItem", "processName": "POWERPNT", "boundingRectangle": {"x": 1002, "y": 134, "width": 50, "height": 30}, "boundsStatus": "valid", "supportedPatterns": ["ExpandCollapse"], "isModal": false, "propertyErrors": []}]}}
+
+L121 2026-09-30T14:18:27.726Z shell_command wall=5.7
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":2,"command":"type","arguments":["-Text","PowerPoint GUI Test","-TargetMode","Focused","-FallbackReason","PowerPoint exposes the selected title placeholder as an opaque focused MDIClient pane rather than a writable UIA text control.","-FallbackEvidence","Observation 365edaddf43e494f9cdd89f3d1ae5a6a and screenshot after-title-click.png show the insertion point in the title placeholder."]},
+  {"stepIndex":2,"command":"screenshot","arguments":["-OutFile","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\title-entered.png"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "type", "ok": false, "durationMs": 749, "error": {"message": "Text input requires an enabled control with confirmed keyboard focus.", "type": "System.Management.Automation.RuntimeException", "category": "OperationStopped"}, "data": {}}
+
+L125 2026-09-30T14:18:40.645Z shell_command wall=4.7
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ..\potato-cli\potato.ps1 help -Topics focus,hotkey
+
+{"command": "help", "ok": true, "durationMs": 435, "error": null}
+
+L131 2026-09-30T14:18:54.327Z shell_command wall=5.8
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":2,"command":"press-key","arguments":["-Key","Enter","-FallbackReason","The title placeholder shape is selected but PowerPoint has not exposed a writable text control; Enter is the bounded GUI action to enter text-edit mode for the selected shape.","-FallbackEvidence","runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\after-title-click.png"]},
+  {"stepIndex":2,"command":"observe","arguments":["-Depth","5","-MaxElements","120"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "press-key", "ok": false, "durationMs": 583, "error": {"message": "Input requires enabled keyboard focus in the working application or its owned dialog. Observe and visibly focus the target before retrying.", "type": "System.Management.Automation.RuntimeException", "category": "OperationStopped"}, "data": {}}
+
+L137 2026-09-30T14:19:12.580Z shell_command wall=10.4
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":2,"command":"focus","arguments":["-ProcessId","18208","-Maximize","-TimeoutMs","5000"]},
+  {"stepIndex":2,"command":"click-coordinate","arguments":["-X","1096","-Y","463"]},
+  {"stepIndex":2,"command":"press-key","arguments":["-Key","Enter","-FallbackReason","The PowerPoint title placeholder is selected via screenshot-confirmed coordinate fallback and needs Enter to enter text-edit mode.","-FallbackEvidence","runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\after-title-click.png"]},
+  {"stepIndex":2,"command":"observe","arguments":["-Depth","5","-MaxElements","120"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "focus", "ok": true, "durationMs": 1482, "error": null}
+
+{"command": "click-coordinate", "ok": true, "durationMs": 306, "error": null, "data": {"clicked": true, "point": {"x": 1096, "y": 463}, "button": "Left", "action": "Mouse"}}
+
+{"command": "press-key", "ok": false, "durationMs": 72, "error": {"message": "Input requires enabled keyboard focus in the working application or its owned dialog. Observe and visibly focus the target before retrying.", "type": "System.Management.Automation.RuntimeException", "category": "OperationStopped"}, "data": {}}
+
+L141 2026-09-30T14:19:32.697Z shell_command wall=7.6
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":2,"command":"screenshot","arguments":["-OutFile","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\focus-problem.png"]},
+  {"stepIndex":2,"command":"windows","arguments":["-TimeoutMs","0"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "screenshot", "ok": true, "durationMs": 1014, "error": null}
+
+{"command": "windows", "ok": true, "durationMs": 722, "error": null}
+
+L146 2026-09-30T14:19:45.901Z view_image wall=None
+{'path': 'C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\focus-problem.png', 'detail': 'high'}
+
+L152 2026-09-30T14:19:57.905Z shell_command wall=7.8
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":2,"command":"click-coordinate","arguments":["-X","1096","-Y","450"]},
+  {"stepIndex":2,"command":"type","arguments":["-Text","PowerPoint GUI Test","-TargetMode","Focused","-FallbackReason","PowerPoint exposes the active title placeholder as an opaque drawing canvas after direct visible focus; the text caret is visible in the placeholder.","-FallbackEvidence","runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\focus-problem.png"]},
+  {"stepIndex":2,"command":"screenshot","arguments":["-OutFile","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\title-entered.png"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "click-coordinate", "ok": true, "durationMs": 968, "error": null, "data": {"clicked": true, "point": {"x": 1096, "y": 450}, "button": "Left", "action": "Mouse"}}
+
+{"command": "type", "ok": false, "durationMs": 384, "error": {"message": "Text input requires an enabled control with confirmed keyboard focus.", "type": "System.Management.Automation.RuntimeException", "category": "OperationStopped"}, "data": {}}
+
+L158 2026-09-30T14:20:18.629Z shell_command wall=4.5
+rg -n "COM|SendKeys|hotkey|AllowShortcuts|PowerPoint|forbidden|Native|OpenXml|New-Object" Framework tests docs
+
+L159 2026-09-30T14:20:18.706Z shell_command wall=5.2
+Get-Content -Path 'C:\diplomamunka\automated-gui-testing-agent-framework\Framework\GeneratedScriptPreflight.ps1'
+
+L166 2026-09-30T14:20:35.929Z shell_command wall=13.3
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":2,"command":"type","arguments":["-Text","PowerPoint GUI Test","-TargetMode","Focused","-ExpectedFocusJson","{\"AutomationId\":\"1071\"}","-FocusTimeoutMs","3000","-FallbackReason","PowerPoint reports the selected slide text insertion point through focusedElement AutomationId 1071 rather than a writable text control.","-FallbackEvidence","runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\focus-problem.png"]},
+  {"stepIndex":2,"command":"screenshot","arguments":["-OutFile","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\title-entered.png"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "type", "ok": false, "durationMs": 4170, "error": {"message": "Expected focused control did not become ready; no input was sent. Observe focus and prefer writable type -PreDelete -Verify when the control exposes text patterns. Do not click a selected filename just to wait for it.", "type": "System.Management.Automation.RuntimeException", "category": "OperationStopped"}, "data": {}}
+
+L170 2026-09-30T14:20:57.398Z shell_command wall=2.5
+rg -n "function .*Type|TargetMode|Focused|Text input requires|Expected focused" C:\diplomamunka\potato-cli\PoTAToCli
+
+L171 2026-09-30T14:20:57.457Z shell_command wall=2.4
+rg -n "click-coordinate|function .*Press|keyboard focus" C:\diplomamunka\potato-cli\PoTAToCli
+
+L177 2026-09-30T14:21:09.053Z shell_command wall=10.4
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":2,"command":"click","arguments":["-Name","Presentation1 - PowerPoint","-ControlType","Window","-Method","Mouse","-TimeoutMs","3000","-RelativeX","0.5","-RelativeY","0.05"]},
+  {"stepIndex":2,"command":"click-coordinate","arguments":["-X","1096","-Y","450"]},
+  {"stepIndex":2,"command":"observe","arguments":["-Depth","3","-MaxElements","80"]},
+  {"stepIndex":2,"command":"type","arguments":["-Text","PowerPoint GUI Test","-TargetMode","Focused","-FallbackReason","PowerPoint canvas exposes selected title placeholder through the focused presentation window rather than a text control.","-FallbackEvidence","runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\focus-problem.png"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "click", "ok": false, "durationMs": 4263, "error": {"message": "No visible enabled element matches the selector.", "type": "System.Management.Automation.RuntimeException", "category": "OperationStopped"}, "data": {}}
+
+L183 2026-09-30T14:21:30.096Z shell_command wall=9.1
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":2,"command":"click-coordinate","arguments":["-X","504","-Y","30"]},
+  {"stepIndex":2,"command":"click-coordinate","arguments":["-X","1096","-Y","450"]},
+  {"stepIndex":2,"command":"observe","arguments":["-Depth","3","-MaxElements","80"]},
+  {"stepIndex":2,"command":"type","arguments":["-Text","PowerPoint GUI Test","-TargetMode","Focused","-FallbackReason","PowerPoint canvas exposes selected title placeholder through an opaque focused presentation surface rather than a text control.","-FallbackEvidence","runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\focus-problem.png"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "click-coordinate", "ok": true, "durationMs": 957, "error": null, "data": {"clicked": true, "point": {"x": 504, "y": 30}, "button": "Left", "action": "Mouse"}}
+
+{"command": "click-coordinate", "ok": true, "durationMs": 26, "error": null, "data": {"clicked": true, "point": {"x": 1096, "y": 450}, "button": "Left", "action": "Mouse"}}
+
+{"command": "observe", "ok": true, "durationMs": 1965, "error": null}
+
+{"command": "type", "ok": true, "durationMs": 451, "error": null, "data": {"typed": true, "textLength": 19, "verified": null, "verificationPerformed": false, "verification": null, "inputMethod": "UnicodeKeyboard", "focusMethod": "ExistingFocus", "targetMode": "Focused", "target": {"name": "Save As", "automationId": "", "className": "NetUIRibbonTab", "localizedControlType": "List Item", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": true, "isKeyboardFocusable": true, "controlType": "ListItem", "processName": "POWERPNT", "boundingRectangle": {"x": 0, "y": 436, "width": 175, "height": 50}, "boundsStatus": "valid", "supportedPatterns": ["SelectionItem", "ScrollItem"], "isModal": false, "propertyErrors": []}, "clearMethod": null}}
+
+L189 2026-09-30T14:21:49.045Z shell_command wall=10.7
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":2,"command":"screenshot","arguments":["-OutFile","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\backstage-misfocus.png"]},
+  {"stepIndex":2,"command":"click","arguments":["-Name","Back","-ControlType","Button","-Method","Auto","-TimeoutMs","3000"]},
+  {"stepIndex":2,"command":"observe","arguments":["-Depth","4","-MaxElements","100"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "screenshot", "ok": true, "durationMs": 727, "error": null}
+
+{"command": "click", "ok": false, "durationMs": 3608, "error": {"message": "No visible enabled element matches the selector.", "type": "System.Management.Automation.RuntimeException", "category": "OperationStopped"}, "data": {}}
+
+L195 2026-09-30T14:22:06.302Z view_image wall=None
+{'path': 'C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\backstage-misfocus.png', 'detail': 'high'}
+
+L201 2026-09-30T14:22:13.840Z shell_command wall=7.4
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":2,"command":"click-coordinate","arguments":["-X","31","-Y","87"]},
+  {"stepIndex":2,"command":"observe","arguments":["-Depth","4","-MaxElements","100"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "click-coordinate", "ok": true, "durationMs": 685, "error": null, "data": {"clicked": true, "point": {"x": 31, "y": 87}, "button": "Left", "action": "Mouse"}}
+
+{"command": "observe", "ok": true, "durationMs": 1137, "error": null}
+
+L207 2026-09-30T14:22:29.870Z shell_command wall=2.2
+Get-Content -Path 'C:\diplomamunka\potato-cli\PoTAToCli\Interaction.ps1' -TotalCount 220
+
+L213 2026-09-30T14:22:39.462Z shell_command wall=2.4
+Get-Content -Path 'C:\diplomamunka\potato-cli\PoTAToCli\PoTAToCli.psm1' | Select-Object -Skip 1500 -First 120
+
+L219 2026-09-30T14:22:56.730Z shell_command wall=9.3
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":2,"command":"click","arguments":["-Name","View","-AutomationId","TabView","-ControlType","TabItem","-Method","Auto","-TimeoutMs","5000"]},
+  {"stepIndex":2,"command":"observe","arguments":["-Depth","8","-MaxElements","180"]},
+  {"stepIndex":2,"command":"select","arguments":["-SelectorJson","{\"Name\":[\"*Outline*\",\"*Normal*\"]}","-TimeoutMs","0","-MaxResults","20"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "click", "ok": true, "durationMs": 1517, "error": null, "data": {"clicked": true, "verified": null, "verificationPerformed": false, "action": "SelectionItemPattern", "point": null, "element": {"name": "View", "automationId": "TabView", "className": "NetUIRibbonTab", "localizedControlType": "Tab Item", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "TabItem", "processName": "POWERPNT", "boundingRectangle": {"x": 766, "y": 60, "width": 60, "height": 38}, "boundsStatus": "valid", "supportedPatterns": ["SelectionItem"], "isModal": false, "propertyErrors": []}}}
+
+{"command": "observe", "ok": true, "durationMs": 1827, "error": null}
+
+{"command": "select", "ok": true, "durationMs": 660, "error": null, "data": {"count": 3, "elements": [{"name": "Normal", "automationId": "ViewThumbnailViewPowerPoint", "className": "NetUIRibbonButton", "localizedControlType": "Button", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "Button", "processName": "POWERPNT", "boundingRectangle": {"x": 25, "y": 102, "width": 56, "height": 97}, "boundsStatus": "valid", "supportedPatterns": ["Toggle"], "isModal": false, "propertyErrors": []}, {"name": "Outline View", "automationId": "ViewOutlineViewPowerPoint", "className": "NetUIRibbonButton", "localizedControlType": "Button", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "Button", "processName": "POWERPNT", "boundingRectangle": {"x": 83, "y": 102, "width": 54, "height": 97}, "boundsStatus": "valid", "supportedPatterns": ["Toggle"], "isModal": false, "propertyErrors": []}, {"name": "Normal", "automationId": "", "className": "NetUIStickyButton", "localizedControlType": "Button", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "Button", "processName": "POWERPNT", "boundingRectangle": {"x": 1476, "y": 814, "width": 50, "height": 26}, "boundsStatus": "valid", "supportedPatterns": ["Toggle"], "isModal": false, "propertyErrors": []}]}}
+
+L225 2026-09-30T14:23:14.738Z shell_command wall=10.7
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":2,"command":"click","arguments":["-Name","Outline View","-AutomationId","ViewOutlineViewPowerPoint","-ControlType","Button","-Method","Auto","-TimeoutMs","5000"]},
+  {"stepIndex":2,"command":"observe","arguments":["-Depth","10","-MaxElements","240"]},
+  {"stepIndex":2,"command":"screenshot","arguments":["-OutFile","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\outline-view.png"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "click", "ok": true, "durationMs": 1495, "error": null, "data": {"clicked": true, "verified": null, "verificationPerformed": false, "action": "TogglePattern", "point": null, "element": {"name": "Outline View", "automationId": "ViewOutlineViewPowerPoint", "className": "NetUIRibbonButton", "localizedControlType": "Button", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "Button", "processName": "POWERPNT", "boundingRectangle": {"x": 83, "y": 102, "width": 54, "height": 97}, "boundsStatus": "valid", "supportedPatterns": ["Toggle"], "isModal": false, "propertyErrors": []}}}
+
+{"command": "observe", "ok": true, "durationMs": 3034, "error": null}
+
+{"command": "screenshot", "ok": true, "durationMs": 370, "error": null}
+
+L231 2026-09-30T14:23:30.485Z view_image wall=None
+{'path': 'C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\outline-view.png', 'detail': 'high'}
+
+L236 2026-09-30T14:23:39.656Z shell_command wall=8.3
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":2,"command":"click-coordinate","arguments":["-X","58","-Y","245"]},
+  {"stepIndex":2,"command":"observe","arguments":["-Depth","6","-MaxElements","140"]},
+  {"stepIndex":2,"command":"type","arguments":["-Text","PowerPoint GUI Test","-TargetMode","Focused","-FallbackReason","PowerPoint Outline View exposes the editable slide title line through an opaque outline pane after visible focus.","-FallbackEvidence","runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\outline-view.png"]},
+  {"stepIndex":2,"command":"screenshot","arguments":["-OutFile","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\outline-title-entered.png"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "click-coordinate", "ok": true, "durationMs": 800, "error": null, "data": {"clicked": true, "point": {"x": 58, "y": 245}, "button": "Left", "action": "Mouse"}}
+
+{"command": "observe", "ok": true, "durationMs": 1014, "error": null}
+
+{"command": "type", "ok": true, "durationMs": 308, "error": null, "data": {"typed": true, "textLength": 19, "verified": null, "verificationPerformed": false, "verification": null, "inputMethod": "UnicodeKeyboard", "focusMethod": "ExistingFocus", "targetMode": "Focused", "target": {"name": "Outline", "automationId": "OutlinePane", "className": "", "localizedControlType": "pane", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": true, "isKeyboardFocusable": true, "controlType": "Pane", "processName": "POWERPNT", "boundingRectangle": {"x": 0, "y": 222, "width": 642, "height": 591}, "boundsStatus": "valid", "supportedPatterns": ["Scroll"], "isModal": false, "propertyErrors": []}, "clearMethod": null}}
+
+{"command": "screenshot", "ok": true, "durationMs": 389, "error": null}
+
+L242 2026-09-30T14:23:56.325Z view_image wall=None
+{'path': 'C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\outline-title-entered.png', 'detail': 'high'}
+
+L248 2026-09-30T14:24:04.786Z shell_command wall=2.0
+New-Item -Path 'C:\diplomamunka\automated-gui-testing-agent-framework\runs\powerpoint-csv-walkthrough\evidence\exploration\PowerPointOutput' -ItemType Directory -Force | Out-Null
+
+Exit code: 0
+Wall time: 2 seconds
+Output:
+
+
+L253 2026-09-30T14:24:15.613Z shell_command wall=12.8
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":3,"command":"click","arguments":["-Name","File Tab","-AutomationId","FileTabButton","-ControlType","Button","-Method","Auto","-TimeoutMs","5000"]},
+  {"stepIndex":3,"command":"click","arguments":["-Name","Save As","-ControlType","ListItem","-Method","Auto","-TimeoutMs","5000"]},
+  {"stepIndex":3,"command":"click","arguments":["-Name","Browse","-ControlType","ListItem","-Method","Auto","-TimeoutMs","5000"]},
+  {"stepIndex":3,"command":"observe","arguments":["-Scope","FocusedWindow","-Depth","5","-MaxElements","120"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "click", "ok": true, "durationMs": 1472, "error": null, "data": {"clicked": true, "verified": null, "verificationPerformed": false, "action": "InvokePattern", "point": null, "element": {"name": "File Tab", "automationId": "FileTabButton", "className": "NetUIRibbonTab", "localizedControlType": "Button", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "Button", "processName": "POWERPNT", "boundingRectangle": {"x": 5, "y": 60, "width": 68, "height": 38}, "boundsStatus": "valid", "supportedPatterns": ["Invoke"], "isModal": false, "propertyErrors": []}}}
+
+{"command": "click", "ok": true, "durationMs": 590, "error": null, "data": {"clicked": true, "verified": null, "verificationPerformed": false, "action": "SelectionItemPattern", "point": null, "element": {"name": "Save As", "automationId": "", "className": "NetUIRibbonTab", "localizedControlType": "List Item", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "ListItem", "processName": "POWERPNT", "boundingRectangle": {"x": 0, "y": 436, "width": 175, "height": 50}, "boundsStatus": "valid", "supportedPatterns": ["SelectionItem", "ScrollItem"], "isModal": false, "propertyErrors": []}}}
+
+{"command": "click", "ok": false, "durationMs": 5073, "error": {"message": "No visible enabled element matches the selector.", "type": "System.Management.Automation.RuntimeException", "category": "OperationStopped"}, "data": {}}
+
+L259 2026-09-30T14:24:38.344Z shell_command wall=8.3
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":3,"command":"observe","arguments":["-Depth","6","-MaxElements","160"]},
+  {"stepIndex":3,"command":"select","arguments":["-Name","*Browse*","-TimeoutMs","0","-MaxResults","10"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "observe", "ok": true, "durationMs": 1777, "error": null}
+
+{"command": "select", "ok": true, "durationMs": 656, "error": null, "data": {"count": 1, "elements": [{"name": "Browse", "automationId": "", "className": "NetUISimpleButton", "localizedControlType": "Button", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "Button", "processName": "POWERPNT", "boundingRectangle": {"x": 226, "y": 582, "width": 350, "height": 55}, "boundsStatus": "valid", "supportedPatterns": ["Invoke", "ScrollItem"], "isModal": false, "propertyErrors": []}]}}
+
+L265 2026-09-30T14:24:54.640Z shell_command wall=12.1
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":3,"command":"click","arguments":["-Name","Browse","-ControlType","Button","-Method","Auto","-TimeoutMs","5000"]},
+  {"stepIndex":3,"command":"observe","arguments":["-Scope","FocusedWindow","-Depth","6","-MaxElements","160"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "click", "ok": true, "durationMs": 1189, "error": null, "data": {"clicked": true, "verified": null, "verificationPerformed": false, "action": "InvokePattern", "point": null, "element": {"name": "Browse", "automationId": "", "className": "NetUISimpleButton", "localizedControlType": "Button", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "Button", "processName": "POWERPNT", "boundingRectangle": {"x": 226, "y": 582, "width": 350, "height": 55}, "boundsStatus": "valid", "supportedPatterns": ["Invoke", "ScrollItem"], "isModal": false, "propertyErrors": []}}}
+
+{"command": "observe", "ok": true, "durationMs": 4937, "error": null}
+
+L271 2026-09-30T14:25:20.966Z shell_command wall=9.8
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":3,"command":"type","arguments":["-Text","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\PowerPointOutput\\PowerPointTest.pptx","-PathKind","SaveFile","-TargetMode","Focused","-FallbackReason","The native Save As filename field is focused but exposed as an opaque Edit pane; typing the absolute path replaces its selected default filename.","-FallbackEvidence","FocusedWindow observation 2c1388766d4e778aa369a5b155c275 shows AutomationId 1001 focused in the Save As dialog."]},
+  {"stepIndex":3,"command":"click","arguments":["-Name","Save","-AutomationId","1","-Scope","FocusedWindow","-Method","Mouse","-TimeoutMs","5000"]},
+  {"stepIndex":3,"command":"wait-file","arguments":["-Path","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\PowerPointOutput\\PowerPointTest.pptx","-MinBytes","1","-StableMs","500","-TimeoutMs","20000"]},
+  {"stepIndex":3,"command":"windows","arguments":["-ProcessId","18208","-TimeoutMs","0"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "type", "ok": true, "durationMs": 996, "error": null, "data": {"typed": true, "textLength": 143, "verified": null, "verificationPerformed": false, "verification": null, "inputMethod": "UnicodeKeyboard", "focusMethod": "ExistingFocus", "targetMode": "Focused", "target": {"name": "PowerPoint GUI Test", "automationId": "1001", "className": "Edit", "localizedControlType": "pane", "processId": 18208, "nativeWindowHandle": 1049492, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": true, "isKeyboardFocusable": false, "controlType": "Pane", "processName": "POWERPNT", "boundingRectangle": {"x": 169, "y": 405, "width": 753, "height": 22}, "boundsStatus": "valid", "supportedPatterns": [], "isModal": false, "propertyErrors": []}, "clearMethod": null, "pathValidation": {"kind": "SaveFile", "path": "C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\PowerPointOutput\\PowerPointTest.pptx", "parentPath": "C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\PowerPointOutput", "validated": true}}}
+
+{"command": "click", "ok": true, "durationMs": 1574, "error": null, "data": {"clicked": true, "verified": null, "verificationPerformed": false, "action": "Mouse", "point": {"x": 751, "y": 554}, "element": {"name": "Save", "automationId": "1", "className": "Button", "localizedControlType": "pane", "processId": 18208, "nativeWindowHandle": 1704798, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": false, "controlType": "Pane", "processName": "POWERPNT", "boundingRectangle": {"x": 696, "y": 537, "width": 110, "height": 33}, "boundsStatus": "valid", "supportedPatterns": [], "isModal": false, "propertyErrors": []}}}
+
+{"command": "wait-file", "ok": true, "durationMs": 884, "error": null, "data": {"path": "C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\PowerPointOutput\\PowerPointTest.pptx", "exists": true, "conditionMet": true, "length": 33914, "minBytes": 1, "stableMs": 500, "timedOut": false}}
+
+{"command": "windows", "ok": true, "durationMs": 227, "error": null}
+
+L277 2026-09-30T14:25:40.379Z shell_command wall=8.2
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":4,"command":"click","arguments":["-Name","File Tab","-AutomationId","FileTabButton","-ControlType","Button","-Method","Auto","-TimeoutMs","5000"]},
+  {"stepIndex":4,"command":"click","arguments":["-Name","Close","-ControlType","ListItem","-Method","Auto","-TimeoutMs","5000"]},
+  {"stepIndex":4,"command":"observe","arguments":["-Depth","4","-MaxElements","120"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "click", "ok": true, "durationMs": 1609, "error": null, "data": {"clicked": true, "verified": null, "verificationPerformed": false, "action": "InvokePattern", "point": null, "element": {"name": "File Tab", "automationId": "FileTabButton", "className": "NetUIRibbonTab", "localizedControlType": "Button", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "Button", "processName": "POWERPNT", "boundingRectangle": {"x": 5, "y": 60, "width": 68, "height": 38}, "boundsStatus": "valid", "supportedPatterns": ["Invoke"], "isModal": false, "propertyErrors": []}}}
+
+{"command": "click", "ok": true, "durationMs": 336, "error": null, "data": {"clicked": true, "verified": null, "verificationPerformed": false, "action": "InvokePattern", "point": null, "element": {"name": "Close", "automationId": "", "className": "NetUIOutSpaceButton", "localizedControlType": "List Item", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "ListItem", "processName": "POWERPNT", "boundingRectangle": {"x": 0, "y": 586, "width": 175, "height": 50}, "boundsStatus": "valid", "supportedPatterns": ["Invoke", "ScrollItem"], "isModal": false, "propertyErrors": []}}}
+
+{"command": "observe", "ok": true, "durationMs": 384, "error": null}
+
+L283 2026-09-30T14:26:00.213Z shell_command wall=8.4
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":4,"command":"click","arguments":["-Name","File Tab","-AutomationId","FileTabButton","-ControlType","Button","-Method","Auto","-TimeoutMs","5000"]},
+  {"stepIndex":4,"command":"click","arguments":["-Name","Open","-ControlType","ListItem","-Method","Auto","-TimeoutMs","5000"]},
+  {"stepIndex":4,"command":"select","arguments":["-SelectorJson","{\"Name\":[\"*Browse*\",\"This PC\"]}","-TimeoutMs","0","-MaxResults","10"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "click", "ok": true, "durationMs": 1599, "error": null, "data": {"clicked": true, "verified": null, "verificationPerformed": false, "action": "InvokePattern", "point": null, "element": {"name": "File Tab", "automationId": "FileTabButton", "className": "NetUIRibbonTab", "localizedControlType": "Button", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "Button", "processName": "POWERPNT", "boundingRectangle": {"x": 5, "y": 60, "width": 68, "height": 38}, "boundsStatus": "valid", "supportedPatterns": ["Invoke"], "isModal": false, "propertyErrors": []}}}
+
+{"command": "click", "ok": true, "durationMs": 794, "error": null, "data": {"clicked": true, "verified": null, "verificationPerformed": false, "action": "SelectionItemPattern", "point": null, "element": {"name": "Open", "automationId": "", "className": "NetUIRibbonTab", "localizedControlType": "List Item", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "ListItem", "processName": "POWERPNT", "boundingRectangle": {"x": 0, "y": 216, "width": 175, "height": 50}, "boundsStatus": "valid", "supportedPatterns": ["SelectionItem", "ScrollItem"], "isModal": false, "propertyErrors": []}}}
+
+{"command": "select", "ok": true, "durationMs": 529, "error": null, "data": {"count": 2, "elements": [{"name": "This PC", "automationId": "", "className": "NetUISimpleButton", "localizedControlType": "Tab Item", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "TabItem", "processName": "POWERPNT", "boundingRectangle": {"x": 226, "y": 321, "width": 350, "height": 97}, "boundsStatus": "valid", "supportedPatterns": ["Invoke", "SelectionItem", "ScrollItem"], "isModal": false, "propertyErrors": []}, {"name": "Browse", "automationId": "", "className": "NetUISimpleButton", "localizedControlType": "Button", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "Button", "processName": "POWERPNT", "boundingRectangle": {"x": 226, "y": 481, "width": 350, "height": 55}, "boundsStatus": "valid", "supportedPatterns": ["Invoke", "ScrollItem"], "isModal": false, "propertyErrors": []}]}}
+
+L289 2026-09-30T14:26:26.203Z shell_command wall=11.4
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":4,"command":"click","arguments":["-Name","Browse","-ControlType","Button","-Method","Auto","-TimeoutMs","5000"]},
+  {"stepIndex":4,"command":"observe","arguments":["-Scope","FocusedWindow","-Depth","5","-MaxElements","120"]},
+  {"stepIndex":4,"command":"type","arguments":["-Text","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\PowerPointOutput\\PowerPointTest.pptx","-PathKind","OpenFile","-TargetMode","Focused","-FallbackReason","The native Open filename field is focused but exposed as an opaque Edit pane; typing the absolute existing file path uses PowerPoint's Open dialog.","-FallbackEvidence","Focused Open dialog observation after Browse."]},
+  {"stepIndex":4,"command":"click","arguments":["-Name","Open","-AutomationId","1","-Scope","FocusedWindow","-Method","Mouse","-TimeoutMs","5000"]},
+  {"stepIndex":4,"command":"wait-element","arguments":["-Name","PowerPointTest - PowerPoint","-ControlType","Window","-TimeoutMs","20000"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "click", "ok": true, "durationMs": 1520, "error": null, "data": {"clicked": true, "verified": null, "verificationPerformed": false, "action": "InvokePattern", "point": null, "element": {"name": "Browse", "automationId": "", "className": "NetUISimpleButton", "localizedControlType": "Button", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "Button", "processName": "POWERPNT", "boundingRectangle": {"x": 226, "y": 481, "width": 350, "height": 55}, "boundsStatus": "valid", "supportedPatterns": ["Invoke", "ScrollItem"], "isModal": false, "propertyErrors": []}}}
+
+{"command": "observe", "ok": true, "durationMs": 1838, "error": null}
+
+{"command": "type", "ok": true, "durationMs": 266, "error": null, "data": {"typed": true, "textLength": 143, "verified": null, "verificationPerformed": false, "verification": null, "inputMethod": "UnicodeKeyboard", "focusMethod": "ExistingFocus", "targetMode": "Focused", "target": {"name": "", "automationId": "1148", "className": "Edit", "localizedControlType": "pane", "processId": 18208, "nativeWindowHandle": 1770142, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": true, "isKeyboardFocusable": false, "controlType": "Pane", "processName": "POWERPNT", "boundingRectangle": {"x": 234, "y": 505, "width": 423, "height": 20}, "boundsStatus": "valid", "supportedPatterns": [], "isModal": false, "propertyErrors": []}, "clearMethod": null, "pathValidation": {"kind": "OpenFile", "path": "C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\PowerPointOutput\\PowerPointTest.pptx", "parentPath": "C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\PowerPointOutput", "validated": true}}}
+
+{"command": "click", "ok": true, "durationMs": 1207, "error": null, "data": {"clicked": true, "verified": null, "verificationPerformed": false, "action": "Mouse", "point": {"x": 751, "y": 554}, "element": {"name": "Open", "automationId": "1", "className": "Button", "localizedControlType": "pane", "processId": 18208, "nativeWindowHandle": 1770098, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": false, "controlType": "Pane", "processName": "POWERPNT", "boundingRectangle": {"x": 696, "y": 537, "width": 110, "height": 33}, "boundsStatus": "valid", "supportedPatterns": [], "isModal": false, "propertyErrors": []}}}
+
+{"command": "wait-element", "ok": true, "durationMs": 604, "error": null, "data": {"exists": true, "count": 1, "elements": [{"name": "PowerPointTest - PowerPoint", "automationId": "", "className": "PPTFrameClass", "localizedControlType": "window", "processId": 18208, "nativeWindowHandle": 263352, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": true, "isKeyboardFocusable": false, "controlType": "Window", "processName": "POWERPNT", "boundingRectangle": {"x": -9, "y": -9, "width": 1940, "height": 858}, "boundsStatus": "valid", "supportedPatterns": ["Window", "Transform"], "isModal": false, "propertyErrors": []}]}}
+
+L295 2026-09-30T14:26:46.099Z shell_command wall=11.5
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":4,"command":"observe","arguments":["-Depth","8","-MaxElements","180"]},
+  {"stepIndex":4,"command":"read","arguments":["-Name","Outline","-AutomationId","OutlinePane","-TimeoutMs","3000"]},
+  {"stepIndex":4,"command":"screenshot","arguments":["-OutFile","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\reopened-title.png"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "observe", "ok": true, "durationMs": 2225, "error": null}
+
+{"command": "read", "ok": false, "durationMs": 3447, "error": {"message": "No matching element was found.", "type": "System.Management.Automation.RuntimeException", "category": "OperationStopped"}, "data": {}}
+
+L301 2026-09-30T14:27:08.937Z shell_command wall=8.8
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":4,"command":"click","arguments":["-Name","View","-AutomationId","TabView","-ControlType","TabItem","-Method","Auto","-TimeoutMs","5000"]},
+  {"stepIndex":4,"command":"click","arguments":["-Name","Outline View","-AutomationId","ViewOutlineViewPowerPoint","-ControlType","Button","-Method","Auto","-TimeoutMs","5000"]},
+  {"stepIndex":4,"command":"observe","arguments":["-Depth","6","-MaxElements","140"]},
+  {"stepIndex":4,"command":"read","arguments":["-Name","Rectangle","-TimeoutMs","3000"]},
+  {"stepIndex":4,"command":"screenshot","arguments":["-OutFile","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\reopened-outline-title.png"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "click", "ok": true, "durationMs": 1490, "error": null, "data": {"clicked": true, "verified": null, "verificationPerformed": false, "action": "SelectionItemPattern", "point": null, "element": {"name": "View", "automationId": "TabView", "className": "NetUIRibbonTab", "localizedControlType": "Tab Item", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "TabItem", "processName": "POWERPNT", "boundingRectangle": {"x": 766, "y": 60, "width": 60, "height": 38}, "boundsStatus": "valid", "supportedPatterns": ["SelectionItem"], "isModal": false, "propertyErrors": []}}}
+
+{"command": "click", "ok": true, "durationMs": 330, "error": null, "data": {"clicked": true, "verified": null, "verificationPerformed": false, "action": "TogglePattern", "point": null, "element": {"name": "Outline View", "automationId": "ViewOutlineViewPowerPoint", "className": "NetUIRibbonButton", "localizedControlType": "Button", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "Button", "processName": "POWERPNT", "boundingRectangle": {"x": 83, "y": 102, "width": 54, "height": 97}, "boundsStatus": "valid", "supportedPatterns": ["Toggle"], "isModal": false, "propertyErrors": []}}}
+
+{"command": "observe", "ok": true, "durationMs": 665, "error": null}
+
+{"command": "read", "ok": true, "durationMs": 397, "error": null, "data": {"text": "PowerPoint GUI Test\r", "textSource": "TextPattern", "element": {"name": "Rectangle", "automationId": "", "className": "", "localizedControlType": "shape", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "Image", "processName": "POWERPNT", "boundingRectangle": {"x": 0, "y": 222, "width": 642, "height": 591}, "boundsStatus": "valid", "supportedPatterns": ["Invoke", "Text"], "isModal": false, "propertyErrors": []}}}
+
+{"command": "screenshot", "ok": true, "durationMs": 262, "error": null}
+
+L307 2026-09-30T14:27:29.006Z shell_command wall=10.9
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":5,"command":"click","arguments":["-Name","File Tab","-AutomationId","FileTabButton","-ControlType","Button","-Method","Auto","-TimeoutMs","5000"]},
+  {"stepIndex":5,"command":"click","arguments":["-Name","Print","-ControlType","ListItem","-Method","Auto","-TimeoutMs","5000"]},
+  {"stepIndex":5,"command":"observe","arguments":["-Depth","8","-MaxElements","220"]},
+  {"stepIndex":5,"command":"select","arguments":["-SelectorJson","{\"Name\":[\"*Microsoft Print to PDF*\",\"Printer\",\"Print\",\"Full Page Slides\"]}","-TimeoutMs","0","-MaxResults","30"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "click", "ok": true, "durationMs": 1316, "error": null, "data": {"clicked": true, "verified": null, "verificationPerformed": false, "action": "InvokePattern", "point": null, "element": {"name": "File Tab", "automationId": "FileTabButton", "className": "NetUIRibbonTab", "localizedControlType": "Button", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "Button", "processName": "POWERPNT", "boundingRectangle": {"x": 5, "y": 60, "width": 68, "height": 38}, "boundsStatus": "valid", "supportedPatterns": ["Invoke"], "isModal": false, "propertyErrors": []}}}
+
+{"command": "click", "ok": true, "durationMs": 1047, "error": null, "data": {"clicked": true, "verified": null, "verificationPerformed": false, "action": "SelectionItemPattern", "point": null, "element": {"name": "Print", "automationId": "", "className": "NetUIRibbonTab", "localizedControlType": "List Item", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "ListItem", "processName": "POWERPNT", "boundingRectangle": {"x": 0, "y": 486, "width": 175, "height": 50}, "boundsStatus": "valid", "supportedPatterns": ["SelectionItem", "ScrollItem"], "isModal": false, "propertyErrors": []}}}
+
+{"command": "observe", "ok": true, "durationMs": 1861, "error": null}
+
+{"command": "select", "ok": true, "durationMs": 895, "error": null, "data": {"count": 7, "elements": [{"name": "Print", "automationId": "", "className": "NetUIRibbonTab", "localizedControlType": "List Item", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": true, "isKeyboardFocusable": true, "controlType": "ListItem", "processName": "POWERPNT", "boundingRectangle": {"x": 0, "y": 486, "width": 175, "height": 50}, "boundsStatus": "valid", "supportedPatterns": ["SelectionItem", "ScrollItem"], "isModal": false, "propertyErrors": []}, {"name": "Print", "automationId": "", "className": "NetUIElement", "localizedControlType": "Group", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": false, "controlType": "Group", "processName": "POWERPNT", "boundingRectangle": {"x": 175, "y": 60, "width": 1747, "height": 780}, "boundsStatus": "valid", "supportedPatterns": ["ScrollItem"], "isModal": false, "propertyErrors": []}, {"name": "Print", "automationId": "", "className": "NetUILabel", "localizedControlType": "Text", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": false, "controlType": "Text", "processName": "POWERPNT", "boundingRectangle": {"x": 225, "y": 80, "width": 52, "height": 51}, "boundsStatus": "valid", "supportedPatterns": ["ScrollItem"], "isModal": false, "propertyErrors": []}, {"name": "Print", "automationId": "GroupPrintSettings", "className": "NetUISlabContainer", "localizedControlType": "Group", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": false, "controlType": "Group", "processName": "POWERPNT", "boundingRectangle": {"x": 225, "y": 131, "width": 313, "height": 707}, "boundsStatus": "valid", "supportedPatterns": ["ScrollItem"], "isModal": false, "propertyErrors": []}, {"name": "Print", "automationId": "", "className": "NetUISimpleButton", "localizedControlType": "Button", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "Button", "processName": "POWERPNT", "boundingRectangle": {"x": 231, "y": 131, "width": 103, "height": 107}, "boundsStatus": "valid", "supportedPatterns": ["Invoke", "ScrollItem"], "isModal": false, "propertyErrors": []}, {"name": "Printer", "automationId": "", "className": "NetUIElement", "localizedControlType": "Group", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": false, "controlType": "Group", "processName": "POWERPNT", "boundingRectangle": {"x": 231, "y": 254, "width": 287, "height": 83}, "boundsStatus": "valid", "supportedPatterns": ["ScrollItem"], "isModal": false, "propertyErrors": []}, {"name": "Printer", "automationId": "", "className": "NetUILabel", "localizedControlType": "Text", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": false, "controlType": "Text", "processName": "POWERPNT", "boundingRectangle": {"x": 231, "y": 254, "width": 61, "height": 25}, "boundsStatus": "valid", "supportedPatterns": ["ScrollItem"], "isModal": false, "propertyErrors": []}]}}
+
+L313 2026-09-30T14:27:47.687Z shell_command wall=8.9
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":5,"command":"read","arguments":["-Name","Which Printer","-TimeoutMs","3000"]},
+  {"stepIndex":5,"command":"read","arguments":["-Name","Print What","-TimeoutMs","3000"]},
+  {"stepIndex":5,"command":"read","arguments":["-Name","Slides and Handouts","-TimeoutMs","3000"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "read", "ok": true, "durationMs": 1452, "error": null, "data": {"text": "Canon TS3700 series (redirected 2)", "textSource": "ValuePattern", "element": {"name": "Which Printer", "automationId": "", "className": "NetUIDropdownAnchor", "localizedControlType": "ComboBox", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "ComboBox", "processName": "POWERPNT", "boundingRectangle": {"x": 231, "y": 283, "width": 287, "height": 54}, "boundsStatus": "valid", "supportedPatterns": ["Value", "ExpandCollapse", "ScrollItem"], "isModal": false, "propertyErrors": []}}}
+
+{"command": "read", "ok": true, "durationMs": 158, "error": null, "data": {"text": "Print All Slides", "textSource": "ValuePattern", "element": {"name": "Print What", "automationId": "", "className": "NetUIDropdownAnchor", "localizedControlType": "ComboBox", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "ComboBox", "processName": "POWERPNT", "boundingRectangle": {"x": 231, "y": 404, "width": 287, "height": 54}, "boundsStatus": "valid", "supportedPatterns": ["Value", "ExpandCollapse", "ScrollItem"], "isModal": false, "propertyErrors": []}}}
+
+{"command": "read", "ok": true, "durationMs": 117, "error": null, "data": {"text": "Full Page Slides", "textSource": "ValuePattern", "element": {"name": "Slides and Handouts", "automationId": "", "className": "NetUIDropdownAnchor", "localizedControlType": "ComboBox", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "ComboBox", "processName": "POWERPNT", "boundingRectangle": {"x": 231, "y": 496, "width": 287, "height": 54}, "boundsStatus": "valid", "supportedPatterns": ["Value", "ExpandCollapse", "ScrollItem"], "isModal": false, "propertyErrors": []}}}
+
+L319 2026-09-30T14:28:05.213Z shell_command wall=8.2
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":5,"command":"click","arguments":["-Name","Which Printer","-ControlType","ComboBox","-Method","Auto","-TimeoutMs","5000"]},
+  {"stepIndex":5,"command":"observe","arguments":["-Scope","FocusedWindow","-Depth","6","-MaxElements","160"]},
+  {"stepIndex":5,"command":"select","arguments":["-Name","*Microsoft Print to PDF*","-TimeoutMs","0","-MaxResults","20"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "click", "ok": true, "durationMs": 1637, "error": null, "data": {"clicked": true, "verified": null, "verificationPerformed": false, "action": "ExpandCollapsePattern", "point": null, "element": {"name": "Which Printer", "automationId": "", "className": "NetUIDropdownAnchor", "localizedControlType": "ComboBox", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "ComboBox", "processName": "POWERPNT", "boundingRectangle": {"x": 231, "y": 283, "width": 287, "height": 54}, "boundsStatus": "valid", "supportedPatterns": ["Value", "ExpandCollapse", "ScrollItem"], "isModal": false, "propertyErrors": []}}}
+
+{"command": "observe", "ok": true, "durationMs": 468, "error": null}
+
+{"command": "select", "ok": true, "durationMs": 685, "error": null, "data": {"count": 2, "elements": [{"name": "Microsoft Print to PDF", "automationId": "", "className": "NetUIGalleryButton", "localizedControlType": "List Item", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "ListItem", "processName": "POWERPNT", "boundingRectangle": {"x": 233, "y": 519, "width": 381, "height": 60}, "boundsStatus": "valid", "supportedPatterns": ["Invoke", "SelectionItem", "ScrollItem"], "isModal": false, "propertyErrors": []}, {"name": "Microsoft Print to PDF (redirected 2)", "automationId": "", "className": "NetUIGalleryButton", "localizedControlType": "List Item", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "ListItem", "processName": "POWERPNT", "boundingRectangle": {"x": 233, "y": 579, "width": 381, "height": 60}, "boundsStatus": "valid", "supportedPatterns": ["Invoke", "SelectionItem", "ScrollItem"], "isModal": false, "propertyErrors": []}]}}
+
+L325 2026-09-30T14:28:21.122Z shell_command wall=11.6
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":5,"command":"click","arguments":["-Name","Microsoft Print to PDF","-ControlType","ListItem","-Scope","FocusedWindow","-Method","Auto","-TimeoutMs","5000"]},
+  {"stepIndex":5,"command":"read","arguments":["-Name","Which Printer","-TimeoutMs","5000"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "click", "ok": false, "durationMs": 5862, "error": {"message": "No visible enabled element matches the selector.", "type": "System.Management.Automation.RuntimeException", "category": "OperationStopped"}, "data": {}}
+
+L331 2026-09-30T14:28:41.706Z shell_command wall=12.9
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":5,"command":"click","arguments":["-Name","Which Printer","-ControlType","ComboBox","-Method","Auto","-TimeoutMs","3000"]},
+  {"stepIndex":5,"command":"click","arguments":["-Name","Microsoft Print to PDF","-ControlType","ListItem","-Method","Mouse","-TimeoutMs","5000"]},
+  {"stepIndex":5,"command":"read","arguments":["-Name","Which Printer","-TimeoutMs","5000"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "click", "ok": true, "durationMs": 1795, "error": null, "data": {"clicked": true, "verified": null, "verificationPerformed": false, "action": "ExpandCollapsePattern", "point": null, "element": {"name": "Which Printer", "automationId": "", "className": "NetUIDropdownAnchor", "localizedControlType": "ComboBox", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "ComboBox", "processName": "POWERPNT", "boundingRectangle": {"x": 231, "y": 283, "width": 287, "height": 54}, "boundsStatus": "valid", "supportedPatterns": ["Value", "ExpandCollapse", "ScrollItem"], "isModal": false, "propertyErrors": []}}}
+
+{"command": "click", "ok": false, "durationMs": 5213, "error": {"message": "No visible enabled element matches the selector.", "type": "System.Management.Automation.RuntimeException", "category": "OperationStopped"}, "data": {}}
+
+L337 2026-09-30T14:29:02.759Z shell_command wall=6.7
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":5,"command":"screenshot","arguments":["-OutFile","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\printer-dropdown-state.png"]},
+  {"stepIndex":5,"command":"observe","arguments":["-Depth","4","-MaxElements","120"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "screenshot", "ok": true, "durationMs": 693, "error": null}
+
+{"command": "observe", "ok": true, "durationMs": 994, "error": null}
+
+L342 2026-09-30T14:29:15.021Z view_image wall=None
+{'path': 'C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\printer-dropdown-state.png', 'detail': 'high'}
+
+L348 2026-09-30T14:29:22.177Z shell_command wall=6.6
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":5,"command":"click-coordinate","arguments":["-X","507","-Y","309"]},
+  {"stepIndex":5,"command":"screenshot","arguments":["-OutFile","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\printer-dropdown-open.png"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "click-coordinate", "ok": true, "durationMs": 735, "error": null, "data": {"clicked": true, "point": {"x": 507, "y": 309}, "button": "Left", "action": "Mouse"}}
+
+{"command": "screenshot", "ok": true, "durationMs": 285, "error": null}
+
+L351 2026-09-30T14:29:33.032Z view_image wall=None
+{'path': 'C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\printer-dropdown-open.png', 'detail': 'high'}
+
+L357 2026-09-30T14:29:40.535Z shell_command wall=8.1
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":5,"command":"click-coordinate","arguments":["-X","394","-Y","539"]},
+  {"stepIndex":5,"command":"read","arguments":["-Name","Which Printer","-TimeoutMs","5000"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "click-coordinate", "ok": true, "durationMs": 665, "error": null, "data": {"clicked": true, "point": {"x": 394, "y": 539}, "button": "Left", "action": "Mouse"}}
+
+{"command": "read", "ok": true, "durationMs": 1496, "error": null, "data": {"text": "Microsoft Print to PDF", "textSource": "ValuePattern", "element": {"name": "Which Printer", "automationId": "", "className": "NetUIDropdownAnchor", "localizedControlType": "ComboBox", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": true, "isKeyboardFocusable": true, "controlType": "ComboBox", "processName": "POWERPNT", "boundingRectangle": {"x": 231, "y": 283, "width": 287, "height": 54}, "boundsStatus": "valid", "supportedPatterns": ["Value", "ExpandCollapse", "ScrollItem"], "isModal": false, "propertyErrors": []}}}
+
+L363 2026-09-30T14:29:56.188Z shell_command wall=8.3
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":5,"command":"click","arguments":["-Name","Print","-ControlType","Button","-Method","Auto","-TimeoutMs","5000"]},
+  {"stepIndex":5,"command":"observe","arguments":["-Scope","FocusedWindow","-Depth","6","-MaxElements","160"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "click", "ok": true, "durationMs": 1490, "error": null, "data": {"clicked": true, "verified": null, "verificationPerformed": false, "action": "InvokePattern", "point": null, "element": {"name": "Print", "automationId": "", "className": "NetUISimpleButton", "localizedControlType": "Button", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "Button", "processName": "POWERPNT", "boundingRectangle": {"x": 231, "y": 131, "width": 103, "height": 107}, "boundsStatus": "valid", "supportedPatterns": ["Invoke", "ScrollItem"], "isModal": false, "propertyErrors": []}}}
+
+{"command": "observe", "ok": true, "durationMs": 1725, "error": null}
+
+L369 2026-09-30T14:30:16.653Z shell_command wall=47.8
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":5,"command":"type","arguments":["-Text","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\PowerPointOutput\\PowerPointTest.pdf","-PathKind","SaveFile","-TargetMode","Focused","-FallbackReason","Microsoft Print to PDF opened a native output filename dialog whose focused filename field is exposed as an opaque Edit pane.","-FallbackEvidence","FocusedWindow observation after clicking Print shows focused AutomationId 1001 in the output dialog."]},
+  {"stepIndex":5,"command":"click","arguments":["-Name","Save","-AutomationId","1","-Scope","FocusedWindow","-Method","Mouse","-TimeoutMs","5000"]},
+  {"stepIndex":5,"command":"wait-file","arguments":["-Path","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\PowerPointOutput\\PowerPointTest.pdf","-MinBytes","1","-StableMs","1000","-TimeoutMs","30000"]},
+  {"stepIndex":5,"command":"read-pdf","arguments":["-Path","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\PowerPointOutput\\PowerPointTest.pdf"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "type", "ok": true, "durationMs": 3967, "error": null, "data": {"typed": true, "textLength": 142, "verified": null, "verificationPerformed": false, "verification": null, "inputMethod": "UnicodeKeyboard", "focusMethod": "ExistingFocus", "targetMode": "Focused", "target": {"name": "", "automationId": "1001", "className": "Edit", "localizedControlType": "pane", "processId": 18208, "nativeWindowHandle": 525470, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": true, "isKeyboardFocusable": false, "controlType": "Pane", "processName": "POWERPNT", "boundingRectangle": {"x": 169, "y": 405, "width": 753, "height": 22}, "boundsStatus": "valid", "supportedPatterns": [], "isModal": false, "propertyErrors": []}, "clearMethod": null, "pathValidation": {"kind": "SaveFile", "path": "C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\PowerPointOutput\\PowerPointTest.pdf", "parentPath": "C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\PowerPointOutput", "validated": true}}}
+
+{"command": "click", "ok": true, "durationMs": 8075, "error": null, "data": {"clicked": true, "verified": null, "verificationPerformed": false, "action": "Mouse", "point": {"x": 751, "y": 554}, "element": {"name": "Save", "automationId": "1", "className": "Button", "localizedControlType": "pane", "processId": 18208, "nativeWindowHandle": 394388, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": false, "controlType": "Pane", "processName": "POWERPNT", "boundingRectangle": {"x": 696, "y": 537, "width": 110, "height": 33}, "boundsStatus": "valid", "supportedPatterns": [], "isModal": false, "propertyErrors": []}}}
+
+{"command": "wait-file", "ok": true, "durationMs": 30058, "error": null, "data": {"path": "C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\PowerPointOutput\\PowerPointTest.pdf", "exists": true, "conditionMet": false, "length": 0, "minBytes": 1, "stableMs": 1000, "timedOut": true}}
+
+L375 2026-09-30T14:31:14.278Z shell_command wall=21.7
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":5,"command":"screenshot","arguments":["-OutFile","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\pdf-print-blocked.png"]},
+  {"stepIndex":5,"command":"windows","arguments":["-ProcessId","18208","-TimeoutMs","0"]},
+  {"stepIndex":5,"command":"observe","arguments":["-Scope","FocusedWindow","-Depth","6","-MaxElements","160"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "screenshot", "ok": true, "durationMs": 7278, "error": null}
+
+{"command": "windows", "ok": true, "durationMs": 1243, "error": null}
+
+{"command": "observe", "ok": true, "durationMs": 3815, "error": null}
+
+L381 2026-09-30T14:31:45.729Z shell_command wall=54.6
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":5,"command":"wait-file","arguments":["-Path","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\PowerPointOutput\\PowerPointTest.pdf","-MinBytes","1","-StableMs","1000","-TimeoutMs","60000"]},
+  {"stepIndex":5,"command":"read-pdf","arguments":["-Path","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\PowerPointOutput\\PowerPointTest.pdf"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "wait-file", "ok": true, "durationMs": 42279, "error": null, "data": {"path": "C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\PowerPointOutput\\PowerPointTest.pdf", "exists": true, "conditionMet": true, "length": 27142, "minBytes": 1, "stableMs": 1000, "timedOut": false}}
+
+{"command": "read-pdf", "ok": false, "durationMs": 7713, "error": {"message": "Exception calling \"ReadAllBytes\" with \"1\" argument(s): \"The process cannot access the file 'C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\PowerPointOutput\\PowerPointTest.pdf' because it is being used by another process.\"", "type": "PdfReadError"}, "data": {}}
+
+L387 2026-09-30T14:32:50.040Z shell_command wall=22.2
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":5,"command":"wait-file","arguments":["-Path","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\PowerPointOutput\\PowerPointTest.pdf","-MinBytes","1","-StableMs","3000","-TimeoutMs","20000"]},
+  {"stepIndex":5,"command":"read-pdf","arguments":["-Path","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\PowerPointOutput\\PowerPointTest.pdf"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "wait-file", "ok": true, "durationMs": 6397, "error": null, "data": {"path": "C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\PowerPointOutput\\PowerPointTest.pdf", "exists": true, "conditionMet": true, "length": 27142, "minBytes": 1, "stableMs": 3000, "timedOut": false}}
+
+{"command": "read-pdf", "ok": true, "durationMs": 7403, "error": null, "data": {"path": "C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\PowerPointOutput\\PowerPointTest.pdf", "builtinError": null, "reader": "Builtin", "text": "PowerPoint GUI Test"}}
+
+L393 2026-09-30T14:33:28.501Z shell_command wall=31.6
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":2,"command":"read","arguments":["-Name","Rectangle","-TimeoutMs","3000"]},
+  {"stepIndex":2,"command":"read","arguments":["-Name","View Indicator Slide 1 of 1","-TimeoutMs","3000"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "read", "ok": true, "durationMs": 24003, "error": null, "data": {"text": "PowerPoint GUI Test\r", "textSource": "TextPattern", "element": {"name": "Rectangle", "automationId": "", "className": "", "localizedControlType": "shape", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "Image", "processName": "POWERPNT", "boundingRectangle": {"x": 0, "y": 222, "width": 642, "height": 591}, "boundsStatus": "valid", "supportedPatterns": ["Invoke", "Text"], "isModal": false, "propertyErrors": []}}}
+
+{"command": "read", "ok": true, "durationMs": 169, "error": null, "data": {"text": "View Indicator Slide 1 of 1", "textSource": "Name", "element": {"name": "View Indicator Slide 1 of 1", "automationId": "", "className": "NetUISimpleButton", "localizedControlType": "Text", "processId": 18208, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "Text", "processName": "POWERPNT", "boundingRectangle": {"x": 5, "y": 814, "width": 87, "height": 26}, "boundsStatus": "valid", "supportedPatterns": ["Invoke"], "isModal": false, "propertyErrors": []}}}
+
+L399 2026-09-30T14:34:21.260Z shell_command wall=19.8
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":1,"route":"start POWERPNT.EXE and observe the PowerPoint start screen with Blank Presentation available","observedResult":"PowerPoint opened successfully and exposed the Blank Presentation start option.","verificationCommandId":"9a73898361684c258fee6bab9af100ab"},
+  {"stepIndex":2,"route":"Click Blank Presentation, switch to View > Outline View, click the outline row, and use focused literal typing into the exposed Outline pane","observedResult":"The presentation had one slide and the slide text read back as PowerPoint GUI Test.","verificationCommandId":"6e06b9daea114da0b4cfe5a03604029b","additionalVerificationCommandIds":["69290355901d4db195a9ba46f7413777"]},
+  {"stepIndex":3,"route":"File > Save As > Browse, type the absolute .pptx path into the focused native Save As filename field, click Save, then wait for the file and read the PowerPoint title","observedResult":"PowerPointTest.pptx was created, non-empty, stable, and PowerPoint showed PowerPointTest - PowerPoint.","verificationCommandId":"a57fc0c31b51408b8f600cc153722581","additionalVerificationCommandIds":["a7a69f3292f4402fbf5f213d9c88be63"]},
+  {"stepIndex":4,"route":"File > Close, then File > Open > Browse, type the saved .pptx path into the native Open dialog, click Open, switch to Outline View, and read the slide text","observedResult":"The saved presentation reopened as PowerPointTest - PowerPoint and the persisted text read back as PowerPoint GUI Test.","verificationCommandId":"a27966c03f86417ebe01f9c5c82f0cd2","additionalVerificationCommandIds":["54283a17a2c941609b8bc48b59891b44"]},
+  {"stepIndex":5,"route":"File > Print, set printer to Microsoft Print to PDF, keep Full Page Slides, click Print, type the absolute PDF output path in the native output dialog, wait for the PDF, then read its text","observedResult":"PowerPointTest.pdf was created through Microsoft Print to PDF, became non-empty and stable, and read-pdf returned PowerPoint GUI Test.","verificationCommandId":"73e2b8cac7ef4c6aadf31de60fb179d3","additionalVerificationCommandIds":["7211dc99c6214ad8b260218f0fa23062","60a08f7f1d0b43498386e8dcebcfa21a","ce65696458cd4381bbdf550a561d00c7"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action RecordSteps -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+L405 2026-09-30T14:34:47.707Z shell_command wall=64.4
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":5,"command":"close-window","arguments":["-ProcessId","18208","-TimeoutMs","5000"]},
+  {"stepIndex":5,"command":"windows","arguments":["-ProcessId","18208","-TimeoutMs","0"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+L411 2026-09-30T14:36:10.065Z shell_command wall=17.3
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":5,"command":"screenshot","arguments":["-OutFile","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\evidence\\exploration\\cleanup-state.png"]},
+  {"stepIndex":5,"command":"windows","arguments":["-ProcessId","18208","-TimeoutMs","0"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\powerpoint-csv-walkthrough -RequestsStdin
+
+{"command": "screenshot", "ok": true, "durationMs": 7959, "error": null}
+
+{"command": "windows", "ok": true, "durationMs": 266, "error": null}
+
+L417 2026-09-30T14:36:35.176Z shell_command wall=7.6
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Complete -RunRoot .\runs\powerpoint-csv-walkthrough
+
+Exit code: 0
+Wall time: 7.6 seconds
+Output:
+{"ok":true,"covered":5,"routesPath":"C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\logs\\exploration-routes.json","explorationPath":"C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\powerpoint-csv-walkthrough\\logs\\exploration.json"}
+
+
+L426 2026-09-30T14:38:18.006Z apply_patch wall=0.0
+*** Begin Patch
+*** Add File: C:\diplomamunka\automated-gui-testing-agent-framework\runs\powerpoint-csv-walkthrough\generated\MicrosoftPowerPoint.Generated.ps1
++[CmdletBinding()]
++param(
++    [string] $PotatoCliPath,
++    [string] $TestCaseCsv,
++    [string] $RunRoot,
++    [string] $FrameworkRoot,
++    [string] $ExplorationPath,
++    [ValidateSet('VisibleControls','GuiNavigation','AllowShortcuts')] [string] $InteractionPolicy = 'GuiNavigation',
++    [string] $PolicyReason,
++    [ValidateSet('InProcess','Process')] [string] $Transport = 'InProcess'
++)
++
++$runtimeCandidates = @()
++if ($FrameworkRoot) {
++    $runtimeCandidates += (Join-Path -Path $FrameworkRoot -ChildPath 'Framework\GeneratedScriptRuntime.ps1')
++}
++$probe = $PSScriptRoot
++for ($i = 0; $i -lt 6 -and $probe; $i++) {
++    $runtimeCandidates += (Join-Path -Path $probe -ChildPath 'Framework\GeneratedScriptRuntime.ps1')
++    $probe = Split-Path -Parent $probe
++}
++$runtimePath = @($runtimeCandidates | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1)[0]
++if (-not $runtimePath) {
++    throw "Generated script runtime was not found: $runtimePath"
++}
++$FrameworkRoot = Split-Path -Parent (Split-Path -Parent $runtimePath)
++. $runtimePath
++
++if (-not $ExplorationPath) { $ExplorationPath = Join-Path $RunRoot 'logs\exploration.json' }
++Assert-AGTAGeneratedScriptPreflight -ScriptPath $PSCommandPath -TestCaseCsv $TestCaseCsv -PotatoCliPath $PotatoCliPath -ExplorationPath $ExplorationPath -InteractionPolicy $InteractionPolicy | Out-Null
++
++$Context = Initialize-AGTAGeneratedTest -PotatoCliPath $PotatoCliPath -TestCaseCsv $TestCaseCsv -RunRoot $RunRoot -RequireAssertions -InteractionPolicy $InteractionPolicy -PolicyReason $PolicyReason -Transport $Transport -ExplorationPath $ExplorationPath
++$RunRoot = $Context.RunRoot
++
++$OutputDir = Join-Path -Path $Context.ExecutionEvidenceRoot -ChildPath 'PowerPointOutput'
++[IO.Directory]::CreateDirectory($OutputDir) | Out-Null
++$PresentationPath = Join-Path -Path $OutputDir -ChildPath 'PowerPointTest.pptx'
++$PdfPath = Join-Path -Path $OutputDir -ChildPath 'PowerPointTest.pdf'
++$ExpectedTitle = 'PowerPoint GUI Test'
++$script:PowerPointProcessId = $null
++
++function Invoke-ReadPdfWithRetry {
++    param(
++        [Parameter(Mandatory)] [ref] $Commands,
++        [Parameter(Mandatory)] [string] $Path
++    )
++
++    $result = $null
++    for ($attempt = 1; $attempt -le 4; $attempt++) {
++        $result = Invoke-StepCommand -Commands $Commands -Command 'read-pdf' -Arguments @('-Path', $Path)
++        if ($result.ok) { return $result }
++        Start-Sleep -Milliseconds (500 * $attempt)
++    }
++    return $result
++}
++
++$StepBodies = @(
++    {
++        param([ref] $Commands, [ref] $Evidence)
++
++        $started = Invoke-StepCommand -Commands $Commands -Command 'start' -Arguments @('-ProcessName', 'POWERPNT.EXE', '-Maximize', '-WaitForWindowMs', '20000')
++        Assert-PotatoOk -Result $started -Message 'PowerPoint did not launch.'
++        $script:PowerPointProcessId = [int]$started.data.ownedProcessId
++        Assert-ExpectedResult -Condition ([bool]$started.data.windowFound -and $script:PowerPointProcessId -gt 0) -Message 'PowerPoint is open.'
++
++        $blank = Invoke-StepCommand -Commands $Commands -Command 'wait-element' -Arguments @('-Name', 'Blank Presentation', '-ControlType', 'ListItem', '-TimeoutMs', '20000')
++        Assert-PotatoFound -Result $blank -Message 'PowerPoint is ready to create a blank presentation.'
++    },
++    {
++        param([ref] $Commands, [ref] $Evidence)
++
++        Invoke-StepClick -Commands $Commands -Arguments @('-Name', 'Blank Presentation', '-ControlType', 'ListItem', '-TimeoutMs', '5000') -Message 'Blank Presentation was not opened.' | Out-Null
++        $window = Invoke-StepCommand -Commands $Commands -Command 'wait-element' -Arguments @('-Name', 'Presentation1 - PowerPoint', '-ControlType', 'Window', '-TimeoutMs', '20000')
++        Assert-PotatoFound -Result $window -Message 'A new blank presentation did not open.'
++
++        Invoke-StepClick -Commands $Commands -Arguments @('-Name', 'View', '-AutomationId', 'TabView', '-ControlType', 'TabItem', '-TimeoutMs', '5000') -Message 'View tab was not selectable.' | Out-Null
++        Invoke-StepClick -Commands $Commands -Arguments @('-Name', 'Outline View', '-AutomationId', 'ViewOutlineViewPowerPoint', '-ControlType', 'Button', '-TimeoutMs', '5000') -Message 'Outline View was not selectable.' | Out-Null
++        $outlineShot = Invoke-EvidenceScreenshot -Commands $Commands -Evidence $Evidence -FileName 'outline-view-before-text.png'
++
++        $outlineClick = Invoke-StepCommand -Commands $Commands -Command 'click-coordinate' -Arguments @('-X', '58', '-Y', '245')
++        Assert-PotatoOk -Result $outlineClick -Message 'Could not focus the outline row.'
++        $typed = Invoke-StepCommand -Commands $Commands -Command 'type' -Arguments @(
++            '-Text', $ExpectedTitle,
++            '-TargetMode', 'Focused',
++            '-FallbackReason', 'PowerPoint Outline View exposes the editable slide title line through an opaque outline pane after visible focus.',
++            '-FallbackEvidence', $outlineShot.data.path
++        )
++        Assert-PotatoOk -Result $typed -Message 'Could not type the slide title in Outline View.'
++
++        $readTitle = Invoke-StepCommand -Commands $Commands -Command 'read' -Arguments @('-Name', 'Rectangle', '-TimeoutMs', '5000')
++        Assert-TextContains -Result $readTitle -Expected @($ExpectedTitle) -Message 'The title slide does not contain the expected text.'
++        $slideCount = Invoke-StepCommand -Commands $Commands -Command 'read' -Arguments @('-Name', 'View Indicator Slide 1 of 1', '-TimeoutMs', '5000')
++        Assert-PotatoOk -Result $slideCount -Message 'Could not read the slide count indicator.'
++        Assert-ExpectedResult -Condition ([string]$slideCount.data.text -eq 'View Indicator Slide 1 of 1') -Message 'The presentation should contain one slide.'
++    },
++    {
++        param([ref] $Commands, [ref] $Evidence)
++
++        Invoke-StepClick -Commands $Commands -Arguments @('-Name', 'File Tab', '-AutomationId', 'FileTabButton', '-ControlType', 'Button', '-TimeoutMs', '5000') -Message 'File tab did not open.' | Out-Null
++        Invoke-StepClick -Commands $Commands -Arguments @('-Name', 'Save As', '-ControlType', 'ListItem', '-TimeoutMs', '5000') -Message 'Save As page did not open.' | Out-Null
++        Invoke-StepClick -Commands $Commands -Arguments @('-Name', 'Browse', '-ControlType', 'Button', '-TimeoutMs', '5000') -Message 'Save As Browse did not open.' | Out-Null
++
++        $typedPath = Invoke-StepCommand -Commands $Commands -Command 'type' -Arguments @(
++            '-Text', $PresentationPath,
++            '-PathKind', 'SaveFile',
++            '-TargetMode', 'Focused',
++            '-FallbackReason', 'The native Save As filename field is focused but exposed as an opaque Edit pane; typing the absolute path replaces its selected default filename.',
++
+
+L433 2026-09-30T14:38:28.227Z shell_command wall=6.2
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Test-GeneratedScript.ps1 -ScriptPath '.\runs\powerpoint-csv-walkthrough\generated\MicrosoftPowerPoint.Generated.ps1' -TestCaseCsv 'C:\Users\testuser\Desktop\Microsoft PowerPoint.csv' -PotatoCliPath '..\potato-cli\potato.ps1' -ExplorationPath '.\runs\powerpoint-csv-walkthrough\logs\exploration.json'
+
+L439 2026-09-30T14:38:41.301Z shell_command wall=28.3
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File '.\runs\powerpoint-csv-walkthrough\generated\MicrosoftPowerPoint.Generated.ps1' -PotatoCliPath '..\potato-cli\potato.ps1' -TestCaseCsv 'C:\Users\testuser\Desktop\Microsoft PowerPoint.csv' -RunRoot '.\runs\powerpoint-validation-run' -FrameworkRoot '.' -ExplorationPath '.\runs\powerpoint-csv-walkthrough\logs\exploration.json'
+
+L445 2026-09-30T14:39:35.915Z apply_patch wall=0.0
+*** Begin Patch
+*** Update File: C:\diplomamunka\automated-gui-testing-agent-framework\runs\powerpoint-csv-walkthrough\generated\MicrosoftPowerPoint.Generated.ps1
+@@
+         Invoke-StepClick -Commands $Commands -Arguments @('-Name', 'File Tab', '-AutomationId', 'FileTabButton', '-ControlType', 'Button', '-TimeoutMs', '5000') -Message 'File tab did not open.' | Out-Null
+         Invoke-StepClick -Commands $Commands -Arguments @('-Name', 'Save As', '-ControlType', 'ListItem', '-TimeoutMs', '5000') -Message 'Save As page did not open.' | Out-Null
+         Invoke-StepClick -Commands $Commands -Arguments @('-Name', 'Browse', '-ControlType', 'Button', '-TimeoutMs', '5000') -Message 'Save As Browse did not open.' | Out-Null
++        $saveDialog = Invoke-StepCommand -Commands $Commands -Command 'observe' -Arguments @('-Scope', 'FocusedWindow', '-Depth', '4', '-MaxElements', '80')
++        Assert-PotatoOk -Result $saveDialog -Message 'Save As dialog did not become ready.'
+ 
+         $typedPath = Invoke-StepCommand -Commands $Commands -Command 'type' -Arguments @(
+             '-Text', $PresentationPath,
+             '-PathKind', 'SaveFile',
+             '-TargetMode', 'Focused',
++            '-ExpectedFocusJson', '{"AutomationId":"1001"}',
++            '-FocusTimeoutMs', '5000',
+             '-FallbackReason', 'The native Save As filename field is focused but exposed as an opaque Edit pane; typing the absolute path replaces its selected default filename.',
+             '-FallbackEvidence', 'The recorded Save As dialog focused AutomationId 1001 in exploration.'
+         )
+@@
+         Invoke-StepClick -Commands $Commands -Arguments @('-Name', 'Open', '-ControlType', 'ListItem', '-TimeoutMs', '5000') -Message 'Open page did not open.' | Out-Null
+         Invoke-StepClick -Commands $Commands -Arguments @('-Name', 'Browse', '-ControlType', 'Button', '-TimeoutMs', '5000') -Message 'Open Browse did not open.' | Out-Null
++        $openDialog = Invoke-StepCommand -Commands $Commands -Command 'observe' -Arguments @('-Scope', 'FocusedWindow', '-Depth', '4', '-MaxElements', '80')
++        Assert-PotatoOk -Result $openDialog -Message 'Open dialog did not become ready.'
+ 
+         $typedOpenPath = Invoke-StepCommand -Commands $Commands -Command 'type' -Arguments @(
+             '-Text', $PresentationPath,
+             '-PathKind', 'OpenFile',
+             '-TargetMode', 'Focused',
++            '-ExpectedFocusJson', '{"AutomationId":"1148"}',
++            '-FocusTimeoutMs', '5000',
+             '-FallbackReason', 'The native Open filename field is focused but exposed as an opaque Edit pane; typing the absolute path uses PowerPoint''s Open dialog.',
+             '-FallbackEvidence', 'The recorded Open dialog focused AutomationId 1148 in exploration.'
+         )
+@@
+ 
+         Invoke-StepClick -Commands $Commands -Arguments @('-Name', 'Print', '-ControlType', 'Button', '-TimeoutMs', '5000') -Message 'Could not start printing.' | Out-Null
++        $printOutputDialog = Invoke-StepCommand -Commands $Commands -Command 'observe' -Arguments @('-Scope', 'FocusedWindow', '-Depth', '4', '-MaxElements', '80')
++        Assert-PotatoOk -Result $printOutputDialog -Message 'PDF output dialog did not become ready.'
+         $typedPdfPath = Invoke-StepCommand -Commands $Commands -Command 'type' -Arguments @(
+             '-Text', $PdfPath,
+             '-PathKind', 'SaveFile',
+             '-TargetMode', 'Focused',
++            '-ExpectedFocusJson', '{"AutomationId":"1001"}',
++            '-FocusTimeoutMs', '5000',
+             '-FallbackReason', 'Microsoft Print to PDF opened a native output filename dialog whose focused filename field is exposed as an opaque Edit pane.',
+             '-FallbackEvidence', 'The recorded print output dialog focused AutomationId 1001 in exploration.'
+         )
+*** End Patch
+
+
+L452 2026-09-30T14:39:43.751Z shell_command wall=6.5
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Test-GeneratedScript.ps1 -ScriptPath '.\runs\powerpoint-csv-walkthrough\generated\MicrosoftPowerPoint.Generated.ps1' -TestCaseCsv 'C:\Users\testuser\Desktop\Microsoft PowerPoint.csv' -PotatoCliPath '..\potato-cli\potato.ps1' -ExplorationPath '.\runs\powerpoint-csv-walkthrough\logs\exploration.json'
+
+L457 2026-09-30T14:39:57.475Z shell_command wall=40.1
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File '.\runs\powerpoint-csv-walkthrough\generated\MicrosoftPowerPoint.Generated.ps1' -PotatoCliPath '..\potato-cli\potato.ps1' -TestCaseCsv 'C:\Users\testuser\Desktop\Microsoft PowerPoint.csv' -RunRoot '.\runs\powerpoint-validation-run-2' -FrameworkRoot '.' -ExplorationPath '.\runs\powerpoint-csv-walkthrough\logs\exploration.json'

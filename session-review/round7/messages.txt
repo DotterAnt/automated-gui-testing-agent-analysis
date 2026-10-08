@@ -1,0 +1,47 @@
+L10 2026-09-30T13:39:56.554Z
+I’ll look through the workspace for the testing framework and inspect the CSV so the script matches the project’s existing shape instead of inventing a harness.
+
+L18 2026-09-30T13:40:07.741Z
+I found the framework and the Word test case. Next I’m reading the framework contract and an existing example so the generated script lands in the right place and uses the expected helpers.
+
+L32 2026-09-30T13:40:17.221Z
+The framework is strict: it wants a real GUI walkthrough recorded before generation. I’m going to gather the authoring rules and the command help I need, then drive Word through the listed steps and save the receipts the script will depend on.
+
+L42 2026-09-30T13:40:22.266Z
+I’ve got the key rules now. I’m starting a recorded walkthrough run for the Word CSV; if Word’s UI differs on this machine, I’ll adapt selectors from what the live window exposes.
+
+L52 2026-09-30T13:40:48.087Z
+Word opened to its start screen and the framework can see the “Blank document” tile. I’m moving through the visible path now: create the blank document, enter the text, then verify the actual document content before saving.
+
+L62 2026-09-30T13:41:17.738Z
+The document text is present and read through Word’s document control, so row 2 has real content evidence. I’m working through Word’s own File and Save As interface now, using the run’s evidence folder for the `.docx` and later the PDF.
+
+L68 2026-09-30T13:41:28.689Z
+That first File selector was too specific for this Word build, so no click was sent. I’m doing a targeted lookup for the top-left File control and will keep the selector to the observed properties only.
+
+L82 2026-09-30T13:42:00.732Z
+Save As is open. The next goal is to find Word’s folder/file picker button rather than relying on a keyboard shortcut, so I’m probing that backstage pane for the exact visible label.
+
+L88 2026-09-30T13:42:12.186Z
+Word exposes a proper Browse button, good. I’ll use the standard Save As dialog and put the full run-specific path into the filename field so the output is deterministic and isolated.
+
+L98 2026-09-30T13:43:11.065Z
+The Save click happened, but the expected file didn’t appear, so I’m stopping to observe the current dialog state before doing anything else. Most likely the filename field didn’t replace the default text cleanly, and I’ll correct it from the visible dialog rather than guessing.
+
+L104 2026-09-30T13:43:26.575Z
+The dialog gave the useful answer: the run evidence folder wasn’t present for this manual walkthrough yet. I’m creating that run output folder now, then I’ll acknowledge the dialog and save again through Word.
+
+L110 2026-09-30T13:43:30.709Z
+That host’s folder command is an older flavor and didn’t accept the parameter I used. I’ll create the same folder with the compatible form and continue.
+
+L116 2026-09-30T13:43:38.379Z
+The output folder exists now. I’m returning to the Save dialog and completing the save so the row has a real file assertion.
+
+L122 2026-09-30T13:44:10.314Z
+The `.docx` now exists and is non-empty. The title check used the wrong exact window text, so I’m observing Word’s actual saved title and will use that in the script.
+
+L128 2026-09-30T13:44:23.319Z
+Row 3 is verified with the actual saved title Word reports. I’m closing the document through Word’s File menu next, then reopening the saved file through Word’s Open flow and checking the document text again.
+
+L138 2026-09-30T13:44:50.915Z
+Word is at the Open page. I’m finding the visible “Browse” route there and will use the standard Open dialog with the saved file’s full path, then assert the reopened document content.

@@ -1,0 +1,1365 @@
+L11 2026-09-30T15:31:18.819Z shell_command
+rg --files
+
+OUTPUT Exit code: 0
+Wall time: 3.4 seconds
+Output:
+automated-gui-testing-agent-framework\Invoke-Exploration.ps1
+potato-cli\potato.ps1
+potato-cli\potato-stream.ps1
+potato-cli\commands.json
+automated-gui-testing-agent-framework\Invoke-AgentAuthoringGui.ps1
+potato-cli\README.md
+automated-gui-testing-agent-framework\Invoke-AgentAuthoring.ps1
+automated-gui-testing-agent-framework\Get-RuntimeHelp.ps1
+automated-gui-testing-agent-framework\README.md
+automated-gui-testing-agent-framework\prompts\SESSION_AGENT_PROMPT.md
+automated-gui-testing-agent-framework\Microsoft Paint.csv
+automated-gui-testing-agent-framework\docs\GENERATED_SCRIPT_CONTRACT.md
+automated-gui-testing-agent-framework\docs\AUTHORING.md
+automated-gui-testing-agent-framework\AGENTS.md
+automated-gui-testing-agent-framework\Test-GeneratedScript.ps1
+potato-cli\PoTAToCli\WindowIdentity.cs
+potato-cli\PoTAToCli\ReadPdf.py
+potato-cli\PoTAToCli\PoTAToCli.psm1
+potato-cli\PoTAToCli\Pdf.ps1
+potato-cli\PoTAToCli\LiteralInput.cs
+potato-cli\PoTAToCli\Interaction.ps1
+potato-cli\PoTAToCli\Focus.ps1
+potato-cli\PoTAToCli\Discovery.ps1
+automated-gui-testing-agent-framework\templates\GeneratedScript.Template.ps1
+potato-cli\tests\Interaction.Tests.ps1
+potato-cli\tests\Gui.Smoke.Tests.ps1
+potato-cli\tests\Focus.Tests.ps1
+potato-cli\tests\Drag.Tests.ps1
+potato-cli\tests\Dpi.Tests.ps1
+potato-cli\tests\AuthoringExperience.Tests.ps1
+potato-cli\tests\Pdf.Tests.ps1
+potato-cli\tests\Pdf.External.Tests.ps1
+potato-cli\tests\PathInput.Tests.ps1
+potato-cli\tests\Provider.Tests.ps1
+potato-cli\tests\Regression.Tests.ps1
+automated-gui-testing-agent-framework\tests\Runtime.Regression.Tests.ps1
+automated-gui-testing-agent-framework\tests\Measure-Transport.ps1
+automated-gui-testing-agent-framework\tests\Measure-Exploration.ps1
+automated-gui-testing-agent-framework\tests\Authoring.Regression.Tests.ps1
+automated-gui-testing-agent-framework\Framework\AutomatedGuiTestingAgentFramework.psm1
+automated-gui-testing-agent-framework\Framework\ArtifactAssertions.ps1
+automated-gui-testing-agent-framework\Framework\Exploration.ps1
+automated-gui-testing-agent-framework\Framework\GeneratedScriptPreflight.ps1
+automated-gui-testing-agent-framework\Framework\GeneratedScriptRuntime.ps1
+
+
+L12 2026-09-30T15:31:18.822Z shell_command
+Get-Content -LiteralPath 'C:\Users\testuser\Desktop\Windows Notepad.csv' -TotalCount 80
+
+OUTPUT Exit code: 0
+Wall time: 2.7 seconds
+Output:
+Action,Data,Expected Result
+Open Notepad,Launch Windows Notepad and open a new blank document.,Notepad is open with a blank editing area.
+Create Test Text File,"Enter ""Notepad GUI Test"" on the first line and ""This file tests creating, saving, reopening, and printing in Notepad."" on the second line.",The editing area displays both exact lines of text.
+Save Test Text File,"Save as NotepadTest.txt in a new output folder for this run, using UTF-8 encoding.","NotepadTest.txt exists, is non-empty, and Notepad shows the saved filename."
+Open Created Text File,Close the saved document tab. Use Notepad's Open command to open NotepadTest.txt from this run's output folder.,The saved file reopens with both exact lines. The reopened content comes from the saved file rather than an unsaved restored tab.
+Print Test Text File,Print the reopened file using Microsoft Print to PDF. Save as NotepadTest.pdf in this run's output folder.,"NotepadTest.pdf exists, opens successfully, and contains both complete lines of text."
+
+
+L19 2026-09-30T15:31:32.393Z shell_command
+Get-Content -LiteralPath 'C:\diplomamunka\automated-gui-testing-agent-framework\README.md'
+
+OUTPUT Exit code: 0
+Wall time: 5.3 seconds
+Output:
+# Automated GUI Testing Agent Framework
+
+For CSV authoring, read `AGENTS.md`, `docs/AUTHORING.md`, the supplied CSV and the generated template together. Start exploration with the guide's process-safe JSON Batch entrypoint; it saves session configuration and returns compact observations. Use `RecordSteps` for reviewed receipts and `Status` for progress. `Complete` exports tested command routes for reuse. The template's `Invoke-AGTATestPlan` handles sequencing, dependent skips, cleanup and result output. The contract and source modules are references for specific unresolved questions.
+
+PowerShell-only framework for turning CSV testcase descriptions into repeatable GUI automation scripts that use `potato-cli`.
+
+[Watch the PoTATo demo recording](https://github.com/DottedAnt-Dooz/automated-gui-testing-agent-framework/releases/download/demo-v1/demo.mkv)
+
+## Workflows
+
+### 1. Agent Session Workflow
+
+Use this when a coding agent such as Codex, Copilot, or Hermes is running in an interactive Windows desktop session.
+
+1. Point the agent at this folder.
+2. Provide a testcase CSV, for example `Microsoft Paint.csv`.
+3. Ask the agent to generate and validate a PowerShell GUI test script.
+4. The agent should follow `AGENTS.md`, `docs\AUTHORING.md`, and the generated script template. Consult the full contract for unresolved schema questions.
+5. The agent must work in three stages: Planning, Exploration, and Development/Iteration.
+
+### 2. API Workflow
+
+Use this when a model is called through an API and the framework owns tool execution.
+
+Graphical launcher:
+
+```powershell
+cd C:\diplomamunka\automated-gui-testing-agent-framework
+.\Invoke-AgentAuthoringGui.ps1
+```
+
+The GUI lets a user load a CSV, preview and edit testcase rows, edit the system prompt and optional user prompt override, choose the API vendor, set the model/API key, and launch authoring.
+
+Command-line launcher:
+
+```powershell
+cd C:\diplomamunka\automated-gui-testing-agent-framework
+.\Invoke-AgentAuthoring.ps1 -TestCaseCsv ".\Microsoft Paint.csv" -Provider OpenAI -Model "gpt-5.5" -Execute
+```
+
+For a no-network dry run:
+
+```powershell
+.\Invoke-AgentAuthoring.ps1 -TestCaseCsv ".\Microsoft Paint.csv" -Provider Mock
+```
+
+The OpenAI provider reads `OPENAI_API_KEY` from the environment and uses the Responses API with function tools. The tool loop is allowlisted: the model can read the testcase, run PoTATo commands, write a gener
+
+L20 2026-09-30T15:31:32.393Z shell_command
+Get-Content -LiteralPath 'C:\diplomamunka\automated-gui-testing-agent-framework\docs\GENERATED_SCRIPT_CONTRACT.md'
+
+OUTPUT Exit code: 0
+Wall time: 5.8 seconds
+Output:
+# Generated Script Contract
+
+Start with `AUTHORING.md` and the template. GuiNavigation is the default; preserve an explicitly requested VisibleControls policy. Navigation and focused opaque input require per-command reason/evidence. Application hotkeys/Shortcut clearing require explicit AllowShortcuts authorization. A selector failure never authorizes a non-GUI route.
+
+Generated testcase scripts must follow this contract so different agents and API providers produce comparable artifacts.
+
+## Parameters
+
+Runtime initialization resolves RunRoot, CSV, CLI and exploration paths against the PowerShell current location. All context output/evidence/log paths are absolute; derive GUI filenames from Context.ExecutionEvidenceRoot. Result summary.failedSteps and cleanupOk appear before the detailed step transcript to support recovery decisions.
+
+Every generated script must accept the first three parameters. It should also accept optional `-FrameworkRoot` for explicit runtime resolution:
+
+```powershell
+param(
+    [string] $PotatoCliPath,
+    [string] $TestCaseCsv,
+    [string] $RunRoot,
+    [string] $FrameworkRoot
+)
+```
+
+Defaults are allowed. `-FrameworkRoot` is optional but recommended; generated scripts under `runs\<runId>\generated` can default it from `$PSScriptRoot`.
+
+## Shared Runtime
+
+Generated scripts must dot-source the shared runtime unless there is a concrete compatibility reason not to:
+
+```powershell
+$runtimePath = Join-Path -Path $FrameworkRoot -ChildPath 'Framework\GeneratedScriptRuntime.ps1'
+. $runtimePath
+$Context = Initialize-AGTAGeneratedTest -PotatoCliPath $PotatoCliPath -TestCaseCsv $TestCaseCsv -RunRoot $RunRoot -RequireAssertions
+```
+
+Do not copy universal boilerplate into each generated script. The framework runtime already provides:
+
+- `Invoke-PotatoJson`
+- `Invoke-StepCommand`
+- `Invoke-RecordedStep`
+- `Assert-PotatoOk`, `Assert-PotatoFound`, and `Assert-FileWait`
+- `Assert-ExpectedResult -Condition <bool> -Message <expected postcondition>`
+- `Assert-TextContains -Result <read/read-pdf result> -Expected <string[]>`: verifies every content fragment, normalizing CR/LF; rejects read results whose source is only the element Name. Use after GUI reopening when the CSV requires persisted content.
+- `Invoke-EvidenceScreenshot` and `Add-EvidencePath`
+- `Register-OpenedProcess -StartResult $started` and `Register-CreatedExternalPath`
+- `Invoke-TestCleanup`
+- `Comple
+
+L21 2026-09-30T15:31:32.393Z shell_command
+Get-Content -LiteralPath 'C:\diplomamunka\automated-gui-testing-agent-framework\templates\GeneratedScript.Template.ps1'
+
+OUTPUT Exit code: 0
+Wall time: 4.8 seconds
+Output:
+[CmdletBinding()]
+param(
+    [string] $PotatoCliPath,
+    [string] $TestCaseCsv,
+    [string] $RunRoot,
+    [string] $FrameworkRoot,
+    [string] $ExplorationPath,
+    [ValidateSet('VisibleControls','GuiNavigation','AllowShortcuts')] [string] $InteractionPolicy = 'GuiNavigation',
+    [string] $PolicyReason,
+    [ValidateSet('InProcess','Process')] [string] $Transport = 'InProcess'
+)
+
+$runtimeCandidates = @()
+if ($FrameworkRoot) {
+    $runtimeCandidates += (Join-Path -Path $FrameworkRoot -ChildPath 'Framework\GeneratedScriptRuntime.ps1')
+}
+$probe = $PSScriptRoot
+for ($i = 0; $i -lt 6 -and $probe; $i++) {
+    $runtimeCandidates += (Join-Path -Path $probe -ChildPath 'Framework\GeneratedScriptRuntime.ps1')
+    $probe = Split-Path -Parent $probe
+}
+$runtimePath = @($runtimeCandidates | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1)[0]
+if (-not $runtimePath) {
+    throw "Generated script runtime was not found: $runtimePath"
+}
+$FrameworkRoot = Split-Path -Parent (Split-Path -Parent $runtimePath)
+. $runtimePath
+
+# Resolve generated helper calls and inputs before any desktop action.
+if (-not $ExplorationPath) { $ExplorationPath = Join-Path $RunRoot 'logs\exploration.json' }
+Assert-AGTAGeneratedScriptPreflight -ScriptPath $PSCommandPath -TestCaseCsv $TestCaseCsv -PotatoCliPath $PotatoCliPath -ExplorationPath $ExplorationPath -InteractionPolicy $InteractionPolicy | Out-Null
+
+$Context = Initialize-AGTAGeneratedTest -PotatoCliPath $PotatoCliPath -TestCaseCsv $TestCaseCsv -RunRoot $RunRoot -RequireAssertions -InteractionPolicy $InteractionPolicy -PolicyReason $PolicyReason -Transport $Transport -ExplorationPath $ExplorationPath
+$RunRoot = $Context.RunRoot
+# Build GUI output paths from the absolute context, for example:
+# $OutputPath = Join-Path $Context.ExecutionEvidenceRoot 'output.ext'
+# Context.ExecutionEvidenceRoot already exists. Add -PathKind SaveFile/OpenFile
+# to type -Text $OutputPath; extra subdirectories must exist before filename entry.
+# One scriptblock per CSV row, in order. Keep actions/assertions specific to the
+# testcase here; the runtime handles dependency skips, cleanup and final output.
+$StepBodies = @(
+    # {
+    #     param([ref] $Commands, [ref] $Evidence)
+    #     $started = Invoke-StepCommand -Commands $Commands -Command start -Arguments @('-ProcessName','app.exe','-Maximize')
+    #     Assert-PotatoOk $started
+    #     $ready = Invo
+
+L22 2026-09-30T15:31:32.416Z shell_command
+Get-Content -LiteralPath 'C:\diplomamunka\automated-gui-testing-agent-framework\Microsoft Paint.csv'
+
+OUTPUT Exit code: 0
+Wall time: 4.4 seconds
+Output:
+Action,Data,Expected Result
+Open Paint,,Paint opened
+Create a test file in paint by drawing some colorful lines,,Saed test file exists
+Open another test file,,test file opened
+print test file as PDF,,PDF file exists
+Close Paint,,Paint closed
+
+
+L31 2026-09-30T15:31:47.388Z shell_command
+Get-Content -LiteralPath 'C:\diplomamunka\automated-gui-testing-agent-framework\AGENTS.md'
+
+OUTPUT Exit code: 0
+Wall time: 4.5 seconds
+Output:
+# Agent instructions
+
+Read `docs/AUTHORING.md`, the testcase CSV, and `templates/GeneratedScript.Template.ps1` together first. Use the guide's `powershell.exe -NoProfile -ExecutionPolicy Bypass -File Invoke-Exploration.ps1` entrypoint with UTF-8 JSON piped to `-RequestsStdin` in ONE shell tool call per batch. Do not create a separate JSON file with a file-edit tool for every batch; RequestsPath remains available for existing files. Begin once; subsequent Batch/RecordSteps/Status/Complete calls need only that exact RunRoot. Do not construct temporary wrapper scripts or pass array arguments across `powershell.exe -File`. Read multiple needed CLI topics in one `help -Topics click,type,observe` call, or runtime signatures in one `Get-RuntimeHelp.ps1 -Names Invoke-StepCommand,Assert-TextContains` call. Read full source only for a concrete unresolved defect.
+
+The default interaction policy is GuiNavigation for exploration, execution, and cleanup. Use visible GUI routes. Bounded `press-key` navigation (Tab/ShiftTab/Enter/Escape/arrows) and `type -TargetMode Focused` for an observed opaque editor require fallback reason/evidence and confirmed application focus. Preserve an explicitly requested VisibleControls policy, which forbids navigation keys. Application hotkeys, Shortcut clearing, clipboard, object models, file-association opening, and creating expected outputs directly remain forbidden without explicit authorization where applicable. A selector failure is not authorization to bypass the GUI.
+
+Plan, then perform the COMPLETE testcase through the GUI, including save, close/reopen, print/export, required assertions, and cleanup, before writing the final script. Use `Invoke-Exploration.ps1` to record commands by CSV row and verified routes in `logs/exploration.json`; every row needs a real observation receipt. The API workflow exposes the same checkpoint through `run_potato` and `record_exploration_step`. Incomplete exploration blocks development and execution. Do not invent receipts, output artifacts, or PASS assertions to satisfy the gate. If blocked, report the missing route honestly.
+
+Keep desktop commands sequential. Reuse selectors, read only targeted help, and discover only unknown controls within that full walkthrough. Generated execution uses InProcess transport. `potato-stream.ps1` supports clean persistent pipes and stops on the first failure by default; do not queue dependent actions across an unkn
+
+L32 2026-09-30T15:31:47.388Z shell_command
+Get-Content -LiteralPath 'C:\diplomamunka\automated-gui-testing-agent-framework\docs\AUTHORING.md'
+
+L33 2026-09-30T15:31:47.389Z shell_command
+Get-Content -LiteralPath 'C:\diplomamunka\automated-gui-testing-agent-framework\Framework\GeneratedScriptRuntime.ps1'
+
+OUTPUT Exit code: 0
+Wall time: 7.6 seconds
+Output:
+. (Join-Path $PSScriptRoot 'ArtifactAssertions.ps1')
+. (Join-Path $PSScriptRoot 'GeneratedScriptPreflight.ps1')
+function Initialize-AGTAGeneratedTest {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)]
+        [string] $PotatoCliPath,
+
+        [Parameter(Mandatory)]
+        [string] $TestCaseCsv,
+
+        [Parameter(Mandatory)]
+        [string] $RunRoot,
+
+        [string] $ExecutionId = (Get-Date -Format 'yyyyMMdd_HHmmss_ffff'),
+
+        [switch] $RequireAssertions = $true,
+        [ValidateSet('VisibleControls','GuiNavigation','AllowShortcuts')] [string] $InteractionPolicy = 'GuiNavigation',
+        [string] $PolicyReason,
+        [string] $ExplorationPath,
+        [ValidateSet('InProcess','Process')] [string] $Transport = 'InProcess'
+    )
+
+    # PowerShell's current location can differ from the process current directory.
+    # GUI filename fields need absolute filesystem paths in either transport.
+    $RunRoot=$ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($RunRoot)
+    $PotatoCliPath=$ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($PotatoCliPath)
+    $TestCaseCsv=$ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($TestCaseCsv)
+    if ($ExplorationPath) { $ExplorationPath=$ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($ExplorationPath) }
+    if (-not (Test-Path -LiteralPath $PotatoCliPath)) {
+        throw "PoTATo CLI was not found: $PotatoCliPath"
+    }
+    if (-not (Test-Path -LiteralPath $TestCaseCsv)) {
+        throw "Testcase CSV was not found: $TestCaseCsv"
+    }
+
+    if ($InteractionPolicy -eq 'AllowShortcuts' -and [string]::IsNullOrWhiteSpace($PolicyReason)) { throw 'AllowShortcuts requires PolicyReason recording the user/testcase authorization.' }
+    # Recheck the actual calling script so omitting a standalone preflight does
+    # not silently bless direct COM/native-input/data fabrication as compliant.
+    $callerPath=$MyInvocation.ScriptName
+    $scriptAudit=$null
+    if ($callerPath -and (Test-Path -LiteralPath $callerPath -PathType Leaf)) {
+        $scriptAudit=Test-AGTAGeneratedScript -ScriptPath $callerPath -InteractionPolicy $InteractionPolicy -PolicyOnly
+        if (-not $scriptAudit.ok) { throw ('Generated script audit failed before desktop use: '+($scriptAudit.issues -join '; ')) }
+    }
+    if (-not $ExplorationPath) { $ExplorationPath=Jo
+
+L34 2026-09-30T15:31:47.389Z shell_command
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File 'C:\diplomamunka\potato-cli\potato.ps1' help
+
+{"command": "help", "ok": true, "durationMs": 483, "error": null, "outcome": null}
+
+L43 2026-09-30T15:32:02.137Z shell_command
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Begin -RunRoot .\runs\notepad-walkthrough-20260930-001 -TestCaseCsv 'C:\Users\testuser\Desktop\Windows Notepad.csv'
+
+OUTPUT Exit code: 0
+Wall time: 7.1 seconds
+Output:
+{"runRoot":"C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001","ok":true,"explorationEvidenceRoot":"C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration","explorationPath":"C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\logs\\exploration.json","steps":[{"Action":"Open Notepad","Data":"Launch Windows Notepad and open a new blank document.","Expected Result":"Notepad is open with a blank editing area."},{"Action":"Create Test Text File","Data":"Enter \"Notepad GUI Test\" on the first line and \"This file tests creating, saving, reopening, and printing in Notepad.\" on the second line.","Expected Result":"The editing area displays both exact lines of text."},{"Action":"Save Test Text File","Data":"Save as NotepadTest.txt in a new output folder for this run, using UTF-8 encoding.","Expected Result":"NotepadTest.txt exists, is non-empty, and Notepad shows the saved filename."},{"Action":"Open Created Text File","Data":"Close the saved document tab. Use Notepad\u0027s Open command to open NotepadTest.txt from this run\u0027s output folder.","Expected Result":"The saved file reopens with both exact lines. The reopened content comes from the saved file rather than an unsaved restored tab."},{"Action":"Print Test Text File","Data":"Print the reopened file using Microsoft Print to PDF. Save as NotepadTest.pdf in this run\u0027s output folder.","Expected Result":"NotepadTest.pdf exists, opens successfully, and contains both complete lines of text."}],"next":"Build GUI output filenames inside the existing explorationEvidenceRoot and add type -PathKind SaveFile/OpenFile. Set $OutputEncoding to UTF8Encoding(false), then pipe a JSON request array to powershell.exe -NoProfile -ExecutionPolicy Bypass -File Invoke-Exploration.ps1 -Action Batch -RunRoot \u003cthis-root\u003e -RequestsStdin. This combines request creation and execution in one tool call. RequestsPath JSON files also work. Use RecordSteps for reviewed receipts, then close the owned app and Complete."}
+
+
+L49 2026-09-30T15:32:16.626Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":1,"command":"start","arguments":["-ProcessName","notepad.exe","-Maximize"]},
+  {"stepIndex":1,"command":"observe","arguments":["-Depth","4","-MaxElements","120"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\notepad-walkthrough-20260930-001 -RequestsStdin
+
+{"command": "start", "ok": true, "durationMs": 3462, "error": null, "outcome": "completed", "data": {"process": {"id": 13896, "processName": "notepad", "started": true}, "working": {"title": "Untitled - Notepad", "processName": "Notepad", "processId": 12580, "nativeWindowHandle": 1639118, "className": "Notepad", "updatedAt": "2026-09-30T17:32:25.5225048+02:00"}, "windowFound": true, "ownedProcessId": 12580}}
+
+{"command": "observe", "ok": true, "durationMs": 1296, "error": null, "outcome": "completed"}
+
+L55 2026-09-30T15:32:36.204Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":2,"command":"type","arguments":["-Name","Text editor","-ControlType","Document","-Text","Notepad GUI Test\r\nThis file tests creating, saving, reopening, and printing in Notepad.","-Verify","-VerifyMode","NormalizedExact","-VerifyTimeoutMs","5000"]},
+  {"stepIndex":2,"command":"read","arguments":["-Name","Text editor","-ControlType","Document"]},
+  {"stepIndex":3,"command":"click","arguments":["-Name","File","-AutomationId","File"]},
+  {"stepIndex":3,"command":"observe","arguments":["-Scope","FocusedWindow","-Depth","5","-MaxElements","120"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\notepad-walkthrough-20260930-001 -RequestsStdin
+
+{"command": "type", "ok": false, "durationMs": 2100, "error": {"message": "No matching element was found.", "type": "System.Management.Automation.RuntimeException", "category": "OperationStopped"}, "outcome": "unknown", "data": null}
+
+L61 2026-09-30T15:32:54.367Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":2,"command":"select","arguments":["-Name","Text editor","-TimeoutMs","1000","-MaxResults","10"]},
+  {"stepIndex":2,"command":"type","arguments":["-Name","Text editor","-Text","Notepad GUI Test\r\nThis file tests creating, saving, reopening, and printing in Notepad.","-Verify","-VerifyMode","NormalizedExact","-VerifyTimeoutMs","5000"]},
+  {"stepIndex":2,"command":"read","arguments":["-Name","Text editor"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\notepad-walkthrough-20260930-001 -RequestsStdin
+
+{"command": "select", "ok": true, "durationMs": 2056, "error": null, "outcome": "completed", "data": {"count": 0, "elements": []}}
+
+{"command": "type", "ok": false, "durationMs": 1290, "error": {"message": "No matching element was found.", "type": "System.Management.Automation.RuntimeException", "category": "OperationStopped"}, "outcome": "unknown", "data": null}
+
+L67 2026-09-30T15:33:11.913Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":2,"command":"observe","arguments":["-Depth","4","-MaxElements","120"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\notepad-walkthrough-20260930-001 -RequestsStdin
+
+{"command": "observe", "ok": true, "durationMs": 2190, "error": null, "outcome": "completed"}
+
+L73 2026-09-30T15:33:27.898Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":2,"command":"type","arguments":["-ClassName","RichEditD2DPT","-Text","Notepad GUI Test\r\nThis file tests creating, saving, reopening, and printing in Notepad.","-Verify","-VerifyMode","NormalizedExact","-VerifyTimeoutMs","5000"]},
+  {"stepIndex":2,"command":"read","arguments":["-ClassName","RichEditD2DPT"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\notepad-walkthrough-20260930-001 -RequestsStdin
+
+{"command": "type", "ok": false, "durationMs": 2157, "error": {"message": "No matching element was found.", "type": "System.Management.Automation.RuntimeException", "category": "OperationStopped"}, "outcome": "unknown", "data": null}
+
+L79 2026-09-30T15:33:46.555Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":2,"command":"select","arguments":["-Name","Text editor","-Recurse","-TimeoutMs","1000","-MaxResults","10"]},
+  {"stepIndex":2,"command":"type","arguments":["-Name","Text editor","-Recurse","-Text","Notepad GUI Test\r\nThis file tests creating, saving, reopening, and printing in Notepad.","-Verify","-VerifyMode","NormalizedExact","-VerifyTimeoutMs","5000"]},
+  {"stepIndex":2,"command":"read","arguments":["-Name","Text editor","-Recurse"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\notepad-walkthrough-20260930-001 -RequestsStdin
+
+{"command": "select", "ok": true, "durationMs": 1980, "error": null, "outcome": "completed", "data": {"count": 0, "elements": []}}
+
+{"command": "type", "ok": false, "durationMs": 1172, "error": {"message": "No matching element was found.", "type": "System.Management.Automation.RuntimeException", "category": "OperationStopped"}, "outcome": "unknown", "data": null}
+
+L85 2026-09-30T15:34:11.891Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":2,"command":"type","arguments":["-TargetMode","Focused","-Text","Notepad GUI Test","-ExpectedFocusJson","{\"ClassName\":\"RichEditD2DPT\"}","-FallbackReason","Observed Notepad editor is focused but direct selector lookup is unreliable in the modern Notepad UIA tree.","-FallbackEvidence","observe command 95d0a7694f3d4bad94bcf9ccc5a8181b focusedElement ClassName RichEditD2DPT"]},
+  {"stepIndex":2,"command":"press-key","arguments":["-Key","Enter","-FallbackReason","Create the second line in the focused Notepad editor after verified ownership of keyboard focus.","-FallbackEvidence","Focused editor from observe command 95d0a7694f3d4bad94bcf9ccc5a8181b"]},
+  {"stepIndex":2,"command":"type","arguments":["-TargetMode","Focused","-Text","This file tests creating, saving, reopening, and printing in Notepad.","-ExpectedFocusJson","{\"ClassName\":\"RichEditD2DPT\"}","-FallbackReason","Observed Notepad editor is focused but direct selector lookup is unreliable in the modern Notepad UIA tree.","-FallbackEvidence","observe command 95d0a7694f3d4bad94bcf9ccc5a8181b focusedElement ClassName RichEditD2DPT"]},
+  {"stepIndex":2,"command":"observe","arguments":["-Depth","4","-MaxElements","120"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\notepad-walkthrough-20260930-001 -RequestsStdin
+
+{"command": "type", "ok": true, "durationMs": 1200, "error": null, "outcome": "completed", "data": {"typed": true, "textLength": 16, "verified": null, "verificationPerformed": false, "verification": null, "inputMethod": "UnicodeKeyboard", "focusMethod": "ExistingFocus", "targetMode": "Focused", "target": {"name": "Text editor", "automationId": "", "className": "RichEditD2DPT", "localizedControlType": "document", "processId": 12580, "nativeWindowHandle": 263340, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": true, "isKeyboardFocusable": true, "controlType": "Document", "processName": "Notepad", "boundingRectangle": {"x": -1, "y": 82, "width": 1924, "height": 719}, "boundsStatus": "valid", "supportedPatterns": ["Value", "Text"], "isModal": false, "propertyErrors": []}, "inputFocus": {"native": {"ready": true, "owned": true, "stable": true, "enabled": true, "withinForeground": true, "foregroundHandle": 1639118, "focusHandle": 263340, "foregroundProcessId": 12580, "focusProcessId": 12580, "caretHandle": 0, "menuActive": false}, "source": "UIAutomation+Win32", "waitMs": 131}, "clearMethod": null}}
+
+{"command": "press-key", "ok": true, "durationMs": 281, "error": null, "outcome": "completed", "data": {"sent": true, "key": "Enter", "count": 1, "before": {"name": "Text editor", "automationId": "", "className": "RichEditD2DPT", "localizedControlType": "document", "processId": 12580, "nativeWindowHandle": 263340, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": true, "isKeyboardFocusable": true, "controlType": "Document", "processName": "Notepad", "boundingRectangle": {"x": -1, "y": 82, "width": 1924, "height": 719}, "boundsStatus": "valid", "supportedPatterns": ["Value", "Text"], "isModal": false, "propertyErrors": []}, "after": {"name": "Text editor", "automationId": "", "className": "RichEditD2DPT", "localizedControlType": "document", "processId": 12580, "nativeWindowHandle": 263340, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": true, "isKeyboardFocusable": true, "controlType": "Document", "processName": "Notepad", "boundingRectangle": {"x": -1, "y": 82, "width": 1924, "height": 719}, "boundsStatus": "valid", "supportedPatterns": ["Value", "Text"], "isModal": false, "propertyErrors": []}, "verified": null, "verificationPerformed": false}}
+
+{"command": "type", "ok": true, "durationMs": 136, "error": null, "outcome": "completed", "data": {"typed": true, "textLength": 69, "verified": null, "verificationPerformed": false, "verification": null, "inputMethod": "UnicodeKeyboard", "focusMethod": "ExistingFocus", "targetMode": "Focused", "target": {"name": "Text editor", "automationId": "", "className": "RichEditD2DPT", "localizedControlType": "document", "processId": 12580, "nativeWindowHandle": 263340, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": true, "isKeyboardFocusable": true, "controlType": "Document", "processName": "Notepad", "boundingRectangle": {"x": -1, "y": 82, "width": 1924, "height": 719}, "boundsStatus": "valid", "supportedPatterns": ["Value", "Text"], "isModal": false, "propertyErrors": []}, "inputFocus": {"native": {"ready": true, "owned": true, "stable": true, "enabled": true, "withinForeground": true, "foregroundHandle": 1639118, "focusHandle": 263340, "foregroundProcessId": 12580, "focusProcessId": 12580, "caretHandle": 263340, "menuActive": false}, "source": "UIAutomation+Win32", "waitMs": 22}, "clearMethod": null}}
+
+{"command": "observe", "ok": true, "durationMs": 1306, "error": null, "outcome": "completed"}
+
+L89 2026-09-30T15:34:34.016Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":2,"command":"read","arguments":["-Name","Text editor","-Scope","FocusedWindow","-TimeoutMs","1000"]},
+  {"stepIndex":2,"command":"screenshot","arguments":["-OutFile","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\after-typing.png"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\notepad-walkthrough-20260930-001 -RequestsStdin
+
+{"command": "read", "ok": false, "durationMs": 2058, "error": {"message": "No matching element was found.", "type": "System.Management.Automation.RuntimeException", "category": "OperationStopped"}, "outcome": "completed", "data": null}
+
+L95 2026-09-30T15:34:49.868Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":2,"command":"screenshot","arguments":["-OutFile","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\partial-input.png"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\notepad-walkthrough-20260930-001 -RequestsStdin
+
+{"command": "screenshot", "ok": true, "durationMs": 843, "error": null, "outcome": "completed", "data": {"path": "C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\partial-input.png", "region": {"x": 0, "y": 0, "width": 1922, "height": 900}, "format": "PNG", "coordinateSpace": "PhysicalScreenPixels", "imageWidth": 1922, "imageHeight": 900, "hint": "Image pixels map to physical screen pixels plus region.x/y. Inspect the image before choosing a fallback point; do not use coordinates from a scaled preview."}}
+
+L100 2026-09-30T15:35:03.268Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":2,"command":"close-window","arguments":["-TimeoutMs","0"]},
+  {"stepIndex":2,"command":"observe","arguments":["-Scope","FocusedWindow","-Depth","4","-MaxElements","80"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\notepad-walkthrough-20260930-001 -RequestsStdin
+
+{"command": "close-window", "ok": true, "durationMs": 895, "error": null, "outcome": "completed", "data": {"closed": 1, "closeRequested": 1, "matched": 1, "requests": [{"processId": 12580, "nativeWindowHandle": 1639118, "method": "WM_CLOSE"}], "hint": "Close requests were queued. Verify owned windows/process exit and handle any GUI save prompt; closed is the legacy request count, not proof of exit."}}
+
+{"command": "observe", "ok": false, "durationMs": 750, "error": {"message": "Working window no longer exists. Observe windows and focus the owned application explicitly.", "type": "System.Management.Automation.RuntimeException", "category": "OperationStopped"}, "outcome": "completed"}
+
+L106 2026-09-30T15:35:26.553Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":1,"command":"start","arguments":["-ProcessName","notepad.exe","-Maximize"]},
+  {"stepIndex":1,"command":"observe","arguments":["-Depth","4","-MaxElements","120"]},
+  {"stepIndex":2,"command":"type","arguments":["-TargetMode","Focused","-Text","Notepad GUI Test","-TypeByCharacter","-ExpectedFocusJson","{\"ClassName\":\"RichEditD2DPT\"}","-FallbackReason","Observed Notepad editor is focused but direct selector lookup is unreliable in the modern Notepad UIA tree.","-FallbackEvidence","fresh observe focusedElement ClassName RichEditD2DPT"]},
+  {"stepIndex":2,"command":"press-key","arguments":["-Key","Enter","-FallbackReason","Create the second line in the focused Notepad editor after verified ownership of keyboard focus.","-FallbackEvidence","fresh observe focusedElement ClassName RichEditD2DPT"]},
+  {"stepIndex":2,"command":"type","arguments":["-TargetMode","Focused","-Text","This file tests creating, saving, reopening, and printing in Notepad.","-TypeByCharacter","-ExpectedFocusJson","{\"ClassName\":\"RichEditD2DPT\"}","-FallbackReason","Observed Notepad editor is focused but direct selector lookup is unreliable in the modern Notepad UIA tree.","-FallbackEvidence","fresh observe focusedElement ClassName RichEditD2DPT"]},
+  {"stepIndex":2,"command":"observe","arguments":["-Depth","4","-MaxElements","120"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\notepad-walkthrough-20260930-001 -RequestsStdin
+
+{"command": "start", "ok": true, "durationMs": 2472, "error": null, "outcome": "completed", "data": {"process": {"id": 16012, "processName": "notepad", "started": true}, "working": {"title": "*Notepad - Notepad", "processName": "Notepad", "processId": 15144, "nativeWindowHandle": 590692, "className": "Notepad", "updatedAt": "2026-09-30T17:35:34.1907618+02:00"}, "windowFound": true, "ownedProcessId": 15144}}
+
+{"command": "observe", "ok": true, "durationMs": 1356, "error": null, "outcome": "completed"}
+
+{"command": "type", "ok": true, "durationMs": 1616, "error": null, "outcome": "completed", "data": {"typed": true, "textLength": 16, "verified": null, "verificationPerformed": false, "verification": null, "inputMethod": "UnicodeKeyboard", "focusMethod": "ExistingFocus", "targetMode": "Focused", "target": {"name": "Text editor", "automationId": "", "className": "RichEditD2DPT", "localizedControlType": "document", "processId": 15144, "nativeWindowHandle": 918196, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": true, "isKeyboardFocusable": true, "controlType": "Document", "processName": "Notepad", "boundingRectangle": {"x": -1, "y": 82, "width": 1924, "height": 719}, "boundsStatus": "valid", "supportedPatterns": ["Value", "Text"], "isModal": false, "propertyErrors": []}, "inputFocus": {"native": {"ready": true, "owned": true, "stable": true, "enabled": true, "withinForeground": true, "foregroundHandle": 590692, "focusHandle": 918196, "foregroundProcessId": 15144, "focusProcessId": 15144, "caretHandle": 918196, "menuActive": false}, "source": "UIAutomation+Win32", "waitMs": 120}, "clearMethod": null}}
+
+{"command": "press-key", "ok": true, "durationMs": 368, "error": null, "outcome": "completed", "data": {"sent": true, "key": "Enter", "count": 1, "before": {"name": "Text editor", "automationId": "", "className": "RichEditD2DPT", "localizedControlType": "document", "processId": 15144, "nativeWindowHandle": 918196, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": true, "isKeyboardFocusable": true, "controlType": "Document", "processName": "Notepad", "boundingRectangle": {"x": -1, "y": 82, "width": 1924, "height": 719}, "boundsStatus": "valid", "supportedPatterns": ["Value", "Text"], "isModal": false, "propertyErrors": []}, "after": {"name": "Text editor", "automationId": "", "className": "RichEditD2DPT", "localizedControlType": "document", "processId": 15144, "nativeWindowHandle": 918196, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": true, "isKeyboardFocusable": true, "controlType": "Document", "processName": "Notepad", "boundingRectangle": {"x": -1, "y": 82, "width": 1924, "height": 719}, "boundsStatus": "valid", "supportedPatterns": ["Value", "Text"], "isModal": false, "propertyErrors": []}, "verified": null, "verificationPerformed": false}}
+
+{"command": "type", "ok": true, "durationMs": 4569, "error": null, "outcome": "completed", "data": {"typed": true, "textLength": 69, "verified": null, "verificationPerformed": false, "verification": null, "inputMethod": "UnicodeKeyboard", "focusMethod": "ExistingFocus", "targetMode": "Focused", "target": {"name": "Text editor", "automationId": "", "className": "RichEditD2DPT", "localizedControlType": "document", "processId": 15144, "nativeWindowHandle": 918196, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": true, "isKeyboardFocusable": true, "controlType": "Document", "processName": "Notepad", "boundingRectangle": {"x": -1, "y": 82, "width": 1924, "height": 719}, "boundsStatus": "valid", "supportedPatterns": ["Value", "Text"], "isModal": false, "propertyErrors": []}, "inputFocus": {"native": {"ready": true, "owned": true, "stable": true, "enabled": true, "withinForeground": true, "foregroundHandle": 590692, "focusHandle": 918196, "foregroundProcessId": 15144, "focusProcessId": 15144, "caretHandle": 918196, "menuActive": false}, "source": "UIAutomation+Win32", "waitMs": 46}, "clearMethod": null}}
+
+{"command": "observe", "ok": true, "durationMs": 852, "error": null, "outcome": "completed"}
+
+L112 2026-09-30T15:35:56.296Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":1,"command":"click","arguments":["-Name","Add New Tab","-AutomationId","AddButton"]},
+  {"stepIndex":1,"command":"observe","arguments":["-Depth","4","-MaxElements","120"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\notepad-walkthrough-20260930-001 -RequestsStdin
+
+{"command": "click", "ok": false, "durationMs": 2394, "error": {"message": "No visible enabled element matches the selector.", "type": "TargetNotFound", "category": "OperationStopped", "candidates": null}, "outcome": "not-dispatched", "data": null}
+
+L118 2026-09-30T15:36:15.421Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":1,"command":"click","arguments":["-Name","Add New Tab","-AutomationId","AddButton","-Recurse"]},
+  {"stepIndex":1,"command":"observe","arguments":["-Depth","4","-MaxElements","120"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\notepad-walkthrough-20260930-001 -RequestsStdin
+
+{"command": "click", "ok": false, "durationMs": 2386, "error": {"message": "No visible enabled element matches the selector.", "type": "TargetNotFound", "category": "OperationStopped", "candidates": null}, "outcome": "not-dispatched", "data": null}
+
+L124 2026-09-30T15:36:35.634Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":1,"command":"screenshot","arguments":["-OutFile","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\before-add-tab.png"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\notepad-walkthrough-20260930-001 -RequestsStdin
+
+{"command": "screenshot", "ok": true, "durationMs": 1472, "error": null, "outcome": "completed", "data": {"path": "C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\before-add-tab.png", "region": {"x": 0, "y": 0, "width": 1922, "height": 900}, "format": "PNG", "coordinateSpace": "PhysicalScreenPixels", "imageWidth": 1922, "imageHeight": 900, "hint": "Image pixels map to physical screen pixels plus region.x/y. Inspect the image before choosing a fallback point; do not use coordinates from a scaled preview."}}
+
+L127 2026-09-30T15:36:50.313Z view_image
+{'path': 'C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\before-add-tab.png', 'detail': 'high'}
+
+OUTPUT [{"type": "input_image", "image_url": "data:image/png;base64,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
+
+L133 2026-09-30T15:36:59.092Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":1,"command":"click","arguments":["-Name","Got it","-ControlType","Button","-Scope","FocusedWindow"]},
+  {"stepIndex":1,"command":"click-coordinate","arguments":["-X","388","-Y","22"]},
+  {"stepIndex":1,"command":"observe","arguments":["-Depth","4","-MaxElements","120"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\notepad-walkthrough-20260930-001 -RequestsStdin
+
+{"command": "click", "ok": true, "durationMs": 2496, "error": null, "outcome": "completed", "data": {"clicked": true, "verified": null, "verificationPerformed": false, "action": "InvokePattern", "point": null, "element": {"name": "Got it", "automationId": "CloseButton", "className": "Button", "localizedControlType": "button", "processId": 15144, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "Button", "processName": "Notepad", "boundingRectangle": {"x": 390, "y": 152, "width": 178, "height": 40}, "boundsStatus": "valid", "supportedPatterns": ["Invoke", "ScrollItem"], "isModal": false, "propertyErrors": []}}}
+
+{"command": "click-coordinate", "ok": true, "durationMs": 607, "error": null, "outcome": "completed", "data": {"clicked": true, "point": {"x": 388, "y": 22}, "button": "Left", "action": "Mouse"}}
+
+{"command": "observe", "ok": true, "durationMs": 1460, "error": null, "outcome": "completed"}
+
+L139 2026-09-30T15:37:29.331Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":2,"command":"type","arguments":["-TargetMode","Focused","-Text","Notepad GUI Test","-TypeByCharacter","-ExpectedFocusJson","{\"ClassName\":\"RichEditD2DPT\"}","-FallbackReason","Observed blank Notepad editor is focused but direct selector lookup is unreliable in the modern Notepad UIA tree.","-FallbackEvidence","observe command 77f5bc76ab70418a9671773a8747d5b3 focusedElement ClassName RichEditD2DPT and 0 characters"]},
+  {"stepIndex":2,"command":"press-key","arguments":["-Key","Enter","-FallbackReason","Create the second line in the focused Notepad editor after verified ownership of keyboard focus.","-FallbackEvidence","observe command 77f5bc76ab70418a9671773a8747d5b3 focusedElement ClassName RichEditD2DPT"]},
+  {"stepIndex":2,"command":"type","arguments":["-TargetMode","Focused","-Text","This file tests creating, saving, reopening, and printing in Notepad.","-TypeByCharacter","-ExpectedFocusJson","{\"ClassName\":\"RichEditD2DPT\"}","-FallbackReason","Observed blank Notepad editor is focused but direct selector lookup is unreliable in the modern Notepad UIA tree.","-FallbackEvidence","observe command 77f5bc76ab70418a9671773a8747d5b3 focusedElement ClassName RichEditD2DPT and 0 characters"]},
+  {"stepIndex":2,"command":"observe","arguments":["-Depth","4","-MaxElements","120"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\notepad-walkthrough-20260930-001 -RequestsStdin
+
+{"command": "type", "ok": true, "durationMs": 2847, "error": null, "outcome": "completed", "data": {"typed": true, "textLength": 16, "verified": null, "verificationPerformed": false, "verification": null, "inputMethod": "UnicodeKeyboard", "focusMethod": "ExistingFocus", "targetMode": "Focused", "target": {"name": "Text editor", "automationId": "", "className": "RichEditD2DPT", "localizedControlType": "document", "processId": 15144, "nativeWindowHandle": 983118, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": true, "isKeyboardFocusable": true, "controlType": "Document", "processName": "Notepad", "boundingRectangle": {"x": -1, "y": 82, "width": 1924, "height": 719}, "boundsStatus": "valid", "supportedPatterns": ["Value", "Text"], "isModal": false, "propertyErrors": []}, "inputFocus": {"native": {"ready": true, "owned": true, "stable": true, "enabled": true, "withinForeground": true, "foregroundHandle": 590692, "focusHandle": 983118, "foregroundProcessId": 15144, "focusProcessId": 15144, "caretHandle": 0, "menuActive": false}, "source": "UIAutomation+Win32", "waitMs": 257}, "clearMethod": null}}
+
+{"command": "press-key", "ok": true, "durationMs": 328, "error": null, "outcome": "completed", "data": {"sent": true, "key": "Enter", "count": 1, "before": {"name": "Text editor", "automationId": "", "className": "RichEditD2DPT", "localizedControlType": "document", "processId": 15144, "nativeWindowHandle": 983118, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": true, "isKeyboardFocusable": true, "controlType": "Document", "processName": "Notepad", "boundingRectangle": {"x": -1, "y": 82, "width": 1924, "height": 719}, "boundsStatus": "valid", "supportedPatterns": ["Value", "Text"], "isModal": false, "propertyErrors": []}, "after": {"name": "Text editor", "automationId": "", "className": "RichEditD2DPT", "localizedControlType": "document", "processId": 15144, "nativeWindowHandle": 983118, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": true, "isKeyboardFocusable": true, "controlType": "Document", "processName": "Notepad", "boundingRectangle": {"x": -1, "y": 82, "width": 1924, "height": 719}, "boundsStatus": "valid", "supportedPatterns": ["Value", "Text"], "isModal": false, "propertyErrors": []}, "verified": null, "verificationPerformed": false}}
+
+{"command": "type", "ok": true, "durationMs": 4907, "error": null, "outcome": "completed", "data": {"typed": true, "textLength": 69, "verified": null, "verificationPerformed": false, "verification": null, "inputMethod": "UnicodeKeyboard", "focusMethod": "ExistingFocus", "targetMode": "Focused", "target": {"name": "Text editor", "automationId": "", "className": "RichEditD2DPT", "localizedControlType": "document", "processId": 15144, "nativeWindowHandle": 983118, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": true, "isKeyboardFocusable": true, "controlType": "Document", "processName": "Notepad", "boundingRectangle": {"x": -1, "y": 82, "width": 1924, "height": 719}, "boundsStatus": "valid", "supportedPatterns": ["Value", "Text"], "isModal": false, "propertyErrors": []}, "inputFocus": {"native": {"ready": true, "owned": true, "stable": true, "enabled": true, "withinForeground": true, "foregroundHandle": 590692, "focusHandle": 983118, "foregroundProcessId": 15144, "focusProcessId": 15144, "caretHandle": 983118, "menuActive": false}, "source": "UIAutomation+Win32", "waitMs": 22}, "clearMethod": null}}
+
+{"command": "observe", "ok": true, "durationMs": 1786, "error": null, "outcome": "completed"}
+
+L145 2026-09-30T15:37:54.465Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":3,"command":"click","arguments":["-Name","File","-AutomationId","File"]},
+  {"stepIndex":3,"command":"observe","arguments":["-Scope","FocusedWindow","-Depth","6","-MaxElements","160"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\notepad-walkthrough-20260930-001 -RequestsStdin
+
+{"command": "click", "ok": true, "durationMs": 1522, "error": null, "outcome": "completed", "data": {"clicked": true, "verified": null, "verificationPerformed": false, "action": "InvokePattern", "point": null, "element": {"name": "File", "automationId": "File", "className": "Microsoft.UI.Xaml.Controls.MenuBarItem", "localizedControlType": "menu item", "processId": 15144, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "MenuItem", "processName": "Notepad", "boundingRectangle": {"x": 4, "y": 41, "width": 52, "height": 40}, "boundsStatus": "valid", "supportedPatterns": ["Invoke", "ExpandCollapse", "ScrollItem"], "isModal": false, "propertyErrors": []}}}
+
+{"command": "observe", "ok": true, "durationMs": 2038, "error": null, "outcome": "completed"}
+
+L149 2026-09-30T15:38:10.613Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":3,"command":"click","arguments":["-Name","Save as","-Scope","FocusedWindow"]},
+  {"stepIndex":3,"command":"observe","arguments":["-Scope","FocusedWindow","-Depth","5","-MaxElements","160"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\notepad-walkthrough-20260930-001 -RequestsStdin
+
+{"command": "click", "ok": false, "durationMs": 1601, "error": {"message": "Ambiguous target: multiple visible enabled controls match. Use the returned candidates to add an observed ID, role, class or parent scope. No input was sent.", "type": "AmbiguousTarget", "category": "OperationStopped", "candidates": [{"name": "Save as", "id": "", "role": "MenuItem", "className": "MenuFlyoutItem", "enabled": true, "offscreen": false, "focused": false, "patterns": ["Invoke", "ScrollItem", "VirtualizedItem"], "bounds": {"x": 10, "y": 290, "width": 278, "height": 36}, "selector": {"Name": "Save as"}}, {"name": "Save as", "id": "TextBlock", "role": "Text", "className": "TextBlock", "enabled": true, "offscreen": false, "focused": false, "patterns": ["Text", "ScrollItem"], "bounds": {"x": 24, "y": 295, "width": 136, "height": 24}, "selector": {"Name": "Save as", "AutomationId": "TextBlock"}}]}, "outcome": "not-dispatched", "data": null}
+
+L155 2026-09-30T15:38:26.431Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":3,"command":"click","arguments":["-Name","Save as","-ControlType","MenuItem","-Scope","FocusedWindow"]},
+  {"stepIndex":3,"command":"observe","arguments":["-Scope","FocusedWindow","-Depth","5","-MaxElements","160"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\notepad-walkthrough-20260930-001 -RequestsStdin
+
+{"command": "click", "ok": true, "durationMs": 1487, "error": null, "outcome": "completed", "data": {"clicked": true, "verified": null, "verificationPerformed": false, "action": "InvokePattern", "point": null, "element": {"name": "Save as", "automationId": "", "className": "MenuFlyoutItem", "localizedControlType": "menu item", "processId": 15144, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "MenuItem", "processName": "Notepad", "boundingRectangle": {"x": 10, "y": 290, "width": 278, "height": 36}, "boundsStatus": "valid", "supportedPatterns": ["Invoke", "ScrollItem", "VirtualizedItem"], "isModal": false, "propertyErrors": []}}}
+
+{"command": "observe", "ok": true, "durationMs": 4560, "error": null, "outcome": "completed"}
+
+L161 2026-09-30T15:38:56.852Z shell_command
+New-Item -ItemType Directory -Force -LiteralPath 'C:\diplomamunka\automated-gui-testing-agent-framework\runs\notepad-walkthrough-20260930-001\evidence\exploration\notepad-output' | Out-Null
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":3,"command":"type","arguments":["-TargetMode","Focused","-Text","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\notepad-output\\NotepadTest.txt","-PathKind","SaveFile","-ExpectedFocusJson","{\"AutomationId\":\"1001\",\"ClassName\":\"Edit\"}","-FallbackReason","Native Save As filename field is focused and selected, exposed as an opaque Edit pane.","-FallbackEvidence","observe command d93851d8c8e743b3800bc9b8ff8dcec2 focusedElement AutomationId 1001 ClassName Edit"]},
+  {"stepIndex":3,"command":"click","arguments":["-Name","Save","-AutomationId","1","-Scope","FocusedWindow"]},
+  {"stepIndex":3,"command":"wait-file","arguments":["-Path","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\notepad-output\\NotepadTest.txt","-TimeoutMs","10000","-MinBytes","1","-StableMs","500"]},
+  {"stepIndex":3,"command":"observe","arguments":["-Depth","4","-MaxElements","120"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\notepad-walkthrough-20260930-001 -RequestsStdin
+
+{"command": "type", "ok": false, "durationMs": 157, "error": {"message": "Path validation failed before typing: Destination directory does not exist: C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\notepad-output. Use a prepared output folder or create the required folder before entering the filename. No input was sent; no file or directory was created.", "type": "PathValidationFailed", "category": "OperationStopped", "candidates": null}, "outcome": "not-dispatched", "data": null}
+
+L167 2026-09-30T15:39:18.649Z shell_command
+New-Item -ItemType Directory -Force -Path 'C:\diplomamunka\automated-gui-testing-agent-framework\runs\notepad-walkthrough-20260930-001\evidence\exploration\notepad-output' | Out-Null
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":3,"command":"type","arguments":["-TargetMode","Focused","-Text","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\notepad-output\\NotepadTest.txt","-PathKind","SaveFile","-ExpectedFocusJson","{\"AutomationId\":\"1001\",\"ClassName\":\"Edit\"}","-FallbackReason","Native Save As filename field is focused and selected, exposed as an opaque Edit pane.","-FallbackEvidence","observe command d93851d8c8e743b3800bc9b8ff8dcec2 focusedElement AutomationId 1001 ClassName Edit"]},
+  {"stepIndex":3,"command":"click","arguments":["-Name","Save","-AutomationId","1","-Scope","FocusedWindow"]},
+  {"stepIndex":3,"command":"wait-file","arguments":["-Path","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\notepad-output\\NotepadTest.txt","-TimeoutMs","10000","-MinBytes","1","-StableMs","500"]},
+  {"stepIndex":3,"command":"observe","arguments":["-Depth","4","-MaxElements","120"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\notepad-walkthrough-20260930-001 -RequestsStdin
+
+{"command": "type", "ok": true, "durationMs": 1310, "error": null, "outcome": "completed", "data": {"typed": true, "textLength": 143, "verified": null, "verificationPerformed": false, "verification": null, "inputMethod": "UnicodeKeyboard", "focusMethod": "ExistingFocus", "targetMode": "Focused", "target": {"name": "Notepad GUI Test", "automationId": "1001", "className": "Edit", "localizedControlType": "pane", "processId": 15144, "nativeWindowHandle": 328766, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": true, "isKeyboardFocusable": false, "controlType": "Pane", "processName": "Notepad", "boundingRectangle": {"x": 169, "y": 405, "width": 753, "height": 22}, "boundsStatus": "valid", "supportedPatterns": [], "isModal": false, "propertyErrors": []}, "inputFocus": {"native": {"ready": true, "owned": true, "stable": true, "enabled": true, "withinForeground": true, "foregroundHandle": 1835786, "focusHandle": 328766, "foregroundProcessId": 15144, "focusProcessId": 15144, "caretHandle": 328766, "menuActive": false}, "source": "UIAutomation+Win32", "waitMs": 192}, "clearMethod": null, "pathValidation": {"kind": "SaveFile", "path": "C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\notepad-output\\NotepadTest.txt", "parentPath": "C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\notepad-output", "validated": true}}}
+
+{"command": "click", "ok": true, "durationMs": 1837, "error": null, "outcome": "completed", "data": {"clicked": true, "verified": null, "verificationPerformed": false, "action": "Mouse", "point": {"x": 751, "y": 554}, "element": {"name": "Save", "automationId": "1", "className": "Button", "localizedControlType": "pane", "processId": 15144, "nativeWindowHandle": 1704990, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": false, "controlType": "Pane", "processName": "Notepad", "boundingRectangle": {"x": 696, "y": 537, "width": 110, "height": 33}, "boundsStatus": "valid", "supportedPatterns": [], "isModal": false, "propertyErrors": []}}}
+
+{"command": "wait-file", "ok": true, "durationMs": 647, "error": null, "outcome": "completed", "data": {"path": "C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\notepad-output\\NotepadTest.txt", "exists": true, "conditionMet": true, "length": 87, "minBytes": 1, "stableMs": 500, "timedOut": false}}
+
+{"command": "observe", "ok": true, "durationMs": 909, "error": null, "outcome": "completed"}
+
+L173 2026-09-30T15:39:49.096Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":4,"command":"click","arguments":["-Name","File","-AutomationId","File"]},
+  {"stepIndex":4,"command":"click","arguments":["-Name","Close tab","-ControlType","MenuItem","-Scope","FocusedWindow"]},
+  {"stepIndex":4,"command":"click-coordinate","arguments":["-X","688","-Y","22"]},
+  {"stepIndex":4,"command":"click","arguments":["-Name","File","-AutomationId","File"]},
+  {"stepIndex":4,"command":"click","arguments":["-Name","Open","-ControlType","MenuItem","-Scope","FocusedWindow"]},
+  {"stepIndex":4,"command":"observe","arguments":["-Scope","FocusedWindow","-Depth","5","-MaxElements","160"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\notepad-walkthrough-20260930-001 -RequestsStdin
+
+{"command": "click", "ok": true, "durationMs": 1521, "error": null, "outcome": "completed", "data": {"clicked": true, "verified": null, "verificationPerformed": false, "action": "InvokePattern", "point": null, "element": {"name": "File", "automationId": "File", "className": "Microsoft.UI.Xaml.Controls.MenuBarItem", "localizedControlType": "menu item", "processId": 15144, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "MenuItem", "processName": "Notepad", "boundingRectangle": {"x": 4, "y": 41, "width": 52, "height": 40}, "boundsStatus": "valid", "supportedPatterns": ["Invoke", "ExpandCollapse", "ScrollItem"], "isModal": false, "propertyErrors": []}}}
+
+{"command": "click", "ok": true, "durationMs": 316, "error": null, "outcome": "completed", "data": {"clicked": true, "verified": null, "verificationPerformed": false, "action": "InvokePattern", "point": null, "element": {"name": "Close tab", "automationId": "", "className": "MenuFlyoutItem", "localizedControlType": "menu item", "processId": 15144, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "MenuItem", "processName": "Notepad", "boundingRectangle": {"x": 10, "y": 462, "width": 278, "height": 36}, "boundsStatus": "valid", "supportedPatterns": ["Invoke", "ScrollItem", "VirtualizedItem"], "isModal": false, "propertyErrors": []}}}
+
+{"command": "click-coordinate", "ok": true, "durationMs": 374, "error": null, "outcome": "completed", "data": {"clicked": true, "point": {"x": 688, "y": 22}, "button": "Left", "action": "Mouse"}}
+
+{"command": "click", "ok": true, "durationMs": 217, "error": null, "outcome": "completed", "data": {"clicked": true, "verified": null, "verificationPerformed": false, "action": "InvokePattern", "point": null, "element": {"name": "File", "automationId": "File", "className": "Microsoft.UI.Xaml.Controls.MenuBarItem", "localizedControlType": "menu item", "processId": 15144, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "MenuItem", "processName": "Notepad", "boundingRectangle": {"x": 4, "y": 41, "width": 52, "height": 40}, "boundsStatus": "valid", "supportedPatterns": ["Invoke", "ExpandCollapse", "ScrollItem"], "isModal": false, "propertyErrors": []}}}
+
+{"command": "click", "ok": true, "durationMs": 261, "error": null, "outcome": "completed", "data": {"clicked": true, "verified": null, "verificationPerformed": false, "action": "InvokePattern", "point": null, "element": {"name": "Open", "automationId": "", "className": "MenuFlyoutItem", "localizedControlType": "menu item", "processId": 15144, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "MenuItem", "processName": "Notepad", "boundingRectangle": {"x": 10, "y": 189, "width": 278, "height": 46}, "boundsStatus": "valid", "supportedPatterns": ["Invoke", "ScrollItem", "VirtualizedItem"], "isModal": false, "propertyErrors": []}}}
+
+{"command": "observe", "ok": true, "durationMs": 1674, "error": null, "outcome": "completed"}
+
+L179 2026-09-30T15:40:13.696Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":4,"command":"type","arguments":["-TargetMode","Focused","-Text","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\notepad-output\\NotepadTest.txt","-PathKind","OpenFile","-ExpectedFocusJson","{\"AutomationId\":\"1148\",\"ClassName\":\"Edit\"}","-FallbackReason","Native Open filename field is focused and exposed as an opaque Edit pane.","-FallbackEvidence","observe command a34fef77a5484c75bb624c49b35cc294 focusedElement AutomationId 1148 ClassName Edit"]},
+  {"stepIndex":4,"command":"click","arguments":["-Name","Open","-AutomationId","1","-Scope","FocusedWindow"]},
+  {"stepIndex":4,"command":"observe","arguments":["-Depth","4","-MaxElements","120"]},
+  {"stepIndex":4,"command":"read","arguments":["-ClassName","RichEditD2DPT","-Scope","FocusedWindow","-TimeoutMs","1000"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\notepad-walkthrough-20260930-001 -RequestsStdin
+
+{"command": "type", "ok": true, "durationMs": 1434, "error": null, "outcome": "completed", "data": {"typed": true, "textLength": 143, "verified": null, "verificationPerformed": false, "verification": null, "inputMethod": "UnicodeKeyboard", "focusMethod": "ExistingFocus", "targetMode": "Focused", "target": {"name": "", "automationId": "1148", "className": "Edit", "localizedControlType": "pane", "processId": 15144, "nativeWindowHandle": 1966676, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": true, "isKeyboardFocusable": false, "controlType": "Pane", "processName": "Notepad", "boundingRectangle": {"x": 234, "y": 505, "width": 423, "height": 20}, "boundsStatus": "valid", "supportedPatterns": [], "isModal": false, "propertyErrors": []}, "inputFocus": {"native": {"ready": true, "owned": true, "stable": true, "enabled": true, "withinForeground": true, "foregroundHandle": 1114196, "focusHandle": 1966676, "foregroundProcessId": 15144, "focusProcessId": 15144, "caretHandle": 1966676, "menuActive": false}, "source": "UIAutomation+Win32", "waitMs": 160}, "clearMethod": null, "pathValidation": {"kind": "OpenFile", "path": "C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\notepad-output\\NotepadTest.txt", "parentPath": "C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\notepad-output", "validated": true}}}
+
+{"command": "click", "ok": true, "durationMs": 1459, "error": null, "outcome": "completed", "data": {"clicked": true, "verified": null, "verificationPerformed": false, "action": "Mouse", "point": {"x": 751, "y": 554}, "element": {"name": "Open", "automationId": "1", "className": "Button", "localizedControlType": "pane", "processId": 15144, "nativeWindowHandle": 1966114, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": false, "controlType": "Pane", "processName": "Notepad", "boundingRectangle": {"x": 696, "y": 537, "width": 110, "height": 33}, "boundsStatus": "valid", "supportedPatterns": [], "isModal": false, "propertyErrors": []}}}
+
+{"command": "observe", "ok": true, "durationMs": 1074, "error": null, "outcome": "completed"}
+
+{"command": "read", "ok": true, "durationMs": 214, "error": null, "outcome": "completed", "data": {"text": "Notepad GUI Test\rThis file tests creating, saving, reopening, and printing in Notepad.", "textSource": "ValuePattern", "element": {"name": "Text editor", "automationId": "", "className": "RichEditD2DPT", "localizedControlType": "document", "processId": 15144, "nativeWindowHandle": 1179732, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": true, "isKeyboardFocusable": true, "controlType": "Document", "processName": "Notepad", "boundingRectangle": {"x": -1, "y": 82, "width": 1924, "height": 719}, "boundsStatus": "valid", "supportedPatterns": ["Value", "Text"], "isModal": false, "propertyErrors": []}}}
+
+L185 2026-09-30T15:40:33.174Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":5,"command":"click","arguments":["-Name","File","-AutomationId","File"]},
+  {"stepIndex":5,"command":"click","arguments":["-Name","Print","-ControlType","MenuItem","-Scope","FocusedWindow"]},
+  {"stepIndex":5,"command":"observe","arguments":["-Scope","FocusedWindow","-Depth","5","-MaxElements","180"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\notepad-walkthrough-20260930-001 -RequestsStdin
+
+{"command": "click", "ok": true, "durationMs": 1515, "error": null, "outcome": "completed", "data": {"clicked": true, "verified": null, "verificationPerformed": false, "action": "InvokePattern", "point": null, "element": {"name": "File", "automationId": "File", "className": "Microsoft.UI.Xaml.Controls.MenuBarItem", "localizedControlType": "menu item", "processId": 15144, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "MenuItem", "processName": "Notepad", "boundingRectangle": {"x": 4, "y": 41, "width": 52, "height": 40}, "boundsStatus": "valid", "supportedPatterns": ["Invoke", "ExpandCollapse", "ScrollItem"], "isModal": false, "propertyErrors": []}}}
+
+{"command": "click", "ok": true, "durationMs": 391, "error": null, "outcome": "completed", "data": {"clicked": true, "verified": null, "verificationPerformed": false, "action": "InvokePattern", "point": null, "element": {"name": "Print", "automationId": "", "className": "MenuFlyoutItem", "localizedControlType": "menu item", "processId": 15144, "nativeWindowHandle": 0, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": true, "controlType": "MenuItem", "processName": "Notepad", "boundingRectangle": {"x": 10, "y": 497, "width": 278, "height": 46}, "boundsStatus": "valid", "supportedPatterns": ["Invoke", "ScrollItem", "VirtualizedItem"], "isModal": false, "propertyErrors": []}}}
+
+{"command": "observe", "ok": true, "durationMs": 1455, "error": null, "outcome": "completed"}
+
+L191 2026-09-30T15:40:50.864Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":5,"command":"windows","arguments":["-TimeoutMs","2000"]},
+  {"stepIndex":5,"command":"observe","arguments":["-Depth","5","-MaxElements","200"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\notepad-walkthrough-20260930-001 -RequestsStdin
+
+{"command": "windows", "ok": true, "durationMs": 1197, "error": null, "outcome": "completed", "data": {"count": 5, "windows": [{"name": "", "automationId": "", "className": "Shell_TrayWnd", "localizedControlType": "pane", "processId": 7492, "nativeWindowHandle": 131296, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": false, "controlType": "Pane", "processName": "explorer", "boundingRectangle": {"x": 0, "y": 840, "width": 1922, "height": 60}, "boundsStatus": "valid", "supportedPatterns": [], "isModal": false, "propertyErrors": []}, {"name": "Notepad - Print", "automationId": "", "className": "ApplicationFrameWindow", "localizedControlType": "window", "processId": 7492, "nativeWindowHandle": 3670966, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": false, "controlType": "Window", "processName": "explorer", "boundingRectangle": {"x": 421, "y": 0, "width": 1080, "height": 840}, "boundsStatus": "valid", "supportedPatterns": ["Window", "Transform"], "isModal": false, "propertyErrors": []}, {"name": "NotepadTest.txt - Notepad", "automationId": "", "className": "Notepad", "localizedControlType": "window", "processId": 15144, "nativeWindowHandle": 590692, "isEnabled": false, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": false, "controlType": "Window", "processName": "Notepad", "boundingRectangle": {"x": -9, "y": -9, "width": 1940, "height": 858}, "boundsStatus": "valid", "supportedPatterns": ["Window", "Transform"], "isModal": false, "propertyErrors": []}, {"name": "Codex", "automationId": "", "className": "Chrome_WidgetWin_1", "localizedControlType": "window", "processId": 13556, "nativeWindowHandle": 721782, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": false, "controlType": "Window", "processName": "Codex", "boundingRectangle": {"x": 431, "y": 34, "width": 1325, "height": 796}, "boundsStatus": "valid", "supportedPatterns": ["Window", "Transform", "ScrollItem", "ItemContainer"], "isModal": false, "propertyErrors": []}, {"name": "Program Manager", "automationId": "", "className": "Progman", "localizedControlType": "pane", "processId": 7492, "nativeWindowHandle": 65796, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": false, "controlType": "Pane", "processName": "explorer", "boundingRectangle": {"x": 0, "y": 0, "width": 1922, "height": 900}, "boundsStatus": "valid", "supportedPatterns": [], "isModal": false, "propertyErrors": []}]}}
+
+{"command": "observe", "ok": true, "durationMs": 1374, "error": null, "outcome": "completed"}
+
+L197 2026-09-30T15:41:07.968Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":5,"command":"observe","arguments":["-ProcessName","explorer","-WindowTitle","Notepad - Print","-Depth","7","-MaxElements","220"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\notepad-walkthrough-20260930-001 -RequestsStdin
+
+{"command": "observe", "ok": true, "durationMs": 2131, "error": null, "outcome": "completed"}
+
+L203 2026-09-30T15:41:26.937Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":5,"command":"click","arguments":["-AutomationId","printerSelector"]},
+  {"stepIndex":5,"command":"observe","arguments":["-Depth","7","-MaxElements","220"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\notepad-walkthrough-20260930-001 -RequestsStdin
+
+{"command": "click", "ok": false, "durationMs": 2101, "error": {"message": "No visible enabled element matches the selector.", "type": "TargetNotFound", "category": "OperationStopped", "candidates": null}, "outcome": "not-dispatched", "data": null}
+
+L209 2026-09-30T15:41:42.247Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":5,"command":"screenshot","arguments":["-OutFile","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\print-ui.png"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\notepad-walkthrough-20260930-001 -RequestsStdin
+
+{"command": "screenshot", "ok": true, "durationMs": 1006, "error": null, "outcome": "completed", "data": {"path": "C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\print-ui.png", "region": {"x": 0, "y": 0, "width": 1922, "height": 900}, "format": "PNG", "coordinateSpace": "PhysicalScreenPixels", "imageWidth": 1922, "imageHeight": 900, "hint": "Image pixels map to physical screen pixels plus region.x/y. Inspect the image before choosing a fallback point; do not use coordinates from a scaled preview."}}
+
+L212 2026-09-30T15:41:53.567Z view_image
+{'path': 'C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\print-ui.png', 'detail': 'high'}
+
+OUTPUT [{"type": "input_image", "image_url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAB4IAAAOECAYAAABEifz+AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAP+lSURBVHhe7P17uC1nXeD75p/zxz5P7923Z3fbobdu++xuiYfedJvjBfaBbbdg9NC2toIkKkgEDELLxZaIdmjRJnJpbUkDiqBGInIJISHILRADSBBIArmuZGVlrVwh5AKBcIcE6zy/sdY7V83fqBrjnXPNMecY7/j88XnWnDVq1KiqOTNmvfVN1Tjurrvu6gBgyJ133jnXpz/96U0+9alPbbjjjjsG3X777RO33nrrxC233DJx8803Txw6dGji4MGD3U033TRx4MCB7h3veEd34YUXdm9/+9tX3gUXXLDrzj///Ka97W1va955553HDnvrW98K7JBzzz2XJZF/NtCK/HecY5ePNzkqjzdak8eLuyGPi1dRnJOIcxNxjqKcr4hzF+U8RjmvUc5zlPMe5TxIPj9S9M+lhHyuJZ+L6fvMZz4zkc/pAEA4Lk8AYPnEgX0MDGLwUKLoot14443d/v37Z7rhhhtmuv766zfs27dv4rrrrpu49tpru2uuuaa7+uqrN7nqqqsmrrzyyu6Tn/zkxBVXXDHxlre8pfvGN74BAAAAsCciBsc5kzh3spUYfNttt43G4HkheFYMLiFYDAZgiBAMsMTiID4GDTGgiMHCPffc0913333dF77whYX6/Oc/PxGvNcvnPve5TT772c9uuPfeezfEehdD2xj6VxeXgU9scwyUQgya3vWud00NwAAAAAB2S1wZHCG4H4PjvE2OwUMhuMghOMfgHIFnhWAxGIBZhGCAJRUH/jGIiH+/+MUvdl//+td3zde+9rWJr371qzN95Stf2eTLX/7yhi996UsbYv2LsdjcD8klIN99990b+yMGMxdddNHUAAwAAABgtwjBAKwSIRhgCcUAIAYNcQVtBNccahdNCAYAAACYJgQDsEqEYIAlEwfwMUCIIJoD7W4RggEAAACmCcEArBIhGGCJxAF7DA7iID5Caw60u0UIBgAAAJgmBAOwSoRggCUSB/633377rn8mcCYEAwAAAEwTggFYJUIwwBKJCBz/5jC7m0oEnheCcwSuCcGzInAJwRGA47ORcwSOgY0QDAAAAOylCMH79+/fiMEhx+AIwbNicJz/mRWCh2Jwjr9jIVgMBqBPCAZYEnGgHgOBCKM5zu4mIRgAAABgmBAMwCoRggGWRBzkL9NtoYVgAAAAgM2EYABWyUJD8D/4tddM5K/D/+O5rxz8GmBdlQP/iKg5zu4mIRgAAABgmBAMwCpZSAg+86Yvdy+88cvd3zn9jyaR99f33d/9ndNfM/n6V6+5r/uVqz83+fo5V97bPfuT90y+ftYVd3W/dJk/UsD6EoKFYAAAAGC5CcEAWxfvla95zWu6//bf/tuU1772td3HPvaxqeesmle/+tVV2xHz/MEf/MHU9EVZSAg+Y/+Xuv98wxe7X7/+/u7X9n2hO/3az08C8H+6+nPd8676bPfcIwH4lz9x9yQAP/Pyu7pnXPaZ7rSP3zm1LIB1IQQLwQAAAMByE4IBti7eG6+66qpB73rXuyZBuCaiLrNY/99/xStmbkfNPDttISE4AvALIgBf94Xu+dd+vvtPcRXwVZ/rnnvlZ7vnfPLe7pc/cU/3H6+4exKA4yrgCMC/+LFPd0/76KemlgWwLoRgIRgAAACY9h3f8R3dH//xH09Nz2KemDdP30lCMEC9eA+8+OKLu/e9732DLr/88sl8EYPjyuD8/FUzK/TOemyRFhKCf+1IAC63gY6rgMttoPsB+BlHAvDTP/qp7ql/c0d36kdun1oWwLoQgoVgAAAAYNrrXve67rjjjpsZg+OxmCfmzY/tJCEYoF68N8ctoc8555xBv/d7vzeJwXFlcFwVnJ+/ioaC79C03bKQENy/DXR8/u88/+hF53RPufT27uc/fNvUsvbKi170ou7kk0/u9u3bN/XYG9/4xsnjefo8cRAQ8vTd9jd/8zeTbcvTgb21nRB8/PHHT5x99tlTj8V/5/FYnj5PBOAYRCxDCH7Pe97Tfdu3fVv3kpe8ZLJOj3rUo6YGYAAAAED7ZsXg3YrAQQgGqBdxNyJvnl5Eb4urgVsKwaEffvcyAoeFhOD+5wDn6DvkH/3m67sn//Wt3c996JapZe2VEoKHgu92Q3AsLyJsnr7bhGDYmjhAv/LKKwf/x5CddCwh+IQTTpgMOvqPbTcE/+Iv/uLkucsYguO9Nw/AAAAAgPUwFIN3MwIHIRjYCRE9tyI/f1XMC8FvfvObu7/8y79sLgSHEoD3MgKHhYTguA30rM8BLreBfsqlt3VP/vCt3ZM+dEv3sx+8ufuZD+z91bJFxIZXvvKVkxhyySWXbHpMCIb18d7
+
+L218 2026-09-30T15:42:01.245Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":5,"command":"click-coordinate","arguments":["-X","770","-Y","148"]},
+  {"stepIndex":5,"command":"screenshot","arguments":["-OutFile","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\printer-list.png"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\notepad-walkthrough-20260930-001 -RequestsStdin
+
+{"command": "click-coordinate", "ok": true, "durationMs": 900, "error": null, "outcome": "completed", "data": {"clicked": true, "point": {"x": 770, "y": 148}, "button": "Left", "action": "Mouse"}}
+
+{"command": "screenshot", "ok": true, "durationMs": 416, "error": null, "outcome": "completed", "data": {"path": "C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\printer-list.png", "region": {"x": 0, "y": 0, "width": 1922, "height": 900}, "format": "PNG", "coordinateSpace": "PhysicalScreenPixels", "imageWidth": 1922, "imageHeight": 900, "hint": "Image pixels map to physical screen pixels plus region.x/y. Inspect the image before choosing a fallback point; do not use coordinates from a scaled preview."}}
+
+L221 2026-09-30T15:42:12.617Z view_image
+{'path': 'C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\printer-list.png', 'detail': 'high'}
+
+OUTPUT [{"type": "input_image", "image_url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAB4IAAAOECAYAAABEifz+AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAP+lSURBVHhe7P1ruG15Xdj51pvzos+T7tye7jZld+x4nk4kx1w6ddRgH9MmUTEnndZWwcILUqKWkXiLUpo0RkMsEWKUasALJJYQolxKoFAuhYgQSogUUEVV7brfgaK4U9wJkHGe39z1W/XfvznGmP+195prrTnW58Xn2XuNOea4zbnHGmN895jzvAceeGAAgDH333//Ru95z3vO8O53v3vPu971rlH33Xffyj333LNy9913r9x1110rd95558odd9wx3H777Su33Xbb8IpXvGK48sorh5e//OU772Uve9mhe+lLX7pov/u7v7t4V1xxBQfsJS95CXBAXvziF3NM1NcGlqL+Hufc1eNNHlbPN5amni8ehnpevIvimkRcm4hrFHm9Iq5d5HWMvK6R1znyukdeB6nXR1J7LSXUay31Wkzrve9970q9pgMA4bw6AIDjJw7s48QgTh4yim7brbfeOtxyyy2zbr755lk33XTTnlOnTq3ceOONKzfccMNw/fXXD+985zvPcN11161ce+21wzve8Y6Vt73tbSsvetGLhs9+9rMAAAAARyJicFwziWsn+4nB995772QM3hSC52JwhmAxGIAxQjDAMRYH8XHSECcUcbLw/ve/f/jwhz88fPSjH92qj3zkIysxrzkf+tCHzvDBD35wzwc+8IE9sdxpbB1De3dxnvjEOseJUoiTple+8pVrJ2AAAAAAhyXuDI4Q3MbguG5TY/BYCE41BNcYXCPwXAgWgwGYIwQDHFNx4B8nEfHnxz72seEzn/nMofn0pz+98qlPfWrWJz/5yTN84hOf2PPxj398Tyx/morNbUjOgPy+971vb3vEycxVV121dgIGAAAAcFiEYAB2iRAMcAzFCUCcNMQdtBFca6jdNiEYAAAAYJ0QDMAuEYIBjpk4gI8ThAiiNdAeFiEYAAAAYJ0QDMAuEYIBjpE4YI+TgziIj9BaA+1hEYIBAAAA1gnBAOwSIRjgGIkD//vuu+/QvxO4EoIBAAAA1gnBAOwSIRjgGIkIHH/WMHuYMgJvCsE1AveE4LkInCE4AnB8N3KNwHFiIwQDAAAARylC8C233LIXg0ONwRGC52JwXP+ZC8FjMbjG36kQLAYD0BKCAY6JOFCPE4EIozXOHiYhGAAAAGCcEAzALhGCAY6JOMg/Th8LLQQDAAAAnEkIBmCXbDUE/7mf+vWV+vfw//ixZ47+HeCkygP/iKg1zh4mIRgAAABgnBAMwC7ZSgi+9PZPDD9z6yeGP3XJb6wi7z879eDwpy759dXff/L6Dw//9J0fWv39R6/9wPAj73j/6u9PfNsDwz9+q19SwMklBAvBAAAAwPEmBAPsX+wrf/3Xf3341//6X695znOeM/yn//Sf1p6za5797Gd3rUeM86u/+qtrw7dlKyH4ybd8fPi/bv7Y8M9uenD4qVMfHS654SOrAPwT7/zQ8OPXfXD4sYcC8A+//X2rAPxD1zww/OBb3ztc/Cf3r00L4KQQgoVgAAAA4HgTggH2L/aN11133ahXvvKVqyDcE1GPs1j+X3nGM2bXo2ecg7aVEBwB+KcjAN/40eFJN3xk+Im4C/i6Dw0/du0Hhx99xweGH377+4d/8rb3rQJw3AUcAfgH/tN7hu97y7vXpgVwUgjBQjAAAACw7ku+5EuGf/tv/+3a8CrGiXHr8IMkBAP0i33g6173uuG1r33tqGuuuWY1XsTguDO4Pn/XzIXeuce2aSsh+KceCsD5MdBxF3B+DHQbgH/woQD8/W959/CEN79ruOiP71ubFsBJIQQLwQAAAMC65z73ucN55503G4PjsRgnxq2PHSQhGKBf7JvjI6Gf//znj/o3/+bfrGJw3BkcdwXX5++iseA7NuywbCUEtx8DHd//u8l/93PPHx5/9X3D97zp3rVpHZWf+7mfGy688MLh1KlTa4/99m//9urxOnyTOAgIdfhhe/Ob37xatzocOFpnE4LPP//8lcsvv3ztsfh3Ho/V4ZtEAI6TiOMQgl/96lcPX/RFXzQ89alPXS3T13zN16ydgAEAAADLNxeDDysCByEYoF/E3Yi8dXiK3hZ3Ay8pBIc2/B5lBA5bCcHt9wDX6Dvmv/vZ5w2P+4/3DN/1xrvXpnVUMgSPBd+zDcExvYiwdfhhE4Jhf+IA/dprrx39jyEH6VxC8CMe8YjVSUf72NmG4B/4gR9YPfc4huDY99YTMAAAAOBkGIvBhxmBgxAMHISInvtRn78rNoXgF77whcPv/d7vLS4EhwzARxmBw1ZCcHwM9Nz3AOfHQD/+6nuHx73pnuG733j38J1vuGv4jj86+rtlU8SGZz7
+
+L227 2026-09-30T15:42:20.017Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":5,"command":"click-coordinate","arguments":["-X","581","-Y","57"]},
+  {"stepIndex":5,"command":"click-coordinate","arguments":["-X","1091","-Y","788"]},
+  {"stepIndex":5,"command":"observe","arguments":["-Scope","FocusedWindow","-Depth","5","-MaxElements","160"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\notepad-walkthrough-20260930-001 -RequestsStdin
+
+{"command": "click-coordinate", "ok": true, "durationMs": 741, "error": null, "outcome": "completed", "data": {"clicked": true, "point": {"x": 581, "y": 57}, "button": "Left", "action": "Mouse"}}
+
+{"command": "click-coordinate", "ok": true, "durationMs": 42, "error": null, "outcome": "completed", "data": {"clicked": true, "point": {"x": 1091, "y": 788}, "button": "Left", "action": "Mouse"}}
+
+{"command": "observe", "ok": false, "durationMs": 546, "error": {"message": "FocusedWindow belongs to another application. Focus the owned application explicitly.", "type": "System.Management.Automation.RuntimeException", "category": "OperationStopped"}, "outcome": "completed"}
+
+L233 2026-09-30T15:42:35.333Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":5,"command":"screenshot","arguments":["-OutFile","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\after-print-click.png"]},
+  {"stepIndex":5,"command":"windows","arguments":["-TimeoutMs","2000"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\notepad-walkthrough-20260930-001 -RequestsStdin
+
+{"command": "screenshot", "ok": true, "durationMs": 966, "error": null, "outcome": "completed", "data": {"path": "C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\after-print-click.png", "region": {"x": 0, "y": 0, "width": 1922, "height": 900}, "format": "PNG", "coordinateSpace": "PhysicalScreenPixels", "imageWidth": 1922, "imageHeight": 900, "hint": "Image pixels map to physical screen pixels plus region.x/y. Inspect the image before choosing a fallback point; do not use coordinates from a scaled preview."}}
+
+{"command": "windows", "ok": true, "durationMs": 706, "error": null, "outcome": "completed", "data": {"count": 5, "windows": [{"name": "", "automationId": "", "className": "Shell_TrayWnd", "localizedControlType": "pane", "processId": 7492, "nativeWindowHandle": 131296, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": false, "controlType": "Pane", "processName": "explorer", "boundingRectangle": {"x": 0, "y": 840, "width": 1922, "height": 60}, "boundsStatus": "valid", "supportedPatterns": [], "isModal": false, "propertyErrors": []}, {"name": "Notepad - Print", "automationId": "", "className": "ApplicationFrameWindow", "localizedControlType": "window", "processId": 7492, "nativeWindowHandle": 3670966, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": false, "controlType": "Window", "processName": "explorer", "boundingRectangle": {"x": 421, "y": 0, "width": 1080, "height": 840}, "boundsStatus": "valid", "supportedPatterns": ["Window", "Transform"], "isModal": false, "propertyErrors": []}, {"name": "NotepadTest.txt - Notepad", "automationId": "", "className": "Notepad", "localizedControlType": "window", "processId": 15144, "nativeWindowHandle": 590692, "isEnabled": false, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": false, "controlType": "Window", "processName": "Notepad", "boundingRectangle": {"x": -9, "y": -9, "width": 1940, "height": 858}, "boundsStatus": "valid", "supportedPatterns": ["Window", "Transform"], "isModal": false, "propertyErrors": []}, {"name": "Codex", "automationId": "", "className": "Chrome_WidgetWin_1", "localizedControlType": "window", "processId": 13556, "nativeWindowHandle": 721782, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": false, "controlType": "Window", "processName": "Codex", "boundingRectangle": {"x": 431, "y": 34, "width": 1325, "height": 796}, "boundsStatus": "valid", "supportedPatterns": ["Window", "Transform", "ScrollItem", "ItemContainer"], "isModal": false, "propertyErrors": []}, {"name": "Program Manager", "automationId": "", "className": "Progman", "localizedControlType": "pane", "processId": 7492, "nativeWindowHandle": 65796, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": false, "controlType": "Pane", "processName": "explorer", "boundingRectangle": {"x": 0, "y": 0, "width": 1922, "height": 900}, "boundsStatus": "valid", "supportedPatterns": [], "isModal": false, "propertyErrors": []}]}}
+
+L236 2026-09-30T15:42:48.351Z view_image
+{'path': 'C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\after-print-click.png', 'detail': 'high'}
+
+OUTPUT [{"type": "input_image", "image_url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAB4IAAAOECAYAAABEifz+AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAP+lSURBVHhe7P17vG13Xdh755/nj/O8eto+7eu0NvbU0/O8Wo2PPW3N4yWeB4+tl+ixVisoQRGJCFGpIhaiVkSqRJKASuROxBhELiGEJEIgEIRIMJJAsnPZyc6+5EruEBLuFOh4Xt+5929lrO8cY87fWnvNtef8zfcf79dea8wxx22tPff4jc8ecx73wAMPdAAw5L777pvr3nvv3eQTn/jEhnvuuWfQ3XffPXHnnXdO3HHHHRO33377xKFDhyYOHjzYHThwYGL//v3dpZde2l1yySXdxRdfvPLe+c537rqLLrqoae94xzuad+GFF7LD3v72twM75IILLmBJ5J8NtCL/O87Ry+ebPC6PN1qTx4u7IY+LV1Fck4hrE3GNolyviGsX5TpGua5RrnOU6x7lOki+PlL0r6WEfK0lX4vpu//++yfyNR0ACMflCQAsnzixj4FBDB5KFF202267rdu3b99Mt95660y33HLLhr17907cfPPNEzfddFN34403djfccMMme/bsmbj++uu76667buJjH/vYxNve9rbuy1/+MgAAAMAxETE4rpnEtZOtxOC77rprNAbPC8GzYnAJwWIwAEOEYIAlFifxMWiIAUUMFh566KHukUce6R599NGF+vSnPz0R65rlU5/61Caf/OQnNzz88MMbYruLoX0M/buLy8An9jkGSiEGTe9+97unBmAAAAAAuyXuDI4Q3I/Bcd0mx+ChEFzkEJxjcI7As0KwGAzALEIwwJKKE/8YRMSfn/nMZ7ovfelLu+aLX/zixBe+8IWZPv/5z2/yuc99bsNnP/vZDbH9xVhs7ofkEpAffPDBjeMRg5nLL798agAGAAAAsFuEYABWiRAMsIRiABCDhriDNoJrDrWLJgQDAAAATBOCAVglQjDAkokT+BggRBDNgXa3CMEAAAAA04RgAFaJEAywROKEPQYHcRIfoTUH2t0iBAMAAABME4IBWCVCMMASiRP/u+++e9c/EzgTggEAAACmCcEArBIhGGCJRASOP3OY3U0lAs8LwTkC14TgWRG4hOAIwPHZyDkCx8BGCAYAAACOpQjB+/bt24jBIcfgCMGzYnBc/5kVgodicI6/YyFYDAagTwgGWBJxoh4DgQijOc7uJiEYAAAAYJgQDMAqEYIBlkSc5C/T20ILwQAAAACbCcEArJKFhuB/8Ouvnchfh//Hr75i8GuAdVVO/COi5ji7m4RgAAAAgGFCMACrZCEh+IwDn+t++7bPdX/n9NdNIu9v7n2s+zunv3by9fNufKT7tRs+Nfn6Odc/3P3KdQ9Nvn72xx7ofvEa/0gB60sIFoIBAACA5SYEA2xdvFa+9rWv7V760pdOef3rX9/97d/+7dRzVs2rXvWqqv2IeV796ldPTV+UhYTgF+z7bPdbt36m+81bHut+fe+j3ek3fXoSgP/LDZ/qnrvnk92vHgnAv/zxBycB+JeufaD7hWvu70776H1TywJYF0KwEAwAAAAsNyEYYOvitXHPnj2D3v3ud0+CcE1EXWax/X/08pfP3I+aeXbaQkJwBODfiAB886Pd82/6dPdf4i7gPZ/qfvX6T3bPue7h7pc//lD3nz/24CQAx13AEYCf9bf3dj9/9SemlgWwLoRgIRgAAACY9g3f8A3dn/zJn0xNz2KemDdP30lCMEC9eA284ooruve9732Drr322sl8EYPjzuD8/FUzK/TOemyRFhKCf/1IAC5vAx13AZe3ge4H4F84EoCfefUnumf8zT3dqR+5e2pZAOtCCBaCAQAAgGnnnntud9xxx82MwfFYzBPz5sd2khAMUC9em+Mtod/4xjcO+oM/+INJDI47g+Ou4Pz8VTQUfIem7ZaFhOD+20DH5//O849e9Mbu6Vfd3f3sh++aWtax8qIXvag75ZRTur1790499uY3v3nyeJ4+T5wEhDx9t/3N3/zNZN/ydODY2k4IPv744yfOO++8qcfi73k8lqfPEwE4BhHLEILf8573dF/3dV/XveQlL5ls0xOe8ISpARgAAADQvlkxeLcicBCCAepF3I3Im6cX0dvibuCWQnDoh99jGYHDQkJw/3OAc/Qd8o9+5/zuaX99Z/fUK++YWtaxUkLwUPDdbgiO5UWEzdN3mxAMWxMn6Ndff/3gfwzZSUcTgk844YTJoKP/2HZD8LOe9azJc5cxBMdrbx6AAQAAAOthKAbvZgQOQjCwEyJ6bkV+/qqYF4Lf+ta3dn/5l3/ZXAgOJQAfywgcFhKC422gZ30OcHkb6KdfdVf3tA/f2f3MlXd0P/2h27uf+uCxv1u2iNjwile8YhJD/uqv/mrTY0IwrI/3vve
+
+L242 2026-09-30T15:42:58.126Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":5,"command":"click-coordinate","arguments":["-X","1091","-Y","788"]},
+  {"stepIndex":5,"command":"screenshot","arguments":["-OutFile","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\after-print-second-click.png"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\notepad-walkthrough-20260930-001 -RequestsStdin
+
+{"command": "click-coordinate", "ok": true, "durationMs": 827, "error": null, "outcome": "completed", "data": {"clicked": true, "point": {"x": 1091, "y": 788}, "button": "Left", "action": "Mouse"}}
+
+{"command": "screenshot", "ok": true, "durationMs": 658, "error": null, "outcome": "completed", "data": {"path": "C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\after-print-second-click.png", "region": {"x": 0, "y": 0, "width": 1922, "height": 900}, "format": "PNG", "coordinateSpace": "PhysicalScreenPixels", "imageWidth": 1922, "imageHeight": 900, "hint": "Image pixels map to physical screen pixels plus region.x/y. Inspect the image before choosing a fallback point; do not use coordinates from a scaled preview."}}
+
+L247 2026-09-30T15:43:10.858Z view_image
+{'path': 'C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\after-print-second-click.png', 'detail': 'high'}
+
+OUTPUT [{"type": "input_image", "image_url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAB4IAAAOECAYAAABEifz+AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAP+lSURBVHhe7P1ptG3nXd/5+s19UXekKrnJqCpCqkKl7qgExqUqVfGFhFuXFElokpukoGhNZyxMk0AgkIBTqXICIXR2SLCL3iQIjBU3CNuScSPbwgjLEB/ZOrKko+aol7EsycY9tgkk847fkp6tef5rzrXm7s7e69mfF59x9p5rrtntfdaZz/yeudbTHn300QEApjzyyCNbvec977nE7/zO7+x597vfPenhhx9eefDBB1ceeOCBlfvvv3/lvvvuW7n33nuHe+65Z+XixYvDtddeO1xzzTXDq1/96p33qle96rJ75Stf2bVf/dVf7d7VV1/NEfuVX/kV4Ii84hWv4JSoPxvoRf13nMOr55s8pY43elPHi5dDHRfvolyTyLWJXKNo1yty7aJdx2jXNdp1jnbdo10HqddHmvG1lKjXWuq1mLH3vve9K/WaDgDE0+oEAE6fnNhnYJDBQ4uix+3uu+8e7rrrro3uvPPOje644449Fy5cWLn99ttXbrvttuHWW28d3vWud13illtuWTl//vxw8803r7zjHe9YefnLXz78/u//PgAAAMCJSAzONZNcO9lPDH7ooYdmY/C2ELwpBrcQLAYDMEUIBjjFchKfQUMGFBksPP7448MHPvCB4UMf+tCx+uAHP7iSdW3yu7/7u5d4//vfv+d973vfnmx3M7WPMb67uA18ss8ZKEUGTa997WvXBmAAAAAAl0vuDE4IHsfgXLepMXgqBDc1BNcYXCPwphAsBgOwiRAMcErlxD+DiPz5kY98ZPjkJz952XziE59Y+fjHP77R7/3e713iYx/72J6PfvSje7L9zVxsHofkFpAfe+yxveORwcx11123NgADAAAAuFyEYAB2iRAMcAplAJBBQ+6gTXCtofa4CcEAAAAA64RgAHaJEAxwyuQEPgOEBNEaaC8XIRgAAABgnRAMwC4RggFOkZywZ3CQk/iE1hpoLxchGAAAAGCdEAzALhGCAU6RnPg//PDDl/0zgSshGAAAAGCdEAzALhGCAU6RROD8WcPs5dQi8LYQXCPwkhC8KQK3EJwAnM9GrhE4AxshGAAAADhJCcF33XXXXgyOGoMTgjfF4Fz/2RSCp2Jwjb9zIVgMBmBMCAY4JXKinoFAwmiNs5eTEAwAAAAwTQgGYJcIwQCnRE7yT9PbQgvBAAAAAJcSggHYJccagv/4P/rZlfp1/N++6ycmvwY4q9qJfyJqjbOXkxAMAAAAME0IBmCXHEsI/qF7Pjb8k7s/NvyR5/zcKvL+4wsfHv7Ic3529fX33PqB4R+863dXX//98+8bvvPmx1dff/s7Hh3+7jn/SAFnlxAsBAMAAACnmxAMsH95rfzZn/3Z4V/8i3+x5kUvetHw7/7dv1t7zq75qZ/6qUX7kXl++qd/em36cTmWEPzcuz46/J93fmT4x3d8ePhHFz40POe2D64C8D981+8O333L+4fvejIAf8c7H1sF4G+76dHh75x77/Ctb39kbVkAZ4UQLAQDAAAAp5sQDLB/eW285ZZbJr32ta9dBeElEfU0y/b/+AtesHE/lsxz1I4lBCcA/+8JwLd/aPje2z44/MPcBXzL7w7fdf79w9+/+X3Dd7zz8eHvveOxVQDOXcAJwN/y794zfNNv/87asgDOCiFYCAYAAADWfdqnfdrwr//1v16bXmWezFunHyUhGGC5vAa++c1vHt74xjdOuummm1bzJQbnzuD6/F2zKfRueuw4HUsI/kdPBuD2NtC5C7i9DfQ4AP+dJwPwN//27wzP/q13D1e87eG1ZQGcFUKwEAwAAACs+/mf//nhaU972sYYnMcyT+atjx0lIRhgubw25y2hX/ziF0/6l//yX65icO4Mzl3B9fm7aCr4Tk27XI4lBI/fBjqf/7vNf/H9Lx6edePDwze89aG1ZZ2U7//+7x+e8YxnDBcuXFh77N/+23+7erxO3yYnAVGnX26/9Vu/tdq3Oh04WQcJwZ/6qZ+6cuWVV649lr/neaxO3yYBOIOI0xCCX//61w+f8imfMvzIj/zIaps+93M/d20ABgAAAPRvUwy+XBE4hGCA5RJ3E3nr9Ca9LXcD9xSCYxx+TzICx7GE4PHnANfoO+W/+L5fGp75mw8OX3fDA2vLOiktBE8F34OG4CwvEbZOv9yEYNifnKCfP39+8j+GHKXDhODP+IzPWA06xo8dNAR/y7d8y+q5pzEE57W3DsAAAACAs2EqBl/OCBxCMHAUEj33oz5/V2wLwS972cuG17zmNd2F4GgB+CQjcBxLCM7bQG/6HOD2NtDPuvGh4ZlvfXD4+hseGL72N+4fvuYtJ3+3bJPY8BM
+
+L253 2026-09-30T15:43:19.969Z shell_command
+Start-Sleep -Seconds 3
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":5,"command":"screenshot","arguments":["-OutFile","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\print-save-dialog-check.png"]},
+  {"stepIndex":5,"command":"windows","arguments":["-TimeoutMs","2000"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\notepad-walkthrough-20260930-001 -RequestsStdin
+
+{"command": "screenshot", "ok": true, "durationMs": 655, "error": null, "outcome": "completed", "data": {"path": "C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\print-save-dialog-check.png", "region": {"x": 0, "y": 0, "width": 1922, "height": 900}, "format": "PNG", "coordinateSpace": "PhysicalScreenPixels", "imageWidth": 1922, "imageHeight": 900, "hint": "Image pixels map to physical screen pixels plus region.x/y. Inspect the image before choosing a fallback point; do not use coordinates from a scaled preview."}}
+
+{"command": "windows", "ok": true, "durationMs": 526, "error": null, "outcome": "completed", "data": {"count": 4, "windows": [{"name": "", "automationId": "", "className": "Shell_TrayWnd", "localizedControlType": "pane", "processId": 7492, "nativeWindowHandle": 131296, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": false, "controlType": "Pane", "processName": "explorer", "boundingRectangle": {"x": 0, "y": 840, "width": 1922, "height": 60}, "boundsStatus": "valid", "supportedPatterns": [], "isModal": false, "propertyErrors": []}, {"name": "NotepadTest.txt - Notepad", "automationId": "", "className": "Notepad", "localizedControlType": "window", "processId": 15144, "nativeWindowHandle": 590692, "isEnabled": false, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": false, "controlType": "Window", "processName": "Notepad", "boundingRectangle": {"x": -9, "y": -9, "width": 1940, "height": 858}, "boundsStatus": "valid", "supportedPatterns": ["Window", "Transform"], "isModal": false, "propertyErrors": []}, {"name": "Codex", "automationId": "", "className": "Chrome_WidgetWin_1", "localizedControlType": "window", "processId": 13556, "nativeWindowHandle": 721782, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": false, "controlType": "Window", "processName": "Codex", "boundingRectangle": {"x": 431, "y": 34, "width": 1325, "height": 796}, "boundsStatus": "valid", "supportedPatterns": ["Window", "Transform", "ScrollItem", "ItemContainer"], "isModal": false, "propertyErrors": []}, {"name": "Program Manager", "automationId": "", "className": "Progman", "localizedControlType": "pane", "processId": 7492, "nativeWindowHandle": 65796, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": false, "isKeyboardFocusable": false, "controlType": "Pane", "processName": "explorer", "boundingRectangle": {"x": 0, "y": 0, "width": 1922, "height": 900}, "boundsStatus": "valid", "supportedPatterns": [], "isModal": false, "propertyErrors": []}]}}
+
+L257 2026-09-30T15:43:35.566Z view_image
+{'path': 'C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\print-save-dialog-check.png', 'detail': 'high'}
+
+OUTPUT [{"type": "input_image", "image_url": "data:image/png;base64,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
+
+L263 2026-09-30T15:43:48.522Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":5,"command":"type","arguments":["-TargetMode","Focused","-Text","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\notepad-output\\NotepadTest.pdf","-PathKind","SaveFile","-ExpectedFocusJson","{\"ClassName\":\"Edit\"}","-FallbackReason","Save Print Output filename field is focused and selected in the native PDF output dialog.","-FallbackEvidence","screenshot command 46f74de9b44d484ca6e146daeeecd0e3 shows focused filename field"]},
+  {"stepIndex":5,"command":"click","arguments":["-Name","Save","-ControlType","Button","-Scope","FocusedWindow"]},
+  {"stepIndex":5,"command":"wait-file","arguments":["-Path","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\notepad-output\\NotepadTest.pdf","-TimeoutMs","20000","-MinBytes","1","-StableMs","1000"]},
+  {"stepIndex":5,"command":"read-pdf","arguments":["-Path","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\notepad-output\\NotepadTest.pdf","-TimeoutMs","10000"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\notepad-walkthrough-20260930-001 -RequestsStdin
+
+{"command": "type", "ok": true, "durationMs": 1121, "error": null, "outcome": "completed", "data": {"typed": true, "textLength": 143, "verified": null, "verificationPerformed": false, "verification": null, "inputMethod": "UnicodeKeyboard", "focusMethod": "ExistingFocus", "targetMode": "Focused", "target": {"name": "", "automationId": "1001", "className": "Edit", "localizedControlType": "pane", "processId": 15144, "nativeWindowHandle": 1573674, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": true, "isKeyboardFocusable": false, "controlType": "Pane", "processName": "Notepad", "boundingRectangle": {"x": 217, "y": 474, "width": 753, "height": 22}, "boundsStatus": "valid", "supportedPatterns": [], "isModal": false, "propertyErrors": []}, "inputFocus": {"native": {"ready": true, "owned": true, "stable": true, "enabled": true, "withinForeground": true, "foregroundHandle": 2163284, "focusHandle": 1573674, "foregroundProcessId": 15144, "focusProcessId": 15144, "caretHandle": 1573674, "menuActive": false}, "source": "UIAutomation+Win32", "waitMs": 134}, "clearMethod": null, "pathValidation": {"kind": "SaveFile", "path": "C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\notepad-output\\NotepadTest.pdf", "parentPath": "C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\notepad-output", "validated": true}}}
+
+{"command": "click", "ok": false, "durationMs": 1567, "error": {"message": "No visible enabled element matches the selector.", "type": "TargetNotFound", "category": "OperationStopped", "candidates": null}, "outcome": "not-dispatched", "data": null}
+
+L269 2026-09-30T15:44:06.038Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":5,"command":"click-coordinate","arguments":["-X","799","-Y","623"]},
+  {"stepIndex":5,"command":"wait-file","arguments":["-Path","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\notepad-output\\NotepadTest.pdf","-TimeoutMs","20000","-MinBytes","1","-StableMs","1000"]},
+  {"stepIndex":5,"command":"read-pdf","arguments":["-Path","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\notepad-output\\NotepadTest.pdf","-TimeoutMs","10000"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\notepad-walkthrough-20260930-001 -RequestsStdin
+
+{"command": "click-coordinate", "ok": true, "durationMs": 734, "error": null, "outcome": "completed", "data": {"clicked": true, "point": {"x": 799, "y": 623}, "button": "Left", "action": "Mouse"}}
+
+{"command": "wait-file", "ok": true, "durationMs": 2497, "error": null, "outcome": "completed", "data": {"path": "C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\notepad-output\\NotepadTest.pdf", "exists": true, "conditionMet": true, "length": 38654, "minBytes": 1, "stableMs": 1000, "timedOut": false}}
+
+{"command": "read-pdf", "ok": true, "durationMs": 702, "error": null, "outcome": null, "data": {"path": "C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\notepad-output\\NotepadTest.pdf", "builtinError": null, "reader": "Builtin", "text": "Notepad GUI Test\r\nThis file tests creating, saving, reopening, and printing in Notepad."}}
+
+L275 2026-09-30T15:44:36.346Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":1,"route":"Start Notepad, dismiss first-run teaching tip if present, create/use a new blank tab via the visible tab plus control.","observedResult":"Notepad showed an Untitled tab with the Text editor focused and the status bar at 0 characters.","verificationCommandId":"77f5bc76ab70418a9671773a8747d5b3"},
+  {"stepIndex":2,"route":"Type both testcase lines into the focused Notepad editor using audited focused input and Enter between lines.","observedResult":"The editor was modified, the title reflected Notepad GUI Test, the cursor was on line 2 column 70, and the status bar showed 86 characters.","verificationCommandId":"561bba738f6d424b9cd2fbe8192ff2ef"},
+  {"stepIndex":3,"route":"Use File > Save as, type the run output path into the focused native filename field, keep UTF-8, click Save, and wait for the text file.","observedResult":"NotepadTest.txt existed, was non-empty, the title was NotepadTest.txt - Notepad, and UTF-8 was shown in the status bar.","verificationCommandId":"17b16dd23ff345e586b951fb375f1760","verificationCommandIds":["17b16dd23ff345e586b951fb375f1760","f6e25d8f1a774b7bbd6215f512f8682c"]},
+  {"stepIndex":4,"route":"Close the saved tab, use File > Open, type the saved text path into the native Open dialog, click Open, then read the reopened editor content.","observedResult":"The reopened NotepadTest.txt tab contained both exact testcase lines from the saved file, read from the editor ValuePattern.","verificationCommandId":"835f6a90996e4d3db91b32fb7954fef1","verificationCommandIds":["e4d41022fdb3448682331bcac33c3886","835f6a90996e4d3db91b32fb7954fef1"]},
+  {"stepIndex":5,"route":"Use File > Print, select Microsoft Print to PDF in the system print UI, print, type the PDF output path in the Save Print Output dialog, wait for the PDF, and read it.","observedResult":"NotepadTest.pdf existed, opened through read-pdf, and contained both complete testcase lines.","verificationCommandId":"02d5c26d6d85475e8e00ed9a3ffc4fae","verificationCommandIds":["e7e9c058429145a7afafdcf2ce4c8b51","02d5c26d6d85475e8e00ed9a3ffc4fae"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action RecordSteps -RunRoot .\runs\notepad-walkthrough-20260930-001 -RequestsStdin
+
+OUTPUT Exit code: 0
+Wall time: 7.9 seconds
+Output:
+{"ok":true,"stepIndex":1,"covered":1,"required":5}
+{"ok":true,"stepIndex":2,"covered":2,"required":5}
+{"ok":true,"stepIndex":3,"covered":3,"required":5}
+{"ok":true,"stepIndex":4,"covered":4,"required":5}
+{"ok":true,"stepIndex":5,"covered":5,"required":5}
+
+
+L281 2026-09-30T15:44:52.016Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":5,"command":"close-window","arguments":["-TimeoutMs","0"]},
+  {"stepIndex":5,"command":"windows","arguments":["-ProcessName","notepad","-TimeoutMs","1000"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\notepad-walkthrough-20260930-001 -RequestsStdin
+
+{"command": "close-window", "ok": true, "durationMs": 868, "error": null, "outcome": "completed", "data": {"closed": 1, "closeRequested": 1, "matched": 1, "requests": [{"processId": 15144, "nativeWindowHandle": 590692, "method": "WM_CLOSE"}], "hint": "Close requests were queued. Verify owned windows/process exit and handle any GUI save prompt; closed is the legacy request count, not proof of exit."}}
+
+{"command": "windows", "ok": true, "durationMs": 1201, "error": null, "outcome": "completed", "data": {"count": 0, "windows": []}}
+
+L286 2026-09-30T15:45:06.608Z shell_command
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Complete -RunRoot .\runs\notepad-walkthrough-20260930-001
+
+OUTPUT Exit code: 0
+Wall time: 6.2 seconds
+Output:
+{"ok":true,"covered":5,"routesPath":"C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\logs\\exploration-routes.json","explorationPath":"C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\logs\\exploration.json"}
+
+
+L290 2026-09-30T15:45:19.448Z shell_command
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Get-RuntimeHelp.ps1 -Names Assert-TextContains,Read-AGTAArtifactBytes,Assert-ArtifactPrefix
+
+OUTPUT Exit code: 0
+Wall time: 7 seconds
+Output:
+[{"name":"Assert-TextContains","syntax":"\r\nAssert-TextContains [-Result] \u003cObject\u003e [-Expected] \u003cstring[]\u003e [[-Message] \u003cstring\u003e] [\u003cCommonParameters\u003e]\r\n","sourcePath":"C:\\diplomamunka\\automated-gui-testing-agent-framework\\Framework\\ArtifactAssertions.ps1","available":true},{"name":"Read-AGTAArtifactBytes","syntax":"\r\nRead-AGTAArtifactBytes [-Path] \u003cstring\u003e [[-Count] \u003cint\u003e] [[-Offset] \u003clong\u003e] [[-TimeoutMs] \u003cint\u003e] [[-Share] \u003cFileShare\u003e] [\u003cCommonParameters\u003e]\r\n","sourcePath":"C:\\diplomamunka\\automated-gui-testing-agent-framework\\Framework\\ArtifactAssertions.ps1","available":true},{"name":"Assert-ArtifactPrefix","syntax":"\r\nAssert-ArtifactPrefix [-Path] \u003cstring\u003e [-ExpectedBytes] \u003cbyte[]\u003e [[-Message] \u003cstring\u003e] [[-TimeoutMs] \u003cint\u003e] [\u003cCommonParameters\u003e]\r\n","sourcePath":"C:\\diplomamunka\\automated-gui-testing-agent-framework\\Framework\\ArtifactAssertions.ps1","available":true}]
+
+
+L291 2026-09-30T15:45:19.451Z shell_command
+Get-Content -LiteralPath 'C:\diplomamunka\automated-gui-testing-agent-framework\runs\notepad-walkthrough-20260930-001\logs\exploration-routes.json'
+
+L298 2026-09-30T15:45:51.417Z shell_command
+New-Item -ItemType Directory -Force -Path 'C:\diplomamunka\automated-gui-testing-agent-framework\runs\notepad-walkthrough-20260930-001\generated' | Out-Null
+Test-Path 'C:\diplomamunka\automated-gui-testing-agent-framework\runs\notepad-walkthrough-20260930-001\generated'
+
+OUTPUT Exit code: 0
+Wall time: 2.7 seconds
+Output:
+True
+
+
+L303 2026-09-30T15:47:04.534Z apply_patch
+*** Begin Patch
+*** Add File: C:\diplomamunka\automated-gui-testing-agent-framework\runs\notepad-walkthrough-20260930-001\generated\WindowsNotepad.Generated.ps1
++[CmdletBinding()]
++param(
++    [string] $PotatoCliPath,
++    [string] $TestCaseCsv,
++    [string] $RunRoot,
++    [string] $FrameworkRoot,
++    [string] $ExplorationPath,
++    [ValidateSet('VisibleControls','GuiNavigation','AllowShortcuts')] [string] $InteractionPolicy = 'GuiNavigation',
++    [string] $PolicyReason,
++    [ValidateSet('InProcess','Process')] [string] $Transport = 'InProcess'
++)
++
++$runtimeCandidates = @()
++if ($FrameworkRoot) {
++    $runtimeCandidates += (Join-Path -Path $FrameworkRoot -ChildPath 'Framework\GeneratedScriptRuntime.ps1')
++}
++$probe = $PSScriptRoot
++for ($i = 0; $i -lt 8 -and $probe; $i++) {
++    $runtimeCandidates += (Join-Path -Path $probe -ChildPath 'Framework\GeneratedScriptRuntime.ps1')
++    $probe = Split-Path -Parent $probe
++}
++$runtimePath = @($runtimeCandidates | Where-Object { Test-Path -Path $_ } | Select-Object -First 1)[0]
++if (-not $runtimePath) {
++    throw "Generated script runtime was not found: $runtimePath"
++}
++$FrameworkRoot = Split-Path -Parent (Split-Path -Parent $runtimePath)
++. $runtimePath
++
++if (-not $PotatoCliPath) { $PotatoCliPath = Join-Path (Split-Path -Parent $FrameworkRoot) 'potato-cli\potato.ps1' }
++if (-not $TestCaseCsv) { $TestCaseCsv = 'C:\Users\testuser\Desktop\Windows Notepad.csv' }
++if (-not $RunRoot) { $RunRoot = Join-Path $FrameworkRoot 'runs\notepad-generated' }
++if (-not $ExplorationPath) { $ExplorationPath = Join-Path $FrameworkRoot 'runs\notepad-walkthrough-20260930-001\logs\exploration.json' }
++
++Assert-AGTAGeneratedScriptPreflight -ScriptPath $PSCommandPath -TestCaseCsv $TestCaseCsv -PotatoCliPath $PotatoCliPath -ExplorationPath $ExplorationPath -InteractionPolicy $InteractionPolicy | Out-Null
++
++$Context = Initialize-AGTAGeneratedTest -PotatoCliPath $PotatoCliPath -TestCaseCsv $TestCaseCsv -RunRoot $RunRoot -RequireAssertions -InteractionPolicy $InteractionPolicy -PolicyReason $PolicyReason -Transport $Transport -ExplorationPath $ExplorationPath
++$RunRoot = $Context.RunRoot
++
++$Line1 = 'Notepad GUI Test'
++$Line2 = 'This file tests creating, saving, reopening, and printing in Notepad.'
++$OutputDir = Join-Path $Context.ExecutionEvidenceRoot 'notepad-output'
++[IO.Directory]::CreateDirectory($OutputDir) | Out-Null
++$TextPath = Join-Path $OutputDir 'NotepadTest.txt'
++$PdfPath = Join-Path $OutputDir 'NotepadTest.pdf'
++
++function Invoke-OptionalClick {
++    param(
++        [Parameter(Mandatory)] [ref] $Commands,
++        [Parameter(Mandatory)] [string[]] $Arguments
++    )
++
++    $result = Invoke-StepCommand -Commands $Commands -Command 'click' -Arguments $Arguments
++    return ($result.ok -and $result.data.clicked)
++}
++
++function Invoke-FileMenuItem {
++    param(
++        [Parameter(Mandatory)] [ref] $Commands,
++        [Parameter(Mandatory)] [string] $Name
++    )
++
++    $file = Invoke-StepCommand -Commands $Commands -Command 'click' -Arguments @('-Name','File','-AutomationId','File')
++    Assert-PotatoOk $file -Message 'File menu did not open.'
++
++    $item = Invoke-StepCommand -Commands $Commands -Command 'click' -Arguments @('-Name',$Name,'-ControlType','MenuItem','-Scope','FocusedWindow')
++    Assert-PotatoOk $item -Message "File menu item '$Name' could not be clicked."
++    Assert-ExpectedResult -Condition ([bool]$item.data.clicked) -Message "File menu item '$Name' was clicked."
++    return $item
++}
++
++$StepBodies = @(
++    {
++        param([ref] $Commands, [ref] $Evidence)
++
++        $started = Invoke-StepCommand -Commands $Commands -Command 'start' -Arguments @('-ProcessName','notepad.exe','-Maximize')
++        Assert-PotatoOk $started -Message 'Notepad did not start.'
++
++        $initial = Invoke-StepCommand -Commands $Commands -Command 'observe' -Arguments @('-Depth','4','-MaxElements','120')
++        Assert-PotatoFound $initial -Message 'Notepad window was not observable.'
++
++        Invoke-OptionalClick -Commands $Commands -Arguments @('-Name','Got it','-ControlType','Button','-Scope','FocusedWindow','-TimeoutMs','0') | Out-Null
++
++        Invoke-FileMenuItem -Commands $Commands -Name 'New tab' | Out-Null
++        $blank = Invoke-StepCommand -Commands $Commands -Command 'observe' -Arguments @('-Depth','4','-MaxElements','120')
++        Assert-PotatoFound $blank -Message 'Blank Notepad tab was not observable.'
++        $status = @($blank.data.elements | Where-Object { $_.name -eq '0 characters' }).Count -gt 0
++        Assert-ExpectedResult -Condition $status -Message 'Notepad is open with a blank editing area.'
++    },
++    {
++        param([ref] $Commands, [ref] $Evidence)
++
++        $fallbackEvidence = 'Observed blank Notepad editor focused with ClassName RichEditD2DPT and 0 characters during exploration.'
++        $typedLine1 = Invoke-StepCommand -Commands $Commands -Command 'type' -Arguments @(
++            '-TargetMode','Focused',
++            '-Text',$Line1,
++            '-TypeByCharacter',
++            '-ExpectedFocusJson','{"ClassName":"RichEditD2DPT"}',
++            '-FallbackReason','Modern Notepad exposes the editor in observe, but direct selector lookup is unreliable.',
++            '-FallbackEvidence',$fallbackEvidence
++        )
++        Assert-PotatoOk $typedLine1 -Message 'First Notepad line was not typed.'
++
++        $enter = Invoke-StepCommand -Commands $Commands -Command 'press-key' -Arguments @(
++            '-Key','Enter',
++            '-FallbackReason','Create the second line in the focused Notepad editor.',
++            '-FallbackEvidence',$fallbackEvidence
++        )
++        Assert-PotatoOk $enter -Message 'Second line break was not inserted.'
++
++        $typedLine2 = Invoke-StepCommand -Commands $Commands -Command 'type' -Arguments @(
++            '-TargetMode','Focused',
++            '-Text',$Line2,
++            '-TypeByCharacter',
++            '-ExpectedFocusJson','{"ClassName":"RichEditD2DPT"}',
++            '-FallbackReason','Modern Notepad exposes the editor in observe, but direct selector lookup is unreliable.',
++            '-FallbackEvidence',$fallbackEvidence
++        )
++        Assert-PotatoOk $typedLine2 -Message 'Second Notepad line was not typed.'
++
++        $afterTyping = Invoke-StepCommand -Commands $Commands -Command 'observe' -Arguments @('-Depth','4','-MaxElements','120')
++        Assert-PotatoFound $afterTyping -Message 'Typed Notepad document was not observable.'
++        $lineStatus = @($afterTyping.data.elements | Where-Object { $_.name -eq 'Line 2,' + [Environment]::NewLine + 'Column 70' }).Count -gt 0
++        $characterStatus = @($afterTyping.data.elements | Where-Object { $_.name -eq '86 characters' }).Count -gt 0
++        Assert-ExpectedResult -Condition ($lineStatus -and $characterStatus) -Message 'The editing area displays both exact lines of text.'
++    },
++    {
++        param([ref] $Commands, [ref] $Evidence)
++
++        Invoke-FileMenuItem -Commands $Commands -Name 'Save as' | Out-Null
++        $saveDialog = Invoke-StepCommand -Commands $Commands -Command 'observe' -Arguments @('-Scope','FocusedWindow','-Depth','5','-MaxElements','160')
++        Assert-PotatoFound $saveDialog -Message 'Save As dialog did not appear.'
++
++        $pathInput = Invoke-StepCommand -Commands $Commands -Command 'type' -Arguments @(
++            '-TargetMode','Focused',
++            '-Text',$TextPath,
++            '-PathKind','SaveFile',
++            '-ExpectedFocusJson','{"AutomationId":"1001","ClassName":"Edit"}',
++            '-FallbackReason','Native Save As filename field is focused and selected, exposed as an opaque Edit pane.',
++            '-FallbackEvidence','Exploration observed Save As focusedElement AutomationId 1001 ClassName Edit.'
++        )
++        Assert-PotatoOk $pathInput -Message 'Text output path was not typed into Save As.'
++
++        $save = Invoke-StepCommand -Commands $Commands -Command 'click' -Arguments @('-Name','Save','-AutomationId','1','-Scope','FocusedWindow')
++        Assert-PotatoOk $save -Message 'Save button was not clicked.'
++        Assert-ExpectedResult -Condition ([bool]$save.data.clicked) -Message 'Save command was submitted.'
++
++        $savedFile = Invoke-StepCommand -Commands $Commands -Command 'wait-file' -Arguments @('-Path',$TextPath,'-TimeoutMs','10000','-MinBytes','1','-StableMs','500')
++        Assert-FileWait $savedFile -Message 'NotepadTest.txt exists and is non-empty.'
++        Add-EvidencePath -Evidence $Evidence -Path $TextPath
++
++        $savedState = Invoke-StepCommand -Commands $Commands -Command 'observe' -Arguments @('-Depth','4','-MaxElements','120')
++        Assert-PotatoFound $savedState -Message 'Saved Notepad window was not observable.'
++        $titleOk = [string]$savedState.data.root.name -eq 'NotepadTest.txt - Notepad'
++        $utf8Ok = @($savedState.data.elements | Where-Object { $_.name -eq ' UTF-8' }).Count -gt 0
++        Assert-ExpectedResult -Condition ($titleOk -and $utf8Ok) -Message 
+
+OUTPUT Exit code: 0
+Wall time: 0 seconds
+Output:
+Success. Updated the following files:
+A C:\diplomamunka\automated-gui-testing-agent-framework\runs\notepad-walkthrough-20260930-001\generated\WindowsNotepad.Generated.ps1
+
+
+L310 2026-09-30T15:47:11.900Z shell_command
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Test-GeneratedScript.ps1 -ScriptPath '.\runs\notepad-walkthrough-20260930-001\generated\WindowsNotepad.Generated.ps1' -TestCaseCsv 'C:\Users\testuser\Desktop\Windows Notepad.csv' -PotatoCliPath '..\potato-cli\potato.ps1' -ExplorationPath '.\runs\notepad-walkthrough-20260930-001\logs\exploration.json'
+
+OUTPUT Exit code: 0
+Wall time: 7.6 seconds
+Output:
+{"ok":true,"issues":[],"checkedCommands":98,"policyAssessment":"Static checks and recorded CLI actions; not an execution sandbox."}
+
+
+L316 2026-09-30T15:47:26.681Z shell_command
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File '.\runs\notepad-walkthrough-20260930-001\generated\WindowsNotepad.Generated.ps1' -PotatoCliPath '..\potato-cli\potato.ps1' -TestCaseCsv 'C:\Users\testuser\Desktop\Windows Notepad.csv' -RunRoot '.\runs\notepad-generated-validation-20260930-001' -FrameworkRoot '.' -ExplorationPath '.\runs\notepad-walkthrough-20260930-001\logs\exploration.json'
+
+{"line": 316, "ok": false, "timing": {"commandCount": 11, "wrapperMs": 6362, "backendMs": 5657, "waitMs": 0, "cleanupMs": 994, "totalMs": 7766, "commandOverheadMs": 705, "otherMs": 1404}, "summary": {"total": 5, "passed": 0, "failed": 1, "skipped": 4, "cleanupOk": true, "failedSteps": [{"error": "Notepad is open with a blank editing area.", "stepIndex": 1}]}, "cleanupOk": true}
+
+L322 2026-09-30T15:47:49.860Z view_image
+{'path': 'C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-generated-validation-20260930-001\\evidence\\20260930_174732_9740\\step-1-failure.png', 'detail': 'high'}
+
+OUTPUT [{"type": "input_image", "image_url": "data:image/png;base64,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
+
+L323 2026-09-30T15:47:49.868Z shell_command
+Get-Content -Path 'C:\diplomamunka\automated-gui-testing-agent-framework\runs\notepad-generated-validation-20260930-001\logs\potato-commands-20260930_174732_9740.jsonl' | Select-Object -Last 6
+
+L330 2026-09-30T15:48:11.470Z apply_patch
+*** Begin Patch
+*** Update File: C:\diplomamunka\automated-gui-testing-agent-framework\runs\notepad-walkthrough-20260930-001\generated\WindowsNotepad.Generated.ps1
+@@
+-        $initial = Invoke-StepCommand -Commands $Commands -Command 'observe' -Arguments @('-Depth','4','-MaxElements','120')
++        $initial = Invoke-StepCommand -Commands $Commands -Command 'observe' -Arguments @('-Depth','4','-MaxElements','120','-Format','Compact')
+@@
+-        $blank = Invoke-StepCommand -Commands $Commands -Command 'observe' -Arguments @('-Depth','4','-MaxElements','120')
++        $blank = Invoke-StepCommand -Commands $Commands -Command 'observe' -Arguments @('-Depth','4','-MaxElements','120','-Format','Compact')
+@@
+-        $afterTyping = Invoke-StepCommand -Commands $Commands -Command 'observe' -Arguments @('-Depth','4','-MaxElements','120')
++        $afterTyping = Invoke-StepCommand -Commands $Commands -Command 'observe' -Arguments @('-Depth','4','-MaxElements','120','-Format','Compact')
+@@
+-        $saveDialog = Invoke-StepCommand -Commands $Commands -Command 'observe' -Arguments @('-Scope','FocusedWindow','-Depth','5','-MaxElements','160')
++        $saveDialog = Invoke-StepCommand -Commands $Commands -Command 'observe' -Arguments @('-Scope','FocusedWindow','-Depth','5','-MaxElements','160','-Format','Compact')
+@@
+-        $savedState = Invoke-StepCommand -Commands $Commands -Command 'observe' -Arguments @('-Depth','4','-MaxElements','120')
++        $savedState = Invoke-StepCommand -Commands $Commands -Command 'observe' -Arguments @('-Depth','4','-MaxElements','120','-Format','Compact')
+@@
+-        $openDialog = Invoke-StepCommand -Commands $Commands -Command 'observe' -Arguments @('-Scope','FocusedWindow','-Depth','5','-MaxElements','160')
++        $openDialog = Invoke-StepCommand -Commands $Commands -Command 'observe' -Arguments @('-Scope','FocusedWindow','-Depth','5','-MaxElements','160','-Format','Compact')
+@@
+-        $reopened = Invoke-StepCommand -Commands $Commands -Command 'observe' -Arguments @('-Depth','4','-MaxElements','120')
++        $reopened = Invoke-StepCommand -Commands $Commands -Command 'observe' -Arguments @('-Depth','4','-MaxElements','120','-Format','Compact')
+*** End Patch
+
+
+OUTPUT Exit code: 0
+Wall time: 0 seconds
+Output:
+Success. Updated the following files:
+M C:\diplomamunka\automated-gui-testing-agent-framework\runs\notepad-walkthrough-20260930-001\generated\WindowsNotepad.Generated.ps1
+
+
+L337 2026-09-30T15:48:19.130Z shell_command
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Test-GeneratedScript.ps1 -ScriptPath '.\runs\notepad-walkthrough-20260930-001\generated\WindowsNotepad.Generated.ps1' -TestCaseCsv 'C:\Users\testuser\Desktop\Windows Notepad.csv' -PotatoCliPath '..\potato-cli\potato.ps1' -ExplorationPath '.\runs\notepad-walkthrough-20260930-001\logs\exploration.json'
+
+OUTPUT Exit code: 0
+Wall time: 7.7 seconds
+Output:
+{"ok":true,"issues":[],"checkedCommands":98,"policyAssessment":"Static checks and recorded CLI actions; not an execution sandbox."}
+
+
+L342 2026-09-30T15:48:32.972Z shell_command
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File '.\runs\notepad-walkthrough-20260930-001\generated\WindowsNotepad.Generated.ps1' -PotatoCliPath '..\potato-cli\potato.ps1' -TestCaseCsv 'C:\Users\testuser\Desktop\Windows Notepad.csv' -RunRoot '.\runs\notepad-generated-validation-20260930-002' -FrameworkRoot '.' -ExplorationPath '.\runs\notepad-walkthrough-20260930-001\logs\exploration.json'
+
+{"line": 342, "ok": false, "timing": {"commandCount": 15, "wrapperMs": 14693, "backendMs": 13914, "waitMs": 0, "cleanupMs": 1091, "totalMs": 15815, "commandOverheadMs": 779, "otherMs": 1122}, "summary": {"total": 5, "passed": 1, "failed": 1, "skipped": 3, "cleanupOk": true, "failedSteps": [{"error": "The editing area displays both exact lines of text.", "stepIndex": 2}]}, "cleanupOk": true}
+
+L348 2026-09-30T15:49:06.150Z view_image
+{'path': 'C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-generated-validation-20260930-002\\evidence\\20260930_174840_3160\\step-2-failure.png', 'detail': 'high'}
+
+OUTPUT [{"type": "input_image", "image_url": "data:image/png;base64,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
+
+L349 2026-09-30T15:49:06.165Z shell_command
+$log='C:\diplomamunka\automated-gui-testing-agent-framework\runs\notepad-generated-validation-20260930-002\logs\potato-commands-20260930_174840_3160.jsonl'; (Get-Content $log | Select-String '"index":10').Line | ConvertFrom-Json | Select-Object -ExpandProperty parsed | Select-Object -ExpandProperty data | Select-Object -ExpandProperty elements | Where-Object { $_.id -eq 'ContentTextBlock' } | Select-Object name | ConvertTo-Json -Depth 5
+
+OUTPUT Exit code: 0
+Wall time: 4.3 seconds
+Output:
+[
+    {
+        "name":  "Line 2,\nColumn 70"
+    },
+    {
+        "name":  "86 characters"
+    },
+    {
+        "name":  "Zoom"
+    },
+    {
+        "name":  " Windows (CRLF)"
+    },
+    {
+        "name":  " UTF-8"
+    }
+]
+
+
+L356 2026-09-30T15:49:22.520Z apply_patch
+*** Begin Patch
+*** Update File: C:\diplomamunka\automated-gui-testing-agent-framework\runs\notepad-walkthrough-20260930-001\generated\WindowsNotepad.Generated.ps1
+@@
+         $afterTyping = Invoke-StepCommand -Commands $Commands -Command 'observe' -Arguments @('-Depth','4','-MaxElements','120','-Format','Compact')
+         Assert-PotatoFound $afterTyping -Message 'Typed Notepad document was not observable.'
+-        $lineStatus = @($afterTyping.data.elements | Where-Object { $_.name -eq 'Line 2,' + [Environment]::NewLine + 'Column 70' }).Count -gt 0
++        $lineStatus = @($afterTyping.data.elements | Where-Object { [string]$_.name -like "Line 2,*Column 70" }).Count -gt 0
+         $characterStatus = @($afterTyping.data.elements | Where-Object { $_.name -eq '86 characters' }).Count -gt 0
+         Assert-ExpectedResult -Condition ($lineStatus -and $characterStatus) -Message 'The editing area displays both exact lines of text.'
++
++        $typedReadback = Invoke-StepCommand -Commands $Commands -Command 'read' -Arguments @('-ClassName','RichEditD2DPT','-Scope','FocusedWindow','-TimeoutMs','1000')
++        Assert-TextContains -Result $typedReadback -Expected @($Line1,$Line2) -Message 'The editing area readback contains both exact lines of text.'
+*** End Patch
+
+
+OUTPUT Exit code: 0
+Wall time: 0 seconds
+Output:
+Success. Updated the following files:
+M C:\diplomamunka\automated-gui-testing-agent-framework\runs\notepad-walkthrough-20260930-001\generated\WindowsNotepad.Generated.ps1
+
+
+L363 2026-09-30T15:49:29.473Z shell_command
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Test-GeneratedScript.ps1 -ScriptPath '.\runs\notepad-walkthrough-20260930-001\generated\WindowsNotepad.Generated.ps1' -TestCaseCsv 'C:\Users\testuser\Desktop\Windows Notepad.csv' -PotatoCliPath '..\potato-cli\potato.ps1' -ExplorationPath '.\runs\notepad-walkthrough-20260930-001\logs\exploration.json'
+
+OUTPUT Exit code: 0
+Wall time: 6.4 seconds
+Output:
+{"ok":true,"issues":[],"checkedCommands":100,"policyAssessment":"Static checks and recorded CLI actions; not an execution sandbox."}
+
+
+L368 2026-09-30T15:49:45.397Z shell_command
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File '.\runs\notepad-walkthrough-20260930-001\generated\WindowsNotepad.Generated.ps1' -PotatoCliPath '..\potato-cli\potato.ps1' -TestCaseCsv 'C:\Users\testuser\Desktop\Windows Notepad.csv' -RunRoot '.\runs\notepad-generated-validation-20260930-003' -FrameworkRoot '.' -ExplorationPath '.\runs\notepad-walkthrough-20260930-001\logs\exploration.json'
+
+{"line": 368, "ok": false, "timing": {"commandCount": 22, "wrapperMs": 27577, "backendMs": 26859, "waitMs": 10059, "cleanupMs": 910, "totalMs": 28671, "commandOverheadMs": 718, "otherMs": 1094}, "summary": {"total": 5, "passed": 2, "failed": 1, "skipped": 2, "cleanupOk": true, "failedSteps": [{"error": "NotepadTest.txt exists and is non-empty.", "stepIndex": 3}]}, "cleanupOk": true}
+
+L374 2026-09-30T15:50:35.062Z view_image
+{'path': 'C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-generated-validation-20260930-003\\evidence\\20260930_174951_6953\\step-3-failure.png', 'detail': 'high'}
+
+OUTPUT [{"type": "input_image", "image_url": "data:image/png;base64,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
+
+L375 2026-09-30T15:50:35.066Z shell_command
+$log='C:\diplomamunka\automated-gui-testing-agent-framework\runs\notepad-generated-validation-20260930-003\logs\potato-commands-20260930_174951_6953.jsonl'; (Get-Content $log | Select-String '"index":17').Line | ConvertFrom-Json | Select-Object -ExpandProperty parsed | Select-Object -ExpandProperty data | ConvertTo-Json -Depth 10
+
+OUTPUT Exit code: 0
+Wall time: 4.3 seconds
+Output:
+{
+    "path":  "C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-generated-validation-20260930-003\\evidence\\20260930_174951_6953\\notepad-output\\NotepadTest.txt",
+    "exists":  false,
+    "conditionMet":  false,
+    "length":  null,
+    "minBytes":  1,
+    "stableMs":  500,
+    "timedOut":  true
+}
+
+
+L376 2026-09-30T15:50:35.184Z shell_command
+Get-ChildItem -Path 'C:\diplomamunka\automated-gui-testing-agent-framework\runs\notepad-generated-validation-20260930-003\evidence\20260930_174951_6953' -Recurse | Select-Object FullName,Length | Format-Table -AutoSize
+
+OUTPUT Exit code: 0
+Wall time: 4.3 seconds
+Output:
+
+FullName                                                                                                               
+--------                                                                                                               
+C:\diplomamunka\automated-gui-testing-agent-framework\runs\notepad-generated-validation-20260930-003\evidence\202609...
+C:\diplomamunka\automated-gui-testing-agent-framework\runs\notepad-generated-validation-20260930-003\evidence\202609...
+
+
+
+
+L382 2026-09-30T15:50:47.329Z shell_command
+Get-ChildItem -Path 'C:\diplomamunka\automated-gui-testing-agent-framework\runs\notepad-generated-validation-20260930-003\evidence\20260930_174951_6953' -Recurse | ForEach-Object { "$($_.FullName) $($_.Length)" }
+
+OUTPUT Exit code: 0
+Wall time: 2.1 seconds
+Output:
+C:\diplomamunka\automated-gui-testing-agent-framework\runs\notepad-generated-validation-20260930-003\evidence\20260930_174951_6953\notepad-output 1
+C:\diplomamunka\automated-gui-testing-agent-framework\runs\notepad-generated-validation-20260930-003\evidence\20260930_174951_6953\step-3-failure.png 43219
+
+
+L388 2026-09-30T15:50:56.116Z shell_command
+Get-ChildItem -Path 'C:\diplomamunka\automated-gui-testing-agent-framework' -Filter 'automated-*.txt' -Recurse -ErrorAction SilentlyContinue | Select-Object FullName,Length | Format-Table -AutoSize
+
+OUTPUT Exit code: 0
+Wall time: 2.1 seconds
+Output:
+
+
+L394 2026-09-30T15:51:10.413Z apply_patch
+*** Begin Patch
+*** Update File: C:\diplomamunka\automated-gui-testing-agent-framework\runs\notepad-walkthrough-20260930-001\generated\WindowsNotepad.Generated.ps1
+@@
+             '-TargetMode','Focused',
+             '-Text',$TextPath,
+             '-PathKind','SaveFile',
++            '-TypeByCharacter',
+             '-ExpectedFocusJson','{"AutomationId":"1001","ClassName":"Edit"}',
+@@
+             '-TargetMode','Focused',
+             '-Text',$TextPath,
+             '-PathKind','OpenFile',
++            '-TypeByCharacter',
+             '-ExpectedFocusJson','{"AutomationId":"1148","ClassName":"Edit"}',
+@@
+             '-TargetMode','Focused',
+             '-Text',$PdfPath,
+             '-PathKind','SaveFile',
++            '-TypeByCharacter',
+             '-ExpectedFocusJson','{"ClassName":"Edit"}',
+*** End Patch
+
+
+OUTPUT Exit code: 0
+Wall time: 0 seconds
+Output:
+Success. Updated the following files:
+M C:\diplomamunka\automated-gui-testing-agent-framework\runs\notepad-walkthrough-20260930-001\generated\WindowsNotepad.Generated.ps1
+
+
+L401 2026-09-30T15:51:19.418Z shell_command
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Test-GeneratedScript.ps1 -ScriptPath '.\runs\notepad-walkthrough-20260930-001\generated\WindowsNotepad.Generated.ps1' -TestCaseCsv 'C:\Users\testuser\Desktop\Windows Notepad.csv' -PotatoCliPath '..\potato-cli\potato.ps1' -ExplorationPath '.\runs\notepad-walkthrough-20260930-001\logs\exploration.json'
+
+OUTPUT Exit code: 0
+Wall time: 5.9 seconds
+Output:
+{"ok":true,"issues":[],"checkedCommands":100,"policyAssessment":"Static checks and recorded CLI actions; not an execution sandbox."}
+
+
+L406 2026-09-30T15:51:30.762Z shell_command
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File '.\runs\notepad-walkthrough-20260930-001\generated\WindowsNotepad.Generated.ps1' -PotatoCliPath '..\potato-cli\potato.ps1' -TestCaseCsv 'C:\Users\testuser\Desktop\Windows Notepad.csv' -RunRoot '.\runs\notepad-generated-validation-20260930-004' -FrameworkRoot '.' -ExplorationPath '.\runs\notepad-walkthrough-20260930-001\logs\exploration.json'
+
+{"line": 406, "ok": false, "timing": {"commandCount": 43, "wrapperMs": 48945, "backendMs": 47951, "waitMs": 733, "cleanupMs": 548, "totalMs": 53111, "commandOverheadMs": 994, "otherMs": 4166}, "summary": {"total": 5, "passed": 4, "failed": 1, "skipped": 0, "cleanupOk": true, "failedSteps": [{"error": "PDF output path was not typed. The expected owned keyboard target is not ready. No input was sent. Inspect error.focus and observe the visible target once; do not retry different guessed selectors or steal focus from a dialog.", "stepIndex": 5}]}, "cleanupOk": true}
+
+L412 2026-09-30T15:52:37.896Z view_image
+{'path': 'C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-generated-validation-20260930-004\\evidence\\20260930_175136_3112\\step-5-failure.png', 'detail': 'high'}
+
+OUTPUT [{"type": "input_image", "image_url": "data:image/png;base64,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
+
+L413 2026-09-30T15:52:37.917Z view_image
+{'path': 'C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-generated-validation-20260930-004\\evidence\\20260930_175136_3112\\print-output-dialog.png', 'detail': 'high'}
+
+OUTPUT [{"type": "input_image", "image_url": "data:image/png;base64,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
+
+L420 2026-09-30T15:52:52.813Z apply_patch
+*** Begin Patch
+*** Update File: C:\diplomamunka\automated-gui-testing-agent-framework\runs\notepad-walkthrough-20260930-001\generated\WindowsNotepad.Generated.ps1
+@@
+-        $printClick = Invoke-StepCommand -Commands $Commands -Command 'click-coordinate' -Arguments @('-X','1091','-Y','788')
+-        Assert-PotatoOk $printClick -Message 'Print button was not clicked.'
+-        Start-Sleep -Seconds 3
++        $printClick = Invoke-StepCommand -Commands $Commands -Command 'click-coordinate' -Arguments @('-X','1091','-Y','788')
++        Assert-PotatoOk $printClick -Message 'Print button was not clicked.'
++        Start-Sleep -Seconds 2
++        $printClickConfirm = Invoke-StepCommand -Commands $Commands -Command 'click-coordinate' -Arguments @('-X','1091','-Y','788')
++        Assert-PotatoOk $printClickConfirm -Message 'Print button confirmation click was not dispatched.'
++        Start-Sleep -Seconds 5
+*** End Patch
+
+
+OUTPUT Exit code: 0
+Wall time: 0 seconds
+Output:
+Success. Updated the following files:
+M C:\diplomamunka\automated-gui-testing-agent-framework\runs\notepad-walkthrough-20260930-001\generated\WindowsNotepad.Generated.ps1
+
+
+L427 2026-09-30T15:52:59.542Z shell_command
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Test-GeneratedScript.ps1 -ScriptPath '.\runs\notepad-walkthrough-20260930-001\generated\WindowsNotepad.Generated.ps1' -TestCaseCsv 'C:\Users\testuser\Desktop\Windows Notepad.csv' -PotatoCliPath '..\potato-cli\potato.ps1' -ExplorationPath '.\runs\notepad-walkthrough-20260930-001\logs\exploration.json'
+
+OUTPUT Exit code: 0
+Wall time: 6.6 seconds
+Output:
+{"ok":true,"issues":[],"checkedCommands":103,"policyAssessment":"Static checks and recorded CLI actions; not an execution sandbox."}
+
+
+L432 2026-09-30T15:53:16.724Z shell_command
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File '.\runs\notepad-walkthrough-20260930-001\generated\WindowsNotepad.Generated.ps1' -PotatoCliPath '..\potato-cli\potato.ps1' -TestCaseCsv 'C:\Users\testuser\Desktop\Windows Notepad.csv' -RunRoot '.\runs\notepad-generated-validation-20260930-005' -FrameworkRoot '.' -ExplorationPath '.\runs\notepad-walkthrough-20260930-001\logs\exploration.json'
+
+{"line": 432, "ok": true, "timing": {"commandCount": 46, "wrapperMs": 59206, "backendMs": 58231, "waitMs": 2829, "cleanupMs": 616, "totalMs": 67290, "commandOverheadMs": 975, "otherMs": 8084}, "summary": {"total": 5, "passed": 5, "failed": 0, "skipped": 0, "cleanupOk": true, "failedSteps": []}, "cleanupOk": true}

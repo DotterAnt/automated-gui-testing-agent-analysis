@@ -1,0 +1,409 @@
+{
+  "toolCalls": 102,
+  "toolCounts": {
+    "shell_command": 83,
+    "view_image": 9,
+    "apply_patch": 10
+  },
+  "cliCommands": 115,
+  "commandCounts": {
+    "help": 4,
+    "start": 9,
+    "windows": 7,
+    "observe": 28,
+    "wait-element": 1,
+    "screenshot": 21,
+    "click": 19,
+    "close-window": 6,
+    "drag": 2,
+    "click-coordinate": 8,
+    "press-key": 1,
+    "type": 4,
+    "wait-file": 3,
+    "focus": 1,
+    "read-pdf": 1
+  },
+  "backendSeconds": 195.325,
+  "failures": [
+    {
+      "line": 67,
+      "command": "start",
+      "error": {
+        "message": "Application is already running. Use a clean test session; do not reuse an unrelated document.",
+        "type": "System.Management.Automation.RuntimeException",
+        "category": "OperationStopped"
+      }
+    },
+    {
+      "line": 101,
+      "command": "click",
+      "error": {
+        "message": "No visible enabled element matches the selector.",
+        "type": "TargetNotFound",
+        "category": "OperationStopped",
+        "candidates": null
+      }
+    },
+    {
+      "line": 107,
+      "command": "start",
+      "error": {
+        "message": "Application is already running. Use a clean test session; do not reuse an unrelated document.",
+        "type": "System.Management.Automation.RuntimeException",
+        "category": "OperationStopped"
+      }
+    },
+    {
+      "line": 167,
+      "command": "click",
+      "error": {
+        "message": "No visible enabled element matches the selector.",
+        "type": "TargetNotFound",
+        "category": "OperationStopped",
+        "candidates": null
+      }
+    },
+    {
+      "line": 200,
+      "command": "observe",
+      "error": {
+        "message": "Foreground window does not match WindowSelectorJson. No action was dispatched; inspect the current window instead of guessing coordinates.",
+        "type": "ScopeNotReady",
+        "category": "OperationStopped",
+        "candidates": null
+      }
+    },
+    {
+      "line": 206,
+      "command": "observe",
+      "error": {
+        "message": "ForegroundWindow requires WindowSelectorJson with an exact observed Name and ClassName, and optional ProcessId only.",
+        "type": "System.Management.Automation.RuntimeException",
+        "category": "OperationStopped"
+      }
+    },
+    {
+      "line": 233,
+      "command": "click",
+      "error": {
+        "message": "Scoped provider traversal is incomplete. Narrow PathJson to an observed container; do not infer absence or uniqueness from a partial tree.",
+        "type": "SearchIncomplete",
+        "category": "OperationStopped",
+        "candidates": null
+      }
+    },
+    {
+      "line": 239,
+      "command": "click",
+      "error": {
+        "message": "Scoped provider traversal is incomplete. Narrow PathJson to an observed container; do not infer absence or uniqueness from a partial tree.",
+        "type": "SearchIncomplete",
+        "category": "OperationStopped",
+        "candidates": null
+      }
+    },
+    {
+      "line": 251,
+      "command": "click",
+      "error": {
+        "message": "Scoped provider traversal is incomplete. Narrow PathJson to an observed container; do not infer absence or uniqueness from a partial tree.",
+        "type": "SearchIncomplete",
+        "category": "OperationStopped",
+        "candidates": null
+      }
+    },
+    {
+      "line": 257,
+      "command": "observe",
+      "error": {
+        "message": "No working window is set. Run start or focus first, or pass an explicit selector.",
+        "type": "System.Management.Automation.RuntimeException",
+        "category": "OperationStopped"
+      }
+    },
+    {
+      "line": 269,
+      "command": "observe",
+      "error": {
+        "message": "No working window is set. Run start or focus first, or pass an explicit selector.",
+        "type": "System.Management.Automation.RuntimeException",
+        "category": "OperationStopped"
+      }
+    },
+    {
+      "line": 297,
+      "command": "click",
+      "error": {
+        "message": "No visible enabled element matches the selector.",
+        "type": "TargetNotFound",
+        "category": "OperationStopped",
+        "candidates": null
+      }
+    },
+    {
+      "line": 344,
+      "command": "type",
+      "error": {
+        "message": "The expected owned keyboard target is not ready. No input was sent. Inspect error.focus and observe the visible target once; do not retry different guessed selectors or steal focus from a dialog.",
+        "type": "InputFocusNotReady",
+        "category": "OperationStopped",
+        "candidates": null,
+        "focus": {
+          "ready": true,
+          "owned": true,
+          "stable": true,
+          "enabled": true,
+          "withinForeground": true,
+          "foregroundHandle": 1573476,
+          "focusHandle": 1900832,
+          "foregroundProcessId": 8280,
+          "focusProcessId": 8280,
+          "caretHandle": 0,
+          "menuActive": false
+        }
+      }
+    },
+    {
+      "line": 356,
+      "command": "read-pdf",
+      "error": {
+        "message": "No extractable PDF text found. Scanned/image-only PDFs require OCR, which is not supported.",
+        "type": "PdfReadError"
+      }
+    }
+  ],
+  "executions": [
+    {
+      "line": 400,
+      "ok": false,
+      "timing": {
+        "commandCount": 3,
+        "wrapperMs": 16402,
+        "backendMs": 16196,
+        "waitMs": 0,
+        "cleanupMs": 114,
+        "totalMs": 16975,
+        "commandOverheadMs": 206,
+        "otherMs": 573
+      },
+      "summary": {
+        "total": 5,
+        "passed": 0,
+        "failed": 1,
+        "skipped": 4,
+        "cleanupOk": true,
+        "failedSteps": [
+          {
+            "error": "Cannot find a process with the process identifier 15072.",
+            "stepIndex": 1
+          }
+        ]
+      },
+      "cleanupOk": true
+    },
+    {
+      "line": 416,
+      "ok": false,
+      "timing": {
+        "commandCount": 3,
+        "wrapperMs": 4149,
+        "backendMs": 3939,
+        "waitMs": 0,
+        "cleanupMs": 115,
+        "totalMs": 4583,
+        "commandOverheadMs": 210,
+        "otherMs": 434
+      },
+      "summary": {
+        "total": 5,
+        "passed": 0,
+        "failed": 1,
+        "skipped": 4,
+        "cleanupOk": true,
+        "failedSteps": [
+          {
+            "error": "PoTATo command failed. Application is already running. Use a clean test session; do not reuse an unrelated document.",
+            "stepIndex": 1
+          }
+        ]
+      },
+      "cleanupOk": true
+    },
+    {
+      "line": 440,
+      "ok": false,
+      "timing": {
+        "commandCount": 23,
+        "wrapperMs": 53191,
+        "backendMs": 52640,
+        "waitMs": 15034,
+        "cleanupMs": 1096,
+        "totalMs": 53988,
+        "commandOverheadMs": 551,
+        "otherMs": 797
+      },
+      "summary": {
+        "total": 5,
+        "passed": 2,
+        "failed": 1,
+        "skipped": 2,
+        "cleanupOk": true,
+        "failedSteps": [
+          {
+            "error": "SnippingToolTest.png exists and is non-empty.",
+            "stepIndex": 3
+          }
+        ]
+      },
+      "cleanupOk": true
+    },
+    {
+      "line": 469,
+      "ok": false,
+      "timing": {
+        "commandCount": 3,
+        "wrapperMs": 21292,
+        "backendMs": 21077,
+        "waitMs": 0,
+        "cleanupMs": 131,
+        "totalMs": 21789,
+        "commandOverheadMs": 215,
+        "otherMs": 497
+      },
+      "summary": {
+        "total": 5,
+        "passed": 0,
+        "failed": 1,
+        "skipped": 4,
+        "cleanupOk": true,
+        "failedSteps": [
+          {
+            "error": "Cannot find a process with the process identifier 2504.",
+            "stepIndex": 1
+          }
+        ]
+      },
+      "cleanupOk": true
+    },
+    {
+      "line": 487,
+      "ok": false,
+      "timing": {
+        "commandCount": 3,
+        "wrapperMs": 1216,
+        "backendMs": 990,
+        "waitMs": 0,
+        "cleanupMs": 114,
+        "totalMs": 1634,
+        "commandOverheadMs": 226,
+        "otherMs": 418
+      },
+      "summary": {
+        "total": 5,
+        "passed": 0,
+        "failed": 1,
+        "skipped": 4,
+        "cleanupOk": true,
+        "failedSteps": [
+          {
+            "error": "PoTATo command failed. This command cannot be run due to the error: Access is denied.",
+            "stepIndex": 1
+          }
+        ]
+      },
+      "cleanupOk": true
+    },
+    {
+      "line": 505,
+      "ok": false,
+      "timing": {
+        "commandCount": 20,
+        "wrapperMs": 24025,
+        "backendMs": 23560,
+        "waitMs": 0,
+        "cleanupMs": 722,
+        "totalMs": 24679,
+        "commandOverheadMs": 465,
+        "otherMs": 654
+      },
+      "summary": {
+        "total": 5,
+        "passed": 2,
+        "failed": 1,
+        "skipped": 2,
+        "cleanupOk": true,
+        "failedSteps": [
+          {
+            "error": "PoTATo command failed. No visible enabled element matches the selector.",
+            "stepIndex": 3
+          }
+        ]
+      },
+      "cleanupOk": true
+    },
+    {
+      "line": 529,
+      "ok": false,
+      "timing": {
+        "commandCount": 10,
+        "wrapperMs": 20214,
+        "backendMs": 19931,
+        "waitMs": 0,
+        "cleanupMs": 295,
+        "totalMs": 20715,
+        "commandOverheadMs": 283,
+        "otherMs": 501
+      },
+      "summary": {
+        "total": 5,
+        "passed": 0,
+        "failed": 1,
+        "skipped": 4,
+        "cleanupOk": true,
+        "failedSteps": [
+          {
+            "error": "PoTATo command failed. Application is already running. Use a clean test session; do not reuse an unrelated document.",
+            "stepIndex": 1
+          }
+        ]
+      },
+      "cleanupOk": true
+    },
+    {
+      "line": 547,
+      "ok": false,
+      "timing": {
+        "commandCount": 3,
+        "wrapperMs": 4428,
+        "backendMs": 4140,
+        "waitMs": 0,
+        "cleanupMs": 155,
+        "totalMs": 4908,
+        "commandOverheadMs": 288,
+        "otherMs": 480
+      },
+      "summary": {
+        "total": 5,
+        "passed": 0,
+        "failed": 1,
+        "skipped": 4,
+        "cleanupOk": true,
+        "failedSteps": [
+          {
+            "error": "PoTATo command failed. Application is already running. Use a clean test session; do not reuse an unrelated document.",
+            "stepIndex": 1
+          }
+        ]
+      },
+      "cleanupOk": true
+    }
+  ],
+  "elapsedSeconds": 1726.076,
+  "replayBackendSeconds": 149.271,
+  "lastMessageLine": 565,
+  "notes": [
+    "Read-only analysis; attached scripts and commands were not executed.",
+    "Host hardware issues make wall-clock performance comparisons provisional.",
+    "CLI envelope durations exclude commands nested inside generated executions."
+  ]
+}

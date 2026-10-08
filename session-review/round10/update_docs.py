@@ -1,0 +1,45 @@
+"""Keep published CLI help and authoring guidance consistent with round 10."""
+import json
+from pathlib import Path
+w=Path(r'C:\diplomamunka')
+p=w/'potato-cli/commands.json'
+help=json.loads(p.read_text(encoding='utf-8-sig')); c=help['commands']
+c['start']['usage'] += ' [-RequireNewWindow]'
+c['start']['notes']='Executable launches only. RequireNewWindow (framework default) snapshots desktop handles and waits for a new visible window of the executable, including handoff to an existing process. Returns ownedProcessId/start time for a new host or ownedWindow for a shared host. Never claims an old window or a short-lived launcher PID. No new window is an error; inspect windows and deliberately focus the intended window. RequireNewProcess remains available for strict isolation; do not combine the two modes or KillExisting. File manager GUI navigation/Open/double-click is supported; shell/protocol launcher wrappers bypass that GUI route and are rejected. Values starting with a dash must use -Arguments=<value> in one token.'
+c['focus']['usage'] += ' [-SinceCheckpoint <id> | -WindowIdentityJson <ownedWindow JSON>]'
+c['focus']['notes']='Explicitly switch to one observed window; ambiguous selectors fail. Plain focus does not grant cleanup ownership. For a GUI action that opens another application, first windows -Checkpoint, perform the visible action, then focus -SinceCheckpoint <returned checkpointId> with an observed unique selector. Only a window absent from that baseline receives ownedWindow for cleanup. Checkpoints live in CLI state; take a fresh one before the next handoff. Shared/window-scoped targets never authorize keyboard input to unrelated siblings or silently switch to another sibling after closing.'
+c['windows']['usage'] += ' [-Foreground] [-Checkpoint] [-WindowIdentityJson <ownedWindow JSON>]'
+c['windows']['notes'] += ' Foreground returns the actual native foreground root and foregroundSelector for a guarded dialog, even without a working window. Checkpoint records all native desktop handles (regardless of query filters) and returns checkpointId. WindowIdentityJson checks precisely one handle/PID/process-start-time/class receipt; absence returns count 0.'
+c['close-window']['usage'] += ' [-WindowIdentityJson <ownedWindow JSON>]'
+c['close-window']['notes'] += ' For shared hosts use WindowIdentityJson from the ownership receipt. Only that still-matching window is closed; unrelated windows and the host process are preserved. Pending save prompts remain visible and cleanup reports failure until resolved.'
+c['observe']['brokerScope']='For an observed system-hosted dialog, first windows -Foreground if its identity is unknown. Scope ForegroundWindow accepts exact observed WindowSelectorJson Name/ClassName (optional ProcessId), plus FallbackReason/FallbackEvidence. It supports observe/select/read/wait-element/click/type/press-key without a working window or host ownership. Focused typing additionally requires ExpectedFocusJson. Input checks the guarded foreground root and native focus; it never changes the working window. Ordinary FocusedWindow remains owner-restricted.'
+c['type']['focusInput']=c['type']['focusInput'].replace('No focus/selection changes are made.','No focus changes are made. Selection is preserved unless PreDelete explicitly requests supported UIA/native text selection.')
+c['type']['notes']=c['type']['notes'].replace('no target selector/refocus/PreDelete/newlines/tabs','no target selector/refocus/newlines/tabs').replace('PreDelete uses TextPattern selection and Backspace','PreDelete uses TextPattern or standard Windows Edit selection and keyboard Backspace, also in Focused mode').replace('checks UIA writability/focus','checks UIA/native writability and native-confirmed focus')
+c['type']['pathInput'] += ' PathKind defaults Verify to true with exact readback. Standard Windows Edit controls support native readback/selection even when UIA reports Pane and no patterns; text still enters through keyboard events, never WM_SETTEXT. An explicit -Verify false skips readback only for a tested commit-on-exit route with a separate assertion. If text is lost, inspect/reset the field and test slower InputDelayMs; do not shorten the path or assume its current directory.'
+c['press-key']['usage'] += ' [-ExpectedFocusJson <identity>] [-Scope ForegroundWindow -WindowSelectorJson <identity>]'
+p.write_text(json.dumps(help,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+for rel in ['automated-gui-testing-agent-framework/docs/AUTHORING.md','automated-gui-testing-agent-framework/docs/GENERATED_SCRIPT_CONTRACT.md','automated-gui-testing-agent-framework/README.md','potato-cli/README.md']:
+    p=w/rel; t=p.read_text(encoding='utf-8-sig')
+    t=t.replace('file-association opening','non-GUI shell/protocol opening').replace('process arguments, file association, an object model','document-loading process arguments, non-GUI file association, an object model')
+    t=t.replace('scoped observation/read/selector clicks without adopting','scoped observation/read/selector clicks/type/press-key without adopting')
+    t=t.replace('permits observation and selector clicks without adopting the host process. It never grants unscoped typing or cleanup ownership.','permits observation, selector clicks, type and press-key without adopting the host process. Focused input also requires ExpectedFocusJson. It grants no cleanup ownership. Use windows -Foreground to obtain the observed identity without guessing.')
+    t=t.replace('PreDelete uses UIA text selection and Backspace.','PreDelete uses UIA or standard Windows Edit text selection and keyboard Backspace, also in Focused mode. PathKind enables exact readback by default. Standard Windows Edit readback works even when UIA reports no patterns.')
+    t=t.replace('TextPattern selection plus Backspace','TextPattern or standard Windows Edit selection plus keyboard Backspace')
+    t=t.replace('start automatically registers a newly owned PID/start time for cleanup.','start defaults to RequireNewWindow and registers a new PID/start time or just a new window in an existing host for cleanup.')
+    t=t.replace('Runtime start registers its owned process for cleanup.','Runtime start registers the new process or individual new shared-host window for cleanup.')
+    t=t.replace('Runtime `start` waits briefly for a closing prior instance, rejects one that remains, and automatically registers a newly owned process.','Runtime `start` defaults to RequireNewWindow: it allows existing processes, requires a new window, and registers either a new process or just the new window in an existing host. Explicit RequireNewProcess retains strict process isolation.')
+    t=t.replace('owned process IDs. RecordStep','owned process IDs and owned-window receipts. RecordStep')
+    if rel.endswith('AUTHORING.md'):
+        marker='## Complete the walkthrough'
+        guide='''## File managers and cross-app routes
+
+Explorer and other shared hosts are supported GUI surfaces. Framework `start` uses `RequireNewWindow`; an existing shell process is normal. Launch the file manager, inspect it, use its visible address bar/folder controls, enter a validated directory path, then select and Open/double-click the file. A visible Open with choice is allowed. Direct file/protocol launches through shell wrappers are not a GUI route. Do not close or kill the shell to obtain a fresh PID.
+
+For a file-manager action that opens a viewer, call `windows -Checkpoint` immediately before the action. After inspecting the resulting window, `focus -SinceCheckpoint <returned checkpointId>` with its unique observed selector registers window-only cleanup. Plain `focus` switches to an existing test window without claiming its host. Keep an ownedWindow receipt for `close-window -WindowIdentityJson <receipt JSON>` during exploration; Complete checks that window, not whether its shared host exited. Generated runtime registers returned ownership automatically. Use RequireNewProcess only when the testcase needs strict process isolation.
+
+For brokered save/print dialogs, `windows -Foreground` returns the actual root and `foregroundSelector`. Use that exact guard with Scope ForegroundWindow, fallback evidence, and (for Focused typing) ExpectedFocusJson. Observation, selection clicks, typing and bounded navigation work there without changing the application context. A missing working window is not a reason to adopt a broker process.
+
+'''
+        t=t.replace(marker,guide+marker)
+        t += '\nA successful exploratory command may still be part of a recovery from the wrong state. Do not copy recovery actions such as a second drag or wrong-mode switch into an unconditional replay. Revalidate the corrected route. Image-only PDFs require visual/content evidence; read-pdf text extraction and file signatures do not prove image content or absence of cropping. Final delivery must state a failed or untested replay honestly; passing static preflight is not a passed test.\n'
+    p.write_text(t,encoding='utf-8')

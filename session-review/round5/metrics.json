@@ -1,0 +1,134 @@
+{
+  "phases": [
+    {
+      "phase": "Preparation",
+      "seconds": 73.026
+    },
+    {
+      "phase": "GUI exploration and checkpoint",
+      "seconds": 606.221
+    },
+    {
+      "phase": "Script generation and first preflight",
+      "seconds": 107.749
+    },
+    {
+      "phase": "Execution, diagnosis and repairs",
+      "seconds": 231.003
+    },
+    {
+      "phase": "Delivery",
+      "seconds": 14.055
+    }
+  ],
+  "elapsedSeconds": 1032.054,
+  "cliEnvelopes": 56,
+  "cliBackendSeconds": 75.069,
+  "commandCounts": {
+    "help": 3,
+    "start": 2,
+    "observe": 18,
+    "click": 19,
+    "wait-element": 2,
+    "type": 5,
+    "select": 4,
+    "wait-file": 2,
+    "read-pdf": 1
+  },
+  "failures": [
+    {
+      "line": 34,
+      "command": "help",
+      "error": {
+        "message": "Unknown help topic 'pdf'.",
+        "type": "HelpError"
+      }
+    },
+    {
+      "line": 79,
+      "command": "type",
+      "error": {
+        "message": "Newline/tab typing is limited to Document controls. Use visible controls for dialog submission and navigation.",
+        "type": "System.Management.Automation.RuntimeException",
+        "category": "OperationStopped"
+      }
+    },
+    {
+      "line": 99,
+      "command": "click",
+      "error": {
+        "message": "No matching element was found.",
+        "type": "System.Management.Automation.RuntimeException",
+        "category": "OperationStopped"
+      }
+    },
+    {
+      "line": 223,
+      "command": "help",
+      "error": {
+        "message": "Unknown help topic 'read-text'.",
+        "type": "HelpError"
+      }
+    }
+  ],
+  "emptySelects": [
+    {
+      "line": 249,
+      "durationMs": 71
+    }
+  ],
+  "shellReportedSeconds": 435.7,
+  "finalSuccessfulRunShellSeconds": 39.4,
+  "finalRuntimeTiming": {
+    "commandCount": 35,
+    "wrapperMs": 31676,
+    "backendMs": 31109,
+    "waitMs": 11387,
+    "cleanupMs": 1972,
+    "totalMs": 32530,
+    "transportOverheadMs": 567,
+    "otherMs": 854
+  },
+  "requestFileCreationCalls": 23,
+  "requestFileCreationLines": [
+    55,
+    65,
+    75,
+    85,
+    95,
+    105,
+    115,
+    123,
+    131,
+    144,
+    154,
+    164,
+    186,
+    194,
+    202,
+    212,
+    235,
+    245,
+    255,
+    263,
+    275,
+    285,
+    315
+  ],
+  "generatedExecutionLines": [
+    357,
+    380,
+    414
+  ],
+  "observationBytes": 166981,
+  "evidenceNotes": [
+    "Shell wall-time sums can include parallel calls and are not elapsed session time.",
+    "CLI totals include only intact direct envelopes, not command records inside generated execution results.",
+    "Final runtime timing transcribed from the result in the output of call at source line 414. These are supplied-run timings, not timings measured after this patch."
+  ],
+  "comparison": {
+    "previousElapsedSeconds": 1206.695,
+    "elapsedReductionPercent": 14.47,
+    "previousExplorationSeconds": 533.744
+  }
+}

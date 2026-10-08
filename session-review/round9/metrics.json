@@ -1,0 +1,366 @@
+{
+  "toolCalls": 84,
+  "toolCounts": {
+    "shell_command": 68,
+    "view_image": 11,
+    "apply_patch": 5
+  },
+  "cliCommands": 80,
+  "commandCounts": {
+    "help": 1,
+    "start": 2,
+    "observe": 17,
+    "type": 14,
+    "select": 2,
+    "press-key": 3,
+    "read": 2,
+    "screenshot": 7,
+    "close-window": 2,
+    "click": 16,
+    "click-coordinate": 7,
+    "wait-file": 2,
+    "windows": 4,
+    "read-pdf": 1
+  },
+  "backendSeconds": 109.026,
+  "failures": [
+    {
+      "line": 55,
+      "command": "type",
+      "error": {
+        "message": "No matching element was found.",
+        "type": "System.Management.Automation.RuntimeException",
+        "category": "OperationStopped"
+      }
+    },
+    {
+      "line": 61,
+      "command": "type",
+      "error": {
+        "message": "No matching element was found.",
+        "type": "System.Management.Automation.RuntimeException",
+        "category": "OperationStopped"
+      }
+    },
+    {
+      "line": 73,
+      "command": "type",
+      "error": {
+        "message": "No matching element was found.",
+        "type": "System.Management.Automation.RuntimeException",
+        "category": "OperationStopped"
+      }
+    },
+    {
+      "line": 79,
+      "command": "type",
+      "error": {
+        "message": "No matching element was found.",
+        "type": "System.Management.Automation.RuntimeException",
+        "category": "OperationStopped"
+      }
+    },
+    {
+      "line": 89,
+      "command": "read",
+      "error": {
+        "message": "No matching element was found.",
+        "type": "System.Management.Automation.RuntimeException",
+        "category": "OperationStopped"
+      }
+    },
+    {
+      "line": 100,
+      "command": "observe",
+      "error": {
+        "message": "Working window no longer exists. Observe windows and focus the owned application explicitly.",
+        "type": "System.Management.Automation.RuntimeException",
+        "category": "OperationStopped"
+      }
+    },
+    {
+      "line": 112,
+      "command": "click",
+      "error": {
+        "message": "No visible enabled element matches the selector.",
+        "type": "TargetNotFound",
+        "category": "OperationStopped",
+        "candidates": null
+      }
+    },
+    {
+      "line": 118,
+      "command": "click",
+      "error": {
+        "message": "No visible enabled element matches the selector.",
+        "type": "TargetNotFound",
+        "category": "OperationStopped",
+        "candidates": null
+      }
+    },
+    {
+      "line": 149,
+      "command": "click",
+      "error": {
+        "message": "Ambiguous target: multiple visible enabled controls match. Use the returned candidates to add an observed ID, role, class or parent scope. No input was sent.",
+        "type": "AmbiguousTarget",
+        "category": "OperationStopped",
+        "candidates": [
+          {
+            "name": "Save as",
+            "id": "",
+            "role": "MenuItem",
+            "className": "MenuFlyoutItem",
+            "enabled": true,
+            "offscreen": false,
+            "focused": false,
+            "patterns": [
+              "Invoke",
+              "ScrollItem",
+              "VirtualizedItem"
+            ],
+            "bounds": {
+              "x": 10,
+              "y": 290,
+              "width": 278,
+              "height": 36
+            },
+            "selector": {
+              "Name": "Save as"
+            }
+          },
+          {
+            "name": "Save as",
+            "id": "TextBlock",
+            "role": "Text",
+            "className": "TextBlock",
+            "enabled": true,
+            "offscreen": false,
+            "focused": false,
+            "patterns": [
+              "Text",
+              "ScrollItem"
+            ],
+            "bounds": {
+              "x": 24,
+              "y": 295,
+              "width": 136,
+              "height": 24
+            },
+            "selector": {
+              "Name": "Save as",
+              "AutomationId": "TextBlock"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "line": 161,
+      "command": "type",
+      "error": {
+        "message": "Path validation failed before typing: Destination directory does not exist: C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\notepad-walkthrough-20260930-001\\evidence\\exploration\\notepad-output. Use a prepared output folder or create the required folder before entering the filename. No input was sent; no file or directory was created.",
+        "type": "PathValidationFailed",
+        "category": "OperationStopped",
+        "candidates": null
+      }
+    },
+    {
+      "line": 203,
+      "command": "click",
+      "error": {
+        "message": "No visible enabled element matches the selector.",
+        "type": "TargetNotFound",
+        "category": "OperationStopped",
+        "candidates": null
+      }
+    },
+    {
+      "line": 227,
+      "command": "observe",
+      "error": {
+        "message": "FocusedWindow belongs to another application. Focus the owned application explicitly.",
+        "type": "System.Management.Automation.RuntimeException",
+        "category": "OperationStopped"
+      }
+    },
+    {
+      "line": 263,
+      "command": "click",
+      "error": {
+        "message": "No visible enabled element matches the selector.",
+        "type": "TargetNotFound",
+        "category": "OperationStopped",
+        "candidates": null
+      }
+    }
+  ],
+  "executions": [
+    {
+      "line": 316,
+      "ok": false,
+      "timing": {
+        "commandCount": 11,
+        "wrapperMs": 6362,
+        "backendMs": 5657,
+        "waitMs": 0,
+        "cleanupMs": 994,
+        "totalMs": 7766,
+        "commandOverheadMs": 705,
+        "otherMs": 1404
+      },
+      "summary": {
+        "total": 5,
+        "passed": 0,
+        "failed": 1,
+        "skipped": 4,
+        "cleanupOk": true,
+        "failedSteps": [
+          {
+            "error": "Notepad is open with a blank editing area.",
+            "stepIndex": 1
+          }
+        ]
+      },
+      "cleanupOk": true
+    },
+    {
+      "line": 342,
+      "ok": false,
+      "timing": {
+        "commandCount": 15,
+        "wrapperMs": 14693,
+        "backendMs": 13914,
+        "waitMs": 0,
+        "cleanupMs": 1091,
+        "totalMs": 15815,
+        "commandOverheadMs": 779,
+        "otherMs": 1122
+      },
+      "summary": {
+        "total": 5,
+        "passed": 1,
+        "failed": 1,
+        "skipped": 3,
+        "cleanupOk": true,
+        "failedSteps": [
+          {
+            "error": "The editing area displays both exact lines of text.",
+            "stepIndex": 2
+          }
+        ]
+      },
+      "cleanupOk": true
+    },
+    {
+      "line": 368,
+      "ok": false,
+      "timing": {
+        "commandCount": 22,
+        "wrapperMs": 27577,
+        "backendMs": 26859,
+        "waitMs": 10059,
+        "cleanupMs": 910,
+        "totalMs": 28671,
+        "commandOverheadMs": 718,
+        "otherMs": 1094
+      },
+      "summary": {
+        "total": 5,
+        "passed": 2,
+        "failed": 1,
+        "skipped": 2,
+        "cleanupOk": true,
+        "failedSteps": [
+          {
+            "error": "NotepadTest.txt exists and is non-empty.",
+            "stepIndex": 3
+          }
+        ]
+      },
+      "cleanupOk": true
+    },
+    {
+      "line": 406,
+      "ok": false,
+      "timing": {
+        "commandCount": 43,
+        "wrapperMs": 48945,
+        "backendMs": 47951,
+        "waitMs": 733,
+        "cleanupMs": 548,
+        "totalMs": 53111,
+        "commandOverheadMs": 994,
+        "otherMs": 4166
+      },
+      "summary": {
+        "total": 5,
+        "passed": 4,
+        "failed": 1,
+        "skipped": 0,
+        "cleanupOk": true,
+        "failedSteps": [
+          {
+            "error": "PDF output path was not typed. The expected owned keyboard target is not ready. No input was sent. Inspect error.focus and observe the visible target once; do not retry different guessed selectors or steal focus from a dialog.",
+            "stepIndex": 5
+          }
+        ]
+      },
+      "cleanupOk": true
+    },
+    {
+      "line": 432,
+      "ok": true,
+      "timing": {
+        "commandCount": 46,
+        "wrapperMs": 59206,
+        "backendMs": 58231,
+        "waitMs": 2829,
+        "cleanupMs": 616,
+        "totalMs": 67290,
+        "commandOverheadMs": 975,
+        "otherMs": 8084
+      },
+      "summary": {
+        "total": 5,
+        "passed": 5,
+        "failed": 0,
+        "skipped": 0,
+        "cleanupOk": true,
+        "failedSteps": []
+      },
+      "cleanupOk": true
+    }
+  ],
+  "elapsedSeconds": 1404.358,
+  "phases": [
+    {
+      "phase": "Preparation",
+      "seconds": 49.889
+    },
+    {
+      "phase": "Full walkthrough and completion",
+      "seconds": 790.989
+    },
+    {
+      "phase": "Generation and first preflight",
+      "seconds": 133.555
+    },
+    {
+      "phase": "Replay and repair",
+      "seconds": 422.895
+    },
+    {
+      "phase": "Delivery",
+      "seconds": 7.03
+    }
+  ],
+  "editorRouteSeconds": 331.038,
+  "printRouteSeconds": 222.418,
+  "replayBackendSeconds": 172.653,
+  "notes": [
+    "Read-only analysis; attached commands/scripts were never executed.",
+    "Direct CLI envelope timing excludes commands nested inside generated executions.",
+    "Pacing and provider-fallback diagnoses are supported by the observed failures and source differences; fresh Notepad end-to-end performance is not measured."
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "ok": true,
+  "timestamp": "2026-09-30T14:03:58.8337086+02:00",
+  "tests": [
+    {
+      "output": "CLI private regression checks: 23 passed\nCLI entry/help checks: 2 passed\nCLI stream checks: 1 passed\nCLI stream failure-stop check: passed",
+      "exitCode": 0,
+      "elapsedMs": 3269,
+      "test": "potato-cli\\tests\\Regression.Tests.ps1"
+    },
+    {
+      "output": "Interaction checks: 54 passed",
+      "exitCode": 0,
+      "elapsedMs": 1773,
+      "test": "potato-cli\\tests\\Interaction.Tests.ps1"
+    },
+    {
+      "output": "Authoring experience checks: 13 passed",
+      "exitCode": 0,
+      "elapsedMs": 950,
+      "test": "potato-cli\\tests\\AuthoringExperience.Tests.ps1"
+    },
+    {
+      "output": "Drag checks: 3 passed (release on failure, incomplete endpoint, missing target)",
+      "exitCode": 0,
+      "elapsedMs": 698,
+      "test": "potato-cli\\tests\\Drag.Tests.ps1"
+    },
+    {
+      "output": "PDF checks: 17 passed (PowerShell 5.1.22621.2506)",
+      "exitCode": 0,
+      "elapsedMs": 1084,
+      "test": "potato-cli\\tests\\Pdf.Tests.ps1"
+    },
+    {
+      "output": "External PDF checks: 4 passed (quoted path, fallback with provenance, strict builtin, invalid PDF)",
+      "exitCode": 0,
+      "elapsedMs": 1639,
+      "test": "potato-cli\\tests\\Pdf.External.Tests.ps1"
+    },
+    {
+      "output": "Runtime checks: 43 passed",
+      "exitCode": 0,
+      "elapsedMs": 5622,
+      "test": "automated-gui-testing-agent-framework\\tests\\Runtime.Regression.Tests.ps1"
+    },
+    {
+      "output": "Authoring checks: 38 passed",
+      "exitCode": 0,
+      "elapsedMs": 6349,
+      "test": "automated-gui-testing-agent-framework\\tests\\Authoring.Regression.Tests.ps1"
+    },
+    {
+      "output": "GUI smoke: literal/focused input, relative click, Tab/ShiftTab focus, screenshot directory, visible save, actual selector drag/drop payload, modal discovery, and scoped close passed.",
+      "exitCode": 0,
+      "elapsedMs": 9319,
+      "test": "potato-cli\\tests\\Gui.Smoke.Tests.ps1"
+    }
+  ],
+  "followup": {
+    "reason": "Working-parent refresh now runs only after a failed first lookup to preserve fast successful commands.",
+    "parseCheck": "All repository PowerShell files parsed successfully",
+    "diffCheck": "Both repository diffs passed git diff --check",
+    "tests": [
+      "AuthoringExperience.Tests.ps1: 13 passed",
+      "Gui.Smoke.Tests.ps1: passed"
+    ]
+  }
+}

@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Abstract reading guide — AI agents, software and GUI testing</title>
+<style>
+:root{--ink:#182d3b;--muted:#536674;--line:#dbe3e6;--paper:#fff;--bg:#f4f7f7;--context:#e8edf4;--gap:#ffeadc;--contribution:#e1def8;--method:#dceff6;--evaluation:#fff2cd;--results:#daf0e4;--boundary:#f7e1e8;--meaning:#e8ead4}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}main{max-width:1120px;margin:0 auto;padding:36px 28px 70px}a{color:#185f8b;text-underline-offset:3px}a:hover{color:#103e5a}header{padding:30px 36px;background:#153745;color:white;border-radius:18px;margin-bottom:24px}header .eyebrow{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#b8d4df}h1{font-size:clamp(28px,4vw,42px);line-height:1.2;margin:12px 0 16px;max-width:850px}header p{max-width:850px;color:#dce9ed}h2{font-size:25px;margin:0 0 14px;line-height:1.3}h3{font-size:20px;margin:0 0 6px;line-height:1.4}.panel,article{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:26px 30px;margin:20px 0}p{margin:10px 0 14px}.small,.meta{font-size:14px;color:var(--muted)}.meta{margin:7px 0 14px}.legend{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.chip,.flow a{display:inline-block;border-radius:7px;padding:4px 9px;font-size:12px;font-weight:650;color:var(--ink);text-decoration:none}.context{background:var(--context)}.gap{background:var(--gap)}.contribution{background:var(--contribution)}.method{background:var(--method)}.evaluation{background:var(--evaluation)}.results{background:var(--results)}.boundary{background:var(--boundary)}.meaning{background:var(--meaning)}.flow{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 22px}.flow a:hover{outline:2px solid #446478}.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:14px}th,td{text-align:left;border-bottom:1px solid var(--line);padding:11px 12px;vertical-align:top}th{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}td:first-child{white-space:nowrap}blockquote{margin:18px 0;padding:10px 17px;border-left:3px solid #7ca8b6;background:#f3f7f8;font-size:17px}blockquote p{margin:0}cite{font-size:12px;color:var(--muted);font-style:normal}.lesson{padding:13px 17px;border-radius:8px;background:#f2f6f7;margin-top:18px}.lesson strong{display:block;font-size:13px;color:#285765}.recommended{border-top:4px solid #3a8196}ol{padding-left:24px}li{padding-left:4px;margin:10px 0}.number{display:inline-block;font-size:12px;font-weight:700;color:#285765;margin-bottom:6px}.note{border-left:3px solid #c08a36;padding:0 18px}.sentence-table td:first-child{width:105px}.sentence-table td:nth-child(2){width:175px}.sentence-table tr:target{background:#fff6d8}.footer{margin-top:28px;color:var(--muted);font-size:12px}@media(max-width:650px){main{padding:18px 12px 40px}header,.panel,article{padding:22px 18px}td,th{padding:10px 8px}.sentence-table td:nth-child(2){min-width:135px}.sentence-table td:nth-child(3){min-width:260px}}@media print{body{background:white;font-size:11pt}main{max-width:none;padding:0}header{background:white;color:var(--ink);border-bottom:2px solid var(--ink);padding:12px 0;border-radius:0}header p,header .eyebrow{color:var(--muted)}.panel,article{border-radius:0;padding:16px 0;border-left:0;border-right:0;break-before:auto}.flow a,.chip{-webkit-print-color-adjust:exact;print-color-adjust:exact}tr{break-inside:avoid}h2,h3,blockquote{break-after:avoid}.table-wrap{overflow:visible}a{color:inherit}.footer{font-size:9pt}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div class="eyebrow">Thesis preparation · Collected 7 October 2026</div>
+<h1>How related research abstracts build their argument</h1>
+<p>Seven examples from Nature, Science, Nature Machine Intelligence and a specialist software-testing conference. Read the full abstracts through the source links, then use the sentence maps to compare their flow.</p>
+<p class="small" style="color:#b8d4df">Collection: 3 Nature articles · 2 Science articles · 1 Nature Machine Intelligence article · 1 ICST paper</p>
+</header>
+
+<section class="panel" aria-labelledby="reading">
+<h2 id="reading">Start with these three</h2>
+<p><a href="#droidagent">DroidAgent</a> is the closest subject match: LLM agents and GUI testing. <a href="#coordination">The agent-coordination study</a> is the strongest comparison example: experimental scope, measured outcomes and an explicit boundary. <a href="#era">ERA</a> shows a compact problem → software system → evidence → significance progression.</p>
+<p class="small">The excerpts below are short quotations; the sentence descriptions are paraphrases. The rhetorical labels and lessons are my interpretation, not labels supplied by the authors. This is a selected reading list, not a systematic literature review or a universal journal template.</p>
+<div class="legend" aria-label="Rhetorical functions">
+<span class="chip context">Context</span><span class="chip gap">Gap / problem</span><span class="chip contribution">Contribution</span><span class="chip method">Method</span><span class="chip evaluation">Evaluation scope</span><span class="chip results">Results</span><span class="chip boundary">Boundary / qualification</span><span class="chip meaning">Meaning</span>
+</div>
+<p class="small">Each coloured block represents one sentence, in its original order. Mixed labels indicate that a sentence serves more than one purpose. Click a block to jump to its annotation.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Paper</th><th>Venue / year</th><th>Dominant flow</th></tr></thead>
+<tbody>
+<tr><td><a href="#droidagent">DroidAgent</a></td><td>ICST, 2024</td><td>Context → gap → agent and workflow → evaluation → example → measured results</td></tr>
+<tr><td><a href="#coordination">Agent coordination</a></td><td>Nature Machine Intelligence, 2026</td><td>Question → controlled design → scope → findings → qualification → practical meaning</td></tr>
+<tr><td><a href="#era">ERA</a></td><td>Nature, 2026</td><td>Bottleneck → system → mechanism → evidence across tasks → broader significance</td></tr>
+<tr><td><a href="#alphacode">AlphaCode</a></td><td>Science, 2022</td><td>Context → gap → system with headline result → mechanism → significance</td></tr>
+<tr><td><a href="#alphadev">AlphaDev</a></td><td>Nature, 2023</td><td>Context → difficulty → claim → method → performance → deployment and generality</td></tr>
+<tr><td><a href="#funsearch">FunSearch</a></td><td>Nature, 2024 issue</td><td>Capability → reliability gap → method → discoveries → representation and usefulness</td></tr>
+<tr><td><a href="#diffusion">AI coding diffusion</a></td><td>Science, 2026</td><td>Promise and concern → measurement → aggregate results → unequal benefits → cautious implication</td></tr>
+</tbody></table></div>
+</section>
+
+<article id="droidagent" data-sentences="9" class="recommended" aria-labelledby="droid-title">
+<span class="number">01 · Closest subject match</span>
+<h2 id="droid-title">Intent-Driven Mobile GUI Testing with Autonomous Large Language Model Agents</h2>
+<p class="meta">Juyeon Yoon, Robert Feldt and Shin Yoo · IEEE ICST 2024 · DOI: 10.1109/ICST60714.2024.00020 · 9 sentences</p>
+<p class="small"><a href="https://ieeexplore.ieee.org/document/10638557/">Published abstract</a> · <a href="https://coinse.github.io/publications/pdfs/Yoon2024aa.pdf">Author-hosted paper: abstract on PDF page 1</a></p>
+<blockquote><p>“semantic, intent-driven automation of GUI testing”</p><cite>Short excerpt from the abstract</cite></blockquote>
+<div class="flow" aria-label="DroidAgent sentence flow">
+<a href="#droidagent-1" class="context">1 Context</a><a href="#droidagent-2" class="gap">2 Gap</a><a href="#droidagent-3" class="contribution">3 Agent</a><a href="#droidagent-4" class="method">4 Method</a><a href="#droidagent-5" class="method">5 Workflow</a><a href="#droidagent-6" class="evaluation">6 Scope / result</a><a href="#droidagent-7" class="results">7 Example</a><a href="#droidagent-8" class="results">8 Comparison</a><a href="#droidagent-9" class="results">9 Assessment</a>
+</div>
+<div class="table-wrap"><table class="sentence-table"><thead><tr><th>Sentence</th><th>Function</th><th>What it does — paraphrased</th></tr></thead><tbody>
+<tr id="droidagent-1"><td>1</td><td>Context</td><td>Defines GUI testing through user interactions and use cases.</td></tr>
+<tr id="droidagent-2"><td>2</td><td>Gap</td><td>Explains why selecting meaningful tasks remains manual when tools prioritize coverage.</td></tr>
+<tr id="droidagent-3"><td>3</td><td>Contribution</td><td>Introduces an autonomous Android testing agent that follows user intent.</td></tr>
+<tr id="droidagent-4"><td>4</td><td>Method</td><td>Identifies LLMs and memory as its main components.</td></tr>
+<tr id="droidagent-5"><td>5</td><td>Workflow</td><td>Explains goal selection followed by app interaction.</td></tr>
+<tr id="droidagent-6"><td>6</td><td>Evaluation + result</td><td>Gives the 15-app benchmark and reports autonomous, realistic task execution.</td></tr>
+<tr id="droidagent-7"><td>7</td><td>Concrete example</td><td>Illustrates autonomy with a multi-account messaging scenario.</td></tr>
+<tr id="droidagent-8"><td>8</td><td>Quantified comparison</td><td>Reports 61% activity coverage versus 51% for existing techniques.</td></tr>
+<tr id="droidagent-9"><td>9</td><td>Quality assessment</td><td>Reports 317 relevant tasks among 547 generated tasks and deeper feature interaction.</td></tr>
+</tbody></table></div>
+<div class="lesson"><strong>What to borrow</strong>Connect the testing problem to a specific workflow, then report both performance and task quality. Your authoring-time and outcome measures can serve separate roles.</div>
+</article>
+
+<article id="coordination" data-sentences="10" class="recommended" aria-labelledby="coord-title">
+<span class="number">02 · Closest experimental structure</span>
+<h2 id="coord-title">Capable language models can outgrow the benefits of collaboration</h2>
+<p class="meta">Yubin Kim et al. · Nature Machine Intelligence 8, 1157–1172 (2026) · Published 24 July 2026 · 10 sentences</p>
+<p class="small"><a href="https://www.nature.com/articles/s42256-026-01268-y#Abs1">Full published abstract</a></p>
+<blockquote><p>“a practical selection rule rather than a universal scaling principle”</p><cite>Short excerpt from the abstract</cite></blockquote>
+<div class="flow" aria-label="Coordination sentence flow">
+<a href="#coordination-1" class="gap">1 Question</a><a href="#coordination-2" class="method">2 Design</a><a href="#coordination-3" class="evaluation">3 Scope</a><a href="#coordination-4" class="results">4 Finding</a><a href="#coordination-5" class="results">5 Threshold</a><a href="#coordination-6" class="results">6 Validation</a><a href="#coordination-7" class="boundary">7 Boundary</a><a href="#coordination-8" class="results">8 Failure effect</a><a href="#coordination-9" class="results">9 Model quality</a><a href="#coordination-10" class="meaning">10 Meaning</a>
+</div>
+<div class="table-wrap"><table class="sentence-table"><thead><tr><th>Sentence</th><th>Function</th><th>What it does — paraphrased</th></tr></thead><tbody>
+<tr id="coordination-1"><td>1</td><td>Context + question</td><td>Defines agents and asks when coordination improves on a capable single agent.</td></tr>
+<tr id="coordination-2"><td>2</td><td>Controlled method</td><td>Holds prompts, tools and compute budgets fixed while changing architecture and capability.</td></tr>
+<tr id="coordination-3"><td>3</td><td>Evaluation scope</td><td>Specifies 260 configurations, six benchmarks, five architectures and three model families.</td></tr>
+<tr id="coordination-4"><td>4</td><td>Central finding</td><td>Identifies single-agent performance as the strongest predictor of coordination benefit.</td></tr>
+<tr id="coordination-5"><td>5</td><td>Pattern</td><td>Introduces a capability threshold beyond which more agents rarely help.</td></tr>
+<tr id="coordination-6"><td>6</td><td>Validation result</td><td>Reports correct direction predictions for 94% of validation configurations.</td></tr>
+<tr id="coordination-7"><td>7</td><td>Qualification</td><td>Limits the threshold's interpretation to a practical selection rule.</td></tr>
+<tr id="coordination-8"><td>8</td><td>Failure analysis</td><td>Reports statistically supported amplification of errors.</td></tr>
+<tr id="coordination-9"><td>9</td><td>Predictive evidence</td><td>Gives model-fit statistics and 87% architecture-selection accuracy.</td></tr>
+<tr id="coordination-10"><td>10</td><td>Practical meaning</td><td>Connects the evidence to architecture choice and coordination overhead.</td></tr>
+</tbody></table></div>
+<div class="lesson"><strong>What to borrow</strong>State what was compared, report the main effect, and give its scope. Your uneven model outcomes deserve a compact qualification alongside runtime gains.</div>
+</article>
+
+<article id="era" data-sentences="9" class="recommended" aria-labelledby="era-title">
+<span class="number">03 · Compact software-system narrative</span>
+<h2 id="era-title">An AI system to help scientists write expert-level empirical software</h2>
+<p class="meta">Eser Aygün et al. · Nature 654, 909–916 (2026) · First published 19 May 2026 · 9 sentences</p>
+<p class="small"><a href="https://www.nature.com/articles/s41586-026-10658-6#Abs1">Full published abstract</a></p>
+<blockquote><p>“slow, manual creation of software”</p><cite>Short excerpt from the abstract</cite></blockquote>
+<div class="flow" aria-label="ERA sentence flow">
+<a href="#era-1" class="gap">1 Bottleneck</a><a href="#era-2" class="contribution">2 System</a><a href="#era-3" class="method">3 Mechanism</a><a href="#era-4" class="results">4 Condition / result</a><a href="#era-5" class="evaluation">5 Breadth</a><a href="#era-6" class="results">6 Result</a><a href="#era-7" class="results">7 Result</a><a href="#era-8" class="results">8 Other tasks</a><a href="#era-9" class="meaning">9 Significance</a>
+</div>
+<div class="table-wrap"><table class="sentence-table"><thead><tr><th>Sentence</th><th>Function</th><th>What it does — paraphrased</th></tr></thead><tbody>
+<tr id="era-1"><td>1</td><td>Practical bottleneck</td><td>Connects slow software development to delays in scientific experiments.</td></tr>
+<tr id="era-2"><td>2</td><td>Contribution</td><td>Introduces ERA as a system that optimizes scientific software against a quality measure.</td></tr>
+<tr id="era-3"><td>3</td><td>Mechanism</td><td>Explains that LLM generation and tree search explore alternative solutions.</td></tr>
+<tr id="era-4"><td>4</td><td>Condition + result</td><td>Links expert performance to integrating complex ideas from external research.</td></tr>
+<tr id="era-5"><td>5</td><td>Evaluation breadth</td><td>States that tree search is effective across multiple task types.</td></tr>
+<tr id="era-6"><td>6</td><td>Quantified evidence</td><td>Reports 40 single-cell analysis methods exceeding leading human methods.</td></tr>
+<tr id="era-7"><td>7</td><td>Quantified evidence</td><td>Reports 14 forecasting models exceeding a public-health ensemble and individual models.</td></tr>
+<tr id="era-8"><td>8</td><td>Additional evidence</td><td>Extends the results to geospatial, neural, numerical and time-series tasks.</td></tr>
+<tr id="era-9"><td>9</td><td>Broader significance</td><td>Positions software creation as a route to faster scientific progress.</td></tr>
+</tbody></table></div>
+<div class="lesson"><strong>What to borrow</strong>Begin with the concrete bottleneck. Introduce the framework quickly, explain its mechanism once, and reserve more space for evidence.</div>
+</article>
+
+<article id="alphacode" data-sentences="6" aria-labelledby="ac-title">
+<span class="number">04 · Headline result before mechanism</span>
+<h2 id="ac-title">Competition-level code generation with AlphaCode</h2>
+<p class="meta">Yujia Li et al. · Science 378, 1092–1097 (2022) · 9 December 2022 issue · 6 sentences</p>
+<p class="small"><a href="https://www.science.org/doi/10.1126/science.abq1158">Published paper</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/36480631/">Full published abstract in PubMed</a></p>
+<blockquote><p>“Programming is a powerful and ubiquitous problem-solving tool.”</p><cite>Opening sentence of the published abstract</cite></blockquote>
+<div class="flow" aria-label="AlphaCode sentence flow">
+<a href="#alphacode-1" class="context">1 Context</a><a href="#alphacode-2" class="context">2 Motivation</a><a href="#alphacode-3" class="gap">3 Gap</a><a href="#alphacode-4" class="contribution">4 System / result</a><a href="#alphacode-5" class="method">5 Mechanism</a><a href="#alphacode-6" class="meaning">6 Significance</a>
+</div>
+<div class="table-wrap"><table class="sentence-table"><thead><tr><th>Sentence</th><th>Function</th><th>What it does — paraphrased</th></tr></thead><tbody>
+<tr id="alphacode-1"><td>1</td><td>Broad context</td><td>Establishes programming as a widely useful activity.</td></tr>
+<tr id="alphacode-2"><td>2</td><td>Motivation</td><td>Connects code generation to productivity and accessibility.</td></tr>
+<tr id="alphacode-3"><td>3</td><td>Gap</td><td>Contrasts existing code-generation ability with weak complex problem solving.</td></tr>
+<tr id="alphacode-4"><td>4</td><td>Contribution + result</td><td>Introduces AlphaCode with its top-54.3% average simulated competition ranking.</td></tr>
+<tr id="alphacode-5"><td>5</td><td>Mechanism</td><td>Describes large-scale generation, filtering and clustering into at most ten submissions.</td></tr>
+<tr id="alphacode-6"><td>6</td><td>Significance</td><td>Frames the performance as a milestone for AI competitive programming.</td></tr>
+</tbody></table></div>
+<div class="lesson"><strong>What to borrow</strong>The contribution and strongest result can share a sentence. The abstract still explains enough of the mechanism to make that result understandable.</div>
+<p class="small">Version note: this map uses the six-sentence Science abstract, as indexed by PubMed. The longer author-hosted technical report has a different abstract.</p>
+</article>
+
+<article id="alphadev" data-sentences="10" aria-labelledby="ad-title">
+<span class="number">05 · Performance linked to real deployment</span>
+<h2 id="ad-title">Faster sorting algorithms discovered using deep reinforcement learning</h2>
+<p class="meta">Daniel J. Mankowitz et al. · Nature 618, 257–263 (2023) · Published 7 June 2023 · 10 sentences</p>
+<p class="small"><a href="https://www.nature.com/articles/s41586-023-06004-9#Abs1">Full published abstract</a></p>
+<blockquote><p>“We then trained a new deep reinforcement learning agent”</p><cite>Short excerpt from the abstract</cite></blockquote>
+<div class="flow" aria-label="AlphaDev sentence flow">
+<a href="#alphadev-1" class="context">1 Context</a><a href="#alphadev-2" class="context">2 Importance</a><a href="#alphadev-3" class="gap">3 Difficulty</a><a href="#alphadev-4" class="contribution">4 Claim</a><a href="#alphadev-5" class="method">5 Formulation</a><a href="#alphadev-6" class="method">6 Agent</a><a href="#alphadev-7" class="results">7 Performance</a><a href="#alphadev-8" class="results">8 Deployment</a><a href="#alphadev-9" class="meaning">9 Meaning</a><a href="#alphadev-10" class="meaning">10 Generality</a>
+</div>
+<div class="table-wrap"><table class="sentence-table"><thead><tr><th>Sentence</th><th>Function</th><th>What it does — paraphrased</th></tr></thead><tbody>
+<tr id="alphadev-1"><td>1</td><td>Context</td><td>Establishes the vast daily use of basic algorithms.</td></tr>
+<tr id="alphadev-2"><td>2</td><td>Importance</td><td>Connects computational demand to the need for efficiency.</td></tr>
+<tr id="alphadev-3"><td>3</td><td>Gap</td><td>Explains the difficulty of improving mature routines further.</td></tr>
+<tr id="alphadev-4"><td>4</td><td>Contribution</td><td>Claims that AI can discover routines exceeding existing approaches.</td></tr>
+<tr id="alphadev-5"><td>5</td><td>Problem formulation</td><td>Recasts sorting optimization as a single-player game.</td></tr>
+<tr id="alphadev-6"><td>6</td><td>Method</td><td>Introduces the trained reinforcement-learning agent.</td></tr>
+<tr id="alphadev-7"><td>7</td><td>Comparative result</td><td>Reports small sorting routines exceeding human-developed benchmarks.</td></tr>
+<tr id="alphadev-8"><td>8</td><td>Practical evidence</td><td>States that the algorithms entered the LLVM C++ sorting library.</td></tr>
+<tr id="alphadev-9"><td>9</td><td>Meaning</td><td>Interprets that deployment as adoption of automatically discovered code.</td></tr>
+<tr id="alphadev-10"><td>10</td><td>Generality</td><td>Mentions additional domains supporting broader applicability.</td></tr>
+</tbody></table></div>
+<div class="lesson"><strong>What to borrow</strong>A practical artifact can strengthen a performance claim. This abstract gives a comparative result without numerical speedups; exact percentages are not required in every sentence.</div>
+</article>
+
+<article id="funsearch" data-sentences="10" aria-labelledby="fs-title">
+<span class="number">06 · Reliability gap motivates the architecture</span>
+<h2 id="fs-title">Mathematical discoveries from program search with large language models</h2>
+<p class="meta">Bernardino Romera-Paredes et al. · Nature 625, 468–475 (2024) · First published 14 December 2023; January 2024 issue · 10 sentences</p>
+<p class="small"><a href="https://www.nature.com/articles/s41586-023-06924-6#Abs1">Full published abstract</a></p>
+<blockquote><p>“pairing a pretrained LLM with a systematic evaluator”</p><cite>Short excerpt from the abstract</cite></blockquote>
+<div class="flow" aria-label="FunSearch sentence flow">
+<a href="#funsearch-1" class="context">1 Capability</a><a href="#funsearch-2" class="gap">2 Reliability</a><a href="#funsearch-3" class="gap">3 Consequence</a><a href="#funsearch-4" class="contribution">4 Method</a><a href="#funsearch-5" class="results">5 Claim</a><a href="#funsearch-6" class="results">6 Discovery</a><a href="#funsearch-7" class="meaning">7 Meaning</a><a href="#funsearch-8" class="results">8 Second domain</a><a href="#funsearch-9" class="method">9 Representation</a><a href="#funsearch-10" class="meaning">10 Usefulness</a>
+</div>
+<div class="table-wrap"><table class="sentence-table"><thead><tr><th>Sentence</th><th>Function</th><th>What it does — paraphrased</th></tr></thead><tbody>
+<tr id="funsearch-1"><td>1</td><td>Context</td><td>Recognizes broad LLM capabilities.</td></tr>
+<tr id="funsearch-2"><td>2</td><td>Reliability gap</td><td>Identifies plausible but incorrect model outputs.</td></tr>
+<tr id="funsearch-3"><td>3</td><td>Consequence</td><td>Connects those errors to obstacles in scientific discovery.</td></tr>
+<tr id="funsearch-4"><td>4</td><td>Contribution + method</td><td>Introduces evolutionary search combining a pretrained model and an evaluator.</td></tr>
+<tr id="funsearch-5"><td>5</td><td>Result claim</td><td>States that the approach surpasses established results.</td></tr>
+<tr id="funsearch-6"><td>6</td><td>Concrete discovery</td><td>Reports improved constructions for the cap-set problem.</td></tr>
+<tr id="funsearch-7"><td>7</td><td>Interpretation</td><td>Relates this success to discoveries on existing open problems.</td></tr>
+<tr id="funsearch-8"><td>8</td><td>Generality + result</td><td>Adds improved online bin-packing heuristics as another application.</td></tr>
+<tr id="funsearch-9"><td>9</td><td>Distinctive mechanism</td><td>Explains why searching for solution-producing programs matters.</td></tr>
+<tr id="funsearch-10"><td>10</td><td>Practical meaning</td><td>Connects interpretable programs to expert feedback and deployment.</td></tr>
+</tbody></table></div>
+<div class="lesson"><strong>What to borrow</strong>Explain how validation addresses a specific weakness of generated outputs. A mechanism detail can appear after results when it clarifies their significance.</div>
+</article>
+
+<article id="diffusion" data-sentences="7" aria-labelledby="diff-title">
+<span class="number">07 · Mixed results become part of the finding</span>
+<h2 id="diff-title">Who is using AI to code? Global diffusion and impact of generative AI</h2>
+<p class="meta">Simone Daniotti, Johannes Wachs, Xiangnan Feng and Frank Neffke · Science 391, 831–835 (2026) · Online 22 January; print 19 February 2026 · 7 sentences in the short abstract</p>
+<p class="small"><a href="https://www.science.org/doi/10.1126/science.adz9311">Publisher page and structured summary</a> · <a href="https://real.mtak.hu/234712/1/science.adz9311.pdf">Published PDF in the Academy repository: short abstract on PDF page 2</a></p>
+<blockquote><p>“showed no significant benefits from AI adoption”</p><cite>Short excerpt from the published abstract</cite></blockquote>
+<div class="flow" aria-label="AI diffusion sentence flow">
+<a href="#diffusion-1" class="gap">1 Promise / concern</a><a href="#diffusion-2" class="method">2 Method / scope</a><a href="#diffusion-3" class="results">3 Adoption</a><a href="#diffusion-4" class="results">4 Productivity</a><a href="#diffusion-5" class="results">5 Subgroup gain</a><a href="#diffusion-6" class="boundary">6 No gain</a><a href="#diffusion-7" class="meaning">7 Implication</a>
+</div>
+<div class="table-wrap"><table class="sentence-table"><thead><tr><th>Sentence</th><th>Function</th><th>What it does — paraphrased</th></tr></thead><tbody>
+<tr id="diffusion-1"><td>1</td><td>Motivation + concern</td><td>Contrasts promised productivity gains with potentially unequal adoption.</td></tr>
+<tr id="diffusion-2"><td>2</td><td>Method + scope</td><td>Describes a classifier applied to over 30 million commits by 160,097 developers.</td></tr>
+<tr id="diffusion-3"><td>3</td><td>Adoption result</td><td>Estimates AI involvement in 29% of US Python functions.</td></tr>
+<tr id="diffusion-4"><td>4</td><td>Productivity result</td><td>Reports an estimated 3.6% increase in quarterly code contributions.</td></tr>
+<tr id="diffusion-5"><td>5</td><td>Subgroup result</td><td>Locates productivity and exploration gains among experienced developers.</td></tr>
+<tr id="diffusion-6"><td>6</td><td>Boundary / null result</td><td>Reports no significant benefit among early-career developers.</td></tr>
+<tr id="diffusion-7"><td>7</td><td>Cautious implication</td><td>Suggests that unequal benefits may alter skills gaps and career progression.</td></tr>
+</tbody></table></div>
+<div class="lesson"><strong>What to borrow</strong>A null result can be central to the story. Report a main improvement and the conditions in which it fails, then draw a bounded implication.</div>
+<p class="small note">Format note: the publisher page also provides a longer structured summary with Introduction, Rationale, Results and Conclusion sections. The sentence map above describes the separate short abstract on the second PDF page. Its published figures differ from the earlier preprint.</p>
+</article>
+
+<section class="panel" aria-labelledby="patterns">
+<h2 id="patterns">What these examples suggest for your abstract</h2>
+<p>The recurring argument is <strong>why the task matters → what remains difficult → what this work contributes → how it was evaluated → what changed → what the finding means</strong>. The ordering is flexible: AlphaCode combines its system and headline result; FunSearch returns to the mechanism after presenting discoveries. These are patterns observed in this selection, not mandatory journal rules.</p>
+<p>For your thesis, I would use a six-to-eight-sentence progression. This is a planning scaffold, not a draft abstract:</p>
+<ol>
+<li><strong>Problem.</strong> State the practical difficulty of producing reliable GUI tests for desktop applications.</li>
+<li><strong>Gap.</strong> Identify the specific limitation your framework addresses. Avoid a sweeping claim that GUI-test automation does not exist.</li>
+<li><strong>Contribution.</strong> Introduce the framework and the exploration, script-generation and validation workflow it enables.</li>
+<li><strong>Evaluation.</strong> Name the comparison groups and tested applications. Define which experiments belong to the main comparison and which are model-version extensions.</li>
+<li><strong>Main result.</strong> Give one clear quantitative effect for authoring time, with its baseline and aggregation method.</li>
+<li><strong>Outcome and boundary.</strong> Add the relevant completion or validation outcome and a material failure pattern. Partial or failed attempts should shape the interpretation.</li>
+<li><strong>Meaning.</strong> Explain what the findings support within the evaluated tasks and applications.</li>
+</ol>
+<p class="small">Keep authoring/session duration separate from generated-script execution time. State what counts as success, and distinguish a script's reported validation result from evidence that it followed the required GUI route. Make model-version claims only where the tasks and applications are comparable. These are recommendations based on your experiment design.</p>
+<p>Useful balances to emulate: DroidAgent combines autonomy, coverage and task relevance; the coordination study combines gains with overhead and a scope qualification; the diffusion study integrates a null subgroup result into its conclusion.</p>
+</section>
+<footer class="footer">Sources checked on 7 October 2026. Bibliographic details and abstract content come from publisher pages, the published Science abstract indexed by PubMed, and author/institution-hosted papers. All descriptions and writing lessons are original paraphrases or analysis. Full abstracts remain available through the cited source links.</footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,8 @@
+{
+  "checks": 52,
+  "output": "Runtime checks: 52 passed",
+  "note": "Targeted rerun passed after adding cleanup exit-race and reused-PID checks; other suites were unchanged.",
+  "exitCode": 0,
+  "recordedAt": "2026-09-30T15:33:55.3012418+02:00",
+  "test": "automated-gui-testing-agent-framework/tests/Runtime.Regression.Tests.ps1"
+}

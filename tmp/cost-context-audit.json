@@ -1,0 +1,992 @@
+[
+  {
+    "run_id": "R002",
+    "max_request_input_tokens": 119447,
+    "max_request_line": 498,
+    "samples": 94,
+    "write_tokens": 0,
+    "ordinary_input": 219264,
+    "tiers": []
+  },
+  {
+    "run_id": "R003",
+    "max_request_input_tokens": 74425,
+    "max_request_line": 356,
+    "samples": 70,
+    "write_tokens": 0,
+    "ordinary_input": 153628,
+    "tiers": []
+  },
+  {
+    "run_id": "R004",
+    "max_request_input_tokens": 79997,
+    "max_request_line": 344,
+    "samples": 65,
+    "write_tokens": 0,
+    "ordinary_input": 137376,
+    "tiers": []
+  },
+  {
+    "run_id": "R005",
+    "max_request_input_tokens": 73475,
+    "max_request_line": 234,
+    "samples": 46,
+    "write_tokens": 0,
+    "ordinary_input": 128797,
+    "tiers": []
+  },
+  {
+    "run_id": "R006",
+    "max_request_input_tokens": 92930,
+    "max_request_line": 293,
+    "samples": 59,
+    "write_tokens": 0,
+    "ordinary_input": 131952,
+    "tiers": []
+  },
+  {
+    "run_id": "R007",
+    "max_request_input_tokens": 225595,
+    "max_request_line": 900,
+    "samples": 166,
+    "write_tokens": 0,
+    "ordinary_input": 350456,
+    "tiers": []
+  },
+  {
+    "run_id": "R008",
+    "max_request_input_tokens": 92826,
+    "max_request_line": 364,
+    "samples": 73,
+    "write_tokens": 0,
+    "ordinary_input": 144266,
+    "tiers": []
+  },
+  {
+    "run_id": "R009",
+    "max_request_input_tokens": 68795,
+    "max_request_line": 283,
+    "samples": 52,
+    "write_tokens": 0,
+    "ordinary_input": 80779,
+    "tiers": []
+  },
+  {
+    "run_id": "R010",
+    "max_request_input_tokens": 105617,
+    "max_request_line": 429,
+    "samples": 88,
+    "write_tokens": 0,
+    "ordinary_input": 166798,
+    "tiers": []
+  },
+  {
+    "run_id": "R011",
+    "max_request_input_tokens": 234999,
+    "max_request_line": 651,
+    "samples": 107,
+    "write_tokens": 0,
+    "ordinary_input": 333481,
+    "tiers": []
+  },
+  {
+    "run_id": "R012",
+    "max_request_input_tokens": 201204,
+    "max_request_line": 654,
+    "samples": 101,
+    "write_tokens": 0,
+    "ordinary_input": 484038,
+    "tiers": []
+  },
+  {
+    "run_id": "R013",
+    "max_request_input_tokens": 240423,
+    "max_request_line": 601,
+    "samples": 92,
+    "write_tokens": 0,
+    "ordinary_input": 339385,
+    "tiers": []
+  },
+  {
+    "run_id": "R014",
+    "max_request_input_tokens": 237386,
+    "max_request_line": 659,
+    "samples": 96,
+    "write_tokens": 0,
+    "ordinary_input": 326929,
+    "tiers": []
+  },
+  {
+    "run_id": "R015",
+    "max_request_input_tokens": 153481,
+    "max_request_line": 458,
+    "samples": 71,
+    "write_tokens": 0,
+    "ordinary_input": 223529,
+    "tiers": []
+  },
+  {
+    "run_id": "R016",
+    "max_request_input_tokens": 210404,
+    "max_request_line": 596,
+    "samples": 87,
+    "write_tokens": 0,
+    "ordinary_input": 290425,
+    "tiers": []
+  },
+  {
+    "run_id": "R017",
+    "max_request_input_tokens": 183820,
+    "max_request_line": 482,
+    "samples": 73,
+    "write_tokens": 0,
+    "ordinary_input": 245640,
+    "tiers": []
+  },
+  {
+    "run_id": "R018",
+    "max_request_input_tokens": 124256,
+    "max_request_line": 427,
+    "samples": 64,
+    "write_tokens": 0,
+    "ordinary_input": 206004,
+    "tiers": []
+  },
+  {
+    "run_id": "R019",
+    "max_request_input_tokens": 139859,
+    "max_request_line": 430,
+    "samples": 65,
+    "write_tokens": 0,
+    "ordinary_input": 188523,
+    "tiers": []
+  },
+  {
+    "run_id": "R020",
+    "max_request_input_tokens": 151592,
+    "max_request_line": 429,
+    "samples": 66,
+    "write_tokens": 0,
+    "ordinary_input": 230204,
+    "tiers": []
+  },
+  {
+    "run_id": "R021",
+    "max_request_input_tokens": 146843,
+    "max_request_line": 369,
+    "samples": 58,
+    "write_tokens": 0,
+    "ordinary_input": 208001,
+    "tiers": []
+  },
+  {
+    "run_id": "R022",
+    "max_request_input_tokens": 160051,
+    "max_request_line": 494,
+    "samples": 80,
+    "write_tokens": 0,
+    "ordinary_input": 383835,
+    "tiers": []
+  },
+  {
+    "run_id": "R023",
+    "max_request_input_tokens": 172025,
+    "max_request_line": 478,
+    "samples": 76,
+    "write_tokens": 0,
+    "ordinary_input": 289048,
+    "tiers": []
+  },
+  {
+    "run_id": "R024",
+    "max_request_input_tokens": 224822,
+    "max_request_line": 557,
+    "samples": 85,
+    "write_tokens": 0,
+    "ordinary_input": 306214,
+    "tiers": []
+  },
+  {
+    "run_id": "R025",
+    "max_request_input_tokens": 118170,
+    "max_request_line": 351,
+    "samples": 54,
+    "write_tokens": 0,
+    "ordinary_input": 221382,
+    "tiers": []
+  },
+  {
+    "run_id": "R026",
+    "max_request_input_tokens": 124122,
+    "max_request_line": 351,
+    "samples": 53,
+    "write_tokens": 0,
+    "ordinary_input": 137328,
+    "tiers": []
+  },
+  {
+    "run_id": "R027",
+    "max_request_input_tokens": 159497,
+    "max_request_line": 374,
+    "samples": 60,
+    "write_tokens": 0,
+    "ordinary_input": 359495,
+    "tiers": []
+  },
+  {
+    "run_id": "R028",
+    "max_request_input_tokens": 106845,
+    "max_request_line": 303,
+    "samples": 45,
+    "write_tokens": 0,
+    "ordinary_input": 112676,
+    "tiers": []
+  },
+  {
+    "run_id": "R029",
+    "max_request_input_tokens": 205065,
+    "max_request_line": 538,
+    "samples": 84,
+    "write_tokens": 0,
+    "ordinary_input": 265402,
+    "tiers": []
+  },
+  {
+    "run_id": "R030",
+    "max_request_input_tokens": 128448,
+    "max_request_line": 411,
+    "samples": 63,
+    "write_tokens": 0,
+    "ordinary_input": 191161,
+    "tiers": []
+  },
+  {
+    "run_id": "R031",
+    "max_request_input_tokens": 146987,
+    "max_request_line": 384,
+    "samples": 59,
+    "write_tokens": 0,
+    "ordinary_input": 191174,
+    "tiers": []
+  },
+  {
+    "run_id": "R032",
+    "max_request_input_tokens": 155394,
+    "max_request_line": 336,
+    "samples": 51,
+    "write_tokens": 0,
+    "ordinary_input": 192736,
+    "tiers": []
+  },
+  {
+    "run_id": "R033",
+    "max_request_input_tokens": 166361,
+    "max_request_line": 420,
+    "samples": 61,
+    "write_tokens": 0,
+    "ordinary_input": 210481,
+    "tiers": []
+  },
+  {
+    "run_id": "R034",
+    "max_request_input_tokens": 244959,
+    "max_request_line": 685,
+    "samples": 171,
+    "write_tokens": 0,
+    "ordinary_input": 559321,
+    "tiers": []
+  },
+  {
+    "run_id": "R035",
+    "max_request_input_tokens": 239015,
+    "max_request_line": 631,
+    "samples": 100,
+    "write_tokens": 0,
+    "ordinary_input": 349522,
+    "tiers": []
+  },
+  {
+    "run_id": "R036",
+    "max_request_input_tokens": 195036,
+    "max_request_line": 533,
+    "samples": 84,
+    "write_tokens": 0,
+    "ordinary_input": 286006,
+    "tiers": []
+  },
+  {
+    "run_id": "R037",
+    "max_request_input_tokens": 167005,
+    "max_request_line": 460,
+    "samples": 68,
+    "write_tokens": 0,
+    "ordinary_input": 228860,
+    "tiers": []
+  },
+  {
+    "run_id": "R038",
+    "max_request_input_tokens": 148168,
+    "max_request_line": 345,
+    "samples": 51,
+    "write_tokens": 0,
+    "ordinary_input": 181071,
+    "tiers": []
+  },
+  {
+    "run_id": "R039",
+    "max_request_input_tokens": 168395,
+    "max_request_line": 417,
+    "samples": 60,
+    "write_tokens": 0,
+    "ordinary_input": 214185,
+    "tiers": []
+  },
+  {
+    "run_id": "R040",
+    "max_request_input_tokens": 173293,
+    "max_request_line": 452,
+    "samples": 71,
+    "write_tokens": 0,
+    "ordinary_input": 248812,
+    "tiers": []
+  },
+  {
+    "run_id": "R041",
+    "max_request_input_tokens": 130471,
+    "max_request_line": 412,
+    "samples": 61,
+    "write_tokens": 0,
+    "ordinary_input": 169533,
+    "tiers": []
+  },
+  {
+    "run_id": "R042",
+    "max_request_input_tokens": 242301,
+    "max_request_line": 501,
+    "samples": 233,
+    "write_tokens": 0,
+    "ordinary_input": 1017550,
+    "tiers": []
+  },
+  {
+    "run_id": "R043",
+    "max_request_input_tokens": 245777,
+    "max_request_line": 503,
+    "samples": 111,
+    "write_tokens": 0,
+    "ordinary_input": 431467,
+    "tiers": []
+  },
+  {
+    "run_id": "R044",
+    "max_request_input_tokens": 118220,
+    "max_request_line": 350,
+    "samples": 54,
+    "write_tokens": 0,
+    "ordinary_input": 188944,
+    "tiers": []
+  },
+  {
+    "run_id": "R045",
+    "max_request_input_tokens": 133579,
+    "max_request_line": 467,
+    "samples": 68,
+    "write_tokens": 0,
+    "ordinary_input": 191240,
+    "tiers": []
+  },
+  {
+    "run_id": "R046",
+    "max_request_input_tokens": 115920,
+    "max_request_line": 325,
+    "samples": 52,
+    "write_tokens": 0,
+    "ordinary_input": 181311,
+    "tiers": []
+  },
+  {
+    "run_id": "R047",
+    "max_request_input_tokens": 111750,
+    "max_request_line": 318,
+    "samples": 51,
+    "write_tokens": 0,
+    "ordinary_input": 157272,
+    "tiers": []
+  },
+  {
+    "run_id": "R048",
+    "max_request_input_tokens": 135646,
+    "max_request_line": 355,
+    "samples": 60,
+    "write_tokens": 0,
+    "ordinary_input": 202502,
+    "tiers": []
+  },
+  {
+    "run_id": "R049",
+    "max_request_input_tokens": 121277,
+    "max_request_line": 346,
+    "samples": 52,
+    "write_tokens": 0,
+    "ordinary_input": 178169,
+    "tiers": []
+  },
+  {
+    "run_id": "R050",
+    "max_request_input_tokens": 122283,
+    "max_request_line": 429,
+    "samples": 70,
+    "write_tokens": 0,
+    "ordinary_input": 303464,
+    "tiers": []
+  },
+  {
+    "run_id": "R051",
+    "max_request_input_tokens": 169019,
+    "max_request_line": 836,
+    "samples": 151,
+    "write_tokens": 0,
+    "ordinary_input": 324097,
+    "tiers": []
+  },
+  {
+    "run_id": "R052",
+    "max_request_input_tokens": 138859,
+    "max_request_line": 630,
+    "samples": 115,
+    "write_tokens": 0,
+    "ordinary_input": 242655,
+    "tiers": []
+  },
+  {
+    "run_id": "R053",
+    "max_request_input_tokens": 122418,
+    "max_request_line": 729,
+    "samples": 132,
+    "write_tokens": 0,
+    "ordinary_input": 219771,
+    "tiers": []
+  },
+  {
+    "run_id": "R054",
+    "max_request_input_tokens": 105720,
+    "max_request_line": 540,
+    "samples": 104,
+    "write_tokens": 0,
+    "ordinary_input": 207176,
+    "tiers": []
+  },
+  {
+    "run_id": "R055",
+    "max_request_input_tokens": 136888,
+    "max_request_line": 529,
+    "samples": 88,
+    "write_tokens": 0,
+    "ordinary_input": 189909,
+    "tiers": []
+  },
+  {
+    "run_id": "R056",
+    "max_request_input_tokens": 149067,
+    "max_request_line": 699,
+    "samples": 117,
+    "write_tokens": 0,
+    "ordinary_input": 255952,
+    "tiers": []
+  },
+  {
+    "run_id": "R057",
+    "max_request_input_tokens": 56135,
+    "max_request_line": 184,
+    "samples": 28,
+    "write_tokens": 0,
+    "ordinary_input": 91239,
+    "tiers": []
+  },
+  {
+    "run_id": "R058",
+    "max_request_input_tokens": 82051,
+    "max_request_line": 446,
+    "samples": 73,
+    "write_tokens": 0,
+    "ordinary_input": 189915,
+    "tiers": []
+  },
+  {
+    "run_id": "R059",
+    "max_request_input_tokens": 111031,
+    "max_request_line": 322,
+    "samples": 61,
+    "write_tokens": 0,
+    "ordinary_input": 210122,
+    "tiers": []
+  },
+  {
+    "run_id": "R060",
+    "max_request_input_tokens": 96198,
+    "max_request_line": 400,
+    "samples": 65,
+    "write_tokens": 0,
+    "ordinary_input": 188779,
+    "tiers": []
+  },
+  {
+    "run_id": "R061",
+    "max_request_input_tokens": 87172,
+    "max_request_line": 416,
+    "samples": 71,
+    "write_tokens": 0,
+    "ordinary_input": 114248,
+    "tiers": []
+  },
+  {
+    "run_id": "R062",
+    "max_request_input_tokens": 100814,
+    "max_request_line": 823,
+    "samples": 136,
+    "write_tokens": 0,
+    "ordinary_input": 186233,
+    "tiers": []
+  },
+  {
+    "run_id": "R063",
+    "max_request_input_tokens": 116078,
+    "max_request_line": 376,
+    "samples": 64,
+    "write_tokens": 0,
+    "ordinary_input": 155844,
+    "tiers": []
+  },
+  {
+    "run_id": "R064",
+    "max_request_input_tokens": 147075,
+    "max_request_line": 741,
+    "samples": 121,
+    "write_tokens": 0,
+    "ordinary_input": 245876,
+    "tiers": []
+  },
+  {
+    "run_id": "R065",
+    "max_request_input_tokens": 83485,
+    "max_request_line": 546,
+    "samples": 90,
+    "write_tokens": 0,
+    "ordinary_input": 134835,
+    "tiers": []
+  },
+  {
+    "run_id": "R066",
+    "max_request_input_tokens": 140276,
+    "max_request_line": 642,
+    "samples": 109,
+    "write_tokens": 0,
+    "ordinary_input": 180061,
+    "tiers": []
+  },
+  {
+    "run_id": "R067",
+    "max_request_input_tokens": 123266,
+    "max_request_line": 691,
+    "samples": 128,
+    "write_tokens": 0,
+    "ordinary_input": 188696,
+    "tiers": []
+  },
+  {
+    "run_id": "R069",
+    "max_request_input_tokens": 72613,
+    "max_request_line": 267,
+    "samples": 46,
+    "write_tokens": 0,
+    "ordinary_input": 132952,
+    "tiers": []
+  },
+  {
+    "run_id": "R070",
+    "max_request_input_tokens": 151115,
+    "max_request_line": 680,
+    "samples": 126,
+    "write_tokens": 0,
+    "ordinary_input": 213943,
+    "tiers": []
+  },
+  {
+    "run_id": "R071",
+    "max_request_input_tokens": 124160,
+    "max_request_line": 602,
+    "samples": 121,
+    "write_tokens": 0,
+    "ordinary_input": 222348,
+    "tiers": []
+  },
+  {
+    "run_id": "R072",
+    "max_request_input_tokens": 68688,
+    "max_request_line": 304,
+    "samples": 68,
+    "write_tokens": 0,
+    "ordinary_input": 142328,
+    "tiers": []
+  },
+  {
+    "run_id": "R073",
+    "max_request_input_tokens": 100420,
+    "max_request_line": 454,
+    "samples": 77,
+    "write_tokens": 0,
+    "ordinary_input": 161956,
+    "tiers": []
+  },
+  {
+    "run_id": "R074",
+    "max_request_input_tokens": 93402,
+    "max_request_line": 358,
+    "samples": 67,
+    "write_tokens": 0,
+    "ordinary_input": 164361,
+    "tiers": []
+  },
+  {
+    "run_id": "R075",
+    "max_request_input_tokens": 99498,
+    "max_request_line": 385,
+    "samples": 70,
+    "write_tokens": 0,
+    "ordinary_input": 183461,
+    "tiers": []
+  },
+  {
+    "run_id": "R076",
+    "max_request_input_tokens": 77506,
+    "max_request_line": 417,
+    "samples": 73,
+    "write_tokens": 0,
+    "ordinary_input": 118567,
+    "tiers": []
+  },
+  {
+    "run_id": "R077",
+    "max_request_input_tokens": 155356,
+    "max_request_line": 637,
+    "samples": 96,
+    "write_tokens": 0,
+    "ordinary_input": 230628,
+    "tiers": []
+  },
+  {
+    "run_id": "R078",
+    "max_request_input_tokens": 120284,
+    "max_request_line": 905,
+    "samples": 152,
+    "write_tokens": 0,
+    "ordinary_input": 175447,
+    "tiers": []
+  },
+  {
+    "run_id": "R079",
+    "max_request_input_tokens": 151168,
+    "max_request_line": 633,
+    "samples": 105,
+    "write_tokens": 0,
+    "ordinary_input": 325829,
+    "tiers": []
+  },
+  {
+    "run_id": "R080",
+    "max_request_input_tokens": 99622,
+    "max_request_line": 564,
+    "samples": 97,
+    "write_tokens": 0,
+    "ordinary_input": 239318,
+    "tiers": []
+  },
+  {
+    "run_id": "R081",
+    "max_request_input_tokens": 84480,
+    "max_request_line": 436,
+    "samples": 71,
+    "write_tokens": 0,
+    "ordinary_input": 144492,
+    "tiers": []
+  },
+  {
+    "run_id": "R082",
+    "max_request_input_tokens": 109306,
+    "max_request_line": 381,
+    "samples": 65,
+    "write_tokens": 0,
+    "ordinary_input": 153390,
+    "tiers": []
+  },
+  {
+    "run_id": "R083",
+    "max_request_input_tokens": 82846,
+    "max_request_line": 361,
+    "samples": 64,
+    "write_tokens": 0,
+    "ordinary_input": 108564,
+    "tiers": []
+  },
+  {
+    "run_id": "R084",
+    "max_request_input_tokens": 103848,
+    "max_request_line": 559,
+    "samples": 90,
+    "write_tokens": 0,
+    "ordinary_input": 185773,
+    "tiers": []
+  },
+  {
+    "run_id": "R085",
+    "max_request_input_tokens": 117972,
+    "max_request_line": 435,
+    "samples": 74,
+    "write_tokens": 0,
+    "ordinary_input": 240361,
+    "tiers": []
+  },
+  {
+    "run_id": "R086",
+    "max_request_input_tokens": 218022,
+    "max_request_line": 676,
+    "samples": 96,
+    "write_tokens": 0,
+    "ordinary_input": 256037,
+    "tiers": []
+  },
+  {
+    "run_id": "R087",
+    "max_request_input_tokens": 207767,
+    "max_request_line": 1108,
+    "samples": 161,
+    "write_tokens": 0,
+    "ordinary_input": 284738,
+    "tiers": []
+  },
+  {
+    "run_id": "R088",
+    "max_request_input_tokens": 244760,
+    "max_request_line": 621,
+    "samples": 103,
+    "write_tokens": 0,
+    "ordinary_input": 366886,
+    "tiers": []
+  },
+  {
+    "run_id": "R089",
+    "max_request_input_tokens": 59875,
+    "max_request_line": 404,
+    "samples": 56,
+    "write_tokens": 0,
+    "ordinary_input": 75173,
+    "tiers": []
+  },
+  {
+    "run_id": "R090",
+    "max_request_input_tokens": 61564,
+    "max_request_line": 450,
+    "samples": 68,
+    "write_tokens": 0,
+    "ordinary_input": 111681,
+    "tiers": []
+  },
+  {
+    "run_id": "R091",
+    "max_request_input_tokens": 60984,
+    "max_request_line": 438,
+    "samples": 62,
+    "write_tokens": 0,
+    "ordinary_input": 131014,
+    "tiers": []
+  },
+  {
+    "run_id": "R092",
+    "max_request_input_tokens": 72898,
+    "max_request_line": 583,
+    "samples": 87,
+    "write_tokens": 0,
+    "ordinary_input": 197722,
+    "tiers": []
+  },
+  {
+    "run_id": "R093",
+    "max_request_input_tokens": 168934,
+    "max_request_line": 550,
+    "samples": 77,
+    "write_tokens": 0,
+    "ordinary_input": 160402,
+    "tiers": []
+  },
+  {
+    "run_id": "R094",
+    "max_request_input_tokens": 73373,
+    "max_request_line": 421,
+    "samples": 59,
+    "write_tokens": 0,
+    "ordinary_input": 68665,
+    "tiers": []
+  },
+  {
+    "run_id": "R095",
+    "max_request_input_tokens": 124655,
+    "max_request_line": 962,
+    "samples": 160,
+    "write_tokens": 0,
+    "ordinary_input": 156760,
+    "tiers": []
+  },
+  {
+    "run_id": "R096",
+    "max_request_input_tokens": 243805,
+    "max_request_line": 767,
+    "samples": 179,
+    "write_tokens": 0,
+    "ordinary_input": 460184,
+    "tiers": []
+  },
+  {
+    "run_id": "R097",
+    "max_request_input_tokens": 242340,
+    "max_request_line": 981,
+    "samples": 166,
+    "write_tokens": 0,
+    "ordinary_input": 330680,
+    "tiers": []
+  },
+  {
+    "run_id": "R098",
+    "max_request_input_tokens": 216749,
+    "max_request_line": 754,
+    "samples": 129,
+    "write_tokens": 0,
+    "ordinary_input": 285150,
+    "tiers": []
+  },
+  {
+    "run_id": "R099",
+    "max_request_input_tokens": 213127,
+    "max_request_line": 1901,
+    "samples": 307,
+    "write_tokens": 0,
+    "ordinary_input": 371990,
+    "tiers": []
+  },
+  {
+    "run_id": "R100",
+    "max_request_input_tokens": 102290,
+    "max_request_line": 763,
+    "samples": 114,
+    "write_tokens": 0,
+    "ordinary_input": 148121,
+    "tiers": []
+  },
+  {
+    "run_id": "R101",
+    "max_request_input_tokens": 182592,
+    "max_request_line": 1620,
+    "samples": 257,
+    "write_tokens": 0,
+    "ordinary_input": 377732,
+    "tiers": []
+  },
+  {
+    "run_id": "R102",
+    "max_request_input_tokens": 65125,
+    "max_request_line": 237,
+    "samples": 41,
+    "write_tokens": 0,
+    "ordinary_input": 67266,
+    "tiers": []
+  },
+  {
+    "run_id": "R103",
+    "max_request_input_tokens": 64478,
+    "max_request_line": 320,
+    "samples": 51,
+    "write_tokens": 0,
+    "ordinary_input": 122295,
+    "tiers": []
+  },
+  {
+    "run_id": "R104",
+    "max_request_input_tokens": 222217,
+    "max_request_line": 2163,
+    "samples": 303,
+    "write_tokens": 0,
+    "ordinary_input": 485635,
+    "tiers": []
+  },
+  {
+    "run_id": "R105",
+    "max_request_input_tokens": 146087,
+    "max_request_line": 603,
+    "samples": 89,
+    "write_tokens": 0,
+    "ordinary_input": 147403,
+    "tiers": []
+  },
+  {
+    "run_id": "R106",
+    "max_request_input_tokens": 96198,
+    "max_request_line": 626,
+    "samples": 94,
+    "write_tokens": 0,
+    "ordinary_input": 125556,
+    "tiers": []
+  },
+  {
+    "run_id": "R107",
+    "max_request_input_tokens": 91200,
+    "max_request_line": 231,
+    "samples": 37,
+    "write_tokens": 0,
+    "ordinary_input": 81649,
+    "tiers": []
+  },
+  {
+    "run_id": "R108",
+    "max_request_input_tokens": 136750,
+    "max_request_line": 388,
+    "samples": 62,
+    "write_tokens": 0,
+    "ordinary_input": 130628,
+    "tiers": []
+  },
+  {
+    "run_id": "R109",
+    "max_request_input_tokens": 84442,
+    "max_request_line": 248,
+    "samples": 41,
+    "write_tokens": 0,
+    "ordinary_input": 67365,
+    "tiers": []
+  },
+  {
+    "run_id": "R110",
+    "max_request_input_tokens": 90059,
+    "max_request_line": 721,
+    "samples": 119,
+    "write_tokens": 0,
+    "ordinary_input": 83096,
+    "tiers": []
+  },
+  {
+    "run_id": "R111",
+    "max_request_input_tokens": 107452,
+    "max_request_line": 670,
+    "samples": 100,
+    "write_tokens": 0,
+    "ordinary_input": 118767,
+    "tiers": []
+  },
+  {
+    "run_id": "R112",
+    "max_request_input_tokens": 91828,
+    "max_request_line": 641,
+    "samples": 100,
+    "write_tokens": 0,
+    "ordinary_input": 85204,
+    "tiers": []
+  }
+]

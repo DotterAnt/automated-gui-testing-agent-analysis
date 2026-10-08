@@ -1,0 +1,875 @@
+L11 2026-09-30T13:03:03.289Z shell_command wall=3.2 outputChars=6781
+rg --files
+=> Exit code: 0
+Wall time: 3.2 seconds
+Output:
+automated-gui-testing-agent-framework\tests\Runtime.Regression.Tests.ps1
+automated-gui-testing-agent-framework\Microsoft Paint.csv
+automated-gui-testing-agent-framework\tests\Measure-Transport.ps1
+automated-gui-testing-agent-framework\tests\Measure-Exploration.ps1
+automated-gui-testing-agent-framework\Invoke-Exploration.ps1
+automated-gui-testing-agent-framework\tests\Authoring.Regression.Tests.ps1
+automated-gui-testing-agent-framework\Invoke-AgentAuthoringGui.ps1
+automated-gui-testing-agent-framework\Invoke-AgentAuthoring.ps1
+automated-gui-testing-agent-framework\Get-RuntimeHelp.ps1
+automated-gui-testing-agent-framework\Test-GeneratedScript.ps1
+aut
+
+L12 2026-09-30T13:03:03.358Z shell_command wall=2.7 outputChars=1017
+Get-Content -Path 'C:\Users\testuser\Desktop\Microsoft Word.csv' -TotalCount 40
+=> Exit code: 0
+Wall time: 2.7 seconds
+Output:
+Action,Data,Expected Result
+Open Word,Launch the installed desktop version of Microsoft Word.,Word is open and ready to create a blank document.
+Create Test Document,"Create a blank document. Enter the title ""Word GUI Test"" and the paragraph ""This document tests creating, saving, reopening, and printing in Word.""",The document displays the exact title and paragraph.
+Save Test Document,"Save as WordTest.docx in a new output folder for this run, using Word Document (.docx) format.","WordTest.docx exists, is non-empty, and Word shows the saved filename."
+Open Created Document,Close the document. Use Word to open WordTest.docx from this run's o
+
+L19 2026-09-30T13:03:16.289Z shell_command wall=3.3 outputChars=7927
+Get-Content -Path 'C:\diplomamunka\automated-gui-testing-agent-framework\README.md'
+=> Exit code: 0
+Wall time: 3.3 seconds
+Output:
+# Automated GUI Testing Agent Framework
+
+For CSV authoring, read `AGENTS.md`, `docs/AUTHORING.md`, the supplied CSV and the generated template together. Start exploration with the guide's process-safe JSON Batch entrypoint; it saves session configuration and returns compact observations. Use `RecordSteps` for reviewed receipts and `Status` for progress. `Complete` exports tested command routes for reuse. The template's `Invoke-AGTATestPlan` handles sequencing, dependent skips, cleanup and result output. The contract and source modules are references for specific unresolved questions.
+
+PowerShell-only framework for turning CSV testcase descripti
+
+L20 2026-09-30T13:03:16.289Z shell_command wall=3.6 outputChars=13611
+Get-Content -Path 'C:\diplomamunka\automated-gui-testing-agent-framework\docs\GENERATED_SCRIPT_CONTRACT.md'
+=> Exit code: 0
+Wall time: 3.6 seconds
+Output:
+# Generated Script Contract
+
+Start with `AUTHORING.md` and the template. GuiNavigation is the default; preserve an explicitly requested VisibleControls policy. Navigation and focused opaque input require per-command reason/evidence. Application hotkeys/Shortcut clearing require explicit AllowShortcuts authorization. A selector failure never authorizes a non-GUI route.
+
+Generated testcase scripts must follow this contract so different agents and API providers produce comparable artifacts.
+
+## Parameters
+
+Every generated script must accept the first three parameters. It should also accept optional `-FrameworkRoot` for explicit runtime resolut
+
+L21 2026-09-30T13:03:16.290Z shell_command wall=3.3 outputChars=2533
+Get-Content -Path 'C:\diplomamunka\automated-gui-testing-agent-framework\templates\GeneratedScript.Template.ps1'
+=> Exit code: 0
+Wall time: 3.3 seconds
+Output:
+[CmdletBinding()]
+param(
+    [string] $PotatoCliPath,
+    [string] $TestCaseCsv,
+    [string] $RunRoot,
+    [string] $FrameworkRoot,
+    [string] $ExplorationPath,
+    [ValidateSet('VisibleControls','GuiNavigation','AllowShortcuts')] [string] $InteractionPolicy = 'GuiNavigation',
+    [string] $PolicyReason,
+    [ValidateSet('InProcess','Process')] [string] $Transport = 'InProcess'
+)
+
+$runtimeCandidates = @()
+if ($FrameworkRoot) {
+    $runtimeCandidates += (Join-Path -Path $FrameworkRoot -ChildPath 'Framework\GeneratedScriptRuntime.ps1')
+}
+$probe = $PSScriptRoot
+for ($i = 0; $i -lt 6 -and $probe; $i++) {
+    $runtimeCandidates += (
+
+L22 2026-09-30T13:03:16.335Z shell_command wall=2.9 outputChars=292
+Get-Content -Path 'C:\diplomamunka\automated-gui-testing-agent-framework\Microsoft Paint.csv' -TotalCount 40
+=> Exit code: 0
+Wall time: 2.9 seconds
+Output:
+Action,Data,Expected Result
+Open Paint,,Paint opened
+Create a test file in paint by drawing some colorful lines,,Saed test file exists
+Open another test file,,test file opened
+print test file as PDF,,PDF file exists
+Close Paint,,Paint closed
+
+
+L31 2026-09-30T13:03:28.072Z shell_command wall=3.2 outputChars=4107
+Get-Content -Path 'C:\diplomamunka\automated-gui-testing-agent-framework\AGENTS.md'
+=> Exit code: 0
+Wall time: 3.2 seconds
+Output:
+# Agent instructions
+
+Read `docs/AUTHORING.md`, the testcase CSV, and `templates/GeneratedScript.Template.ps1` together first. Use the guide's `powershell.exe -NoProfile -ExecutionPolicy Bypass -File Invoke-Exploration.ps1` entrypoint with UTF-8 JSON piped to `-RequestsStdin` in ONE shell tool call per batch. Do not create a separate JSON file with a file-edit tool for every batch; RequestsPath remains available for existing files. Begin once; subsequent Batch/RecordSteps/Status/Complete calls need only that exact RunRoot. Do not construct temporary wrapper scripts or pass array arguments across `powershell.exe -File`. Read multiple needed CLI to
+
+L32 2026-09-30T13:03:28.072Z shell_command wall=3.6 outputChars=12689
+Get-Content -Path 'C:\diplomamunka\automated-gui-testing-agent-framework\docs\AUTHORING.md'
+=> Exit code: 0
+Wall time: 3.6 seconds
+Output:
+# Authoring entry point
+
+Read this page, the testcase CSV, and templates/GeneratedScript.Template.ps1 together. They are sufficient to begin. Do not read whole runtime/preflight modules, unrelated CSVs, or application examples speculatively. Consult Get-RuntimeHelp.ps1 for a specific missing helper signature.
+
+## Start with the supported transport
+
+Use the following from a shell, including hosts where script execution is disabled. Pipe UTF-8 JSON directly to the batch entrypoint; this preserves arrays, quotes, spaces and Unicode across powershell.exe -File. Do not pass -Arguments @(...) across that process boundary or invent a temporary Power
+
+L33 2026-09-30T13:03:28.073Z shell_command wall=4.8 outputChars=39994
+rg -n "Word|winword|Microsoft Word|Print to PDF|read-pdf|Assert-TextContains" C:\diplomamunka
+=> Exit code: 0
+Wall time: 4.8 seconds
+Total output lines: 1377
+Output:
+C:\diplomamunka\automated-gui-testing-agent-framework\AGENTS.md:3:Read `docs/AUTHORING.md`, the testcase CSV, and `templates/GeneratedScript.Template.ps1` together first. Use the guide's `powershell.exe -NoProfile -ExecutionPolicy Bypass -File Invoke-Exploration.ps1` entrypoint with UTF-8 JSON piped to `-RequestsStdin` in ONE shell tool call per batch. Do not create a separate JSON file with a file-edit tool for every batch; RequestsPath remains available for existing files. Begin once; subsequent Batch/RecordSteps/Status/Complete calls need only that exact RunRoot. Do not construct temporary wrapper scripts or pass array a
+
+L41 2026-09-30T13:03:45.362Z shell_command wall=6.3 outputChars=1851
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Begin -RunRoot .\runs\word-csv-codex-20260930 -TestCaseCsv 'C:\Users\testuser\Desktop\Microsoft Word.csv'
+=> Exit code: 0
+Wall time: 6.3 seconds
+Output:
+{"ok":true,"next":"Set $OutputEncoding to UTF8Encoding(false), then pipe a JSON request array to powershell.exe -NoProfile -ExecutionPolicy Bypass -File Invoke-Exploration.ps1 -Action Batch -RunRoot \u003cthis-root\u003e -RequestsStdin. This combines request creation and execution in one tool call. RequestsPath JSON files also work. Use RecordSteps for reviewed receipts, then close the owned app and Complete.","steps":[{"Action":"Open Word","Data":"Launch the installed desktop version of Microsoft Word.","Expected Result":"Word is open and ready to create a blank document."},{"Action":"Create Test Document","Data":"Create a blank document. Enter th
+
+L42 2026-09-30T13:03:45.363Z shell_command wall=6.7 outputChars=10213
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ..\potato-cli\potato.ps1 help -Topics start,focus,observe,select,click,type,press-key,wait-element,wait-file,read,read-pdf,screenshot,close-window,windows
+=> Exit code: 0
+Wall time: 6.7 seconds
+Output:
+{"leaseWaitMs":11,"totalDurationMs":729,"durationMs":568,"data":{"unknownTopics":[],"availableTopics":["help","state","start","focus","windows","observe","select","click","click-coordinate","type","press-key","hotkey","drag","hover","wait-element","wait-file","read","read-pdf","screenshot","close-window","report"],"selectorOptions":["Name","AutomationId","ClassName","Class","ControlType","ProcessName","WindowTitle","Regex","Recurse","FindFirst","TimeoutMs","PathJson","SelectorJson","ProcessId","ModalOnly","Scope"],"globalOptions":{"InteractionPolicy":"GuiNavigation (default), VisibleControls (strict), or explicitly authorized AllowShortcuts","Fallb
+
+L43 2026-09-30T13:03:45.363Z shell_command wall=6.5 outputChars=2678
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Get-RuntimeHelp.ps1 -Names Invoke-StepCommand,Invoke-AGTATestPlan,Assert-TextContains,Assert-FileWait,Read-AGTAArtifactBytes,Assert-ArtifactPrefix,Add-EvidencePath,Invoke-TestCleanup
+=> Exit code: 0
+Wall time: 6.5 seconds
+Output:
+[{"name":"Invoke-StepCommand","syntax":"\r\nInvoke-StepCommand [-Commands] \u003cref\u003e [-Command] \u003cstring\u003e [[-Arguments] \u003cstring[]\u003e] [\u003cCommonParameters\u003e]\r\n","sourcePath":"C:\\diplomamunka\\automated-gui-testing-agent-framework\\Framework\\GeneratedScriptRuntime.ps1","available":true},{"name":"Invoke-AGTATestPlan","syntax":"\r\nInvoke-AGTATestPlan [-StepBodies] \u003cscriptblock[]\u003e [-PassThru] [\u003cCommonParameters\u003e]\r\n","sourcePath":"C:\\diplomamunka\\automated-gui-testing-agent-framework\\Framework\\GeneratedScriptRuntime.ps1","available":true},{"name":"Assert-TextContains","syntax":"\r\nAssert-Text
+
+L51 2026-09-30T13:03:59.651Z shell_command wall=17.8 outputChars=6752
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":1,"command":"start","arguments":["-ProcessName","winword.exe","-WaitForWindowMs","30000","-Maximize","-RequireNewProcess"]},
+  {"stepIndex":1,"command":"observe","arguments":["-Depth","4","-MaxElements","120"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\word-csv-codex-20260930 -RequestsStdin
+=> Exit code: 0
+Wall time: 17.8 seconds
+Output:
+{"ok":true,"command":"start","data":{"process":{"id":16960,"processName":"winword","started":true},"working":{"title":"Word","processName":"WINWORD","processId":16960,"nativeWindowHandle":1114834,"className":"OpusApp","updatedAt":"2026-09-30T15:04:16.0491486+02:00"},"windowFound":true,"ownedProcessId":16960},"error":null,"outcome":"completed","durationMs":11600,"explorationCommandId":"731c057a71274b72a694a203452a4019"}
+{"ok":true,"command":"observe","data":{"scope":"Working","root":{"name":"Word","automationId":"","className":"OpusApp","localizedControlType":"window","processId":16960,"nativeWindowHandle":1114834,"isEnabled":true,"isOffscreen":fa
+
+L57 2026-09-30T13:04:24.767Z shell_command wall=8.7 outputChars=8393
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":1,"command":"click","arguments":["-Name","Blank document","-ControlType","ListItem"]},
+  {"stepIndex":1,"command":"wait-element","arguments":["-ControlType","Document","-TimeoutMs","30000"]},
+  {"stepIndex":2,"command":"observe","arguments":["-Depth","5","-MaxElements","160"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\word-csv-codex-20260930 -RequestsStdin
+=> Exit code: 0
+Wall time: 8.7 seconds
+Output:
+{"ok":true,"command":"click","data":{"clicked":true,"verified":null,"verificationPerformed":false,"action":"InvokePattern","point":null,"element":{"name":"Blank document","automationId":"","className":"NetUIListViewItem","localizedControlType":"List Item","processId":16960,"nativeWindowHandle":0,"isEnabled":true,"isOffscreen":false,"hasKeyboardFocus":true,"isKeyboardFocusable":true,"controlType":"ListItem","processName":"WINWORD","boundingRectangle":{"x":143,"y":176,"width":225,"height":190},"boundsStatus":"valid","supportedPatterns":["Invoke","SelectionItem","ScrollItem"],"isModal":false,"propertyErrors":[]}},"error":null,"outcome":"completed","du
+
+L61 2026-09-30T13:04:41.681Z shell_command wall=7.4 outputChars=1995
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":2,"command":"type","arguments":["-Name","Document1","-ControlType","Document","-Text","Word GUI Test\r\nThis document tests creating, saving, reopening, and printing in Word.","-Verify","-VerifyMode","NormalizedContains","-VerifyTimeoutMs","5000"]},
+  {"stepIndex":2,"command":"read","arguments":["-Name","Document1","-ControlType","Document"]},
+  {"stepIndex":2,"command":"screenshot","arguments":["-OutFile","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\word-csv-codex-20260930\\evidence\\created-document.png"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\word-csv-codex-20260930 -RequestsStdin
+=> Exit code: 0
+Wall time: 7.4 seconds
+Output:
+{"ok":true,"command":"type","data":{"typed":true,"textLength":85,"verified":true,"verificationPerformed":true,"verification":{"verified":true,"attempts":4,"elapsedMs":408,"mode":"NormalizedContains","observedLength":84,"readError":null},"inputMethod":"UnicodeKeyboard","focusMethod":"UIA","targetMode":"Writable","target":{"name":"Document1","automationId":"","className":"_WwG","localizedControlType":"document","processId":16960,"nativeWindowHandle":721900,"isEnabled":true,"isOffscreen":false,"hasKeyboardFocus":true,"isKeyboardFocusable":true,"controlType":"Document","processName":"WINWORD","boundingRectangle":{"x":0,"y":222,"width":1899,"height":591
+
+L67 2026-09-30T13:04:58.036Z shell_command wall=6.2 outputChars=8287
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":3,"command":"select","arguments":["-SelectorJson","{\"Name\":[\"File\",\"Save As\",\"Browse\",\"Save\"]}","-MaxResults","20","-TimeoutMs","0"]},
+  {"stepIndex":3,"command":"observe","arguments":["-Depth","6","-MaxElements","200"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\word-csv-codex-20260930 -RequestsStdin
+=> Exit code: 0
+Wall time: 6.2 seconds
+Output:
+{"ok":true,"command":"select","data":{"count":1,"elements":[{"name":"Save","automationId":"FileSave","className":"NetUIRibbonButton","localizedControlType":"Button","processId":16960,"nativeWindowHandle":0,"isEnabled":true,"isOffscreen":false,"hasKeyboardFocus":false,"isKeyboardFocusable":true,"controlType":"Button","processName":"WINWORD","boundingRectangle":{"x":188,"y":12,"width":34,"height":35},"boundsStatus":"valid","supportedPatterns":["Invoke"],"isModal":false,"propertyErrors":[]}]},"error":null,"outcome":"completed","durationMs":901,"explorationCommandId":"054e2344345c464d9921d5e1272a734b"}
+{"ok":true,"command":"observe","data":{"scope":"W
+
+L73 2026-09-30T13:05:11.489Z shell_command wall=7.1 outputChars=10312
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":3,"command":"click","arguments":["-Name","Save","-AutomationId","FileSave","-ControlType","Button"]},
+  {"stepIndex":3,"command":"observe","arguments":["-Scope","FocusedWindow","-Depth","6","-MaxElements","200"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\word-csv-codex-20260930 -RequestsStdin
+=> Exit code: 0
+Wall time: 7.1 seconds
+Output:
+{"ok":true,"command":"click","data":{"clicked":true,"verified":null,"verificationPerformed":false,"action":"InvokePattern","point":null,"element":{"name":"Save","automationId":"FileSave","className":"NetUIRibbonButton","localizedControlType":"Button","processId":16960,"nativeWindowHandle":0,"isEnabled":true,"isOffscreen":false,"hasKeyboardFocus":false,"isKeyboardFocusable":true,"controlType":"Button","processName":"WINWORD","boundingRectangle":{"x":188,"y":12,"width":34,"height":35},"boundsStatus":"valid","supportedPatterns":["Invoke"],"isModal":false,"propertyErrors":[]}},"error":null,"outcome":"completed","durationMs":1063,"explorationCommandId":
+
+L77 2026-09-30T13:05:25.409Z shell_command wall=5.1 outputChars=2885
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":3,"command":"select","arguments":["-SelectorJson","{\"Name\":[\"Browse\",\"This PC\",\"OneDrive\",\"Save As\",\"Word Document (*.docx)\"]}","-MaxResults","30","-TimeoutMs","0"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\word-csv-codex-20260930 -RequestsStdin
+=> Exit code: 0
+Wall time: 5.1 seconds
+Output:
+{"ok":true,"command":"select","data":{"count":6,"elements":[{"name":"Save As","automationId":"","className":"NetUIRibbonTab","localizedControlType":"List Item","processId":16960,"nativeWindowHandle":0,"isEnabled":true,"isOffscreen":false,"hasKeyboardFocus":true,"isKeyboardFocusable":true,"controlType":"ListItem","processName":"WINWORD","boundingRectangle":{"x":0,"y":436,"width":200,"height":50},"boundsStatus":"valid","supportedPatterns":["SelectionItem","ScrollItem"],"isModal":false,"propertyErrors":[]},{"name":"Save As","automationId":"","className":"NetUIElement","localizedControlType":"Group","processId":16960,"nativeWindowHandle":0,"isEnabled":
+
+L81 2026-09-30T13:05:36.172Z shell_command wall=8.9 outputChars=25001
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":3,"command":"click","arguments":["-Name","Browse","-ControlType","Button"]},
+  {"stepIndex":3,"command":"observe","arguments":["-Scope","FocusedWindow","-Depth","5","-MaxElements","200"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\word-csv-codex-20260930 -RequestsStdin
+=> Exit code: 0
+Wall time: 8.9 seconds
+Output:
+{"ok":true,"command":"click","data":{"clicked":true,"verified":null,"verificationPerformed":false,"action":"InvokePattern","point":null,"element":{"name":"Browse","automationId":"","className":"NetUISimpleButton","localizedControlType":"Button","processId":16960,"nativeWindowHandle":0,"isEnabled":true,"isOffscreen":false,"hasKeyboardFocus":false,"isKeyboardFocusable":true,"controlType":"Button","processName":"WINWORD","boundingRectangle":{"x":251,"y":548,"width":350,"height":55},"boundsStatus":"valid","supportedPatterns":["Invoke","ScrollItem"],"isModal":false,"propertyErrors":[]}},"error":null,"outcome":"completed","durationMs":813,"explorationCom
+
+L87 2026-09-30T13:06:01.959Z shell_command wall=7.7 outputChars=2492
+New-Item -ItemType Directory -Force -Path 'C:\diplomamunka\automated-gui-testing-agent-framework\runs\word-csv-codex-20260930\word-output' | Out-Null
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":3,"command":"type","arguments":["-TargetMode","Focused","-ExpectedFocusJson","{\"AutomationId\":\"1001\"}","-FocusTimeoutMs","2000","-Text","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\word-csv-codex-20260930\\word-output\\WordTest.docx","-FallbackReason","Save As filename field is an observed focused opaque Win32 Edit in the Microsoft Word Save As dialog.","-FallbackEvidence","explorationCommandId dcf... focusedElement AutomationId 1001 in Save As dialog"]},
+  {"stepIndex":3,"command":"click","arguments":["-Name","Save","-AutomationId","1","-Scope","FocusedWindow","-Method","Mouse"]},
+  {"stepIndex":3,"command":"wait-file","arguments":["-Path","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\word-csv-codex-20260930\\word-output\\WordTest.docx","-TimeoutMs","30000","-MinBytes","1","-StableMs","500"]},
+  {"stepIndex":3,"command":"windows","arguments":["-ProcessName","WINWORD","-WindowTitle","*WordTest*","-TimeoutMs","10000"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\word-csv-codex-20260930 -RequestsStdin
+=> Exit code: 0
+Wall time: 7.7 seconds
+Output:
+{"ok":true,"command":"type","data":{"typed":true,"textLength":108,"verified":null,"verificationPerformed":false,"verification":null,"inputMethod":"UnicodeKeyboard","focusMethod":"ExistingFocus","targetMode":"Focused","target":{"name":"Word GUI Test","automationId":"1001","className":"Edit","localizedControlType":"pane","processId":16960,"nativeWindowHandle":328768,"isEnabled":true,"isOffscreen":false,"hasKeyboardFocus":true,"isKeyboardFocusable":false,"controlType":"Pane","processName":"WINWORD","boundingRectangle":{"x":169,"y":405,"width":752,"height":22},"boundsStatus":"valid","supportedPatterns":[],"isModal":false,"propertyErrors":[]},"clearMeth
+
+L93 2026-09-30T13:06:21.113Z shell_command wall=14.4 outputChars=9787
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":4,"command":"close-window","arguments":["-ProcessName","WINWORD","-WindowTitle","*WordTest*","-TimeoutMs","5000"]},
+  {"stepIndex":4,"command":"start","arguments":["-ProcessName","winword.exe","-WaitForWindowMs","30000","-Maximize","-RequireNewProcess"]},
+  {"stepIndex":4,"command":"observe","arguments":["-Depth","5","-MaxElements","180"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\word-csv-codex-20260930 -RequestsStdin
+=> Exit code: 0
+Wall time: 14.4 seconds
+Output:
+{"ok":true,"command":"close-window","data":{"closed":1,"matched":1},"error":null,"outcome":"completed","durationMs":929,"explorationCommandId":"b3e9a6ae259f44f5ba7f203fd402c458"}
+{"ok":true,"command":"start","data":{"process":{"id":18100,"processName":"winword","started":true},"working":{"title":"Word","processName":"WINWORD","processId":18100,"nativeWindowHandle":1704428,"className":"OpusApp","updatedAt":"2026-09-30T15:06:34.3118299+02:00"},"windowFound":true,"ownedProcessId":18100},"error":null,"outcome":"completed","durationMs":7650,"explorationCommandId":"0e330d8931da4a08ba0e8bf42ff229a9"}
+{"ok":true,"command":"observe","data":{"scope":"Work
+
+L97 2026-09-30T13:06:42.911Z shell_command wall=8.0 outputChars=13751
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":4,"command":"click","arguments":["-Name","Open","-AutomationId","msotcidPlaceOpen","-ControlType","ListItem"]},
+  {"stepIndex":4,"command":"observe","arguments":["-Scope","FocusedWindow","-Depth","6","-MaxElements","200"]},
+  {"stepIndex":4,"command":"select","arguments":["-SelectorJson","{\"Name\":[\"Browse\",\"This PC\",\"Recent\",\"Open\"]}","-MaxResults","30","-TimeoutMs","0"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\word-csv-codex-20260930 -RequestsStdin
+=> Exit code: 0
+Wall time: 8 seconds
+Output:
+{"ok":true,"command":"click","data":{"clicked":true,"verified":null,"verificationPerformed":false,"action":"SelectionItemPattern","point":null,"element":{"name":"Open","automationId":"msotcidPlaceOpen","className":"NetUIRibbonTab","localizedControlType":"List Item","processId":18100,"nativeWindowHandle":0,"isEnabled":true,"isOffscreen":false,"hasKeyboardFocus":false,"isKeyboardFocusable":true,"controlType":"ListItem","processName":"WINWORD","boundingRectangle":{"x":0,"y":218,"width":83,"height":74},"boundsStatus":"valid","supportedPatterns":["SelectionItem","ScrollItem"],"isModal":false,"propertyErrors":[]}},"error":null,"outcome":"completed","durati
+
+L103 2026-09-30T13:06:57.621Z shell_command wall=7.3 outputChars=16618
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":4,"command":"click","arguments":["-Name","Browse","-ControlType","Button"]},
+  {"stepIndex":4,"command":"observe","arguments":["-Scope","FocusedWindow","-Depth","5","-MaxElements","160"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\word-csv-codex-20260930 -RequestsStdin
+=> Exit code: 0
+Wall time: 7.3 seconds
+Output:
+{"ok":true,"command":"click","data":{"clicked":true,"verified":null,"verificationPerformed":false,"action":"InvokePattern","point":null,"element":{"name":"Browse","automationId":"","className":"NetUISimpleButton","localizedControlType":"Button","processId":18100,"nativeWindowHandle":0,"isEnabled":true,"isOffscreen":false,"hasKeyboardFocus":false,"isKeyboardFocusable":true,"controlType":"Button","processName":"WINWORD","boundingRectangle":{"x":134,"y":447,"width":350,"height":55},"boundsStatus":"valid","supportedPatterns":["Invoke","ScrollItem"],"isModal":false,"propertyErrors":[]}},"error":null,"outcome":"completed","durationMs":851,"explorationCom
+
+L108 2026-09-30T13:07:15.910Z shell_command wall=7.9 outputChars=3447
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":4,"command":"type","arguments":["-TargetMode","Focused","-ExpectedFocusJson","{\"AutomationId\":\"1148\",\"ClassName\":\"Edit\"}","-FocusTimeoutMs","2000","-Text","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\word-csv-codex-20260930\\word-output\\WordTest.docx","-FallbackReason","Open dialog filename field is an observed focused opaque Win32 Edit in the Microsoft Word Open dialog.","-FallbackEvidence","explorationCommandId ead944c71a7747b7a7ed0ac43b0883fb focusedElement AutomationId 1148 ClassName Edit"]},
+  {"stepIndex":4,"command":"click","arguments":["-Name","Open","-AutomationId","1","-Scope","FocusedWindow","-Method","Mouse"]},
+  {"stepIndex":4,"command":"windows","arguments":["-ProcessName","WINWORD","-WindowTitle","*WordTest*","-TimeoutMs","15000"]},
+  {"stepIndex":4,"command":"wait-element","arguments":["-ControlType","Document","-TimeoutMs","30000"]},
+  {"stepIndex":4,"command":"read","arguments":["-ControlType","Document"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\word-csv-codex-20260930 -RequestsStdin
+=> Exit code: 0
+Wall time: 7.9 seconds
+Output:
+{"ok":true,"command":"type","data":{"typed":true,"textLength":108,"verified":null,"verificationPerformed":false,"verification":null,"inputMethod":"UnicodeKeyboard","focusMethod":"ExistingFocus","targetMode":"Focused","target":{"name":"","automationId":"1148","className":"Edit","localizedControlType":"pane","processId":18100,"nativeWindowHandle":1049390,"isEnabled":true,"isOffscreen":false,"hasKeyboardFocus":true,"isKeyboardFocusable":false,"controlType":"Pane","processName":"WINWORD","boundingRectangle":{"x":234,"y":505,"width":422,"height":20},"boundsStatus":"valid","supportedPatterns":[],"isModal":false,"propertyErrors":[]},"clearMethod":null},"e
+
+L114 2026-09-30T13:07:32.026Z shell_command wall=8.3 outputChars=7848
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":5,"command":"select","arguments":["-SelectorJson","{\"Name\":[\"File\",\"Print\",\"Microsoft Print to PDF\"]}","-MaxResults","30","-TimeoutMs","0"]},
+  {"stepIndex":5,"command":"observe","arguments":["-Depth","6","-MaxElements","200"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\word-csv-codex-20260930 -RequestsStdin
+=> Exit code: 0
+Wall time: 8.3 seconds
+Output:
+{"ok":true,"command":"select","data":{"count":0,"elements":[]},"error":null,"outcome":"completed","durationMs":2886,"explorationCommandId":"b315b2a804a2483abccd287a3f6aec10"}
+{"ok":true,"command":"observe","data":{"scope":"Working","root":{"name":"WordTest - Word","automationId":"","className":"OpusApp","localizedControlType":"window","processId":18100,"nativeWindowHandle":1704428,"isEnabled":true,"isOffscreen":false,"hasKeyboardFocus":true,"isKeyboardFocusable":false,"controlType":"Window","processName":"WINWORD","boundingRectangle":{"x":-9,"y":-9,"width":1938,"height":858},"boundsStatus":"valid","supportedPatterns":["Window","Transform"],"isModa
+
+L120 2026-09-30T13:07:54.006Z shell_command wall=7.5 outputChars=13294
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":5,"command":"screenshot","arguments":["-OutFile","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\word-csv-codex-20260930\\evidence\\before-print-file-tab.png"]},
+  {"stepIndex":5,"command":"click-coordinate","arguments":["-X","28","-Y","48","-FallbackReason","Word document UIA tree did not expose the visible File tab; screenshot shows the backstage entry area at the top-left of the Word window.","-FallbackEvidence","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\word-csv-codex-20260930\\evidence\\before-print-file-tab.png"]},
+  {"stepIndex":5,"command":"observe","arguments":["-Scope","FocusedWindow","-Depth","6","-MaxElements","200"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\word-csv-codex-20260930 -RequestsStdin
+=> Exit code: 0
+Wall time: 7.5 seconds
+Output:
+{"ok":true,"command":"screenshot","data":{"path":"C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\word-csv-codex-20260930\\evidence\\before-print-file-tab.png","region":{"x":0,"y":0,"width":1536,"height":720},"format":"PNG"},"error":null,"outcome":"completed","durationMs":357,"explorationCommandId":"4508e65809a94776b970574260b6e604"}
+{"ok":true,"command":"click-coordinate","data":{"clicked":true,"point":{"x":28,"y":48},"button":"Left","action":"Mouse"},"error":null,"outcome":"completed","durationMs":309,"explorationCommandId":"263ffb925ef649bd82241ec57c426be5"}
+{"ok":true,"command":"observe","data":{"scope":"FocusedWindow","root":{
+
+L124 2026-09-30T13:08:09.295Z shell_command wall=9.5 outputChars=21032
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":5,"command":"click","arguments":["-Name","Print","-ControlType","ListItem"]},
+  {"stepIndex":5,"command":"observe","arguments":["-Scope","FocusedWindow","-Depth","7","-MaxElements","220"]},
+  {"stepIndex":5,"command":"select","arguments":["-SelectorJson","{\"Name\":[\"Print\",\"Microsoft Print to PDF\",\"Printer\",\"Copies\"]}","-MaxResults","40","-TimeoutMs","0"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\word-csv-codex-20260930 -RequestsStdin
+=> Exit code: 0
+Wall time: 9.5 seconds
+Output:
+{"ok":true,"command":"click","data":{"clicked":true,"verified":null,"verificationPerformed":false,"action":"SelectionItemPattern","point":null,"element":{"name":"Print","automationId":"","className":"NetUIRibbonTab","localizedControlType":"List Item","processId":18100,"nativeWindowHandle":0,"isEnabled":true,"isOffscreen":false,"hasKeyboardFocus":false,"isKeyboardFocusable":true,"controlType":"ListItem","processName":"WINWORD","boundingRectangle":{"x":0,"y":486,"width":200,"height":50},"boundsStatus":"valid","supportedPatterns":["SelectionItem","ScrollItem"],"isModal":false,"propertyErrors":[]}},"error":null,"outcome":"completed","durationMs":2026,"
+
+L128 2026-09-30T13:08:25.634Z shell_command wall=5.0 outputChars=2149
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":5,"command":"observe","arguments":["-Name","Printer","-ControlType","Group","-Depth","8","-MaxElements","120"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\word-csv-codex-20260930 -RequestsStdin
+=> Exit code: 0
+Wall time: 5 seconds
+Output:
+{"ok":true,"command":"observe","data":{"scope":"Working","root":{"name":"Printer","automationId":"","className":"NetUIElement","localizedControlType":"Group","processId":18100,"nativeWindowHandle":0,"isEnabled":true,"isOffscreen":false,"hasKeyboardFocus":false,"isKeyboardFocusable":false,"controlType":"Group","processName":"WINWORD","boundingRectangle":{"x":256,"y":254,"width":266,"height":83},"boundsStatus":"valid","supportedPatterns":["ScrollItem"],"isModal":false,"propertyErrors":[]},"focusedElement":{"name":"Print","id":"","role":"ListItem","className":"NetUIRibbonTab","enabled":true,"offscreen":false,"focused":true,"patterns":["SelectionItem","S
+
+L132 2026-09-30T13:08:38.329Z shell_command wall=7.1 outputChars=3499
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":5,"command":"read","arguments":["-Name","Which Printer","-ControlType","ComboBox"]},
+  {"stepIndex":5,"command":"click","arguments":["-Name","Which Printer","-ControlType","ComboBox"]},
+  {"stepIndex":5,"command":"observe","arguments":["-Scope","FocusedWindow","-Depth","8","-MaxElements","220"]},
+  {"stepIndex":5,"command":"select","arguments":["-Name","Microsoft Print to PDF","-MaxResults","10","-TimeoutMs","0"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\word-csv-codex-20260930 -RequestsStdin
+=> Exit code: 0
+Wall time: 7.1 seconds
+Output:
+{"ok":true,"command":"read","data":{"text":"Canon TS3700 series (redirected 2)","textSource":"ValuePattern","element":{"name":"Which Printer","automationId":"","className":"NetUIDropdownAnchor","localizedControlType":"ComboBox","processId":18100,"nativeWindowHandle":0,"isEnabled":true,"isOffscreen":false,"hasKeyboardFocus":false,"isKeyboardFocusable":true,"controlType":"ComboBox","processName":"WINWORD","boundingRectangle":{"x":256,"y":283,"width":266,"height":54},"boundsStatus":"valid","supportedPatterns":["Value","ExpandCollapse","ScrollItem"],"isModal":false,"propertyErrors":[]}},"error":null,"outcome":"completed","durationMs":780,"explorationCo
+
+L138 2026-09-30T13:08:53.568Z shell_command wall=10.2 outputChars=17958
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":5,"command":"click","arguments":["-Name","Microsoft Print to PDF","-ControlType","ListItem"]},
+  {"stepIndex":5,"command":"read","arguments":["-Name","Which Printer","-ControlType","ComboBox"]},
+  {"stepIndex":5,"command":"click","arguments":["-Name","Print","-ControlType","Button"]},
+  {"stepIndex":5,"command":"observe","arguments":["-Scope","FocusedWindow","-Depth","5","-MaxElements","180"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\word-csv-codex-20260930 -RequestsStdin
+=> Exit code: 0
+Wall time: 10.2 seconds
+Output:
+{"ok":true,"command":"click","data":{"clicked":true,"verified":null,"verificationPerformed":false,"action":"InvokePattern","point":null,"element":{"name":"Microsoft Print to PDF","automationId":"","className":"NetUIGalleryButton","localizedControlType":"List Item","processId":18100,"nativeWindowHandle":0,"isEnabled":true,"isOffscreen":false,"hasKeyboardFocus":false,"isKeyboardFocusable":true,"controlType":"ListItem","processName":"WINWORD","boundingRectangle":{"x":258,"y":519,"width":381,"height":60},"boundsStatus":"valid","supportedPatterns":["Invoke","SelectionItem","ScrollItem"],"isModal":false,"propertyErrors":[]}},"error":null,"outcome":"comp
+
+L144 2026-09-30T13:09:17.097Z shell_command wall=10.6 outputChars=2266
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":5,"command":"type","arguments":["-TargetMode","Focused","-ExpectedFocusJson","{\"AutomationId\":\"1001\",\"ClassName\":\"Edit\"}","-FocusTimeoutMs","2000","-Text","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\word-csv-codex-20260930\\word-output\\WordTest.pdf","-FallbackReason","Save Print Output As filename field is an observed focused opaque Win32 Edit.","-FallbackEvidence","explorationCommandId ec565ae3c1c54c25850320ec32bc5611 focusedElement AutomationId 1001 ClassName Edit"]},
+  {"stepIndex":5,"command":"click","arguments":["-Name","Save","-AutomationId","1","-Scope","FocusedWindow","-Method","Mouse"]},
+  {"stepIndex":5,"command":"wait-file","arguments":["-Path","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\word-csv-codex-20260930\\word-output\\WordTest.pdf","-TimeoutMs","60000","-MinBytes","1","-StableMs","1000"]},
+  {"stepIndex":5,"command":"read-pdf","arguments":["-Path","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\word-csv-codex-20260930\\word-output\\WordTest.pdf"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\word-csv-codex-20260930 -RequestsStdin
+=> Exit code: 0
+Wall time: 10.6 seconds
+Output:
+{"ok":true,"command":"type","data":{"typed":true,"textLength":107,"verified":null,"verificationPerformed":false,"verification":null,"inputMethod":"UnicodeKeyboard","focusMethod":"ExistingFocus","targetMode":"Focused","target":{"name":"","automationId":"1001","className":"Edit","localizedControlType":"pane","processId":18100,"nativeWindowHandle":983674,"isEnabled":true,"isOffscreen":false,"hasKeyboardFocus":true,"isKeyboardFocusable":false,"controlType":"Pane","processName":"WINWORD","boundingRectangle":{"x":169,"y":405,"width":752,"height":22},"boundsStatus":"valid","supportedPatterns":[],"isModal":false,"propertyErrors":[]},"clearMethod":null},"e
+
+L150 2026-09-30T13:09:45.147Z shell_command wall=7.6 outputChars=270
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":1,"route":"start winword.exe, observe Word start screen with Blank document focused, click Blank document and wait for document surface","observedResult":"Word opened to the start screen with Blank document available; clicking it created a blank Word document surface.","verificationCommandId":"0cbb19f817364e8fb50bd8deb1d5a9ba"},
+  {"stepIndex":2,"route":"type exact title and paragraph into the Word Document control, then read the document TextPattern","observedResult":"The Word document TextPattern contained 'Word GUI Test' and 'This document tests creating, saving, reopening, and printing in Word.'","verificationCommandId":"6876dd3df58840388694565d7e11ad81"},
+  {"stepIndex":3,"route":"click visible Save, use Save As > Browse, enter run output path in the focused filename field, click Save, wait for DOCX, verify Word title","observedResult":"WordTest.docx existed with nonzero length and the Word window title changed to WordTest - Word.","verificationCommandId":"3cf033a0b1d54b32b0b789fcc4eeb63b"},
+  {"stepIndex":4,"route":"close saved document, start Word, use Open > Browse, enter the saved DOCX path in the focused filename field, click Open, read reopened document TextPattern","observedResult":"The saved document reopened as WordTest - Word and the document TextPattern contained the exact title and paragraph.","verificationCommandId":"86d568ccf84c461aa621ac2ad689178a"},
+  {"stepIndex":5,"route":"open File backstage with screenshot-backed coordinate fallback, select Print, choose Microsoft Print to PDF from the visible printer dropdown, click Print, enter PDF path in Save Print Output As, wait for PDF, read PDF text","observedResult":"WordTest.pdf existed, read-pdf opened it with the builtin reader, and the extracted text contained the title and paragraph.","verificationCommandId":"dbb032fd657349d0a19ab0c2efae0bfa"}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action RecordSteps -RunRoot .\runs\word-csv-codex-20260930 -RequestsStdin
+=> Exit code: 1
+Wall time: 7.6 seconds
+Output:
+{"ok":true,"stepIndex":1,"covered":1,"required":5}
+{"ok":true,"stepIndex":2,"covered":2,"required":5}
+{"error":"Verification needs a successful observation command or verified typing, not just action dispatch.","ok":false}
+
+
+L156 2026-09-30T13:10:09.854Z shell_command wall=18.3 outputChars=4896
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":3,"route":"click visible Save, use Save As > Browse, enter run output path in the focused filename field, click Save, wait for DOCX, verify Word title","observedResult":"WordTest.docx existed with nonzero length and the Word window title changed to WordTest - Word.","verificationCommandId":"52370a75c9cc409aac4857841b24df19"},
+  {"stepIndex":4,"route":"close saved document, start Word, use Open > Browse, enter the saved DOCX path in the focused filename field, click Open, read reopened document TextPattern","observedResult":"The saved document reopened as WordTest - Word and the document TextPattern contained the exact title and paragraph.","verificationCommandId":"86d568ccf84c461aa621ac2ad689178a"},
+  {"stepIndex":5,"route":"open File backstage with screenshot-backed coordinate fallback, select Print, choose Microsoft Print to PDF from the visible printer dropdown, click Print, enter PDF path in Save Print Output As, wait for PDF, read PDF text","observedResult":"WordTest.pdf existed, read-pdf opened it with the builtin reader, and the extracted text contained the title and paragraph.","verificationCommandId":"dbb032fd657349d0a19ab0c2efae0bfa"}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action RecordSteps -RunRoot .\runs\word-csv-codex-20260930 -RequestsStdin
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":5,"command":"close-window","arguments":["-ProcessName","WINWORD","-WindowTitle","*WordTest*","-TimeoutMs","5000"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\word-csv-codex-20260930 -RequestsStdin
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Status -RunRoot .\runs\word-csv-codex-20260930
+=> Exit code: 0
+Wall time: 18.3 seconds
+Output:
+{"ok":true,"stepIndex":3,"covered":3,"required":5}
+{"ok":true,"stepIndex":4,"covered":4,"required":5}
+{"ok":true,"stepIndex":5,"covered":5,"required":5}
+{"ok":true,"command":"close-window","data":{"closed":0,"matched":0},"error":null,"outcome":"completed","durationMs":5460,"explorationCommandId":"c13eccf378d049ddb764d456828e1917"}
+{"explorationPath":"C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\word-csv-codex-20260930\\logs\\exploration.json","steps":[{"stepIndex":1,"route":"start winword.exe, observe Word start screen with Blank document focused, click Blank document and wait for document surface","observedResult":"Word open
+
+L162 2026-09-30T13:10:35.199Z shell_command wall=2.9 outputChars=44
+Get-Process WINWORD -ErrorAction SilentlyContinue | Select-Object Id,ProcessName,MainWindowTitle
+=> Exit code: 1
+Wall time: 2.9 seconds
+Output:
+
+
+L163 2026-09-30T13:10:35.243Z shell_command wall=6.1 outputChars=333
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Complete -RunRoot .\runs\word-csv-codex-20260930
+=> Exit code: 0
+Wall time: 6.1 seconds
+Output:
+{"ok":true,"covered":5,"routesPath":"C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\word-csv-codex-20260930\\logs\\exploration-routes.json","explorationPath":"C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\word-csv-codex-20260930\\logs\\exploration.json"}
+
+
+L170 2026-09-30T13:10:52.206Z shell_command wall=2.3 outputChars=113
+git status --short
+=> Exit code: 1
+Wall time: 2.3 seconds
+Output:
+fatal: not a git repository (or any of the parent directories): .git
+
+
+L171 2026-09-30T13:10:52.206Z shell_command wall=3.8 outputChars=1229
+Get-Content -Path 'C:\diplomamunka\automated-gui-testing-agent-framework\Framework\GeneratedScriptRuntime.ps1' | Select-String -Pattern 'function Register-CreatedExternalPath|function Invoke-StepClick|function Get-AGTATestExitCode|function Complete-AGTAGeneratedTest|function Initialize-AGTAGeneratedTest' -Context 0,8
+=> Exit code: 0
+Wall time: 3.8 seconds
+Output:
+
+> function Initialize-AGTAGeneratedTest {
+      [CmdletBinding()]
+      param(
+          [Parameter(Mandatory)]
+          [string] $PotatoCliPath,
+  
+          [Parameter(Mandatory)]
+          [string] $TestCaseCsv,
+  
+> function Invoke-StepClick {
+      [CmdletBinding()]
+      param(
+          [Parameter(Mandatory)] [ref] $Commands,
+          [Parameter(Mandatory)] [string[]] $Arguments,
+          [ValidateSet('Auto','Mouse','Invoke')] [string] $Method = 'Auto',
+          [string] $Message = 'Visible click failed.'
+      )
+  
+> function Register-CreatedExternalPath {
+      [CmdletBinding()]
+      param(
+          [Parameter(
+
+L172 2026-09-30T13:10:52.235Z shell_command wall=1.1 outputChars=88
+Get-Content -Path 'C:\diplomamunka\automated-gui-testing-agent-framework\logs\nope'
+=> Exit code: 124
+Wall time: 1.1 seconds
+Output:
+command timed out after 1101 milliseconds
+
+
+L180 2026-09-30T13:11:06.119Z shell_command wall=4.4 outputChars=1075
+Get-Content -Path 'C:\diplomamunka\automated-gui-testing-agent-framework\Framework\GeneratedScriptRuntime.ps1' | Select-String -Pattern 'function Register-CreatedExternalPath' -Context 0,35
+=> Exit code: 0
+Wall time: 4.4 seconds
+Output:
+
+> function Register-CreatedExternalPath {
+      [CmdletBinding()]
+      param(
+          [Parameter(Mandatory)]
+          [string] $Path
+      )
+  
+      if ($script:AGTACreatedExternalPaths -notcontains $Path) {
+          $script:AGTACreatedExternalPaths += $Path
+      }
+  }
+  
+  function Test-IsPathUnderRoot {
+      [CmdletBinding()]
+      param(
+          [Parameter(Mandatory)]
+          [string] $Path,
+  
+          [Parameter(Mandatory)]
+          [string] $Root
+      )
+  
+      $rootFull = [System.IO.Path]::GetFullPath($Root).TrimEnd('\')
+      $pathFull = [System.IO.Path]::GetFullPath($Path)
+      return ($pathFull.E
+
+L181 2026-09-30T13:11:06.119Z shell_command wall=3.8 outputChars=1623
+Get-Content -Path 'C:\diplomamunka\automated-gui-testing-agent-framework\Framework\GeneratedScriptRuntime.ps1' | Select-String -Pattern 'function Invoke-StepClick' -Context 0,40
+=> Exit code: 0
+Wall time: 3.8 seconds
+Output:
+
+> function Invoke-StepClick {
+      [CmdletBinding()]
+      param(
+          [Parameter(Mandatory)] [ref] $Commands,
+          [Parameter(Mandatory)] [string[]] $Arguments,
+          [ValidateSet('Auto','Mouse','Invoke')] [string] $Method = 'Auto',
+          [string] $Message = 'Visible click failed.'
+      )
+  
+      if ($Arguments -contains '-Method') { throw 'Pass -Method to Invoke-StepClick, not inside -Arguments.' }
+      $result = Invoke-StepCommand -Commands $Commands -Command 'click' -Arguments (@($Arguments) + @('-Method', 
+$Method))
+      Assert-PotatoOk -Result $result -Message $Message
+      Assert-ExpectedResult -Conditi
+
+L182 2026-09-30T13:11:06.120Z shell_command wall=4.0 outputChars=1383
+Get-Content -Path 'C:\diplomamunka\automated-gui-testing-agent-framework\Framework\GeneratedScriptRuntime.ps1' | Select-String -Pattern 'function Invoke-AGTATestPlan' -Context 0,80
+=> Exit code: 0
+Wall time: 4 seconds
+Output:
+
+> function Invoke-AGTATestPlan {
+      [CmdletBinding()]
+      param([Parameter(Mandatory)] [scriptblock[]]$StepBodies, [switch]$PassThru)
+      $context=Get-AGTAGeneratedTestContext
+      if ($StepBodies.Count -ne $context.Steps.Count -or @($StepBodies | Where-Object {$null -eq $_}).Count) {
+          throw 'Test plan must contain exactly one non-null body per CSV row, in order, before any GUI action.'
+      }
+      $results=@()
+      $cleanup=@()
+      $blocked=$false
+      try {
+          for ($i=0; $i -lt $StepBodies.Count; $i++) {
+              if ($blocked) {
+                  $step=$context.Steps[$i]
+                  $results+
+
+L190 2026-09-30T13:12:35.039Z apply_patch wall=0.0 outputChars=174
+*** Begin Patch
+*** Add File: C:\diplomamunka\automated-gui-testing-agent-framework\generated\MicrosoftWord.Generated.ps1
++[CmdletBinding()]
++param(
++    [string] $PotatoCliPath,
++    [string] $TestCaseCsv,
++    [string] $RunRoot,
++    [string] $FrameworkRoot,
++    [string] $ExplorationPath,
++    [ValidateSet('VisibleControls','GuiNavigation','AllowShortcuts')] [string] $InteractionPolicy = 'GuiNavigation',
++    [string] $PolicyReason,
++    [ValidateSet('InProcess','Process')] [string] $Transport = 'InProcess'
++)
++
++$runtimeCandidates = @()
++if ($FrameworkRoot) {
++    $runtimeCandidates += (Join-Path -Path $FrameworkRoot -ChildPath 'Framework\GeneratedScriptRuntime.ps1')
++}
++$probe = $PSScriptRoot
++for ($i = 0; $i -lt 6 -and $probe; $i++) {
++    $runtimeCandidates += (Join-Path -Path $probe -ChildPath 'Framework\GeneratedScriptRuntime.ps1')
++    $probe = Split-Path -Parent $probe
++}
++$runtimePath = @($runtimeCandidates | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1)[0]
++if (-not $runtimePath) {
++    throw "Generated script runtime was not found: $runtimePath"
++}
++$FrameworkRoot = Split-Path -Parent (Split-Path -Parent $runtimePath)
++. $runtimePath
++
++if (-not $PotatoCliPath) {
++    $PotatoCliPath = [System.IO.Path]::GetFullPath((Join-Path -Path $FrameworkRoot -ChildPath '..\potato-cli\potato.ps1'))
++}
++if (-not $TestCaseCsv) {
++    $TestCaseCsv = 'C:\Users\testuser\Desktop\Microsoft Word.csv'
++}
++if (-not $RunRoot) {
++    $RunRoot = Join-Path -Path $FrameworkRoot -ChildPath ("runs\microsoft-word-generated-{0}" -f (Get-Date -Format 'yyyyMMdd_HHmmss'))
++}
++if (-not $ExplorationPath) {
++    $candidateExplorationPath = Join-Path -Path $FrameworkRoot -ChildPath 'runs\word-csv-codex-20260930\logs\exploration.json'
++    if (Test-Path -LiteralPath $candidateExplorationPath) {
++        $ExplorationPath = $candidateExplorationPath
++    } else {
++        $ExplorationPath = Join-Path -Path $RunRoot -ChildPath 'logs\exploration.json'
++    }
++}
++
++Assert-AGTAGeneratedScriptPreflight -ScriptPath $PSCommandPath -TestCaseCsv $TestCaseCsv -PotatoCliPath $PotatoCliPath -ExplorationPath $ExplorationPath -InteractionPolicy $InteractionPolicy | Out-Null
++
++$Context = Initialize-AGTAGeneratedTest -PotatoCliPath $PotatoCliPath -TestCaseCsv $TestCaseCsv -RunRoot $RunRoot -RequireAssertions -InteractionPolicy $InteractionPolicy -PolicyReason $PolicyReason -Transport $Transport -ExplorationPath $ExplorationPath
++
++$Title = 'Word GUI Test'
++$Paragraph = 'This document tests creating, saving, reopening, and printing in Word.'
++$DocumentText = "$Title`r`n$Paragraph"
++$OutputFolder = Join-Path -Path $Context.ExecutionEvidenceRoot -ChildPath 'word-output'
++$DocumentPath = Join-Path -Path $OutputFolder -ChildPath 'WordTest.docx'
++$PdfPath = Join-Path -Path $OutputFolder -ChildPath 'WordTest.pdf'
++New-Item -ItemType Directory -Force -Path $OutputFolder | Out-Null
++
++function Invoke-ClickBackstageFile {
++    param(
++        [Parameter(Mandatory)] [ref] $Commands,
++        [Parameter(Mandatory)] [ref] $Evidence
++    )
++
++    $screenshotPath = Join-Path -Path $Context.ExecutionEvidenceRoot -ChildPath 'before-file-backstage.png'
++    $screenshot = Invoke-StepCommand -Commands $Commands -Command 'screenshot' -Arguments @('-OutFile', $screenshotPath)
++    Assert-PotatoOk -Result $screenshot -Message 'Could not capture Word before opening File backstage.'
++    Add-EvidencePath -Evidence $Evidence -Path $screenshotPath
++
++    # Coordinate fallback: the active document surface did not expose the visible File tab in UIA during exploration.
++    $fileClick = Invoke-StepCommand -Commands $Commands -Command 'click-coordinate' -Arguments @(
++        '-X', '28',
++        '-Y', '48',
++        '-FallbackReason', 'Word document UIA tree did not expose the visible File tab; screenshot evidence shows the backstage entry area at the top-left of the maximized Word window.',
++        '-FallbackEvidence', $screenshotPath
++    )
++    Assert-PotatoOk -Result $fil
+=> Exit code: 0
+Wall time: 0 seconds
+Output:
+Success. Updated the following files:
+A C:\diplomamunka\automated-gui-testing-agent-framework\generated\MicrosoftWord.Generated.ps1
+
+
+L197 2026-09-30T13:12:43.121Z shell_command wall=4.1 outputChars=177
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Test-GeneratedScript.ps1 -ScriptPath .\generated\MicrosoftWord.Generated.ps1 -TestCaseCsv 'C:\Users\testuser\Desktop\Microsoft Word.csv' -PotatoCliPath '..\potato-cli\potato.ps1' -ExplorationPath '.\runs\word-csv-codex-20260930\logs\exploration.json'
+=> Exit code: 0
+Wall time: 4.1 seconds
+Output:
+{"ok":true,"issues":[],"checkedCommands":91,"policyAssessment":"Static checks and recorded CLI actions; not an execution sandbox."}
+
+
+L203 2026-09-30T13:12:54.978Z shell_command wall=34.7 outputChars=9258
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\generated\MicrosoftWord.Generated.ps1 -TestCaseCsv 'C:\Users\testuser\Desktop\Microsoft Word.csv' -PotatoCliPath '..\potato-cli\potato.ps1' -RunRoot '.\runs\word-generated-validation-20260930' -FrameworkRoot '.' -ExplorationPath '.\runs\word-csv-codex-20260930\logs\exploration.json'
+=> Exit code: 1
+Wall time: 34.7 seconds
+Output:
+{"ok":false,"interactionPolicy":{"compliant":true,"scriptAuditPerformed":true,"reason":"","mode":"GuiNavigation","assessment":"Recorded CLI policy and static script checks; external activity is not sandboxed."},"transport":"InProcess","timing":{"commandCount":17,"wrapperMs":26717,"backendMs":26357,"waitMs":16822,"cleanupMs":5686,"totalMs":29769,"commandOverheadMs":360,"otherMs":3052},"testCase":"Microsoft Word.csv","runRoot":".\\runs\\word-generated-validation-20260930","executionId":"20260930_151259_2815","startedAt":"2026-09-30T15:12:59.6156246+02:00","finishedAt":"2026-09-30T15:13:29.3830612+02:00","steps":[{"stepIndex":1,"action":"Open Word","expectedResult":"Word is open and ready to create a blank document.","status":"PASS","evidence":[],"commands":[{"index":1,"command":"start","arguments":["-ProcessName","winword.exe","-WaitForWindowMs","30000","-Maximize","-RequireNewProcess"],"ok":true,"durationMs":4684,"wrapperDurationMs":4839,"outcome":"completed","interactionPolicy":{"mode":"GuiNavigation","shortcutUsed":false,"navigationUsed":false,"opaqueTyping":false,"fallbackReason":"","fallbackEvidence":""},"logPath":".\\runs\\word-generated-validation-20260930\\logs\\potato-commands-20260930_151259_2815.jsonl","error":null},{"index":2,"command":"wait-element","arguments":["-Name","Blank document","-ControlType","ListItem","-TimeoutMs","30000"],"ok":true,"durationMs":283,"wrapperDurationMs":292,"outcome":"completed","interactionPolicy":{"mode":"GuiNavigation","shortcutUsed":false,"navigationUsed":false,"opaqueTyping":false,"fallbackReason":"","fallbackEvidence":""},"logPath":".\\runs\\word-generated-validation-20260930\\logs\\potato-commands-20260930_151259_2815.jsonl","error":null},{"index":3,"command":"click","arguments":["
+
+L209 2026-09-30T13:13:37.316Z view_image wall=None outputChars=119958
+{'path': 'C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\word-generated-validation-20260930\\evidence\\20260930_151259_2815\\step-3-failure.png', 'detail': 'high'}
+=> [{"type": "input_image", "image_url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAB4AAAAOECAYAAABAfCzDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAP+lSURBVHhe7N0HnBz1ff//S1wAG2PAdIxx73HiOAUUxy1OYif+Je4k+duOHbBcwQ1sOsYGBKZICDAdBAhRJRBCAklIFIF6191JupNOvSBRjATG2Maf/+Mzs9+973zmO7Ptyu7c6/14PB/S7c58Z2Z376TZ931n27Zu3Spqy5Ytkc2bN8umTZsiGzdulAceeECmTJkikydPbin3339/v5s0aVIh3HfffYVw7733okr33HMPMGRMmDAB/cg+3sBgsf/WIdvEiRNrZv/f1ars/4NblT0v6Q/2/KrZ6TmrnrvqOaw7n9VzW3ee6857t23bFtm+fXvkySefjOzYsaNs586dZU899VTC008/nfDMM89kevbZZyO/+c1vAAAAAAAYUG1Z5e+GDRsieiK9e/duAAAAAACalp676jlsrSWwK4JDJXClAjivBHYFMCUwAAAAAGCgtfnlr9KTZVf+rl+/PvptantiDQAAAABAM9FzVz2H9Utgd57rl8ChAtixBbAtgW35m1cAUwIDAAAAAAYLBTAAAAAAoOVRAAMAAAAAEKMABgAAAAC0PApgAAAAAABiFMAAAAAAgJZHAQwAAAAAQCwqgPWEWE+Obfm7bt06CmAAAAAAQNPTc1c9h3UlsLIlsBbAeSXwk08+mVsAh0pgW/pmFcCUwAAAAACAgUIBDAAAAABoeRTAAAAAAADEKIABAAAAAC2PAhgAAAAAgBgFMAAAAACg5VEAAwAAAAAQ67cCeMKTL8kXuv4k/9AhZR9pF/n8UpHj5omc8oTIRTP/JGOm/knuv/9PsrbjxdQYAAAAAABUgwIYAAAAAIBYvxTADzz1e/neepFPreotf6MCuEPk/y0T+cYCkRNni5z/iMi10/4k90z+kzw2+eXUOAAAAAAAVIMCGAAAAACAWL8UwJdt+5N8d53Iv5oCWP3rcpH/b5HID+aI/OIxkSse+pPc/sCfZOqkP6XGAQAAAACgGhTAAAAAAADE+qUAvmibyHcyCuBPrBD50mKR78wTOeNxkZEz/yQ3Tf2T3DuZAhgAAAAAiuSwww6XG264MXW7pcscccSbUrfXggIYAAAAAIBYm1/+ugLYlb/9UQB/tEPks0tFjl0g8tPZIiMeEblq+p/ktgdqL4CPO+44aWtrK9Ov7TIDadq0adF+3Hhj5Tc4AAAAAKDotNh9zd6vyy2Bq1mmGq4A9ktgd56r57xaANsS2BbArgRWWSVwIwUwJTAAAAAAYCD0SwF84TaRb68T+eeVIh/ujPkl8KeXiXxlocgJc0TOniUyauqf5KJfv5gaJ88nP/nJVOFrvx5ouv23vOUt0b7Z+wAAAABgKMorePPuqxUFMAAAAAAAsf4pgLeKfOaR38kbrnxa9r5kpxww8ik5/OKn5R0XPyN/eeGz8g8XPCufGvEb+dIvn5Njz94lPzljt5xx6vOpcbKsWLEimmmrf9r7BpPbp2bcNwAAAAAYLKGiN3RbIyiAAQAAAACI9VkBPHHxC/JvF++So07bKX/9o03yF9/ulvce2yHvP26FvO+ElfKWc7bIESOflXdd8hv50EXPyUcv3CX/fv4u+e9zd8u3z35Bfnbmb1Nj5tGSVS+5bG93XBFrLw/tbrfr6v3+DGK
+
+L215 2026-09-30T13:13:59.589Z apply_patch wall=0.0 outputChars=174
+*** Begin Patch
+*** Update File: C:\diplomamunka\automated-gui-testing-agent-framework\generated\MicrosoftWord.Generated.ps1
+@@
+         $saveAs = Invoke-StepCommand -Commands $Commands -Command 'wait-element' -Arguments @('-Name', 'Save As', '-ControlType', 'ListItem', '-TimeoutMs', '15000')
+         Assert-PotatoFound -Result $saveAs -Message 'Word Save As backstage must appear.'
+ 
+         $browse = Invoke-StepClick -Commands $Commands -Arguments @('-Name', 'Browse', '-ControlType', 'Button') -Message 'Could not open the Save As dialog.'
+-        $dialog = Invoke-StepCommand -Commands $Commands -Command 'wait-element' -Arguments @('-Name', 'Save As', '-ControlType', 'Window', '-Scope', 'FocusedWindow', '-TimeoutMs', '15000')
+-        Assert-PotatoFound -Result $dialog -Message 'The Save As dialog must appear.'
+-
+         Invoke-TypeFocusedDialogPath -Commands $Commands -Path $DocumentPath -ExpectedFocusJson '{"AutomationId":"1001"}' -Reason 'Save As filename field is an observed focused opaque Win32 Edit in the Microsoft Word Save As dialog.' -Evidence 'Completed exploration command ec8eba23800e41e094d7e7659703cc9d showed focused filename field AutomationId 1001.'
+         $confirm = Invoke-StepClick -Commands $Commands -Arguments @('-Name', 'Save', '-AutomationId', '1', '-Scope', 'FocusedWindow') -Method Mouse -Message 'Could not confirm the Save As dialog.'
+@@
+         $openTab = Invoke-StepClick -Commands $Commands -Arguments @('-Name', 'Open', '-AutomationId', 'msotcidPlaceOpen', '-ControlType', 'ListItem') -Message 'Could not select Word Open backstage.'
+         $browse = Invoke-StepClick -Commands $Commands -Arguments @('-Name', 'Browse', '-ControlType', 'Button') -Message 'Could not open the Word Open dialog.'
+-        $dialog = Invoke-StepCommand -Commands $Commands -Command 'wait-element' -Arguments @('-Name', 'Open', '-ControlType', 'Window', '-Scope', 'FocusedWindow', '-TimeoutMs', '15000')
+-        Assert-PotatoFound -Result $dialog -Message 'The Open dialog must appear.'
+-
+         Invoke-TypeFocusedDialogPath -Commands $Commands -Path $DocumentPath -ExpectedFocusJson '{"AutomationId":"1148","ClassName":"Edit"}' -Reason 'Open dialog filename field is an observed focused opaque Win32 Edit in the Microsoft Word Open dialog.' -Evidence 'Completed exploration command ead944c71a7747b7a7ed0ac43b0883fb showed focused filename field AutomationId 1148 ClassName Edit.'
+         $confirm = Invoke-StepClick -Commands $Commands -Arguments @('-Name', 'Open', '-AutomationId', '1', '-Scope', 'FocusedWindow') -Method Mouse -Message 'Could not confirm the Word Open dialog.'
+@@
+ 
+         $print = Invoke-StepClick -Commands $Commands -Arguments @('-Name', 'Print', '-ControlType', 'Button') -Message 'Could not invoke Word Print.'
+-        $dialog = Invoke-StepCommand -Commands $Commands -Command 'wait-element' -Arguments @('-Name', 'Save Print Output As', '-ControlType', 'Window', '-Scope', 'FocusedWindow', '-TimeoutMs', '15000')
+-        Assert-PotatoFound -Result $dialog -Message 'The Save Print Output As dialog must appear.'
+-
+         Invoke-TypeFocusedDialogPath -Commands $Commands -Path $PdfPath -ExpectedFocusJson '{"AutomationId":"1001","ClassName":"Edit"}' -Reason 'Save Print Output As filename field is an observed focused opaque Win32 Edit.' -Evidence 'Completed exploration command ec565ae3c1c54c25850320ec32bc5611 showed focused filename field AutomationId 1001 ClassName Edit.'
+         $confirm = Invoke-StepClick -Commands $Commands -Arguments @('-Name', 'Save', '-AutomationId', '1', '-Scope', 'FocusedWindow') -Method Mouse -Message 'Could not save the printed PDF.'
+*** End Patch
+
+=> Exit code: 0
+Wall time: 0 seconds
+Output:
+Success. Updated the following files:
+M C:\diplomamunka\automated-gui-testing-agent-framework\generated\MicrosoftWord.Generated.ps1
+
+
+L222 2026-09-30T13:14:08.659Z shell_command wall=10.2 outputChars=749
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ..\potato-cli\potato.ps1 close-window -ProcessName WINWORD -TimeoutMs 5000
+=> Exit code: 0
+Wall time: 10.2 seconds
+Output:
+{"ok":true,"command":"close-window","session":{"statePath":"C:\\diplomamunka\\potato-cli\\.state\\default.json","runId":"d3cbb332-3f3c-4f27-a524-680e641813ae","working":{"title":"Word","processName":"WINWORD","processId":4396,"nativeWindowHandle":1442622,"className":"OpusApp","updatedAt":"2026-09-30T15:13:04.4841778+02:00"}},"data":{"closed":0,"matched":0},"error":null,"durationMs":5696,"logPath":"C:\\diplomamunka\\potato-cli\\runs\\d3cbb332-3f3c-4f27-a524-680e641813ae\\potato.log","interactionPolicy":{"mode":"GuiNavigation","shortcutUsed":false,"navigationUsed":false,"opaqueTyping":false,"fallbackReason":"","fallbackEvidence":""},"outcome":"compl
+
+L223 2026-09-30T13:14:08.660Z shell_command wall=5.3 outputChars=177
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Test-GeneratedScript.ps1 -ScriptPath .\generated\MicrosoftWord.Generated.ps1 -TestCaseCsv 'C:\Users\testuser\Desktop\Microsoft Word.csv' -PotatoCliPath '..\potato-cli\potato.ps1' -ExplorationPath '.\runs\word-csv-codex-20260930\logs\exploration.json'
+=> Exit code: 0
+Wall time: 5.3 seconds
+Output:
+{"ok":true,"issues":[],"checkedCommands":85,"policyAssessment":"Static checks and recorded CLI actions; not an execution sandbox."}
+
+
+L230 2026-09-30T13:14:25.875Z shell_command wall=2.2 outputChars=44
+Get-Process WINWORD -ErrorAction SilentlyContinue | Select-Object Id,ProcessName,MainWindowTitle
+=> Exit code: 1
+Wall time: 2.2 seconds
+Output:
+
+
+L231 2026-09-30T13:14:25.988Z shell_command wall=4.6 outputChars=742
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ..\potato-cli\potato.ps1 windows -ProcessName WINWORD -TimeoutMs 0
+=> Exit code: 0
+Wall time: 4.6 seconds
+Output:
+{"ok":true,"command":"windows","session":{"statePath":"C:\\diplomamunka\\potato-cli\\.state\\default.json","runId":"d3cbb332-3f3c-4f27-a524-680e641813ae","working":{"title":"Word","processName":"WINWORD","processId":4396,"nativeWindowHandle":1442622,"className":"OpusApp","updatedAt":"2026-09-30T15:13:04.4841778+02:00"}},"data":{"count":0,"windows":[]},"error":null,"durationMs":678,"logPath":"C:\\diplomamunka\\potato-cli\\runs\\d3cbb332-3f3c-4f27-a524-680e641813ae\\potato.log","interactionPolicy":{"mode":"GuiNavigation","shortcutUsed":false,"navigationUsed":false,"opaqueTyping":false,"fallbackReason":"","fallbackEvidence":""},"outcome":"completed","
+
+L238 2026-09-30T13:14:37.482Z shell_command wall=50.5 outputChars=11218
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\generated\MicrosoftWord.Generated.ps1 -TestCaseCsv 'C:\Users\testuser\Desktop\Microsoft Word.csv' -PotatoCliPath '..\potato-cli\potato.ps1' -RunRoot '.\runs\word-generated-validation-20260930-r2' -FrameworkRoot '.' -ExplorationPath '.\runs\word-csv-codex-20260930\logs\exploration.json'
+=> Exit code: 1
+Wall time: 50.5 seconds
+Output:
+{"ok":false,"interactionPolicy":{"compliant":true,"scriptAuditPerformed":true,"reason":"","mode":"GuiNavigation","assessment":"Recorded CLI policy and static script checks; external activity is not sandboxed."},"transport":"InProcess","timing":{"commandCount":19,"wrapperMs":42096,"backendMs":41660,"waitMs":31680,"cleanupMs":5756,"totalMs":45531,"commandOverheadMs":436,"otherMs":3435},"testCase":"Microsoft Word.csv","runRoot":".\\runs\\word-generated-validation-20260930-r2","executionId":"20260930_151441_8745","startedAt":"2026-09-30T15:14:42.1737555+02:00","finishedAt":"2026-09-30T15:15:27.7027891+02:00","steps":[{"stepIndex":1,"action":"Open Word","expectedResult":"Word is open and ready to create a blank document.","status":"PASS","evidence":[],"commands":[{"index":1,"command":"start","arguments":["-ProcessName","winword.exe","-WaitForWindowMs","30000","-Maximize","-RequireNewProcess"],"ok":true,"durationMs":2475,"wrapperDurationMs":2651,"outcome":"completed","interactionPolicy":{"mode":"GuiNavigation","shortcutUsed":false,"navigationUsed":false,"opaqueTyping":false,"fallbackReason":"","fallbackEvidence":""},"logPath":".\\runs\\word-generated-validation-20260930-r2\\logs\\potato-commands-20260930_151441_8745.jsonl","error":null},{"index":2,"command":"wait-element","arguments":["-Name","Blank document","-ControlType","ListItem","-TimeoutMs","30000"],"ok":true,"durationMs":432,"wrapperDurationMs":442,"outcome":"completed","interactionPolicy":{"mode":"GuiNavigation","shortcutUsed":false,"navigationUsed":false,"opaqueTyping":false,"fallbackReason":"","fallbackEvidence":""},"logPath":".\\runs\\word-generated-validation-20260930-r2\\logs\\potato-commands-20260930_151441_8745.jsonl","error":null},{"index":3,"command":"click","argu
+
+L244 2026-09-30T13:15:36.777Z apply_patch wall=0.0 outputChars=174
+*** Begin Patch
+*** Update File: C:\diplomamunka\automated-gui-testing-agent-framework\generated\MicrosoftWord.Generated.ps1
+@@
+ $Title = 'Word GUI Test'
+ $Paragraph = 'This document tests creating, saving, reopening, and printing in Word.'
+ $DocumentText = "$Title`r`n$Paragraph"
+-$OutputFolder = Join-Path -Path $Context.ExecutionEvidenceRoot -ChildPath 'word-output'
++$OutputFolder = [System.IO.Path]::GetFullPath((Join-Path -Path $Context.ExecutionEvidenceRoot -ChildPath 'word-output'))
+ $DocumentPath = Join-Path -Path $OutputFolder -ChildPath 'WordTest.docx'
+ $PdfPath = Join-Path -Path $OutputFolder -ChildPath 'WordTest.pdf'
+*** End Patch
+
+=> Exit code: 0
+Wall time: 0 seconds
+Output:
+Success. Updated the following files:
+M C:\diplomamunka\automated-gui-testing-agent-framework\generated\MicrosoftWord.Generated.ps1
+
+
+L251 2026-09-30T13:15:45.148Z shell_command wall=10.0 outputChars=746
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ..\potato-cli\potato.ps1 close-window -ProcessName WINWORD -TimeoutMs 5000
+=> Exit code: 0
+Wall time: 10 seconds
+Output:
+{"ok":true,"command":"close-window","session":{"statePath":"C:\\diplomamunka\\potato-cli\\.state\\default.json","runId":"d3cbb332-3f3c-4f27-a524-680e641813ae","working":{"title":"Word","processName":"WINWORD","processId":2740,"nativeWindowHandle":852872,"className":"OpusApp","updatedAt":"2026-09-30T15:14:44.8320062+02:00"}},"data":{"closed":0,"matched":0},"error":null,"durationMs":5673,"logPath":"C:\\diplomamunka\\potato-cli\\runs\\d3cbb332-3f3c-4f27-a524-680e641813ae\\potato.log","interactionPolicy":{"mode":"GuiNavigation","shortcutUsed":false,"navigationUsed":false,"opaqueTyping":false,"fallbackReason":"","fallbackEvidence":""},"outcome":"complete
+
+L252 2026-09-30T13:15:45.149Z shell_command wall=5.0 outputChars=175
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Test-GeneratedScript.ps1 -ScriptPath .\generated\MicrosoftWord.Generated.ps1 -TestCaseCsv 'C:\Users\testuser\Desktop\Microsoft Word.csv' -PotatoCliPath '..\potato-cli\potato.ps1' -ExplorationPath '.\runs\word-csv-codex-20260930\logs\exploration.json'
+=> Exit code: 0
+Wall time: 5 seconds
+Output:
+{"ok":true,"issues":[],"checkedCommands":85,"policyAssessment":"Static checks and recorded CLI actions; not an execution sandbox."}
+
+
+L259 2026-09-30T13:16:03.853Z shell_command wall=2.6 outputChars=44
+Get-Process WINWORD -ErrorAction SilentlyContinue | Select-Object Id,ProcessName,MainWindowTitle
+=> Exit code: 1
+Wall time: 2.6 seconds
+Output:
+
+
+L260 2026-09-30T13:16:03.907Z shell_command wall=5.6 outputChars=741
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ..\potato-cli\potato.ps1 windows -ProcessName WINWORD -TimeoutMs 0
+=> Exit code: 0
+Wall time: 5.6 seconds
+Output:
+{"ok":true,"command":"windows","session":{"statePath":"C:\\diplomamunka\\potato-cli\\.state\\default.json","runId":"d3cbb332-3f3c-4f27-a524-680e641813ae","working":{"title":"Word","processName":"WINWORD","processId":2740,"nativeWindowHandle":852872,"className":"OpusApp","updatedAt":"2026-09-30T15:14:44.8320062+02:00"}},"data":{"count":0,"windows":[]},"error":null,"durationMs":770,"logPath":"C:\\diplomamunka\\potato-cli\\runs\\d3cbb332-3f3c-4f27-a524-680e641813ae\\potato.log","interactionPolicy":{"mode":"GuiNavigation","shortcutUsed":false,"navigationUsed":false,"opaqueTyping":false,"fallbackReason":"","fallbackEvidence":""},"outcome":"completed","l
+
+L266 2026-09-30T13:16:15.465Z shell_command wall=28.5 outputChars=19441
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\generated\MicrosoftWord.Generated.ps1 -TestCaseCsv 'C:\Users\testuser\Desktop\Microsoft Word.csv' -PotatoCliPath '..\potato-cli\potato.ps1' -RunRoot '.\runs\word-generated-validation-20260930-r3' -FrameworkRoot '.' -ExplorationPath '.\runs\word-csv-codex-20260930\logs\exploration.json'
+=> Exit code: 1
+Wall time: 28.5 seconds
+Output:
+{"ok":false,"interactionPolicy":{"compliant":true,"scriptAuditPerformed":true,"reason":"","mode":"GuiNavigation","assessment":"Recorded CLI policy and static script checks; external activity is not sandboxed."},"transport":"InProcess","timing":{"commandCount":29,"wrapperMs":21332,"backendMs":20786,"waitMs":4019,"cleanupMs":923,"totalMs":22199,"commandOverheadMs":546,"otherMs":867},"testCase":"Microsoft Word.csv","runRoot":".\\runs\\word-generated-validation-20260930-r3","executionId":"20260930_151619_2997","startedAt":"2026-09-30T15:16:19.5611267+02:00","finishedAt":"2026-09-30T15:16:41.7595204+02:00","steps":[{"stepIndex":1,"action":"Open Word","expectedResult":"Word is open and ready to create a blank document.","status":"PASS","evidence":[],"commands":[{"index":1,"command":"start","arguments":["-ProcessName","winword.exe","-WaitForWindowMs","30000","-Maximize","-RequireNewProcess"],"ok":true,"durationMs":2721,"wrapperDurationMs":2879,"outcome":"completed","interactionPolicy":{"mode":"GuiNavigation","shortcutUsed":false,"navigationUsed":false,"opaqueTyping":false,"fallbackReason":"","fallbackEvidence":""},"logPath":".\\runs\\word-generated-validation-20260930-r3\\logs\\potato-commands-20260930_151619_2997.jsonl","error":null},{"index":2,"command":"wait-element","arguments":["-Name","Blank document","-ControlType","ListItem","-TimeoutMs","30000"],"ok":true,"durationMs":367,"wrapperDurationMs":377,"outcome":"completed","interactionPolicy":{"mode":"GuiNavigation","shortcutUsed":false,"navigationUsed":false,"opaqueTyping":false,"fallbackReason":"","fallbackEvidence":""},"logPath":".\\runs\\word-generated-validation-20260930-r3\\logs\\potato-commands-20260930_151619_2997.jsonl","error":null},{"index":3,"command":"click","argumen
+
+L272 2026-09-30T13:16:49.374Z view_image wall=None outputChars=113194
+{'path': 'C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\word-generated-validation-20260930-r3\\evidence\\20260930_151619_2997\\before-file-backstage.png', 'detail': 'high'}
+=> [{"type": "input_image", "image_url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAB4AAAAOECAYAAABAfCzDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAP+lSURBVHhe7P0J1DVXed8L0ut2d253rpPl7rvSuZlu7kVZnbh7JbZD7k3s0KwkNrq+cWyRuKNly75umYsBAwaLIIwQyICxhQRowEySjEQkkBCSLIQmRDQgNM9I+vRpnic0MAghBmGq17/g+fS8z9m7Tu06VWfY5/db67fec2rctWufqvPW/+yqF33jG99oEBERERERERERERERERFx831RHICIiIiIiIiIiIiIiIiIiJspATAiIiIiIiIiIiIiIiIiYiUSACMiIiIiIiIiIiIiIiIiViIBMCIiIiIiIiIiIiIiIiJiJRIAIyIiIiIiIiIiIiIiIiJWIgEwIiIiIiIiIiIiIiIiImIlEgAjIiIiIiIiIiIiIiIiIlYiATAiIiIi4pr49a9/HREREX9sPE8iIiIiImI/CYAREREREVeoLnB/7Wtfa5588snm8ccfR0RExB+rc6POkYTBiIiIiIhlEgAjIiIiIq5IXdB++umnm69+9avNE0880dx///3NHXfc0dx2222IiIhbq86FOifq3KhzpM6VhMCIiIiIiP0lAEZEREREXJHq1aQL2/LOO+9s33/nO99pvv/97yMiIm6tzz33XBv66tz42GOPtb2BdY6M51FERERERExLAIyIiIiIuCLVs0nqAjfBLyIi4k51btQ50s6X8TyKiIiIiIhpCYAREREREVegbmX56KOPtre4VK+meNEbERERv9+eI3Wu1DmT20AjIiIiIvaTABgRERERcQXqgvZDDz3UPueQ3r+IiIhpdTtonSt1zuQ20IiIiIiI/SQARkRERERcgbqI/cADDzS33XbbzMVuREREfEGdK3XOJABGREREROwnATAiIiIi4gokAEZEROwnATAiIiIiYpkEwLhH/SN1zTXXNMccc0xzyCGHNH/wB3/Q7L///itT61c5VB6Vi3/0EBERsSYJgBEREftJAIyIiIiIWCYBMLb/QJ177rnNG9/4xuaP/uiPmrPOOqu5++672+GrROtXOVSe9773vW35zj//fP7hQ0RExCokAEZEROwnATAiImKZhx9+ePNTP/VTzV577bXVqg6OOuqomfpB3AYJgLdc/QN10EEHNYceemize/fumMGuFQqDVU6V9957753ZFkRERMRNkgAYERGxnwTAiIiIZRL+vqDqItYP4jY4aQB8xRPPNq+6+wfNz+9qivx3t/+wOfuxb88sD8f19ttvb2+zfM4558Ssda1ReVXuG2+8cWabFvHof3zsqMbll3rKKac0X/jCF2aGy7vuuquthxNOOKH56Ec/2nriiSc2F110UfPQQw/NTL9srUwpc9uEiIi4bRIAIyIi9pMAGBERscwYgm67sX4Qt8HJAuA7nn6mDXJjuNtXBcdxmTie+sdJIeq1114b89Vm165dzfHHH9+89a1vbV7zmte0qtethmncOqByq/xj9gRWaHvmfuc2X3zDpe1fvb/ljN29TM0bl19qLgC+9NJL2yBV4xX4Xnfdda2aVoHwscce29x8880z8y1TK5OpsLpvAHzllVfODENERKzRZQbAX/rSl9o7qey///6tb3rTm5ojjjhiKetGRMT61PUBPUJK6nUcP7YEwIiIiGXGAHTbjfWDuA1OFgB/8IH
+
+L278 2026-09-30T13:17:01.623Z apply_patch wall=0.0 outputChars=174
+*** Begin Patch
+*** Update File: C:\diplomamunka\automated-gui-testing-agent-framework\generated\MicrosoftWord.Generated.ps1
+@@
+     $fileClick = Invoke-StepCommand -Commands $Commands -Command 'click-coordinate' -Arguments @(
+-        '-X', '28',
+-        '-Y', '48',
+-        '-FallbackReason', 'Word document UIA tree did not expose the visible File tab; screenshot evidence shows the backstage entry area at the top-left of the maximized Word window.',
++        '-X', '39',
++        '-Y', '80',
++        '-FallbackReason', 'Word document UIA tree did not expose the visible File tab; screenshot evidence shows the File tab at the top-left of the maximized Word window.',
+         '-FallbackEvidence', $screenshotPath
+     )
+*** End Patch
+
+=> Exit code: 0
+Wall time: 0 seconds
+Output:
+Success. Updated the following files:
+M C:\diplomamunka\automated-gui-testing-agent-framework\generated\MicrosoftWord.Generated.ps1
+
+
+L285 2026-09-30T13:17:10.727Z shell_command wall=4.5 outputChars=177
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Test-GeneratedScript.ps1 -ScriptPath .\generated\MicrosoftWord.Generated.ps1 -TestCaseCsv 'C:\Users\testuser\Desktop\Microsoft Word.csv' -PotatoCliPath '..\potato-cli\potato.ps1' -ExplorationPath '.\runs\word-csv-codex-20260930\logs\exploration.json'
+=> Exit code: 0
+Wall time: 4.5 seconds
+Output:
+{"ok":true,"issues":[],"checkedCommands":85,"policyAssessment":"Static checks and recorded CLI actions; not an execution sandbox."}
+
+
+L286 2026-09-30T13:17:10.727Z shell_command wall=2.1 outputChars=44
+Get-Process WINWORD -ErrorAction SilentlyContinue | Select-Object Id,ProcessName,MainWindowTitle
+=> Exit code: 1
+Wall time: 2.1 seconds
+Output:
+
+
+L292 2026-09-30T13:17:21.157Z shell_command wall=34.5 outputChars=23216
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\generated\MicrosoftWord.Generated.ps1 -TestCaseCsv 'C:\Users\testuser\Desktop\Microsoft Word.csv' -PotatoCliPath '..\potato-cli\potato.ps1' -RunRoot '.\runs\word-generated-validation-20260930-r4' -FrameworkRoot '.' -ExplorationPath '.\runs\word-csv-codex-20260930\logs\exploration.json'
+=> Exit code: 0
+Wall time: 34.5 seconds
+Output:
+{"ok":true,"interactionPolicy":{"compliant":true,"scriptAuditPerformed":true,"reason":"","mode":"GuiNavigation","assessment":"Recorded CLI policy and static script checks; external activity is not sandboxed."},"transport":"InProcess","timing":{"commandCount":34,"wrapperMs":27260,"backendMs":26627,"waitMs":6237,"cleanupMs":1553,"totalMs":28129,"commandOverheadMs":633,"otherMs":869},"testCase":"Microsoft Word.csv","runRoot":".\\runs\\word-generated-validation-20260930-r4","executionId":"20260930_151725_3434","startedAt":"2026-09-30T15:17:25.6184942+02:00","finishedAt":"2026-09-30T15:17:53.7453729+02:00","steps":[{"stepIndex":1,"action":"Open Word","

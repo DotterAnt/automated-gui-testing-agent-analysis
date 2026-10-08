@@ -1,0 +1,14 @@
+[
+  {
+    "test": "Pdf.Tests.ps1",
+    "output": "PDF checks: 22 passed (PowerShell 5.1.22621.2506)",
+    "elapsedMs": 2091,
+    "exitCode": 0
+  },
+  {
+    "test": "Pdf.External.Tests.ps1",
+    "output": "External PDF checks: 6 passed (quoted path, fallback with provenance, strict builtin, incomplete export in Python/Auto, invalid PDF)",
+    "elapsedMs": 2476,
+    "exitCode": 0
+  }
+]

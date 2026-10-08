@@ -1,0 +1,15 @@
+{
+  "ok": true,
+  "host": "Windows PowerShell 5.1",
+  "checks": 231,
+  "suites": [
+    {"name": "potato-cli/tests/PathInput.Tests.ps1", "checks": 18, "exitCode": 0},
+    {"name": "potato-cli/tests/Regression.Tests.ps1", "checks": 27, "exitCode": 0},
+    {"name": "potato-cli/tests/Interaction.Tests.ps1", "checks": 54, "exitCode": 0},
+    {"name": "potato-cli/tests/AuthoringExperience.Tests.ps1", "checks": 21, "exitCode": 0},
+    {"name": "automated-gui-testing-agent-framework/tests/Authoring.Regression.Tests.ps1", "checks": 59, "exitCode": 0},
+    {"name": "automated-gui-testing-agent-framework/tests/Runtime.Regression.Tests.ps1", "checks": 52, "exitCode": 0},
+    {"name": "potato-cli/tests/Gui.Smoke.Tests.ps1", "exitCode": 0, "note": "Actual GUI interaction fixture; not included in the numeric assertion count."}
+  ],
+  "note": "Results transcribed from successful tool executions after the final behavioral changes. A subsequent Begin next-hint edit changes guidance text only. No fresh full Word authoring session was run."
+}

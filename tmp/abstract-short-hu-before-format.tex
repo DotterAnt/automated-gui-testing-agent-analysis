@@ -1,0 +1,37 @@
+% Short Hungarian abstract
+% Text source: abstract-short-2026-10-07.html
+\documentclass[12pt,a4paper]{article}
+\usepackage[left=30mm,right=20mm,top=30mm,bottom=30mm]{geometry}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{newtxtext}
+\else
+  \usepackage{fontspec}
+  \IfFontExistsTF{Times New Roman}
+    {\setmainfont{Times New Roman}}
+    {\setmainfont{TeX Gyre Termes}}
+\fi
+\usepackage[magyar]{babel}
+\usepackage{setspace}
+\onehalfspacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{12pt}
+\emergencystretch=2em
+\clubpenalty=10000
+\widowpenalty=10000
+\raggedbottom
+\pagestyle{plain}
+
+\begin{document}
+\begin{center}
+  {\fontsize{16pt}{20pt}\selectfont\bfseries Automatikus szoftvertesztelés generalista AI ágensekkel\par}
+  \vspace{8pt}
+  {\fontsize{14pt}{18pt}\selectfont\bfseries Összefoglaló\par}
+\end{center}
+\vspace{6pt}
+
+Egy alkalmazás mögöttes funkcionalitása helyesen működhet, miközben a grafikus felhasználói felülete (GUI) megakadályozza a felhasználókat egy feladat elvégzésében. A tényleges GUI-műveletekkel végrehajtott tesztek feltárhatják a gombok és beviteli mezők elérhetőségével, a fókuszkezeléssel és a válaszidőkkel kapcsolatos problémákat, de e működésjellemzőket vizsgáló ismételhető tesztek előállítása időigényes. A dolgozat az AGTA (Automated GUI Testing Agent) PowerShell-alapú keretrendszert mutatja be, amely meglévő Windows-könyvtárak használatával strukturált szöveges leírást ad a felületi elemekről a nagy nyelvi modellekre épülő ágenseknek, és eszközöket biztosít a velük való interakcióhoz. A Model Context Protocol (MCP) közvetítésével integrált AGTA a tervezés, a feltárás, a szkript-előállítás, a végrehajtás és az ellenőrzés lépésein keresztül segíti az ágenseket abban, hogy CSV-formátumú tesztesetekből újrafuttatható GUI-tesztszkripteket készítsenek. A tíz alkalmazás 74 szkript-előállítási munkamenetét vizsgáló fő GPT-5.5-összehasonlításban az AGTA 40,2 percről 18,9 percre csökkentette az átlagos előállítási időt, ami az alkalmazásokat azonos súllyal figyelembe véve 53\%-os csökkenés. Előnye négy vizsgált modellgeneráción át fennmaradt: AGTA-val a GPT-6.1 Sol átlagosan 6,8 perc alatt készítette el a teszteket a három közösen vizsgált Office-alkalmazáson, ami saját natív alapvonalához képest 66,5\%-kal, a GPT-5.5-höz képest pedig 44,2\%-kal rövidebb előállítási időt jelent. A GPT-6 azonban, különösen annak Luna-változata, az egyező feladatokon végzett összehasonlításokban a korábbi generációkhoz képest visszaesést mutatott. A közösen vizsgált Office-alkalmazásokon a tesztszkriptek elkészítése az egyetlen promptból készült újraimplementációval átlagosan 24,9 percet, az AGTA-val pedig 12,2 percet vett igénybe. A hibák elemzése hallucinált vagy nem igazolt hibaállapotok miatti idő előtti feladást, valamint a GUI-t megkerülő rövidítéseket tárt fel. Az eredmények arra utalnak, hogy a gondos tervezés, a feltárás és a Windows-képességekhez az AGTA által biztosított strukturált hozzáférés csökkentheti a tesztszkriptek elkészítéséhez szükséges időt, miközben támogatja a felület tényleges interakciós működésének értékelését, amennyiben a siker az előírt felhasználói útvonal végrehajtását is magában foglalja.
+
+\end{document}

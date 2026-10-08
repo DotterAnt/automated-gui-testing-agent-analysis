@@ -1,0 +1,152 @@
+{
+  "phases": [
+    {
+      "phase": "Preparation",
+      "seconds": 145.31
+    },
+    {
+      "phase": "GUI exploration and checkpoint",
+      "seconds": 533.744
+    },
+    {
+      "phase": "Script generation and first preflight",
+      "seconds": 154.382
+    },
+    {
+      "phase": "Execution, diagnosis and repairs",
+      "seconds": 334.703
+    },
+    {
+      "phase": "Delivery",
+      "seconds": 38.556
+    }
+  ],
+  "elapsedSeconds": 1206.695,
+  "cliEnvelopes": 92,
+  "cliBackendSeconds": 116.776,
+  "commandCounts": {
+    "help": 10,
+    "start": 1,
+    "observe": 13,
+    "click": 19,
+    "wait-element": 6,
+    "type": 4,
+    "read": 4,
+    "select": 30,
+    "wait-file": 2,
+    "read-pdf": 1,
+    "close-window": 1,
+    "windows": 1
+  },
+  "failures": [
+    {
+      "line": 137,
+      "command": "click",
+      "error": {
+        "message": "InvokePattern is unavailable on this control. Use -Method Auto to choose a supported UIA action or visible mouse click. Supported patterns: SelectionItem, ScrollItem",
+        "type": "System.Management.Automation.RuntimeException",
+        "category": "OperationStopped"
+      }
+    },
+    {
+      "line": 198,
+      "command": "click",
+      "error": {
+        "message": "InvokePattern is unavailable on this control. Use -Method Auto to choose a supported UIA action or visible mouse click. Supported patterns: Value, ExpandCollapse, ScrollItem",
+        "type": "System.Management.Automation.RuntimeException",
+        "category": "OperationStopped"
+      }
+    },
+    {
+      "line": 294,
+      "command": "click",
+      "error": {
+        "message": "No matching element was found.",
+        "type": "System.Management.Automation.RuntimeException",
+        "category": "OperationStopped"
+      }
+    }
+  ],
+  "emptySelects": [
+    {
+      "line": 123,
+      "durationMs": 3083
+    },
+    {
+      "line": 133,
+      "durationMs": 2129
+    },
+    {
+      "line": 143,
+      "durationMs": 2631
+    },
+    {
+      "line": 143,
+      "durationMs": 2559
+    },
+    {
+      "line": 143,
+      "durationMs": 2533
+    },
+    {
+      "line": 143,
+      "durationMs": 2554
+    },
+    {
+      "line": 184,
+      "durationMs": 3085
+    },
+    {
+      "line": 184,
+      "durationMs": 2892
+    },
+    {
+      "line": 184,
+      "durationMs": 2551
+    },
+    {
+      "line": 184,
+      "durationMs": 2986
+    },
+    {
+      "line": 198,
+      "durationMs": 5115
+    },
+    {
+      "line": 288,
+      "durationMs": 1703
+    },
+    {
+      "line": 288,
+      "durationMs": 1745
+    },
+    {
+      "line": 288,
+      "durationMs": 1652
+    },
+    {
+      "line": 288,
+      "durationMs": 1702
+    },
+    {
+      "line": 288,
+      "durationMs": 1694
+    },
+    {
+      "line": 294,
+      "durationMs": 1740
+    },
+    {
+      "line": 294,
+      "durationMs": 1640
+    }
+  ],
+  "shellReportedSeconds": 602.6,
+  "finalSuccessfulRunShellSeconds": 35.2,
+  "observationBytes": 214272,
+  "evidenceNotes": [
+    "Shell wall-time sums include parallel calls and are not elapsed session time.",
+    "CLI totals include only visible direct envelopes, not command records inside generated execution results.",
+    "Final successful execution has only shell duration available; this includes startup/reporting."
+  ]
+}

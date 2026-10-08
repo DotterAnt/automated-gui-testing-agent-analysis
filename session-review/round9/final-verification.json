@@ -1,0 +1,20 @@
+[
+  {
+    "test": "automated-gui-testing-agent-framework\\tests\\Authoring.Regression.Tests.ps1",
+    "elapsedMs": 104281,
+    "output": "Authoring checks: 62 passed",
+    "exitCode": 0
+  },
+  {
+    "test": "potato-cli\\tests\\Discovery.Tests.ps1",
+    "elapsedMs": 39926,
+    "output": "Discovery checks: 24 passed",
+    "exitCode": 0
+  },
+  {
+    "test": "potato-cli\\tests\\AuthoringExperience.Tests.ps1",
+    "elapsedMs": 30286,
+    "output": "Wait retried a dead splash instead of rediscovering the working window.\nAt C:\\diplomamunka\\potato-cli\\tests\\AuthoringExperience.Tests.ps1:8 char:58\n+ ... on Check($value,$message) { if (-not $value) { throw $message }; $scr ...\n+                                                    ~~~~~~~~~~~~~~\n    + CategoryInfo          : OperationStopped: (Wait retried a ...working window.:String) [], RuntimeException\n    + FullyQualifiedErrorId : Wait retried a dead splash instead of rediscovering the working window.\n ",
+    "exitCode": 1
+  }
+]

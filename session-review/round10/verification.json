@@ -1,0 +1,102 @@
+﻿{
+    "ok":  true,
+    "timestamp":  "2026-09-30T21:39:36.3282803+02:00",
+    "tests":  [
+                  {
+                      "output":  "CLI private regression checks: 23 passed\nCLI entry/help checks: 2 passed\nCLI stream checks: 1 passed\nCLI stream failure-stop check: passed",
+                      "exitCode":  0,
+                      "elapsedMs":  3915,
+                      "test":  "potato-cli\\tests\\Regression.Tests.ps1"
+                  },
+                  {
+                      "output":  "Interaction checks: 54 passed",
+                      "exitCode":  0,
+                      "elapsedMs":  2136,
+                      "test":  "potato-cli\\tests\\Interaction.Tests.ps1"
+                  },
+                  {
+                      "output":  "Focus checks: 11 passed",
+                      "exitCode":  0,
+                      "elapsedMs":  1121,
+                      "test":  "potato-cli\\tests\\Focus.Tests.ps1"
+                  },
+                  {
+                      "output":  "Lifecycle checks: 16 passed",
+                      "exitCode":  0,
+                      "elapsedMs":  795,
+                      "test":  "potato-cli\\tests\\Lifecycle.Tests.ps1"
+                  },
+                  {
+                      "output":  "Provider checks: 3 passed",
+                      "exitCode":  0,
+                      "elapsedMs":  757,
+                      "test":  "potato-cli\\tests\\Provider.Tests.ps1"
+                  },
+                  {
+                      "output":  "Discovery checks: 25 passed",
+                      "exitCode":  0,
+                      "elapsedMs":  1434,
+                      "test":  "potato-cli\\tests\\Discovery.Tests.ps1"
+                  },
+                  {
+                      "output":  "Path input checks: 18 passed",
+                      "exitCode":  0,
+                      "elapsedMs":  919,
+                      "test":  "potato-cli\\tests\\PathInput.Tests.ps1"
+                  },
+                  {
+                      "output":  "Authoring experience checks: 21 passed",
+                      "exitCode":  0,
+                      "elapsedMs":  2257,
+                      "test":  "potato-cli\\tests\\AuthoringExperience.Tests.ps1"
+                  },
+                  {
+                      "output":  "DPI checks: 7 passed (unaware/system-aware callers, cached screen bounds, capture dimensions, context restoration). Physical=1920x1080; unaware cached width=1536.",
+                      "exitCode":  0,
+                      "elapsedMs":  2985,
+                      "test":  "potato-cli\\tests\\Dpi.Tests.ps1"
+                  },
+                  {
+                      "output":  "Drag checks: 3 passed (release on failure, incomplete endpoint, missing target)",
+                      "exitCode":  0,
+                      "elapsedMs":  727,
+                      "test":  "potato-cli\\tests\\Drag.Tests.ps1"
+                  },
+                  {
+                      "output":  "PDF checks: 22 passed (PowerShell 5.1.22621.2506)",
+                      "exitCode":  0,
+                      "elapsedMs":  2111,
+                      "test":  "potato-cli\\tests\\Pdf.Tests.ps1"
+                  },
+                  {
+                      "output":  "External PDF checks: 6 passed (quoted path, fallback with provenance, strict builtin, incomplete export in Python/Auto, invalid PDF)",
+                      "exitCode":  0,
+                      "elapsedMs":  2703,
+                      "test":  "potato-cli\\tests\\Pdf.External.Tests.ps1"
+                  },
+                  {
+                      "output":  "Runtime checks: 63 passed",
+                      "exitCode":  0,
+                      "elapsedMs":  8166,
+                      "test":  "automated-gui-testing-agent-framework\\tests\\Runtime.Regression.Tests.ps1"
+                  },
+                  {
+                      "output":  "Authoring checks: 64 passed",
+                      "exitCode":  0,
+                      "elapsedMs":  14746,
+                      "test":  "automated-gui-testing-agent-framework\\tests\\Authoring.Regression.Tests.ps1"
+                  },
+                  {
+                      "output":  "Pacing fixture (82 UTF-16 units): default=1345 ms; legacy=5139 ms.\nGUI smoke: paced Unicode, focus-change abort, guarded external scope without adoption, literal/focused input, false UIA focus, ownership, paths, relative click, navigation, drag/drop, modal discovery and close prompts passed.",
+                      "exitCode":  0,
+                      "elapsedMs":  32241,
+                      "test":  "potato-cli\\tests\\Gui.Smoke.Tests.ps1"
+                  },
+                  {
+                      "output":  "GUI lifecycle: immediate-exit handoff, shared-host/GUI-handoff ownership, stale/preexisting-window rejection, native Edit path readback/selection, sibling input rejection, framework window-only cleanup and exploration completion passed.",
+                      "exitCode":  0,
+                      "elapsedMs":  8389,
+                      "test":  "potato-cli\\tests\\Gui.Lifecycle.Tests.ps1"
+                  }
+              ]
+}

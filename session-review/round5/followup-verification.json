@@ -1,0 +1,7 @@
+{
+  "note": "Passed after moving transient focus provider failures inside the bounded retry.",
+  "exitCode": 0,
+  "checks": 21,
+  "test": "potato-cli/tests/AuthoringExperience.Tests.ps1",
+  "timestamp": "2026-09-30T15:00:02.0322734+02:00"
+}

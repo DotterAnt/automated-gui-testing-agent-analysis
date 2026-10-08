@@ -1,5 +1,19 @@
 # Analysis And Dashboard
 
+## Current Experiment Report
+
+The 7 October 2026 analysis covers the current native, MCP, AI-only and new
+Codex model experiments in `C:\Users\DottedAnt\Downloads\results`.
+Open `analysis-output/batch-2026-10-07/report.html`, or the PDF at
+`output/pdf/experiment-analysis-2026-10-07.pdf`. See
+[experiment-comparison/README.md](experiment-comparison/README.md) for the
+reproducible analysis command, exports and validation checks. Old and CLI
+results are excluded from the current report.
+
+## Historical Native / CLI + Framework Experiment Report
+
+For the copied experiment bundles in `C:\Users\DottedAnt\Downloads\results`, see [experiment-comparison/README.md](experiment-comparison/README.md). The offline comparison opens at `analysis-output/experiment_comparison.html` and includes per-application graphs, token and iteration metrics, observed progress, sensitivity checks, and source evidence. Its input discovery includes only `native` and `cli`; `old` is excluded.
+
 The analysis layer turns framework run folders into an interactive, standalone HTML dashboard.
 
 ## Build A Dashboard

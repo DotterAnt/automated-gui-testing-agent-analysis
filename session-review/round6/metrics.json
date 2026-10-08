@@ -1,0 +1,191 @@
+{
+  "phases": [
+    {
+      "phase": "Preparation",
+      "seconds": 63.648
+    },
+    {
+      "phase": "GUI exploration and checkpoint",
+      "seconds": 402.457
+    },
+    {
+      "phase": "Script generation and first preflight",
+      "seconds": 132.87
+    },
+    {
+      "phase": "Execution, diagnosis and repairs",
+      "seconds": 300.888
+    },
+    {
+      "phase": "Delivery",
+      "seconds": 6.438
+    }
+  ],
+  "elapsedSeconds": 906.301,
+  "toolCalls": 62,
+  "toolCounts": {
+    "shell_command": 56,
+    "apply_patch": 4,
+    "view_image": 2
+  },
+  "cliEnvelopes": 59,
+  "cliBackendSeconds": 96.013,
+  "commandCounts": {
+    "help": 1,
+    "start": 2,
+    "observe": 14,
+    "click": 12,
+    "wait-element": 2,
+    "type": 4,
+    "read": 4,
+    "screenshot": 2,
+    "select": 6,
+    "wait-file": 2,
+    "windows": 4,
+    "close-window": 4,
+    "click-coordinate": 1,
+    "read-pdf": 1
+  },
+  "cliFailures": [],
+  "executions": [
+    {
+      "line": 203,
+      "ok": false,
+      "timing": {
+        "commandCount": 17,
+        "wrapperMs": 26717,
+        "backendMs": 26357,
+        "waitMs": 16822,
+        "cleanupMs": 5686,
+        "totalMs": 29769,
+        "commandOverheadMs": 360,
+        "otherMs": 3052
+      },
+      "cleanupOk": false,
+      "failedSteps": [
+        {
+          "stepIndex": 3,
+          "error": "The Save As dialog must appear."
+        }
+      ]
+    },
+    {
+      "line": 238,
+      "ok": false,
+      "timing": {
+        "commandCount": 19,
+        "wrapperMs": 42096,
+        "backendMs": 41660,
+        "waitMs": 31680,
+        "cleanupMs": 5756,
+        "totalMs": 45531,
+        "commandOverheadMs": 436,
+        "otherMs": 3435
+      },
+      "cleanupOk": false,
+      "failedSteps": [
+        {
+          "stepIndex": 3,
+          "error": "WordTest.docx exists and is non-empty."
+        }
+      ]
+    },
+    {
+      "line": 266,
+      "ok": false,
+      "timing": {
+        "commandCount": 29,
+        "wrapperMs": 21332,
+        "backendMs": 20786,
+        "waitMs": 4019,
+        "cleanupMs": 923,
+        "totalMs": 22199,
+        "commandOverheadMs": 546,
+        "otherMs": 867
+      },
+      "cleanupOk": true,
+      "failedSteps": [
+        {
+          "stepIndex": 5,
+          "error": "Could not select Word Print backstage. No visible enabled element matches the selector."
+        }
+      ]
+    },
+    {
+      "line": 292,
+      "ok": true,
+      "timing": {
+        "commandCount": 34,
+        "wrapperMs": 27260,
+        "backendMs": 26627,
+        "waitMs": 6237,
+        "cleanupMs": 1553,
+        "totalMs": 28129,
+        "commandOverheadMs": 633,
+        "otherMs": 869
+      },
+      "cleanupOk": true,
+      "failedSteps": []
+    }
+  ],
+  "finalSuccessfulRunShellSeconds": 34.5,
+  "requestFileCreationCalls": 0,
+  "repeatedPreflightLines": [
+    223,
+    252,
+    285
+  ],
+  "extraRecoveryLines": [
+    222,
+    230,
+    231,
+    251,
+    259,
+    260,
+    286
+  ],
+  "screenshotRegions": [
+    {
+      "line": 61,
+      "region": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 900
+      }
+    },
+    {
+      "line": 120,
+      "region": {
+        "x": 0,
+        "y": 0,
+        "width": 1536,
+        "height": 720
+      }
+    }
+  ],
+  "embeddedImageSizes": [
+    {
+      "line": 209,
+      "width": 1920,
+      "height": 900
+    },
+    {
+      "line": 272,
+      "width": 1920,
+      "height": 900
+    }
+  ],
+  "comparison": {
+    "previousElapsedSeconds": 1032.054,
+    "elapsedReductionPercent": 12.18,
+    "previousExplorationSeconds": 606.221,
+    "previousToolCalls": 90
+  },
+  "evidenceNotes": [
+    "Source attachments were read, not executed. Timings describe the supplied run before this patch.",
+    "CLI totals include intact direct envelopes only, excluding commands nested in generated execution results.",
+    "Phase boundaries use source timestamps; overlapping shell durations are not summed as elapsed time.",
+    "The DPI inconsistency is directly visible in capture dimensions; its contribution to the specific missed click is an inference, supported by a local scaled-desktop reproduction."
+  ]
+}

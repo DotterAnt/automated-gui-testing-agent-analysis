@@ -1,0 +1,130 @@
+{
+  "ok": true,
+  "checks": 315,
+  "timingReliable": false,
+  "timingNote": "User reported hardware issues. Treat timings as provisional; use correctness outcomes separately.",
+  "tests": [
+    {
+      "output": "CLI private regression checks: 23 passed\nCLI entry/help checks: 2 passed\nCLI stream checks: 1 passed\nCLI stream failure-stop check: passed",
+      "exitCode": 0,
+      "elapsedMs": 4141,
+      "test": "potato-cli\\tests\\Regression.Tests.ps1",
+      "source": "verification.json"
+    },
+    {
+      "output": "Interaction checks: 54 passed",
+      "exitCode": 0,
+      "elapsedMs": 2240,
+      "test": "potato-cli\\tests\\Interaction.Tests.ps1",
+      "source": "verification.json"
+    },
+    {
+      "elapsedMs": 2784,
+      "exitCode": 0,
+      "test": "potato-cli\\tests\\Focus.Tests.ps1",
+      "output": "Focus checks: 11 passed",
+      "source": "unicode-final-verification.json"
+    },
+    {
+      "output": "Provider checks: 3 passed",
+      "exitCode": 0,
+      "elapsedMs": 1007,
+      "test": "potato-cli\\tests\\Provider.Tests.ps1",
+      "source": "verification.json"
+    },
+    {
+      "elapsedMs": 2227,
+      "exitCode": 0,
+      "test": "potato-cli\\tests\\Discovery.Tests.ps1",
+      "output": "Discovery checks: 25 passed",
+      "source": "unicode-final-verification.json"
+    },
+    {
+      "output": "Path input checks: 18 passed",
+      "exitCode": 0,
+      "elapsedMs": 972,
+      "test": "potato-cli\\tests\\PathInput.Tests.ps1",
+      "source": "verification.json"
+    },
+    {
+      "output": "Authoring experience checks: 21 passed",
+      "exitCode": 0,
+      "test": "potato-cli\\tests\\AuthoringExperience.Tests.ps1",
+      "elapsedMs": 4968,
+      "source": "gui-final-verification.json"
+    },
+    {
+      "output": "DPI checks: 7 passed (unaware/system-aware callers, cached screen bounds, capture dimensions, context restoration). Physical=1920x1080; unaware cached width=1536.",
+      "exitCode": 0,
+      "elapsedMs": 3237,
+      "test": "potato-cli\\tests\\Dpi.Tests.ps1",
+      "source": "verification.json"
+    },
+    {
+      "output": "Drag checks: 3 passed (release on failure, incomplete endpoint, missing target)",
+      "exitCode": 0,
+      "elapsedMs": 782,
+      "test": "potato-cli\\tests\\Drag.Tests.ps1",
+      "source": "verification.json"
+    },
+    {
+      "output": "PDF checks: 22 passed (PowerShell 5.1.22621.2506)",
+      "exitCode": 0,
+      "elapsedMs": 2254,
+      "test": "potato-cli\\tests\\Pdf.Tests.ps1",
+      "source": "verification.json"
+    },
+    {
+      "output": "External PDF checks: 6 passed (quoted path, fallback with provenance, strict builtin, incomplete export in Python/Auto, invalid PDF)",
+      "exitCode": 0,
+      "elapsedMs": 2770,
+      "test": "potato-cli\\tests\\Pdf.External.Tests.ps1",
+      "source": "verification.json"
+    },
+    {
+      "output": "Runtime checks: 56 passed",
+      "exitCode": 0,
+      "elapsedMs": 8897,
+      "test": "automated-gui-testing-agent-framework\\tests\\Runtime.Regression.Tests.ps1",
+      "source": "verification.json"
+    },
+    {
+      "test": "automated-gui-testing-agent-framework\\tests\\Authoring.Regression.Tests.ps1",
+      "elapsedMs": 104281,
+      "output": "Authoring checks: 62 passed",
+      "exitCode": 0,
+      "source": "final-verification.json"
+    },
+    {
+      "test": "potato-cli\\tests\\Gui.Smoke.Tests.ps1",
+      "timingReliable": false,
+      "output": "Pacing fixture (82 UTF-16 units): default=1347 ms; legacy=5090 ms.\nGUI smoke: paced Unicode, focus-change abort, guarded external scope without adoption, literal/focused input, false UIA focus, ownership, paths, relative click, navigation, drag/drop, modal discovery and close prompts passed.",
+      "elapsedMs": 33724,
+      "exitCode": 0,
+      "source": "gui-correctness-verification.json"
+    }
+  ],
+  "earlierFailures": [
+    {
+      "output": "Route reference lost row coverage or included an unmet wait as successful.\nAt C:\\diplomamunka\\automated-gui-testing-agent-framework\\tests\\Authoring.Regression.Tests.ps1:8 char:54\n+ ... on Check($value,$message) { if (-not $value) { throw $message }; $scr ...\n+                                                    ~~~~~~~~~~~~~~\n    + CategoryInfo          : OperationStopped: (Route reference... as successful.:String) [], RuntimeException\n    + FullyQualifiedErrorId : Route reference lost row coverage or included an unmet wait as successful.\n ",
+      "exitCode": 1,
+      "elapsedMs": 1322,
+      "test": "automated-gui-testing-agent-framework\\tests\\Authoring.Regression.Tests.ps1",
+      "source": "verification.json"
+    },
+    {
+      "test": "potato-cli\\tests\\AuthoringExperience.Tests.ps1",
+      "elapsedMs": 30286,
+      "output": "Wait retried a dead splash instead of rediscovering the working window.\nAt C:\\diplomamunka\\potato-cli\\tests\\AuthoringExperience.Tests.ps1:8 char:58\n+ ... on Check($value,$message) { if (-not $value) { throw $message }; $scr ...\n+                                                    ~~~~~~~~~~~~~~\n    + CategoryInfo          : OperationStopped: (Wait retried a ...working window.:String) [], RuntimeException\n    + FullyQualifiedErrorId : Wait retried a dead splash instead of rediscovering the working window.\n ",
+      "exitCode": 1,
+      "source": "final-verification.json"
+    },
+    {
+      "output": "Shown title: PoTATo fixture 1e385ffe5d154e0888fca7ef98fe883c\nChild running: True; window handle: 2625502\nOwned UIA name: PoTATo fixture 1e385ffe5d154e0888fca7ef98fe883c\nTrue\n{\"ok\":false,\"command\":\"focus\",\"session\":{\"statePath\":\"C:\\\\Users\\\\DottedAnt\\\\AppData\\\\Local\\\\Temp\\\\potato-gui-fixture-0e\na55a7f-3f97-4eee-bcbf-59068ebb00e5\\\\.state\\\\default.json\",\"runId\":\"cc5bdfd3-3d77-4be0-848e-f215fd90f07a\",\"working\":null\n},\"data\":null,\"error\":{\"message\":\"No matching top-level window was found.\",\"type\":\"System.Management.Automation.Runtime\nException\",\"category\":\"OperationStopped\"},\"durationMs\":76400,\"logPath\":\"C:\\\\Users\\\\DottedAnt\\\\AppData\\\\Local\\\\Temp\\\\pot\nato-gui-fixture-0ea55a7f-3f97-4eee-bcbf-59068ebb00e5\\\\runs\\\\cc5bdfd3-3d77-4be0-848e-f215fd90f07a\\\\potato.log\",\"interact\nionPolicy\":{\"mode\":\"GuiNavigation\",\"shortcutUsed\":false,\"navigationUsed\":false,\"opaqueTyping\":false,\"fallbackReason\":\"\"\n,\"fallbackEvidence\":\"\"},\"outcome\":\"unknown\",\"leaseWaitMs\":386,\"totalDurationMs\":76913}\nAt C:\\diplomamunka\\potato-cli\\tests\\Gui.Smoke.Tests.ps1:115 char:27\n+ ...   if (-not $r.ok) { throw ($r | ConvertTo-Json -Depth 10 -Compress) }\n+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n    + CategoryInfo          : OperationStopped: ({\"ok\":false,\"co...ationMs\":76913}:String) [], RuntimeException\n    + FullyQualifiedErrorId : {\"ok\":false,\"command\":\"focus\",\"session\":{\"statePath\":\"C:\\\\Users\\\\DottedAnt\\\\AppData\\\\Loc \n   al\\\\Temp\\\\potato-gui-fixture-0ea55a7f-3f97-4eee-bcbf-59068ebb00e5\\\\.state\\\\default.json\",\"runId\":\"cc5bdfd3-3d77-4b  \n  e0-848e-f215fd90f07a\",\"working\":null},\"data\":null,\"error\":{\"message\":\"No matching top-level window was found.\",\"ty   \n pe\":\"System.Management.Automation.RuntimeException\",\"category\":\"OperationStopped\"},\"durationMs\":76400,\"logPath\":\"C    \n:\\\\Users\\\\DottedAnt\\\\AppData\\\\Local\\\\Temp\\\\potato-gui-fixture-0ea55a7f-3f97-4eee-bcbf-59068ebb00e5\\\\runs\\\\cc5bdfd3    -\n3d77-4be0-848e-f215fd90f07a\\\\potato.log\",\"interactionPolicy\":{\"mode\":\"GuiNavigation\",\"shortcutUsed\":false,\"naviga    ti\nonUsed\":false,\"opaqueTyping\":false,\"fallbackReason\":\"\",\"fallbackEvidence\":\"\"},\"outcome\":\"unknown\",\"leaseWaitMs\":    386\n,\"totalDurationMs\":76913}\n ",
+      "exitCode": 1,
+      "test": "potato-cli\\tests\\Gui.Smoke.Tests.ps1",
+      "elapsedMs": 98096,
+      "source": "gui-final-verification.json"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "elapsedMs": 2784,
+    "exitCode": 0,
+    "test": "potato-cli\\tests\\Focus.Tests.ps1",
+    "output": "Focus checks: 11 passed"
+  },
+  {
+    "elapsedMs": 2227,
+    "exitCode": 0,
+    "test": "potato-cli\\tests\\Discovery.Tests.ps1",
+    "output": "Discovery checks: 25 passed"
+  }
+]

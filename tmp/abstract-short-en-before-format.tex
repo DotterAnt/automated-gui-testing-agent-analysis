@@ -1,0 +1,45 @@
+% Short English abstract
+% Text source: abstract-short-2026-10-07.html
+\documentclass[12pt, a4paper, oneside]{report}
+
+% Times typography with support for pdfLaTeX and Unicode-based engines.
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+  \usepackage{times}
+\else
+  \usepackage{fontspec}
+  \setmainfont{texgyretermes}[
+    Extension=.otf,
+    UprightFont=*-regular,
+    BoldFont=*-bold,
+    ItalicFont=*-italic,
+    BoldItalicFont=*-bolditalic]
+\fi
+\usepackage[english]{babel}
+
+% Page layout and spacing from the faculty-guideline template.
+\usepackage[left=3cm, right=2cm, top=3cm, bottom=3cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing % 1.5 line spacing
+\setlength{\parskip}{1em}
+\setlength{\parindent}{0pt}
+\widowpenalty=10000
+\clubpenalty=10000
+\usepackage{microtype}
+\emergencystretch=2em
+\raggedbottom
+\pagestyle{plain} % Page numbers at the bottom middle.
+
+\begin{document}
+\begin{center}
+  {\fontsize{16pt}{20pt}\selectfont\bfseries Automated Software Testing with General-Purpose AI Agents\par}
+  \vspace{8pt}
+  {\fontsize{14pt}{18pt}\selectfont\bfseries Abstract\par}
+\end{center}
+\vspace{6pt}
+
+An application’s underlying functionality can work correctly while its graphical user interface (GUI) prevents users from completing a task. Testing through real GUI actions can reveal barriers involving control availability, focus and response timing, but capturing these interaction behaviours in repeatable tests remains time-consuming. This thesis introduces AGTA (Automated GUI Testing Agent), a PowerShell framework using existing Windows libraries to provide large language model agents with structured text descriptions of interface controls and tools for interacting with them. Integrated through the Model Context Protocol (MCP), AGTA helps agents turn CSV testcases into reusable GUI test scripts through planning, exploration, script generation, execution and validation. In the main GPT-5.5 comparison, covering 74 authoring sessions across ten applications, AGTA reduced mean authoring time from 40.2 to 18.9 minutes, a 53\% reduction with applications weighted equally. Its advantage persisted across four tested model generations: with AGTA, GPT-6.1 Sol averaged 6.8 minutes on three shared Office applications, 66.5\% less than its native baseline and 44.2\% less than GPT-5.5. GPT-6, particularly Luna, nevertheless showed regressions against earlier generations in matched comparisons. On the shared Office applications, creating the test scripts took an average of 24.9 minutes with the single-prompt reimplementation, compared with 12.2 minutes with AGTA. Failure analysis revealed premature abandonment following hallucinated or unverified failure states and shortcuts that bypassed the GUI. The findings suggest that careful planning, exploration and the structured access to Windows capabilities that AGTA provides can reduce authoring effort while supporting evaluation of interface interactability, provided that success includes exercising the intended user-facing route.
+
+\end{document}

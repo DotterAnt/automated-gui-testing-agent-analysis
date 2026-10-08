@@ -1,0 +1,26 @@
+{
+  "ok": true,
+  "tests": [
+    {
+      "exitCode": 0,
+      "test": "potato-cli/tests/Lifecycle.Tests.ps1",
+      "output": "Lifecycle checks: 16 passed"
+    },
+    {
+      "exitCode": 0,
+      "test": "potato-cli/tests/AuthoringExperience.Tests.ps1",
+      "output": "Authoring experience checks: 21 passed"
+    },
+    {
+      "exitCode": 0,
+      "test": "automated-gui-testing-agent-framework/tests/Runtime.Regression.Tests.ps1",
+      "output": "Runtime checks: 63 passed"
+    },
+    {
+      "exitCode": 0,
+      "test": "automated-gui-testing-agent-framework/tests/Authoring.Regression.Tests.ps1",
+      "output": "Authoring checks: 64 passed"
+    }
+  ],
+  "host": "7.6.5"
+}

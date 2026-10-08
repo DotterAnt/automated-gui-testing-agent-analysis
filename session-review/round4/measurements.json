@@ -1,0 +1,16 @@
+﻿{
+    "help":  {
+                 "method":  "One local sample, ten separate powershell.exe help processes versus one combined help process. No desktop actions.",
+                 "separateMs":  4460,
+                 "combinedMs":  470,
+                 "topics":  10
+             },
+    "observationProjection":  {
+                                  "observations":  13,
+                                  "fullBytes":  214233,
+                                  "reductionPercent":  54.8,
+                                  "method":  "Offline projection of intact observation trees from the supplied log; not a live provider-speed or end-to-end session benchmark.",
+                                  "compactBytes":  96805,
+                                  "actionableElements":  335
+                              }
+}

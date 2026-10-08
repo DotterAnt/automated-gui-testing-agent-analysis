@@ -1,0 +1,1462 @@
+L11 2026-09-30T11:19:29.269Z shell_command wall=4.5 outputChars=693
+Get-ChildItem -Force
+=> Exit code: 0
+Wall time: 4.5 seconds
+Output:
+
+
+    Directory: C:\diplomamunka
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+d-----         9/30/2026   1:18 PM                automated-gui-testing-agent-analysis                                 
+d-----         9/30/2026   1:18 PM                automated-gui-testing-agent-framework                                
+d-----         9/30/2026   1:18 PM                potato-cli                                                           
+
+
+
+
+L12 2026-09-30T11:19:29.273Z shell_command wall=4.3 outputChars=203
+Get-ChildItem -Path C:\diplomamunka -Recurse -Filter '*automated*gui*testing*agent*framework*' | Select-Object -ExpandProperty FullName
+=> Exit code: 0
+Wall time: 4.3 seconds
+Output:
+C:\diplomamunka\automated-gui-testing-agent-framework
+C:\diplomamunka\automated-gui-testing-agent-framework\Framework\AutomatedGuiTestingAgentFramework.psm1
+
+
+L13 2026-09-30T11:19:29.718Z shell_command wall=4.0 outputChars=14324
+Get-Content -Raw 'C:\Users\testuser\.codex\plugins\cache\openai-primary-runtime\spreadsheets\26.630.12135\skills\spreadsheets\SKILL.md'
+=> Exit code: 0
+Wall time: 4 seconds
+Output:
+---
+name: "Spreadsheets"
+description: "Use this skill when a user requests to create, modify, analyze, visualize, or work with spreadsheet files (`.xlsx`, `.xls`, `.csv`, `.tsv`) or Google Sheets-targeted spreadsheet artifacts with formulas, formatting, charts, tables, and recalculation."
+---
+
+# Spreadsheets skill (Create â€¢ Edit â€¢ Analyze â€¢ Visualize)
+Use this skill when you need to work with spreadsheets (.xlsx, .csv, .tsv) to do any of the following:
+- Create or modify a new workbook/sheet with proper formulas, cell/number formatting, and structured layout
+- Read or analyze tabular data (filter, aggregate, pivot, compute metrics) dire
+
+L21 2026-09-30T11:19:43.543Z shell_command wall=3.3 outputChars=644
+rg --files
+=> Exit code: 0
+Wall time: 3.3 seconds
+Output:
+tests\Runtime.Regression.Tests.ps1
+tests\Measure-Transport.ps1
+tests\Measure-Exploration.ps1
+tests\Authoring.Regression.Tests.ps1
+Test-GeneratedScript.ps1
+Invoke-AgentAuthoring.ps1
+Get-RuntimeHelp.ps1
+templates\GeneratedScript.Template.ps1
+README.md
+prompts\SESSION_AGENT_PROMPT.md
+Microsoft Paint.csv
+Invoke-Exploration.ps1
+Invoke-AgentAuthoringGui.ps1
+AGENTS.md
+Framework\GeneratedScriptRuntime.ps1
+Framework\GeneratedScriptPreflight.ps1
+Framework\Exploration.ps1
+Framework\AutomatedGuiTestingAgentFramework.psm1
+Framework\ArtifactAssertions.ps1
+docs\GENERATED_SCRIPT_CONTRACT.md
+docs\AUTHORING.md
+
+
+L22 2026-09-30T11:19:43.544Z shell_command wall=2.3 outputChars=1019
+Get-Content -Raw 'C:\Users\testuser\Desktop\Microsoft Word.csv'
+=> Exit code: 0
+Wall time: 2.3 seconds
+Output:
+Action,Data,Expected Result
+Open Word,Launch the installed desktop version of Microsoft Word.,Word is open and ready to create a blank document.
+Create Test Document,"Create a blank document. Enter the title ""Word GUI Test"" and the paragraph ""This document tests creating, saving, reopening, and printing in Word.""",The document displays the exact title and paragraph.
+Save Test Document,"Save as WordTest.docx in a new output folder for this run, using Word Document (.docx) format.","WordTest.docx exists, is non-empty, and Word shows the saved filename."
+Open Created Document,Close the document. Use Word to open WordTest.docx from this run's o
+
+L23 2026-09-30T11:19:43.544Z shell_command wall=2.9 outputChars=2183
+Get-ChildItem -Force
+=> Exit code: 0
+Wall time: 2.9 seconds
+Output:
+
+
+    Directory: C:\diplomamunka\automated-gui-testing-agent-framework
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+d--h--         9/30/2026   1:18 PM                .git                                                                 
+d-----         9/30/2026   1:18 PM                docs                                                                 
+d-----         9/30/2026   1:18 PM                Framework                                   
+
+L31 2026-09-30T11:19:54.099Z shell_command wall=3.1 outputChars=7539
+Get-Content -Raw README.md
+=> Exit code: 0
+Wall time: 3.1 seconds
+Output:
+# Automated GUI Testing Agent Framework
+
+For CSV authoring, start with `docs/AUTHORING.md` and the generated template. The contract and source modules are references for specific unresolved questions.
+
+PowerShell-only framework for turning CSV testcase descriptions into repeatable GUI automation scripts that use `potato-cli`.
+
+[Watch the PoTATo demo recording](https://github.com/DottedAnt-Dooz/automated-gui-testing-agent-framework/releases/download/demo-v1/demo.mkv)
+
+## Workflows
+
+### 1. Agent Session Workflow
+
+Use this when a coding agent such as Codex, Copilot, or Hermes is running in an interactive Windows desktop session.
+
+1. Poin
+
+L32 2026-09-30T11:19:54.100Z shell_command wall=3.3 outputChars=12775
+Get-Content -Raw docs\GENERATED_SCRIPT_CONTRACT.md
+=> Exit code: 0
+Wall time: 3.3 seconds
+Output:
+# Generated Script Contract
+
+Start with `AUTHORING.md` and the template. GuiNavigation is the default; preserve an explicitly requested VisibleControls policy. Navigation and focused opaque input require per-command reason/evidence. Application hotkeys/Shortcut clearing require explicit AllowShortcuts authorization. A selector failure never authorizes a non-GUI route.
+
+Generated testcase scripts must follow this contract so different agents and API providers produce comparable artifacts.
+
+## Parameters
+
+Every generated script must accept the first three parameters. It should also accept optional `-FrameworkRoot` for explicit runtime resolut
+
+L33 2026-09-30T11:19:54.100Z shell_command wall=2.9 outputChars=3078
+Get-Content -Raw templates\GeneratedScript.Template.ps1
+=> Exit code: 0
+Wall time: 2.9 seconds
+Output:
+[CmdletBinding()]
+param(
+    [string] $PotatoCliPath,
+    [string] $TestCaseCsv,
+    [string] $RunRoot,
+    [string] $FrameworkRoot,
+    [string] $ExplorationPath,
+    [ValidateSet('VisibleControls','GuiNavigation','AllowShortcuts')] [string] $InteractionPolicy = 'GuiNavigation',
+    [string] $PolicyReason,
+    [ValidateSet('InProcess','Process')] [string] $Transport = 'InProcess'
+)
+
+$runtimeCandidates = @()
+if ($FrameworkRoot) {
+    $runtimeCandidates += (Join-Path -Path $FrameworkRoot -ChildPath 'Framework\GeneratedScriptRuntime.ps1')
+}
+$probe = $PSScriptRoot
+for ($i = 0; $i -lt 6 -and $probe; $i++) {
+    $runtimeCandidates += (
+
+L34 2026-09-30T11:19:54.146Z shell_command wall=3.1 outputChars=28090
+Get-Content -Raw Framework\GeneratedScriptRuntime.ps1
+=> Exit code: 0
+Wall time: 3.1 seconds
+Output:
+. (Join-Path $PSScriptRoot 'ArtifactAssertions.ps1')
+. (Join-Path $PSScriptRoot 'GeneratedScriptPreflight.ps1')
+function Initialize-AGTAGeneratedTest {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)]
+        [string] $PotatoCliPath,
+
+        [Parameter(Mandatory)]
+        [string] $TestCaseCsv,
+
+        [Parameter(Mandatory)]
+        [string] $RunRoot,
+
+        [string] $ExecutionId = (Get-Date -Format 'yyyyMMdd_HHmmss_ffff'),
+
+        [switch] $RequireAssertions = $true,
+        [ValidateSet('VisibleControls','GuiNavigation','AllowShortcuts')] [string] $InteractionPolicy = 'GuiNavigation',
+        [string] $Policy
+
+L43 2026-09-30T11:20:05.056Z shell_command wall=3.2 outputChars=13383
+Get-Content -Raw docs\AUTHORING.md
+=> Exit code: 0
+Wall time: 3.2 seconds
+Output:
+# Authoring entry point
+
+Read this page, the supplied CSV, and `templates/GeneratedScript.Template.ps1`. Skip unrelated testcase CSVs and application examples. Use CLI `help -Topic <command>` for a specific command. Do not read whole implementation modules or application examples without an unresolved defect.
+
+## Interaction policy
+
+The default is **GuiNavigation**, in exploration, execution, and cleanup. Use visible menus, buttons, text fields, and bounded `press-key` navigation. `Tab`, `ShiftTab`, `Enter`, `Escape`, and arrow keys are allowed with `-FallbackReason` and `-FallbackEvidence` describing the observed GUI state. Enter/Escape are 
+
+L44 2026-09-30T11:20:05.057Z shell_command wall=3.2 outputChars=2518
+Get-Content -Raw AGENTS.md
+=> Exit code: 0
+Wall time: 3.2 seconds
+Output:
+# Agent instructions
+
+Read `docs/AUTHORING.md`, the testcase CSV, and `templates/GeneratedScript.Template.ps1` first. They define the required workflow and runtime helper contract. Use CLI `help -Topic <command>` for targeted guidance; read full source only for a concrete unresolved defect.
+
+The default interaction policy is GuiNavigation for exploration, execution, and cleanup. Use visible GUI routes. Bounded `press-key` navigation (Tab/ShiftTab/Enter/Escape/arrows) and `type -TargetMode Focused` for an observed opaque editor require fallback reason/evidence and confirmed application focus. Preserve an explicitly requested VisibleControls poli
+
+L45 2026-09-30T11:20:05.057Z shell_command wall=3.3 outputChars=8549
+Get-Content -Raw Framework\GeneratedScriptPreflight.ps1
+=> Exit code: 0
+Wall time: 3.3 seconds
+Output:
+. (Join-Path $PSScriptRoot 'Exploration.ps1')
+
+function Get-AGTARuntimeHelp {
+    [CmdletBinding()]
+    param([string] $Name)
+    $published = @(
+        'Initialize-AGTAGeneratedTest', 'Invoke-RecordedStep', 'Invoke-StepCommand', 'Invoke-StepClick',
+        'Assert-PotatoOk', 'Assert-PotatoFound', 'Assert-FileWait',
+        'Assert-ExpectedResult', 'Read-AGTAArtifactBytes', 'Assert-ArtifactPrefix',
+        'Invoke-EvidenceScreenshot', 'Add-EvidencePath', 'Register-OpenedProcess',
+        'Register-CreatedExternalPath', 'Invoke-TestCleanup',
+        'Complete-AGTAGeneratedTest', 'Get-AGTATestExitCode',
+        'Test-AGTAGeneratedScript'
+
+L46 2026-09-30T11:20:05.057Z shell_command wall=3.5 outputChars=1309
+Get-ChildItem -Force
+=> Exit code: 0
+Wall time: 3.5 seconds
+Output:
+
+
+    Directory: C:\diplomamunka\potato-cli
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+d--h--         9/30/2026   1:18 PM                .git                                                                 
+d-----         9/30/2026   1:18 PM                PoTAToCli                                                            
+d-----         9/30/2026   1:18 PM                tests                                                                
+
+
+L55 2026-09-30T11:20:18.500Z shell_command wall=6.4 outputChars=399
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Get-RuntimeHelp.ps1 -Name Assert-ArtifactPrefix
+=> Exit code: 0
+Wall time: 6.4 seconds
+Output:
+{"name":"Assert-ArtifactPrefix","syntax":"\r\nAssert-ArtifactPrefix [-Path] \u003cstring\u003e [-ExpectedBytes] \u003cbyte[]\u003e [[-Message] \u003cstring\u003e] [[-TimeoutMs] \u003cint\u003e] [\u003cCommonParameters\u003e]\r\n","sourcePath":"C:\\diplomamunka\\automated-gui-testing-agent-framework\\Framework\\ArtifactAssertions.ps1","available":true}
+
+
+L56 2026-09-30T11:20:18.501Z shell_command wall=7.2 outputChars=2654
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ..\potato-cli\potato.ps1 help -Topic start
+=> Exit code: 0
+Wall time: 7.2 seconds
+Output:
+{"leaseWaitMs":12,"totalDurationMs":749,"durationMs":592,"data":{"globalOptions":{"InteractionPolicy":"GuiNavigation (default), VisibleControls (strict), or explicitly authorized AllowShortcuts","FallbackReason":"Required explanation for focused opaque typing, press-key, and authorized shortcuts","FallbackEvidence":"Required observation/screenshot reference for focused opaque typing, press-key, and authorized shortcuts","LeaseTimeoutMs":"Desktop lock acquisition bound, 0..60000; default 15000"},"selectorOptions":["Name","AutomationId","ClassName","Class","ControlType","ProcessName","WindowTitle","Regex","Recurse","FindFirst","TimeoutMs","PathJson",
+
+L57 2026-09-30T11:20:18.501Z shell_command wall=7.1 outputChars=3248
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ..\potato-cli\potato.ps1 help -Topic type
+=> Exit code: 0
+Wall time: 7.1 seconds
+Output:
+{"leaseWaitMs":14,"totalDurationMs":723,"durationMs":590,"data":{"globalOptions":{"InteractionPolicy":"GuiNavigation (default), VisibleControls (strict), or explicitly authorized AllowShortcuts","FallbackReason":"Required explanation for focused opaque typing, press-key, and authorized shortcuts","FallbackEvidence":"Required observation/screenshot reference for focused opaque typing, press-key, and authorized shortcuts","LeaseTimeoutMs":"Desktop lock acquisition bound, 0..60000; default 15000"},"selectorOptions":["Name","AutomationId","ClassName","Class","ControlType","ProcessName","WindowTitle","Regex","Recurse","FindFirst","TimeoutMs","PathJson",
+
+L58 2026-09-30T11:20:18.564Z shell_command wall=7.2 outputChars=2643
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ..\potato-cli\potato.ps1 help -Topic read-pdf
+=> Exit code: 0
+Wall time: 7.2 seconds
+Output:
+{"leaseWaitMs":22,"totalDurationMs":761,"durationMs":606,"data":{"globalOptions":{"InteractionPolicy":"GuiNavigation (default), VisibleControls (strict), or explicitly authorized AllowShortcuts","FallbackReason":"Required explanation for focused opaque typing, press-key, and authorized shortcuts","FallbackEvidence":"Required observation/screenshot reference for focused opaque typing, press-key, and authorized shortcuts","LeaseTimeoutMs":"Desktop lock acquisition bound, 0..60000; default 15000"},"selectorOptions":["Name","AutomationId","ClassName","Class","ControlType","ProcessName","WindowTitle","Regex","Recurse","FindFirst","TimeoutMs","PathJson",
+
+L67 2026-09-30T11:20:38.517Z shell_command wall=3.7 outputChars=293
+Copy-Item -LiteralPath 'C:\Users\testuser\Desktop\Microsoft Word.csv' -Destination 'C:\diplomamunka\automated-gui-testing-agent-framework\Microsoft Word.csv' -Force; Get-Item 'C:\diplomamunka\automated-gui-testing-agent-framework\Microsoft Word.csv' | Select-Object FullName,Length
+=> Exit code: 0
+Wall time: 3.7 seconds
+Output:
+
+FullName                                                                 Length
+--------                                                                 ------
+C:\diplomamunka\automated-gui-testing-agent-framework\Microsoft Word.csv    973
+
+
+
+
+L68 2026-09-30T11:20:38.518Z shell_command wall=6.9 outputChars=2631
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ..\potato-cli\potato.ps1 help -Topic click
+=> Exit code: 0
+Wall time: 6.9 seconds
+Output:
+{"leaseWaitMs":11,"totalDurationMs":645,"durationMs":501,"data":{"globalOptions":{"InteractionPolicy":"GuiNavigation (default), VisibleControls (strict), or explicitly authorized AllowShortcuts","FallbackReason":"Required explanation for focused opaque typing, press-key, and authorized shortcuts","FallbackEvidence":"Required observation/screenshot reference for focused opaque typing, press-key, and authorized shortcuts","LeaseTimeoutMs":"Desktop lock acquisition bound, 0..60000; default 15000"},"selectorOptions":["Name","AutomationId","ClassName","Class","ControlType","ProcessName","WindowTitle","Regex","Recurse","FindFirst","TimeoutMs","PathJson",
+
+L69 2026-09-30T11:20:38.518Z shell_command wall=6.6 outputChars=2626
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ..\potato-cli\potato.ps1 help -Topic press-key
+=> Exit code: 0
+Wall time: 6.6 seconds
+Output:
+{"leaseWaitMs":11,"totalDurationMs":655,"durationMs":516,"data":{"globalOptions":{"InteractionPolicy":"GuiNavigation (default), VisibleControls (strict), or explicitly authorized AllowShortcuts","FallbackReason":"Required explanation for focused opaque typing, press-key, and authorized shortcuts","FallbackEvidence":"Required observation/screenshot reference for focused opaque typing, press-key, and authorized shortcuts","LeaseTimeoutMs":"Desktop lock acquisition bound, 0..60000; default 15000"},"selectorOptions":["Name","AutomationId","ClassName","Class","ControlType","ProcessName","WindowTitle","Regex","Recurse","FindFirst","TimeoutMs","PathJson",
+
+L70 2026-09-30T11:20:38.645Z shell_command wall=7.0 outputChars=2351
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ..\potato-cli\potato.ps1 help -Topic select
+=> Exit code: 0
+Wall time: 7 seconds
+Output:
+{"leaseWaitMs":30,"totalDurationMs":628,"durationMs":490,"data":{"globalOptions":{"InteractionPolicy":"GuiNavigation (default), VisibleControls (strict), or explicitly authorized AllowShortcuts","FallbackReason":"Required explanation for focused opaque typing, press-key, and authorized shortcuts","FallbackEvidence":"Required observation/screenshot reference for focused opaque typing, press-key, and authorized shortcuts","LeaseTimeoutMs":"Desktop lock acquisition bound, 0..60000; default 15000"},"selectorOptions":["Name","AutomationId","ClassName","Class","ControlType","ProcessName","WindowTitle","Regex","Recurse","FindFirst","TimeoutMs","PathJson","S
+
+L77 2026-09-30T11:20:53.350Z shell_command wall=6.7 outputChars=2174
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ..\potato-cli\potato.ps1 help -Topic observe
+=> Exit code: 0
+Wall time: 6.7 seconds
+Output:
+{"leaseWaitMs":14,"totalDurationMs":553,"durationMs":433,"data":{"globalOptions":{"InteractionPolicy":"GuiNavigation (default), VisibleControls (strict), or explicitly authorized AllowShortcuts","FallbackReason":"Required explanation for focused opaque typing, press-key, and authorized shortcuts","FallbackEvidence":"Required observation/screenshot reference for focused opaque typing, press-key, and authorized shortcuts","LeaseTimeoutMs":"Desktop lock acquisition bound, 0..60000; default 15000"},"selectorOptions":["Name","AutomationId","ClassName","Class","ControlType","ProcessName","WindowTitle","Regex","Recurse","FindFirst","TimeoutMs","PathJson",
+
+L78 2026-09-30T11:20:53.351Z shell_command wall=6.7 outputChars=2325
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ..\potato-cli\potato.ps1 help -Topic wait-element
+=> Exit code: 0
+Wall time: 6.7 seconds
+Output:
+{"leaseWaitMs":11,"totalDurationMs":595,"durationMs":472,"data":{"globalOptions":{"InteractionPolicy":"GuiNavigation (default), VisibleControls (strict), or explicitly authorized AllowShortcuts","FallbackReason":"Required explanation for focused opaque typing, press-key, and authorized shortcuts","FallbackEvidence":"Required observation/screenshot reference for focused opaque typing, press-key, and authorized shortcuts","LeaseTimeoutMs":"Desktop lock acquisition bound, 0..60000; default 15000"},"selectorOptions":["Name","AutomationId","ClassName","Class","ControlType","ProcessName","WindowTitle","Regex","Recurse","FindFirst","TimeoutMs","PathJson",
+
+L79 2026-09-30T11:20:53.351Z shell_command wall=6.7 outputChars=2386
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ..\potato-cli\potato.ps1 help -Topic wait-file
+=> Exit code: 0
+Wall time: 6.7 seconds
+Output:
+{"leaseWaitMs":10,"totalDurationMs":529,"durationMs":429,"data":{"globalOptions":{"InteractionPolicy":"GuiNavigation (default), VisibleControls (strict), or explicitly authorized AllowShortcuts","FallbackReason":"Required explanation for focused opaque typing, press-key, and authorized shortcuts","FallbackEvidence":"Required observation/screenshot reference for focused opaque typing, press-key, and authorized shortcuts","LeaseTimeoutMs":"Desktop lock acquisition bound, 0..60000; default 15000"},"selectorOptions":["Name","AutomationId","ClassName","Class","ControlType","ProcessName","WindowTitle","Regex","Recurse","FindFirst","TimeoutMs","PathJson",
+
+L80 2026-09-30T11:20:53.396Z shell_command wall=6.8 outputChars=2290
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ..\potato-cli\potato.ps1 help -Topic windows
+=> Exit code: 0
+Wall time: 6.8 seconds
+Output:
+{"leaseWaitMs":10,"totalDurationMs":572,"durationMs":425,"data":{"globalOptions":{"InteractionPolicy":"GuiNavigation (default), VisibleControls (strict), or explicitly authorized AllowShortcuts","FallbackReason":"Required explanation for focused opaque typing, press-key, and authorized shortcuts","FallbackEvidence":"Required observation/screenshot reference for focused opaque typing, press-key, and authorized shortcuts","LeaseTimeoutMs":"Desktop lock acquisition bound, 0..60000; default 15000"},"selectorOptions":["Name","AutomationId","ClassName","Class","ControlType","ProcessName","WindowTitle","Regex","Recurse","FindFirst","TimeoutMs","PathJson",
+
+L89 2026-09-30T11:21:09.309Z shell_command wall=2.1 outputChars=569
+$ErrorActionPreference='Stop'
+$runId='word-'+(Get-Date -Format 'yyyyMMdd-HHmmss')
+$root=Join-Path (Get-Location) "runs\$runId"
+New-Item -ItemType Directory -Path $root -Force | Out-Null
+$csv=Join-Path (Get-Location) 'Microsoft Word.csv'
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Begin
+[pscustomobject]@{RunRoot=$root;Csv=$csv;Cli=$cli;Exploration=Join-Path $root 'logs\exploration.json'} | ConvertTo-Json
+=> Exit code: 1
+Wall time: 2.1 seconds
+Output:
+& : File C:\diplomamunka\automated-gui-testing-agent-framework\Invoke-Exploration.ps1 cannot be loaded because running 
+scripts is disabled on this system. For more information, see about_Execution_Policies at 
+https:/go.microsoft.com/fwlink/?LinkID=135170.
+At line:8 char:3
++ & .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCl ...
++   ~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : SecurityError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : UnauthorizedAccess
+
+
+L95 2026-09-30T11:21:19.205Z shell_command wall=4.1 outputChars=842
+$ErrorActionPreference='Stop'
+$runId='word-'+(Get-Date -Format 'yyyyMMdd-HHmmss')
+$root=Join-Path (Get-Location) "runs\$runId"
+New-Item -ItemType Directory -Path $root -Force | Out-Null
+$csv=Join-Path (Get-Location) 'Microsoft Word.csv'
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Begin
+[pscustomobject]@{RunRoot=$root;Csv=$csv;Cli=$cli;Exploration=Join-Path $root 'logs\exploration.json'} | ConvertTo-Json
+=> Exit code: 0
+Wall time: 4.1 seconds
+Output:
+{"schemaVersion":1,"testCaseHash":"215981FA02E1D4866481679E3276FA5FAD2509631BEDCEFCFD61DC449F091D22","interactionPolicy":"GuiNavigation","startedAt":"2026-09-30T13:21:23.1077986+02:00","completedAt":null,"completed":false,"stepCount":5,"steps":[],"transcriptPath":"C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\word-20260930-132120\\logs\\exploration-commands.jsonl","transcriptHash":null}
+{
+    "RunRoot":  "C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\word-20260930-132120",
+    "Csv":  "C:\\diplomamunka\\automated-gui-testing-agent-framework\\Microsoft Word.csv",
+    "Cli":  "C:\\diplomamunka\\potato-cli\\potato
+
+L99 2026-09-30T11:21:30.541Z shell_command wall=4.1 outputChars=394
+$root=(Get-ChildItem .\runs -Directory | Where-Object Name -like 'word-*' | Sort-Object LastWriteTime -Descending | Select-Object -First 1).FullName
+$csv=(Resolve-Path '.\Microsoft Word.csv').Path
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 1 -Command start -Arguments @('-ProcessName','winword.exe','-WaitForWindowMs','20000','-Maximize')
+=> Exit code: 1
+Wall time: 4.1 seconds
+Output:
+C:\diplomamunka\automated-gui-testing-agent-framework\Invoke-Exploration.ps1 : A parameter cannot be found that 
+matches parameter name 'WaitForWindowMs'.
+    + CategoryInfo          : InvalidArgument: (:) [Invoke-Exploration.ps1], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : NamedParameterNotFound,Invoke-Exploration.ps1
+ 
+
+
+L105 2026-09-30T11:21:46.245Z shell_command wall=13.2 outputChars=1046
+$root=(Get-ChildItem .\runs -Directory | Where-Object Name -like 'word-*' | Sort-Object LastWriteTime -Descending | Select-Object -First 1).FullName
+$csv=(Resolve-Path '.\Microsoft Word.csv').Path
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+$script = @'
+param($root,$csv,$cli)
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 1 -Command start -Arguments @('-ProcessName','winword.exe','-WaitForWindowMs','20000','-Maximize')
+'@
+$tmp=Join-Path $env:TEMP 'agt-start-word.ps1'
+Set-Content -LiteralPath $tmp -Value $script -Encoding UTF8
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $tmp $root $csv $cli
+=> Exit code: 0
+Wall time: 13.2 seconds
+Output:
+{"ok":true,"command":"start","session":{"statePath":"C:\\diplomamunka\\potato-cli\\.state\\default.json","runId":"29c342d0-a686-49f3-8878-525703152026","working":{"title":"Word","processName":"WINWORD","processId":7508,"nativeWindowHandle":1049696,"className":"OpusApp","updatedAt":"2026-09-30T13:21:59.1272366+02:00"}},"data":{"process":{"id":7508,"processName":"winword","started":true},"working":{"title":"Word","processName":"WINWORD","processId":7508,"nativeWindowHandle":1049696,"className":"OpusApp","updatedAt":"2026-09-30T13:21:59.1272366+02:00"},"windowFound":true,"ownedProcessId":7508},"error":null,"durationMs":8717,"logPath":"C:\\diplomamunk
+
+L109 2026-09-30T11:22:06.751Z shell_command wall=5.8 outputChars=8933
+$root=(Get-ChildItem .\runs -Directory | Where-Object Name -like 'word-*' | Sort-Object LastWriteTime -Descending | Select-Object -First 1).FullName
+$csv=(Resolve-Path '.\Microsoft Word.csv').Path
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+$script = @'
+param($root,$csv,$cli)
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 1 -Command observe -Arguments @('-Depth','3','-MaxElements','160')
+'@
+$tmp=Join-Path $env:TEMP 'agt-observe-word.ps1'
+Set-Content -LiteralPath $tmp -Value $script -Encoding UTF8
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $tmp $root $csv $cli
+=> Exit code: 0
+Wall time: 5.8 seconds
+Output:
+{"ok":true,"command":"observe","session":{"statePath":"C:\\diplomamunka\\potato-cli\\.state\\default.json","runId":"29c342d0-a686-49f3-8878-525703152026","working":{"title":"Word","processName":"WINWORD","processId":7508,"nativeWindowHandle":1049696,"className":"OpusApp","updatedAt":"2026-09-30T13:21:59.1272366+02:00"}},"data":{"working":{"name":"Word","automationId":"","className":"OpusApp","localizedControlType":"window","processId":7508,"nativeWindowHandle":1049696,"isEnabled":true,"isOffscreen":false,"hasKeyboardFocus":true,"isKeyboardFocusable":false,"controlType":"Window","processName":"WINWORD","boundingRectangle":{"x":-9,"y":-9,"width":1938
+
+L115 2026-09-30T11:22:23.221Z shell_command wall=7.1 outputChars=11358
+$root=(Get-ChildItem .\runs -Directory | Where-Object Name -like 'word-*' | Sort-Object LastWriteTime -Descending | Select-Object -First 1).FullName
+$csv=(Resolve-Path '.\Microsoft Word.csv').Path
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+$script = @'
+param($root,$csv,$cli)
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 2 -Command click -Arguments @('-Name','Blank document','-ControlType','ListItem','-FindFirst','-TimeoutMs','5000','-Method','Invoke')
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 2 -Command wait-element -Arguments @('-ClassName','_WwG','-ControlType','Document','-TimeoutMs','15000')
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 2 -Command observe -Arguments @('-Depth','3','-MaxElements','180')
+'@
+$tmp=Join-Path $env:TEMP 'agt-word-blank.ps1'
+Set-Content -LiteralPath $tmp -Value $script -Encoding UTF8
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $tmp $root $csv $cli
+=> Exit code: 0
+Wall time: 7.1 seconds
+Output:
+{"ok":true,"command":"click","session":{"statePath":"C:\\diplomamunka\\potato-cli\\.state\\default.json","runId":"29c342d0-a686-49f3-8878-525703152026","working":{"title":"Word","processName":"WINWORD","processId":7508,"nativeWindowHandle":1049696,"className":"OpusApp","updatedAt":"2026-09-30T13:21:59.1272366+02:00"}},"data":{"clicked":true,"verified":null,"verificationPerformed":false,"action":"InvokePattern","point":null,"element":{"name":"Blank document","automationId":"","className":"NetUIListViewItem","localizedControlType":"List Item","processId":7508,"nativeWindowHandle":0,"isEnabled":true,"isOffscreen":false,"hasKeyboardFocus":true,"isKeybo
+
+L119 2026-09-30T11:22:41.113Z shell_command wall=6.1 outputChars=2780
+$root=(Get-ChildItem .\runs -Directory | Where-Object Name -like 'word-*' | Sort-Object LastWriteTime -Descending | Select-Object -First 1).FullName
+$csv=(Resolve-Path '.\Microsoft Word.csv').Path
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+$text="Word GUI Test`r`nThis document tests creating, saving, reopening, and printing in Word."
+$script = @'
+param($root,$csv,$cli,$text)
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 2 -Command type -Arguments @('-Name','Document1','-ControlType','Document','-ClassName','_WwG','-FindFirst','-TimeoutMs','5000','-Text',$text,'-Verify','-VerifyMode','NormalizedContains','-VerifyTimeoutMs','5000')
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 2 -Command read -Arguments @('-Name','Document1','-ControlType','Document','-ClassName','_WwG','-FindFirst','-TimeoutMs','5000')
+'@
+$tmp=Join-Path $env:TEMP 'agt-word-type.ps1'
+Set-Content -LiteralPath $tmp -Value $script -Encoding UTF8
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $tmp $root $csv $cli $text
+=> Exit code: 0
+Wall time: 6.1 seconds
+Output:
+{"ok":true,"command":"type","session":{"statePath":"C:\\diplomamunka\\potato-cli\\.state\\default.json","runId":"29c342d0-a686-49f3-8878-525703152026","working":{"title":"Word","processName":"WINWORD","processId":7508,"nativeWindowHandle":1049696,"className":"OpusApp","updatedAt":"2026-09-30T13:21:59.1272366+02:00"}},"data":{"typed":true,"textLength":85,"verified":true,"verificationPerformed":true,"verification":{"verified":true,"attempts":4,"elapsedMs":404,"mode":"NormalizedContains","observedLength":84,"readError":null},"inputMethod":"UnicodeKeyboard","focusMethod":"UIA","targetMode":"Writable","target":{"name":"Document1","automationId":"","clas
+
+L123 2026-09-30T11:22:57.807Z shell_command wall=8.6 outputChars=12571
+$root=(Get-ChildItem .\runs -Directory | Where-Object Name -like 'word-*' | Sort-Object LastWriteTime -Descending | Select-Object -First 1).FullName
+$csv=(Resolve-Path '.\Microsoft Word.csv').Path
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+$script = @'
+param($root,$csv,$cli)
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 3 -Command select -Arguments @('-Name','File Tab','-TimeoutMs','3000','-FindFirst')
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 3 -Command select -Arguments @('-Name','File','-TimeoutMs','3000','-FindFirst')
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 3 -Command observe -Arguments @('-Depth','4','-MaxElements','220')
+'@
+$tmp=Join-Path $env:TEMP 'agt-word-file-select.ps1'
+Set-Content -LiteralPath $tmp -Value $script -Encoding UTF8
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $tmp $root $csv $cli
+=> Exit code: 0
+Wall time: 8.6 seconds
+Output:
+{"ok":true,"command":"select","session":{"statePath":"C:\\diplomamunka\\potato-cli\\.state\\default.json","runId":"29c342d0-a686-49f3-8878-525703152026","working":{"title":"Word","processName":"WINWORD","processId":7508,"nativeWindowHandle":1049696,"className":"OpusApp","updatedAt":"2026-09-30T13:21:59.1272366+02:00"}},"data":{"count":1,"elements":[{"name":"File Tab","automationId":"FileTabButton","className":"NetUIRibbonTab","localizedControlType":"Button","processId":7508,"nativeWindowHandle":0,"isEnabled":true,"isOffscreen":false,"hasKeyboardFocus":false,"isKeyboardFocusable":true,"controlType":"Button","processName":"WINWORD","boundingRectangle
+
+L127 2026-09-30T11:23:15.327Z shell_command wall=5.9 outputChars=11258
+$root=(Get-ChildItem .\runs -Directory | Where-Object Name -like 'word-*' | Sort-Object LastWriteTime -Descending | Select-Object -First 1).FullName
+$csv=(Resolve-Path '.\Microsoft Word.csv').Path
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+$script = @'
+param($root,$csv,$cli)
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 3 -Command click -Arguments @('-Name','File Tab','-AutomationId','FileTabButton','-ControlType','Button','-FindFirst','-TimeoutMs','5000','-Method','Invoke')
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 3 -Command observe -Arguments @('-Depth','4','-MaxElements','240')
+'@
+$tmp=Join-Path $env:TEMP 'agt-word-file-click.ps1'
+Set-Content -LiteralPath $tmp -Value $script -Encoding UTF8
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $tmp $root $csv $cli
+=> Exit code: 0
+Wall time: 5.9 seconds
+Output:
+{"ok":true,"command":"click","session":{"statePath":"C:\\diplomamunka\\potato-cli\\.state\\default.json","runId":"29c342d0-a686-49f3-8878-525703152026","working":{"title":"Word","processName":"WINWORD","processId":7508,"nativeWindowHandle":1049696,"className":"OpusApp","updatedAt":"2026-09-30T13:21:59.1272366+02:00"}},"data":{"clicked":true,"verified":null,"verificationPerformed":false,"action":"InvokePattern","point":null,"element":{"name":"File Tab","automationId":"FileTabButton","className":"NetUIRibbonTab","localizedControlType":"Button","processId":7508,"nativeWindowHandle":0,"isEnabled":true,"isOffscreen":false,"hasKeyboardFocus":false,"isKey
+
+L133 2026-09-30T11:23:33.144Z shell_command wall=7.5 outputChars=6024
+$root=(Get-ChildItem .\runs -Directory | Where-Object Name -like 'word-*' | Sort-Object LastWriteTime -Descending | Select-Object -First 1).FullName
+$csv=(Resolve-Path '.\Microsoft Word.csv').Path
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+$script = @'
+param($root,$csv,$cli)
+foreach($n in @('Save','Save As','Browse','Open','Print')) {
+  & .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 3 -Command select -Arguments @('-Name',$n,'-TimeoutMs','2000','-MaxResults','5')
+}
+'@
+$tmp=Join-Path $env:TEMP 'agt-word-backstage-select.ps1'
+Set-Content -LiteralPath $tmp -Value $script -Encoding UTF8
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $tmp $root $csv $cli
+=> Exit code: 0
+Wall time: 7.5 seconds
+Output:
+{"ok":true,"command":"select","session":{"statePath":"C:\\diplomamunka\\potato-cli\\.state\\default.json","runId":"29c342d0-a686-49f3-8878-525703152026","working":{"title":"Word","processName":"WINWORD","processId":7508,"nativeWindowHandle":1049696,"className":"OpusApp","updatedAt":"2026-09-30T13:21:59.1272366+02:00"}},"data":{"count":1,"elements":[{"name":"Save","automationId":"","className":"NetUIOutSpaceButton","localizedControlType":"List Item","processId":7508,"nativeWindowHandle":0,"isEnabled":true,"isOffscreen":false,"hasKeyboardFocus":false,"isKeyboardFocusable":true,"controlType":"ListItem","processName":"WINWORD","boundingRectangle":{"x":
+
+L137 2026-09-30T11:23:48.966Z shell_command wall=6.5 outputChars=18014
+$root=(Get-ChildItem .\runs -Directory | Where-Object Name -like 'word-*' | Sort-Object LastWriteTime -Descending | Select-Object -First 1).FullName
+$csv=(Resolve-Path '.\Microsoft Word.csv').Path
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+$script = @'
+param($root,$csv,$cli)
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 3 -Command click -Arguments @('-Name','Save As','-ControlType','ListItem','-FindFirst','-TimeoutMs','5000','-Method','Invoke')
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 3 -Command observe -Arguments @('-Depth','5','-MaxElements','300')
+'@
+$tmp=Join-Path $env:TEMP 'agt-word-saveas.ps1'
+Set-Content -LiteralPath $tmp -Value $script -Encoding UTF8
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $tmp $root $csv $cli
+=> Exit code: 0
+Wall time: 6.5 seconds
+Output:
+{"ok":false,"command":"click","session":{"statePath":"C:\\diplomamunka\\potato-cli\\.state\\default.json","runId":"29c342d0-a686-49f3-8878-525703152026","working":{"title":"Word","processName":"WINWORD","processId":7508,"nativeWindowHandle":1049696,"className":"OpusApp","updatedAt":"2026-09-30T13:21:59.1272366+02:00"}},"data":null,"error":{"message":"InvokePattern is unavailable on this control. Use -Method Auto to choose a supported UIA action or visible mouse click. Supported patterns: SelectionItem, ScrollItem","type":"System.Management.Automation.RuntimeException","category":"OperationStopped"},"durationMs":877,"logPath":"C:\\diplomamunka\\potato-cli\\runs\\29c342d0-a686-49f3-8878-525703152026\\potato.log","interactionPolicy":{"mode":"GuiNavigation","shortcutUsed":false,"navigationUsed":false,"opaqueTyping":false,"fallbackReason":"","fallbackEvidence":""},"outcome":"unknown","leaseWaitMs":121,"totalDurationMs":1093,"explorationCommandId":"93fa57048b1846218af5285cc58288a9"}
+{"ok":true,"command":"observe","session":{"statePath":"C:\\diplomamunka\\potato-cli\\.state\\default.json","runId":"29c342d0-a686-49f3-8878-525703152026","working":{"title":"Word","processName":"WINWORD","processId":7508,"nativeWindowHandle":1049696,"className":"OpusApp","updatedAt":"2026-09-30T13:21:59.1272366+02:00"}},"data":{"working":{"name":"Document1 - Word","automationId":"","className":"OpusApp","localizedControlType":"window","processId":7508,"nativeWindowHandle":1049696,"isEnabled":true,"isOffscreen":false,"hasKeyboardFocus":true,"isKeyboardFocusable":false,"controlType":"Window","processName":"WINWORD","boundingRectangle":{"x":-9,"y":-9,"width":1938,"height":858},"boundsStatus":"valid","supportedPatterns":["Window","Transform"],"isModal":fals
+
+L143 2026-09-30T11:24:04.983Z shell_command wall=15.5 outputChars=5472
+$root=(Get-ChildItem .\runs -Directory | Where-Object Name -like 'word-*' | Sort-Object LastWriteTime -Descending | Select-Object -First 1).FullName
+$csv=(Resolve-Path '.\Microsoft Word.csv').Path
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+$script = @'
+param($root,$csv,$cli)
+foreach($n in @('Browse','This PC','Word Document','More options...','More options','Documents')) {
+  & .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 3 -Command select -Arguments @('-Name',$n,'-TimeoutMs','2500','-MaxResults','10')
+}
+'@
+$tmp=Join-Path $env:TEMP 'agt-word-saveas-select2.ps1'
+Set-Content -LiteralPath $tmp -Value $script -Encoding UTF8
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $tmp $root $csv $cli
+=> Exit code: 0
+Wall time: 15.5 seconds
+Output:
+{"ok":true,"command":"select","session":{"statePath":"C:\\diplomamunka\\potato-cli\\.state\\default.json","runId":"29c342d0-a686-49f3-8878-525703152026","working":{"title":"Word","processName":"WINWORD","processId":7508,"nativeWindowHandle":1049696,"className":"OpusApp","updatedAt":"2026-09-30T13:21:59.1272366+02:00"}},"data":{"count":1,"elements":[{"name":"Browse","automationId":"","className":"NetUISimpleButton","localizedControlType":"Button","processId":7508,"nativeWindowHandle":0,"isEnabled":true,"isOffscreen":false,"hasKeyboardFocus":false,"isKeyboardFocusable":true,"controlType":"Button","processName":"WINWORD","boundingRectangle":{"x":251,
+
+L147 2026-09-30T11:24:31.812Z shell_command wall=9.4 outputChars=30218
+$root=(Get-ChildItem .\runs -Directory | Where-Object Name -like 'word-*' | Sort-Object LastWriteTime -Descending | Select-Object -First 1).FullName
+$csv=(Resolve-Path '.\Microsoft Word.csv').Path
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+New-Item -ItemType Directory -Path (Join-Path $root 'outputs') -Force | Out-Null
+$docx=Join-Path $root 'outputs\WordTest.docx'
+$script = @'
+param($root,$csv,$cli,$docx)
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 3 -Command click -Arguments @('-Name','Browse','-ControlType','Button','-FindFirst','-TimeoutMs','5000','-Method','Invoke')
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 3 -Command wait-element -Arguments @('-Name','Save As','-ControlType','Window','-TimeoutMs','10000')
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 3 -Command observe -Arguments @('-Depth','4','-MaxElements','240')
+'@
+$tmp=Join-Path $env:TEMP 'agt-word-browse.ps1'
+Set-Content -LiteralPath $tmp -Value $script -Encoding UTF8
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $tmp $root $csv $cli $docx
+=> Exit code: 0
+Wall time: 9.4 seconds
+Output:
+{"ok":true,"command":"click","session":{"statePath":"C:\\diplomamunka\\potato-cli\\.state\\default.json","runId":"29c342d0-a686-49f3-8878-525703152026","working":{"title":"Word","processName":"WINWORD","processId":7508,"nativeWindowHandle":1049696,"className":"OpusApp","updatedAt":"2026-09-30T13:21:59.1272366+02:00"}},"data":{"clicked":true,"verified":null,"verificationPerformed":false,"action":"InvokePattern","point":null,"element":{"name":"Browse","automationId":"","className":"NetUISimpleButton","localizedControlType":"Button","processId":7508,"nativeWindowHandle":0,"isEnabled":true,"isOffscreen":false,"hasKeyboardFocus":false,"isKeyboardFocusab
+
+L151 2026-09-30T11:24:56.063Z shell_command wall=8.2 outputChars=4959
+$root=(Get-ChildItem .\runs -Directory | Where-Object Name -like 'word-*' | Sort-Object LastWriteTime -Descending | Select-Object -First 1).FullName
+$csv=(Resolve-Path '.\Microsoft Word.csv').Path
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+$docx=Join-Path $root 'outputs\WordTest.docx'
+$script = @'
+param($root,$csv,$cli,$docx)
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 3 -Command type -Arguments @('-TargetMode','Focused','-Text',$docx,'-FallbackReason','The Save As file name edit is visibly focused but exposes no writable UIA pattern.','-FallbackEvidence','Save As dialog observation 4fd0df4b5b34407284d750ceb06ad8d2')
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 3 -Command click -Arguments @('-Name','Save','-AutomationId','1','-ControlType','Pane','-ModalOnly','true','-FindFirst','-TimeoutMs','5000','-Method','Mouse')
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 3 -Command wait-file -Arguments @('-Path',$docx,'-TimeoutMs','20000','-MinBytes','1','-StableMs','500')
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 3 -Command wait-element -Arguments @('-WindowTitle','*WordTest*','-ControlType','Window','-TimeoutMs','10000')
+'@
+$tmp=Join-Path $env:TEMP 'agt-word-save-file.ps1'
+Set-Content -LiteralPath $tmp -Value $script -Encoding UTF8
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $tmp $root $csv $cli $docx
+=> Exit code: 0
+Wall time: 8.2 seconds
+Output:
+{"ok":true,"command":"type","session":{"statePath":"C:\\diplomamunka\\potato-cli\\.state\\default.json","runId":"29c342d0-a686-49f3-8878-525703152026","working":{"title":"Word","processName":"WINWORD","processId":7508,"nativeWindowHandle":1049696,"className":"OpusApp","updatedAt":"2026-09-30T13:21:59.1272366+02:00"}},"data":{"typed":true,"textLength":101,"verified":null,"verificationPerformed":false,"verification":null,"inputMethod":"UnicodeKeyboard","focusMethod":"ExistingFocus","targetMode":"Focused","target":{"name":"Word GUI Test","automationId":"1001","className":"Edit","localizedControlType":"pane","processId":7508,"nativeWindowHandle":656388
+
+L157 2026-09-30T11:25:16.399Z shell_command wall=6.3 outputChars=9986
+$root=(Get-ChildItem .\runs -Directory | Where-Object Name -like 'word-*' | Sort-Object LastWriteTime -Descending | Select-Object -First 1).FullName
+$csv=(Resolve-Path '.\Microsoft Word.csv').Path
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+$script = @'
+param($root,$csv,$cli)
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 4 -Command click -Arguments @('-Name','File Tab','-AutomationId','FileTabButton','-ControlType','Button','-FindFirst','-TimeoutMs','5000','-Method','Invoke')
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 4 -Command click -Arguments @('-Name','Close','-ControlType','ListItem','-FindFirst','-TimeoutMs','5000','-Method','Auto')
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 4 -Command observe -Arguments @('-Depth','3','-MaxElements','200')
+'@
+$tmp=Join-Path $env:TEMP 'agt-word-close-doc.ps1'
+Set-Content -LiteralPath $tmp -Value $script -Encoding UTF8
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $tmp $root $csv $cli
+=> Exit code: 0
+Wall time: 6.3 seconds
+Output:
+{"ok":true,"command":"click","session":{"statePath":"C:\\diplomamunka\\potato-cli\\.state\\default.json","runId":"29c342d0-a686-49f3-8878-525703152026","working":{"title":"Word","processName":"WINWORD","processId":7508,"nativeWindowHandle":1049696,"className":"OpusApp","updatedAt":"2026-09-30T13:21:59.1272366+02:00"}},"data":{"clicked":true,"verified":null,"verificationPerformed":false,"action":"InvokePattern","point":null,"element":{"name":"File Tab","automationId":"FileTabButton","className":"NetUIRibbonTab","localizedControlType":"Button","processId":7508,"nativeWindowHandle":0,"isEnabled":true,"isOffscreen":false,"hasKeyboardFocus":false,"isKey
+
+L161 2026-09-30T11:25:34.153Z shell_command wall=7.1 outputChars=19969
+$root=(Get-ChildItem .\runs -Directory | Where-Object Name -like 'word-*' | Sort-Object LastWriteTime -Descending | Select-Object -First 1).FullName
+$csv=(Resolve-Path '.\Microsoft Word.csv').Path
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+$docx=Join-Path $root 'outputs\WordTest.docx'
+$script = @'
+param($root,$csv,$cli,$docx)
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 4 -Command click -Arguments @('-Name','File Tab','-AutomationId','FileTabButton','-ControlType','Button','-FindFirst','-TimeoutMs','5000','-Method','Invoke')
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 4 -Command click -Arguments @('-Name','Open','-ControlType','ListItem','-FindFirst','-TimeoutMs','5000','-Method','Auto')
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 4 -Command observe -Arguments @('-Depth','5','-MaxElements','260')
+'@
+$tmp=Join-Path $env:TEMP 'agt-word-open-pane.ps1'
+Set-Content -LiteralPath $tmp -Value $script -Encoding UTF8
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $tmp $root $csv $cli $docx
+=> Exit code: 0
+Wall time: 7.1 seconds
+Output:
+{"ok":true,"command":"click","session":{"statePath":"C:\\diplomamunka\\potato-cli\\.state\\default.json","runId":"29c342d0-a686-49f3-8878-525703152026","working":{"title":"Word","processName":"WINWORD","processId":7508,"nativeWindowHandle":1049696,"className":"OpusApp","updatedAt":"2026-09-30T13:21:59.1272366+02:00"}},"data":{"clicked":true,"verified":null,"verificationPerformed":false,"action":"InvokePattern","point":null,"element":{"name":"File Tab","automationId":"FileTabButton","className":"NetUIRibbonTab","localizedControlType":"Button","processId":7508,"nativeWindowHandle":0,"isEnabled":true,"isOffscreen":false,"hasKeyboardFocus":false,"isKey
+
+L167 2026-09-30T11:25:49.569Z shell_command wall=5.6 outputChars=3663
+$root=(Get-ChildItem .\runs -Directory | Where-Object Name -like 'word-*' | Sort-Object LastWriteTime -Descending | Select-Object -First 1).FullName
+$csv=(Resolve-Path '.\Microsoft Word.csv').Path
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+$script = @'
+param($root,$csv,$cli)
+foreach($n in @('Browse','Recent','This PC')) { & .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 4 -Command select -Arguments @('-Name',$n,'-TimeoutMs','2000','-MaxResults','10') }
+'@
+$tmp=Join-Path $env:TEMP 'agt-word-open-select.ps1'
+Set-Content -LiteralPath $tmp -Value $script -Encoding UTF8
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $tmp $root $csv $cli
+=> Exit code: 0
+Wall time: 5.6 seconds
+Output:
+{"ok":true,"command":"select","session":{"statePath":"C:\\diplomamunka\\potato-cli\\.state\\default.json","runId":"29c342d0-a686-49f3-8878-525703152026","working":{"title":"Word","processName":"WINWORD","processId":7508,"nativeWindowHandle":1049696,"className":"OpusApp","updatedAt":"2026-09-30T13:21:59.1272366+02:00"}},"data":{"count":1,"elements":[{"name":"Browse","automationId":"","className":"NetUISimpleButton","localizedControlType":"Button","processId":7508,"nativeWindowHandle":0,"isEnabled":true,"isOffscreen":false,"hasKeyboardFocus":false,"isKeyboardFocusable":true,"controlType":"Button","processName":"WINWORD","boundingRectangle":{"x":251,"
+
+L170 2026-09-30T11:26:05.043Z shell_command wall=6.8 outputChars=25474
+$root=(Get-ChildItem .\runs -Directory | Where-Object Name -like 'word-*' | Sort-Object LastWriteTime -Descending | Select-Object -First 1).FullName
+$csv=(Resolve-Path '.\Microsoft Word.csv').Path
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+$docx=Join-Path $root 'outputs\WordTest.docx'
+$script = @'
+param($root,$csv,$cli,$docx)
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 4 -Command click -Arguments @('-Name','Browse','-ControlType','Button','-FindFirst','-TimeoutMs','5000','-Method','Invoke')
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 4 -Command wait-element -Arguments @('-Name','Open','-ControlType','Window','-TimeoutMs','10000')
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 4 -Command observe -Arguments @('-Depth','4','-MaxElements','240')
+'@
+$tmp=Join-Path $env:TEMP 'agt-word-open-browse.ps1'
+Set-Content -LiteralPath $tmp -Value $script -Encoding UTF8
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $tmp $root $csv $cli $docx
+=> Exit code: 0
+Wall time: 6.8 seconds
+Output:
+{"ok":true,"command":"click","session":{"statePath":"C:\\diplomamunka\\potato-cli\\.state\\default.json","runId":"29c342d0-a686-49f3-8878-525703152026","working":{"title":"Word","processName":"WINWORD","processId":7508,"nativeWindowHandle":1049696,"className":"OpusApp","updatedAt":"2026-09-30T13:21:59.1272366+02:00"}},"data":{"clicked":true,"verified":null,"verificationPerformed":false,"action":"InvokePattern","point":null,"element":{"name":"Browse","automationId":"","className":"NetUISimpleButton","localizedControlType":"Button","processId":7508,"nativeWindowHandle":0,"isEnabled":true,"isOffscreen":false,"hasKeyboardFocus":false,"isKeyboardFocusab
+
+L174 2026-09-30T11:26:24.701Z shell_command wall=9.7 outputChars=5269
+$root=(Get-ChildItem .\runs -Directory | Where-Object Name -like 'word-*' | Sort-Object LastWriteTime -Descending | Select-Object -First 1).FullName
+$csv=(Resolve-Path '.\Microsoft Word.csv').Path
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+$docx=Join-Path $root 'outputs\WordTest.docx'
+$script = @'
+param($root,$csv,$cli,$docx)
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 4 -Command type -Arguments @('-TargetMode','Focused','-Text',$docx,'-FallbackReason','The Open dialog file name edit is visibly focused but exposes no writable UIA pattern.','-FallbackEvidence','Open dialog observation bea1240bd6c047b995cc40d43e141ce7')
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 4 -Command click -Arguments @('-Name','Open','-AutomationId','1','-ControlType','Pane','-ModalOnly','true','-FindFirst','-TimeoutMs','5000','-Method','Mouse')
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 4 -Command wait-element -Arguments @('-WindowTitle','*WordTest*','-ControlType','Window','-TimeoutMs','15000')
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 4 -Command read -Arguments @('-Name','WordTest','-ControlType','Document','-ClassName','_WwG','-FindFirst','-TimeoutMs','5000')
+'@
+$tmp=Join-Path $env:TEMP 'agt-word-open-file.ps1'
+Set-Content -LiteralPath $tmp -Value $script -Encoding UTF8
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $tmp $root $csv $cli $docx
+=> Exit code: 0
+Wall time: 9.7 seconds
+Output:
+{"ok":true,"command":"type","session":{"statePath":"C:\\diplomamunka\\potato-cli\\.state\\default.json","runId":"29c342d0-a686-49f3-8878-525703152026","working":{"title":"Word","processName":"WINWORD","processId":7508,"nativeWindowHandle":1049696,"className":"OpusApp","updatedAt":"2026-09-30T13:21:59.1272366+02:00"}},"data":{"typed":true,"textLength":101,"verified":null,"verificationPerformed":false,"verification":null,"inputMethod":"UnicodeKeyboard","focusMethod":"ExistingFocus","targetMode":"Focused","target":{"name":"","automationId":"1148","className":"Edit","localizedControlType":"pane","processId":7508,"nativeWindowHandle":1442772,"isEnabled"
+
+L180 2026-09-30T11:26:45.852Z shell_command wall=10.4 outputChars=26610
+$root=(Get-ChildItem .\runs -Directory | Where-Object Name -like 'word-*' | Sort-Object LastWriteTime -Descending | Select-Object -First 1).FullName
+$csv=(Resolve-Path '.\Microsoft Word.csv').Path
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+$script = @'
+param($root,$csv,$cli)
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 5 -Command click -Arguments @('-Name','File Tab','-AutomationId','FileTabButton','-ControlType','Button','-FindFirst','-TimeoutMs','5000','-Method','Invoke')
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 5 -Command click -Arguments @('-Name','Print','-ControlType','ListItem','-FindFirst','-TimeoutMs','5000','-Method','Auto')
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 5 -Command observe -Arguments @('-Depth','6','-MaxElements','350')
+'@
+$tmp=Join-Path $env:TEMP 'agt-word-print-pane.ps1'
+Set-Content -LiteralPath $tmp -Value $script -Encoding UTF8
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $tmp $root $csv $cli
+=> Exit code: 0
+Wall time: 10.4 seconds
+Output:
+{"ok":true,"command":"click","session":{"statePath":"C:\\diplomamunka\\potato-cli\\.state\\default.json","runId":"29c342d0-a686-49f3-8878-525703152026","working":{"title":"Word","processName":"WINWORD","processId":7508,"nativeWindowHandle":1049696,"className":"OpusApp","updatedAt":"2026-09-30T13:21:59.1272366+02:00"}},"data":{"clicked":true,"verified":null,"verificationPerformed":false,"action":"InvokePattern","point":null,"element":{"name":"File Tab","automationId":"FileTabButton","className":"NetUIRibbonTab","localizedControlType":"Button","processId":7508,"nativeWindowHandle":0,"isEnabled":true,"isOffscreen":false,"hasKeyboardFocus":false,"isKe
+
+L184 2026-09-30T11:27:04.086Z shell_command wall=17.3 outputChars=4667
+$root=(Get-ChildItem .\runs -Directory | Where-Object Name -like 'word-*' | Sort-Object LastWriteTime -Descending | Select-Object -First 1).FullName
+$csv=(Resolve-Path '.\Microsoft Word.csv').Path
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+$script = @'
+param($root,$csv,$cli)
+foreach($n in @('Microsoft Print to PDF','Printer','Ready','OneNote','Print to PDF')) { & .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 5 -Command select -Arguments @('-Name',$n,'-TimeoutMs','2500','-MaxResults','10') }
+'@
+$tmp=Join-Path $env:TEMP 'agt-word-printer-select.ps1'
+Set-Content -LiteralPath $tmp -Value $script -Encoding UTF8
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $tmp $root $csv $cli
+=> Exit code: 0
+Wall time: 17.3 seconds
+Output:
+{"ok":true,"command":"select","session":{"statePath":"C:\\diplomamunka\\potato-cli\\.state\\default.json","runId":"29c342d0-a686-49f3-8878-525703152026","working":{"title":"Word","processName":"WINWORD","processId":7508,"nativeWindowHandle":1049696,"className":"OpusApp","updatedAt":"2026-09-30T13:21:59.1272366+02:00"}},"data":{"count":0,"elements":[]},"error":null,"durationMs":3085,"logPath":"C:\\diplomamunka\\potato-cli\\runs\\29c342d0-a686-49f3-8878-525703152026\\potato.log","interactionPolicy":{"mode":"GuiNavigation","shortcutUsed":false,"navigationUsed":false,"opaqueTyping":false,"fallbackReason":"","fallbackEvidence":""},"outcome":"completed"
+
+L188 2026-09-30T11:27:33.583Z shell_command wall=10.2 outputChars=37998
+$root=(Get-ChildItem .\runs -Directory | Where-Object Name -like 'word-*' | Sort-Object LastWriteTime -Descending | Select-Object -First 1).FullName
+$csv=(Resolve-Path '.\Microsoft Word.csv').Path
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+$script = @'
+param($root,$csv,$cli)
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 5 -Command observe -Arguments @('-Depth','8','-MaxElements','500')
+'@
+$tmp=Join-Path $env:TEMP 'agt-word-print-deep.ps1'
+Set-Content -LiteralPath $tmp -Value $script -Encoding UTF8
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $tmp $root $csv $cli | Out-File -FilePath (Join-Path $root 'logs\print-deep-output.json') -Encoding utf8
+Get-Content (Join-Path $root 'logs\print-deep-output.json') -Raw | Select-String -Pattern 'Microsoft|Printer|PrintButton|Print|Combo|Dropdown|Drop' -Context 0,0
+=> Exit code: 0
+Wall time: 10.2 seconds
+Output:
+
+{"ok":true,"command":"observe","session":{"statePath":"C:\\diplomamunka\\potato-cli\\.state\\default.json","runId":"29c
+342d0-a686-49f3-8878-525703152026","working":{"title":"Word","processName":"WINWORD","processId":7508,"nativeWindowHand
+le":1049696,"className":"OpusApp","updatedAt":"2026-09-30T13:21:59.1272366+02:00"}},"data":{"working":{"name":"WordTest
+ - Word","automationId":"","className":"OpusApp","localizedControlType":"window","processId":7508,"nativeWindowHandle":
+1049696,"isEnabled":true,"isOffscreen":false,"hasKeyboardFocus":true,"isKeyboardFocusable":false,"controlType":"Window"
+,"processName":"WINWORD","boundingRectangle":{"x
+
+L192 2026-09-30T11:27:51.433Z shell_command wall=6.3 outputChars=1298
+$root=(Get-ChildItem .\runs -Directory | Where-Object Name -like 'word-*' | Sort-Object LastWriteTime -Descending | Select-Object -First 1).FullName
+$csv=(Resolve-Path '.\Microsoft Word.csv').Path
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+$script = @'
+param($root,$csv,$cli)
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 5 -Command read -Arguments @('-Name','Which Printer','-ControlType','ComboBox','-FindFirst','-TimeoutMs','5000')
+'@
+$tmp=Join-Path $env:TEMP 'agt-word-printer-read.ps1'
+Set-Content -LiteralPath $tmp -Value $script -Encoding UTF8
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $tmp $root $csv $cli
+=> Exit code: 0
+Wall time: 6.3 seconds
+Output:
+{"ok":true,"command":"read","session":{"statePath":"C:\\diplomamunka\\potato-cli\\.state\\default.json","runId":"29c342d0-a686-49f3-8878-525703152026","working":{"title":"Word","processName":"WINWORD","processId":7508,"nativeWindowHandle":1049696,"className":"OpusApp","updatedAt":"2026-09-30T13:21:59.1272366+02:00"}},"data":{"text":"Canon TS3700 series (redirected 2)","element":{"name":"Which Printer","automationId":"","className":"NetUIDropdownAnchor","localizedControlType":"ComboBox","processId":7508,"nativeWindowHandle":0,"isEnabled":true,"isOffscreen":false,"hasKeyboardFocus":false,"isKeyboardFocusable":true,"controlType":"ComboBox","processNam
+
+L198 2026-09-30T11:28:09.265Z shell_command wall=12.8 outputChars=19234
+$root=(Get-ChildItem .\runs -Directory | Where-Object Name -like 'word-*' | Sort-Object LastWriteTime -Descending | Select-Object -First 1).FullName
+$csv=(Resolve-Path '.\Microsoft Word.csv').Path
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+$script = @'
+param($root,$csv,$cli)
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 5 -Command click -Arguments @('-Name','Which Printer','-ControlType','ComboBox','-FindFirst','-TimeoutMs','5000','-Method','Invoke')
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 5 -Command observe -Arguments @('-Depth','5','-MaxElements','260')
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 5 -Command select -Arguments @('-Name','Microsoft Print to PDF','-TimeoutMs','5000','-MaxResults','10')
+'@
+$tmp=Join-Path $env:TEMP 'agt-word-printer-dropdown.ps1'
+Set-Content -LiteralPath $tmp -Value $script -Encoding UTF8
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $tmp $root $csv $cli
+=> Exit code: 0
+Wall time: 12.8 seconds
+Output:
+{"ok":false,"command":"click","session":{"statePath":"C:\\diplomamunka\\potato-cli\\.state\\default.json","runId":"29c342d0-a686-49f3-8878-525703152026","working":{"title":"Word","processName":"WINWORD","processId":7508,"nativeWindowHandle":1049696,"className":"OpusApp","updatedAt":"2026-09-30T13:21:59.1272366+02:00"}},"data":null,"error":{"message":"InvokePattern is unavailable on this control. Use -Method Auto to choose a supported UIA action or visible mouse click. Supported patterns: Value, ExpandCollapse, ScrollItem","type":"System.Management.Automation.RuntimeException","category":"OperationStopped"},"durationMs":881,"logPath":"C:\\diplomamunka\\potato-cli\\runs\\29c342d0-a686-49f3-8878-525703152026\\potato.log","interactionPolicy":{"mode":"GuiNavigation","shortcutUsed":false,"navigationUsed":false,"opaqueTyping":false,"fallbackReason":"","fallbackEvidence":""},"outcome":"unknown","leaseWaitMs":103,"totalDurationMs":1052,"explorationCommandId":"9fb864e9aac24844b33de3207c47e18a"}
+{"ok":true,"command":"observe","session":{"statePath":"C:\\diplomamunka\\potato-cli\\.state\\default.json","runId":"29c342d0-a686-49f3-8878-525703152026","working":{"title":"Word","processName":"WINWORD","processId":7508,"nativeWindowHandle":1049696,"className":"OpusApp","updatedAt":"2026-09-30T13:21:59.1272366+02:00"}},"data":{"working":{"name":"WordTest - Word","automationId":"","className":"OpusApp","localizedControlType":"window","processId":7508,"nativeWindowHandle":1049696,"isEnabled":true,"isOffscreen":false,"hasKeyboardFocus":true,"isKeyboardFocusable":false,"controlType":"Window","processName":"WINWORD","boundingRectangle":{"x":-9,"y":-9,"width":1938,"height":858},"boundsStatus":"valid","supportedPatterns":["Window","Transform"],"isMod
+
+L204 2026-09-30T11:28:33.687Z shell_command wall=11.8 outputChars=20073
+$root=(Get-ChildItem .\runs -Directory | Where-Object Name -like 'word-*' | Sort-Object LastWriteTime -Descending | Select-Object -First 1).FullName
+$csv=(Resolve-Path '.\Microsoft Word.csv').Path
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+$script = @'
+param($root,$csv,$cli)
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 5 -Command click -Arguments @('-Name','Which Printer','-ControlType','ComboBox','-FindFirst','-TimeoutMs','5000','-Method','Auto')
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 5 -Command observe -Arguments @('-Depth','5','-MaxElements','320')
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 5 -Command select -Arguments @('-Name','Microsoft Print to PDF','-TimeoutMs','5000','-MaxResults','10')
+'@
+$tmp=Join-Path $env:TEMP 'agt-word-printer-auto.ps1'
+Set-Content -LiteralPath $tmp -Value $script -Encoding UTF8
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $tmp $root $csv $cli
+=> Exit code: 0
+Wall time: 11.8 seconds
+Output:
+{"ok":true,"command":"click","session":{"statePath":"C:\\diplomamunka\\potato-cli\\.state\\default.json","runId":"29c342d0-a686-49f3-8878-525703152026","working":{"title":"Word","processName":"WINWORD","processId":7508,"nativeWindowHandle":1049696,"className":"OpusApp","updatedAt":"2026-09-30T13:21:59.1272366+02:00"}},"data":{"clicked":true,"verified":null,"verificationPerformed":false,"action":"ExpandCollapsePattern","point":null,"element":{"name":"Which Printer","automationId":"","className":"NetUIDropdownAnchor","localizedControlType":"ComboBox","processId":7508,"nativeWindowHandle":0,"isEnabled":true,"isOffscreen":false,"hasKeyboardFocus":fals
+
+L210 2026-09-30T11:29:00.464Z shell_command wall=10.8 outputChars=29854
+$root=(Get-ChildItem .\runs -Directory | Where-Object Name -like 'word-*' | Sort-Object LastWriteTime -Descending | Select-Object -First 1).FullName
+$csv=(Resolve-Path '.\Microsoft Word.csv').Path
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+$pdf=Join-Path $root 'outputs\WordTest.pdf'
+$script = @'
+param($root,$csv,$cli,$pdf)
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 5 -Command click -Arguments @('-Name','Microsoft Print to PDF','-ControlType','ListItem','-FindFirst','-TimeoutMs','5000','-Method','Auto')
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 5 -Command read -Arguments @('-Name','Which Printer','-ControlType','ComboBox','-FindFirst','-TimeoutMs','5000')
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 5 -Command click -Arguments @('-Name','Print','-ControlType','Button','-FindFirst','-TimeoutMs','5000','-Method','Invoke')
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 5 -Command wait-element -Arguments @('-Name','Save Print Output As','-ControlType','Window','-TimeoutMs','15000')
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 5 -Command observe -Arguments @('-Depth','4','-MaxElements','220')
+'@
+$tmp=Join-Path $env:TEMP 'agt-word-print-save-dialog.ps1'
+Set-Content -LiteralPath $tmp -Value $script -Encoding UTF8
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $tmp $root $csv $cli $pdf
+=> Exit code: 0
+Wall time: 10.8 seconds
+Output:
+{"ok":true,"command":"click","session":{"statePath":"C:\\diplomamunka\\potato-cli\\.state\\default.json","runId":"29c342d0-a686-49f3-8878-525703152026","working":{"title":"Word","processName":"WINWORD","processId":7508,"nativeWindowHandle":1049696,"className":"OpusApp","updatedAt":"2026-09-30T13:21:59.1272366+02:00"}},"data":{"clicked":true,"verified":null,"verificationPerformed":false,"action":"InvokePattern","point":null,"element":{"name":"Microsoft Print to PDF","automationId":"","className":"NetUIGalleryButton","localizedControlType":"List Item","processId":7508,"nativeWindowHandle":0,"isEnabled":true,"isOffscreen":false,"hasKeyboardFocus":fal
+
+L214 2026-09-30T11:29:23.524Z shell_command wall=11.1 outputChars=4200
+$root=(Get-ChildItem .\runs -Directory | Where-Object Name -like 'word-*' | Sort-Object LastWriteTime -Descending | Select-Object -First 1).FullName
+$csv=(Resolve-Path '.\Microsoft Word.csv').Path
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+$pdf=Join-Path $root 'outputs\WordTest.pdf'
+$script = @'
+param($root,$csv,$cli,$pdf)
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 5 -Command type -Arguments @('-TargetMode','Focused','-Text',$pdf,'-FallbackReason','The Save Print Output As file name edit is visibly focused but exposes no writable UIA pattern.','-FallbackEvidence','Save Print Output As observation 6ed2e94e555b4d72ac52eeeb3ab87d9e')
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 5 -Command click -Arguments @('-Name','Save','-AutomationId','1','-ControlType','Pane','-ModalOnly','true','-FindFirst','-TimeoutMs','5000','-Method','Mouse')
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 5 -Command wait-file -Arguments @('-Path',$pdf,'-TimeoutMs','30000','-MinBytes','1','-StableMs','1000')
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 5 -Command read-pdf -Arguments @('-Path',$pdf)
+'@
+$tmp=Join-Path $env:TEMP 'agt-word-save-pdf.ps1'
+Set-Content -LiteralPath $tmp -Value $script -Encoding UTF8
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $tmp $root $csv $cli $pdf
+=> Exit code: 0
+Wall time: 11.1 seconds
+Output:
+{"ok":true,"command":"type","session":{"statePath":"C:\\diplomamunka\\potato-cli\\.state\\default.json","runId":"29c342d0-a686-49f3-8878-525703152026","working":{"title":"Word","processName":"WINWORD","processId":7508,"nativeWindowHandle":1049696,"className":"OpusApp","updatedAt":"2026-09-30T13:21:59.1272366+02:00"}},"data":{"typed":true,"textLength":100,"verified":null,"verificationPerformed":false,"verification":null,"inputMethod":"UnicodeKeyboard","focusMethod":"ExistingFocus","targetMode":"Focused","target":{"name":"","automationId":"1001","className":"Edit","localizedControlType":"pane","processId":7508,"nativeWindowHandle":328830,"isEnabled"
+
+L220 2026-09-30T11:29:58.929Z shell_command wall=17.1 outputChars=9609
+$ErrorActionPreference='Stop'
+$root=(Get-ChildItem .\runs -Directory | Where-Object Name -like 'word-*' | Sort-Object LastWriteTime -Descending | Select-Object -First 1).FullName
+$csv=(Resolve-Path '.\Microsoft Word.csv').Path
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+$records = @(
+  @{StepIndex=1; Route='Start winword.exe, wait for the Word start screen, and observe the Blank document tile.'; Observed='Word opened to the start screen with Blank document visible and ready.'; Verification='50b2a87b6c2946eeb78e56b5589cd7f1'},
+  @{StepIndex=2; Route='Click Blank document, wait for the document editing surface, type the required title and paragraph into the document, then read back the document text.'; Observed='Document text read back as Word GUI Test and the required paragraph.'; Verification='2bb2bb42ea9048febc7b101e4c7f045d'},
+  @{StepIndex=3; Route='Use File > Save As > Browse, type the run output .docx path in the Save As file-name field, click Save, wait for WordTest.docx, and confirm Word title shows WordTest.'; Observed='WordTest.docx was created non-empty in the run outputs folder and Word showed WordTest - Word.'; Verification='78cf5eeef17841c39362ce94325cee4b'},
+  @{StepIndex=4; Route='Use File > Close to close the document, then File > Open > Browse, type the saved .docx path in the Open dialog, click Open, and read the reopened document text.'; Observed='The saved document reopened in Word and contained the exact title and paragraph.'; Verification='44fcaf66bcff4a0a9044450ce8f1aee2'},
+  @{StepIndex=5; Route='Use File > Print, expand the printer dropdown, select Microsoft Print to PDF, click Print, type the run output .pdf path in Save Print Output As, save, wait for the PDF, and read it.'; Observed='WordTest.pdf was created non-empty and read-pdf extracted the complete title and paragraph.'; Verification='9e85e1c9fe10423bb968d9e19fb12978'}
+)
+foreach($r in $records){
+  powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action RecordStep -StepIndex $r.StepIndex -Route $r.Route -ObservedResult $r.Observed -VerificationCommandId $r.Verification | Out-Null
+}
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Complete
+Get-Content (Join-Path $root 'logs\exploration.json') -Raw
+=> Exit code: 0
+Wall time: 17.1 seconds
+Output:
+{"error":"An exploration-owned application window is still open. Close it through the GUI and verify cleanup before completing the walkthrough.","ok":false}
+{
+    "schemaVersion":  1,
+    "testCaseHash":  "215981FA02E1D4866481679E3276FA5FAD2509631BEDCEFCFD61DC449F091D22",
+    "interactionPolicy":  "GuiNavigation",
+    "startedAt":  "2026-09-30T13:21:23.1077986+02:00",
+    "completedAt":  null,
+    "completed":  false,
+    "stepCount":  5,
+    "steps":  [
+                  {
+                      "stepIndex":  1,
+                      "route":  "Start winword.exe, wait for the Word start screen, and observe the Blank document tile.",
+                      "observedResult":  "Word opened to the start screen with Blank document visible and ready.",
+                      "verificationCommandId":  "50b2a87b6c2946eeb78e56b5589cd7f1",
+                      "commandIds":  [
+                                         "464ed63f3ee349b89cad1e3e9b7915cc",
+                                         "50b2a87b6c2946eeb78e56b5589cd7f1"
+                                     ],
+                      "recordedAt":  "2026-09-30T13:30:04.7467272+02:00"
+                  },
+                  {
+                      "stepIndex":  2,
+                      "route":  "Click Blank document, wait for the document editing surface, type the required title and paragraph into the document, then read back the document text.",
+                      "observedResult":  "Document text read back as Word GUI Test and the required paragraph.",
+                      "verificationCommandId":  "2bb2bb42ea9048febc7b101e4c7f045d",
+                      "commandIds":  [
+                                         "2de5974f7b1a4bedbdbd9352933b104c",
+  
+
+L226 2026-09-30T11:30:28.393Z shell_command wall=11.4 outputChars=10905
+$root=(Get-ChildItem .\runs -Directory | Where-Object Name -like 'word-*' | Sort-Object LastWriteTime -Descending | Select-Object -First 1).FullName
+$csv=(Resolve-Path '.\Microsoft Word.csv').Path
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+$script = @'
+param($root,$csv,$cli)
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 5 -Command close-window -Arguments @('-ProcessId','7508','-TimeoutMs','3000')
+& .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Command -StepIndex 5 -Command windows -Arguments @('-ProcessId','7508','-TimeoutMs','0')
+'@
+$tmp=Join-Path $env:TEMP 'agt-word-close-exploration.ps1'
+Set-Content -LiteralPath $tmp -Value $script -Encoding UTF8
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $tmp $root $csv $cli
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -RunRoot $root -TestCaseCsv $csv -PotatoCliPath $cli -InteractionPolicy GuiNavigation -Action Complete
+Get-Content (Join-Path $root 'logs\exploration.json') -Raw
+=> Exit code: 0
+Wall time: 11.4 seconds
+Output:
+{"ok":true,"command":"close-window","session":{"statePath":"C:\\diplomamunka\\potato-cli\\.state\\default.json","runId":"29c342d0-a686-49f3-8878-525703152026","working":null},"data":{"closed":1,"matched":1},"error":null,"durationMs":1094,"logPath":"C:\\diplomamunka\\potato-cli\\runs\\29c342d0-a686-49f3-8878-525703152026\\potato.log","interactionPolicy":{"mode":"GuiNavigation","shortcutUsed":false,"navigationUsed":false,"opaqueTyping":false,"fallbackReason":"","fallbackEvidence":""},"outcome":"completed","leaseWaitMs":141,"totalDurationMs":1392,"explorationCommandId":"604234be5632411bb67f074ec4cbd41a"}
+{"ok":true,"command":"windows","session":{"st
+
+L230 2026-09-30T11:30:47.817Z shell_command wall=2.7 outputChars=634
+Get-Content -Raw Test-GeneratedScript.ps1
+=> Exit code: 0
+Wall time: 2.7 seconds
+Output:
+[CmdletBinding()]
+param(
+    [Parameter(Mandatory)] [string] $ScriptPath,
+    [string] $TestCaseCsv,
+    [string] $PotatoCliPath,
+    [string] $ExplorationPath,
+    [string] $InteractionPolicy='GuiNavigation'
+)
+
+$ErrorActionPreference = 'Stop'
+. (Join-Path $PSScriptRoot 'Framework\GeneratedScriptRuntime.ps1')
+$result = Test-AGTAGeneratedScript -ScriptPath $ScriptPath -TestCaseCsv $TestCaseCsv -PotatoCliPath $PotatoCliPath -ExplorationPath $ExplorationPath -InteractionPolicy $InteractionPolicy
+$result | ConvertTo-Json -Depth 6 -Compress
+if (-not $result.ok) { exit 1 }
+
+
+
+L231 2026-09-30T11:30:47.818Z shell_command wall=2.7 outputChars=2068
+Get-Content -Raw Framework\ArtifactAssertions.ps1
+=> Exit code: 0
+Wall time: 2.7 seconds
+Output:
+function Read-AGTAArtifactBytes {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)] [string] $Path,
+        [ValidateRange(1,1048576)] [int] $Count = 4096,
+        [ValidateRange(0,2147483647)] [long] $Offset = 0,
+        [ValidateRange(0,60000)] [int] $TimeoutMs = 2000,
+        [IO.FileShare] $Share = [IO.FileShare]::ReadWrite
+    )
+    $watch = [Diagnostics.Stopwatch]::StartNew()
+    do {
+        $stream = $null
+        try {
+            $stream = [IO.File]::Open($Path, [IO.FileMode]::Open, [IO.FileAccess]::Read, $Share)
+            [void]$stream.Seek($Offset, [IO.SeekOrigin]::Begin)
+            $bytes = New-Object by
+
+L232 2026-09-30T11:30:47.831Z shell_command wall=5.4 outputChars=422
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Get-RuntimeHelp.ps1 -Name Read-AGTAArtifactBytes
+=> Exit code: 0
+Wall time: 5.4 seconds
+Output:
+{"name":"Read-AGTAArtifactBytes","syntax":"\r\nRead-AGTAArtifactBytes [-Path] \u003cstring\u003e [[-Count] \u003cint\u003e] [[-Offset] \u003clong\u003e] [[-TimeoutMs] \u003cint\u003e] [[-Share] \u003cFileShare\u003e] [\u003cCommonParameters\u003e]\r\n","sourcePath":"C:\\diplomamunka\\automated-gui-testing-agent-framework\\Framework\\ArtifactAssertions.ps1","available":true}
+
+
+L240 2026-09-30T11:32:31.676Z apply_patch wall=0.0 outputChars=200
+*** Begin Patch
+*** Add File: C:\diplomamunka\automated-gui-testing-agent-framework\runs\word-20260930-132120\generated\MicrosoftWord.Generated.ps1
++[CmdletBinding()]
++param(
++    [string] $PotatoCliPath,
++    [string] $TestCaseCsv,
++    [string] $RunRoot,
++    [string] $FrameworkRoot,
++    [string] $ExplorationPath,
++    [ValidateSet('VisibleControls','GuiNavigation','AllowShortcuts')] [string] $InteractionPolicy = 'GuiNavigation',
++    [string] $PolicyReason,
++    [ValidateSet('InProcess','Process')] [string] $Transport = 'InProcess'
++)
++
++$runtimeCandidates = @()
++if ($FrameworkRoot) {
++    $runtimeCandidates += (Join-Path -Path $FrameworkRoot -ChildPath 'Framework\GeneratedScriptRuntime.ps1')
++}
++$probe = $PSScriptRoot
++for ($i = 0; $i -lt 8 -and $probe; $i++) {
++    $runtimeCandidates += (Join-Path -Path $probe -ChildPath 'Framework\GeneratedScriptRuntime.ps1')
++    $probe = Split-Path -Parent $probe
++}
++$runtimePath = @($runtimeCandidates | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1)[0]
++if (-not $runtimePath) {
++    throw "Generated script runtime was not found: $runtimePath"
++}
++$FrameworkRoot = Split-Path -Parent (Split-Path -Parent $runtimePath)
++. $runtimePath
++
++if (-not $RunRoot) {
++    $RunRoot = Join-Path -Path $FrameworkRoot -ChildPath ('runs\microsoft-word-' + (Get-Date -Format 'yyyyMMdd-HHmmss'))
++}
++if (-not $TestCaseCsv) {
++    $TestCaseCsv = Join-Path -Path $FrameworkRoot -ChildPath 'Microsoft Word.csv'
++}
++if (-not $PotatoCliPath) {
++    $PotatoCliPath = Join-Path -Path (Split-Path -Parent $FrameworkRoot) -ChildPath 'potato-cli\potato.ps1'
++}
++if (-not $ExplorationPath) {
++    $ExplorationPath = Join-Path -Path $RunRoot -ChildPath 'logs\exploration.json'
++}
++
++Assert-AGTAGeneratedScriptPreflight -ScriptPath $PSCommandPath -TestCaseCsv $TestCaseCsv -PotatoCliPath $PotatoCliPath -ExplorationPath $ExplorationPath -InteractionPolicy $InteractionPolicy | Out-Null
++
++$Context = Initialize-AGTAGeneratedTest -PotatoCliPath $PotatoCliPath -TestCaseCsv $TestCaseCsv -RunRoot $RunRoot -RequireAssertions -InteractionPolicy $InteractionPolicy -PolicyReason $PolicyReason -Transport $Transport -ExplorationPath $ExplorationPath
++$results = @()
++$cleanup = @()
++
++$titleText = 'Word GUI Test'
++$paragraphText = 'This document tests creating, saving, reopening, and printing in Word.'
++$documentText = "$titleText`r`n$paragraphText"
++$outputRoot = Join-Path -Path $Context.RunRoot -ChildPath 'outputs'
++$docxPath = Join-Path -Path $outputRoot -ChildPath 'WordTest.docx'
++$pdfPath = Join-Path -Path $outputRoot -ChildPath 'WordTest.pdf'
++
++function Test-ContainsWordContent {
++    param([string] $Text)
++    return (($Text -replace "`r`n", "`n" -replace "`r", "`n").Contains($titleText) -and
++        ($Text -replace "`r`n", "`n" -replace "`r", "`n").Contains($paragraphText))
++}
++
++function Add-DependentSkip {
++    param([int] $StepIndex, [string] $Reason)
++    $step = Get-TestStep -StepIndex $StepIndex
++    return New-StepResult -StepIndex $StepIndex -Action $step.Action -ExpectedResult $step.'Expected Result' -Status 'SKIPPED' -ErrorObject $Reason
++}
++
++try {
++    New-Item -Path $outputRoot -ItemType Directory -Force | Out-Null
++    Register-CreatedExternalPath -Path $outputRoot
++
++    $results += Invoke-RecordedStep -StepIndex 1 -Body {
++        param([ref] $Commands, [ref] $Evidence)
++        $started = Invoke-StepCommand -Commands $Commands -Command 'start' -Arguments @('-ProcessName','winword.exe','-WaitForWindowMs','20000','-Maximize')
++        Assert-PotatoOk -Result $started -Message 'Could not start Microsoft Word.'
++        Assert-ExpectedResult -Condition ([bool]$started.data.windowFound) -Message 'Word must open a visible desktop window.'
++
++        $blank = Invoke-StepCommand -Commands $Commands -Command 'wait-element' -Arguments @('-Name','Blank document','-ControlType','ListItem','-TimeoutMs','15000')
++        Assert-PotatoFound -Result $blank -Message 'Word must be ready to create a blank docume
+=> Exit code: 0
+Wall time: 0 seconds
+Output:
+Success. Updated the following files:
+A C:\diplomamunka\automated-gui-testing-agent-framework\runs\word-20260930-132120\generated\MicrosoftWord.Generated.ps1
+
+
+L247 2026-09-30T11:32:50.857Z apply_patch wall=0.0 outputChars=200
+*** Begin Patch
+*** Update File: C:\diplomamunka\automated-gui-testing-agent-framework\runs\word-20260930-132120\generated\MicrosoftWord.Generated.ps1
+@@
+ function Test-ContainsWordContent {
+     param([string] $Text)
+-    return (($Text -replace "`r`n", "`n" -replace "`r", "`n").Contains($titleText) -and
+-        ($Text -replace "`r`n", "`n" -replace "`r", "`n").Contains($paragraphText))
++    $normalized = ([string]$Text).Replace("`r`n", "`n").Replace("`r", "`n")
++    return ($normalized.Contains($titleText) -and $normalized.Contains($paragraphText))
+ }
+@@
+ try {
++    do {
+     New-Item -Path $outputRoot -ItemType Directory -Force | Out-Null
+     Register-CreatedExternalPath -Path $outputRoot
+@@
+         $results += Add-DependentSkip -StepIndex 3 -Reason 'Document creation was skipped.'
+         $results += Add-DependentSkip -StepIndex 4 -Reason 'Document save was skipped.'
+         $results += Add-DependentSkip -StepIndex 5 -Reason 'Document reopen was skipped.'
+-        return
++        break
+     }
+@@
+         $results += Add-DependentSkip -StepIndex 3 -Reason 'Document content was not created successfully.'
+         $results += Add-DependentSkip -StepIndex 4 -Reason 'Document save was skipped.'
+         $results += Add-DependentSkip -StepIndex 5 -Reason 'Document reopen was skipped.'
+-        return
++        break
+     }
+@@
+         $results += Add-DependentSkip -StepIndex 4 -Reason 'Document save did not complete successfully.'
+         $results += Add-DependentSkip -StepIndex 5 -Reason 'Document reopen was skipped.'
+-        return
++        break
+     }
+@@
+     if ($results[-1].status -ne 'PASS') {
+         $results += Add-DependentSkip -StepIndex 5 -Reason 'Document reopen did not complete successfully.'
+-        return
++        break
+     }
+@@
+         Invoke-EvidenceScreenshot -Commands $Commands -Evidence $Evidence -FileName '05-print-complete.png' | Out-Null
+     }
++    } while ($false)
+ }
+*** End Patch
+
+=> Exit code: 0
+Wall time: 0 seconds
+Output:
+Success. Updated the following files:
+M C:\diplomamunka\automated-gui-testing-agent-framework\runs\word-20260930-132120\generated\MicrosoftWord.Generated.ps1
+
+
+L254 2026-09-30T11:32:58.688Z shell_command wall=5.8 outputChars=178
+$script=(Resolve-Path '.\runs\word-20260930-132120\generated\MicrosoftWord.Generated.ps1').Path
+$csv=(Resolve-Path '.\Microsoft Word.csv').Path
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+$explore=(Resolve-Path '.\runs\word-20260930-132120\logs\exploration.json').Path
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Test-GeneratedScript.ps1 -ScriptPath $script -TestCaseCsv $csv -PotatoCliPath $cli -ExplorationPath $explore
+=> Exit code: 0
+Wall time: 5.8 seconds
+Output:
+{"ok":true,"issues":[],"checkedCommands":129,"policyAssessment":"Static checks and recorded CLI actions; not an execution sandbox."}
+
+
+L260 2026-09-30T11:33:14.371Z shell_command wall=31.4 outputChars=40092
+$script=(Resolve-Path '.\runs\word-20260930-132120\generated\MicrosoftWord.Generated.ps1').Path
+$csv=(Resolve-Path '.\Microsoft Word.csv').Path
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+$explore=(Resolve-Path '.\runs\word-20260930-132120\logs\exploration.json').Path
+$run=Join-Path (Get-Location) ('runs\word-generated-exec-' + (Get-Date -Format 'yyyyMMdd-HHmmss'))
+New-Item -ItemType Directory -Path $run -Force | Out-Null
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $script -PotatoCliPath $cli -TestCaseCsv $csv -RunRoot $run -FrameworkRoot (Get-Location).Path -ExplorationPath $explore -InteractionPolicy GuiNavigation
+$exit=$LASTEXITCODE
+$resultPath=Join-Path $run 'results\result.json'
+if (Test-Path $resultPath) { Get-Content $resultPath -Raw }
+exit $exit
+=> Exit code: 1
+Wall time: 31.4 seconds
+Total output lines: 626
+Output:
+{"ok":false,"interactionPolicy":{"compliant":true,"scriptAuditPerformed":true,"reason":"","mode":"GuiNavigation","assessment":"Recorded CLI policy and static script checks; external activity is not sandboxed."},"transport":"InProcess","timing":{"commandCount":22,"wrapperMs":21951,"backendMs":21386,"waitMs":3804,"cleanupMs":6510,"totalMs":25693,"commandOverheadMs":565,"otherMs":3742},"testCase":"Microsoft Word.csv","runRoot":"C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\word-generated-exec-20260930-133316","executionId":"20260930_133319_3656","startedAt":"2026-09-30T13:33:19.7230694+02:00","finishedAt":"2026-09-30T13:33:45.4142927+02:00","steps":[{"stepIndex":1,"action":"Open Word","expectedResult":"Word is open and ready to create a blank document.","status":"PASS","evidence":["C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\word-generated-exec-20260930-133316\\evidence\\20260930_133319_3656\\01-word-start.png"],"commands":[{"index":1,"command":"start","arguments":["-ProcessName","winword.exe","-WaitForWindowMs","20000","-Maximize"],"ok":true,"durationMs":5489,"wrapperDurationMs":5750,"outcome":"completed","interactionPolicy":{"mode":"GuiNavigation","shortcutUsed":false,"navigationUsed":false,"opaqueTyping":false,"fallbackReason":"","fallbackEvidence":""},"logPath":"C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\word-generated-exec-20260930-133316\\logs\\potato-commands-20260930_133319_3656.jsonl","error":null},{"index":2,"command":"wait-element","arguments":["-Name","Blank document","-ControlType","ListItem","-TimeoutMs","15000"],"ok":true,"durationMs":611,"wrapperDurationMs":628,"outcome":"completed","interactionPolicy":{"mode":"GuiNavigation","shortcu
+
+L264 2026-09-30T11:33:50.216Z view_image wall=None outputChars=123674
+{'path': 'C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\word-generated-exec-20260930-133316\\evidence\\20260930_133319_3656\\step-3-failure.png', 'detail': 'high'}
+=> [{"type": "input_image", "image_url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAB4AAAAOECAYAAABAfCzDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAP+lSURBVHhe7N0HuBzlef5/JS6AjTFgMM0Y957iVKw4bqlO/EscO7GT/B3HjolcwQ1swBRjAwLTDgIMGAMChKgSCKEDkhBNoN67dNQ7EsVIYIJt/PyvZ2bfPe88807Z3VN253zv6/pc0u7OvFN2zh7t3prZYdu3bxe1bdu2yNatW2XLli2RzZs3y3333Sfd3d0yadKkjnLvvff2u4kTJ1bCPffcUwl33303SrrrrruAIWP8+PHoR3Z/A4PF/q5DtgkTJjTM/rurU9l/B3cq+76kP9j3V+1O37Pqe1d9D+vez+p7W/c+173v3bFjR2Tnzp2RJ554IrJr16663bt31z355JMJTz31VMLTTz+d6Zlnnon84he/AAAAAABgQA3LKn83bdoU0TfSe/fuBQAAAACgbel7V30P22gJ7IrgUAlcVADnlcCuAKYEBgAAAAAMtGF++av0zbIrfzdu3Bj9b2r7xhoAAAAAgHai7131PaxfArv3uX4JHCqAHVsA2xLYlr95BTAlMAAAAABgsFAAAwAAAAA6HgUwAAAAAAAxCmAAAAAAQMejAAYAAAAAIEYBDAAAAADoeBTAAAAAAADEogJY3xDrm2Nb/m7YsIECGAAAAADQ9vS9q76HdSWwsiWwFsB5JfATTzyRWwCHSmBb+mYVwJTAAAAAAICBQgEMAAAAAOh4FMAAAAAAAMQogAEAAAAAHY8CGAAAAACAGAUwAAAAAKDjUQADAAAAABDrtwJ4/BMvyqfX/Fb+YrnUfWiZyKcWiRw3W+SUx0UufPC3Mnryb+Xee38r65a/kBoDAAAAAIAyKIABAAAAAIj1SwF835O/kq9vFPn7Vb3lb1QALxf5f4tFvjhX5MQZIuc9LHLNlN/KXZN+K49Oeik1DgAAAAAAZVAAAwAAAAAQ65cC+LIdv5WvbRD5O1MAq79bIvL/zRf55kyRHz0qcsUDv5Vb7/utTJ7429Q4AAAAAACUQQEMAAAAAECsXwrgC3eIfDWjAP7YUpF/WyDy1dkipz8mcsmDv5UbJv9W7p5EAQwAAAAAVXLkkUfJddddn7rf0mmOPvqNqfsbQQEMAAAAAEBsmF/+ugLYlb/9UQB/eLnIJxeJfGmuyPdmiIx8WOSqqb+VW+5rvAA+7rjjZNiwYXV6204zkKZMmRKtx/XXF3/AAQAAAABVp8Xuq/Z/TW4JXGaaMlwB7JfA7n2uvufVAtiWwLYAdiWwyiqBWymAKYEBAAAAAAOhXwrgC3aIfGWDyN+sFPngiphfAn98scjn5omcMFPkrOkiXZN/Kxf+9IXUOHn++q//OlX42tsDTZf/5je/OVo3+xgAAAAADEV5BW/eY42iAAYAAAAAINY/BfB2kU88/H/yuiufkv0v3i2HXPKkHHXRU/L2i56WP7jgGfmL85+Rvx/5C/m3Hz8rXzprj3z39L1y+qnPpcbJsnTp0uhMW/3TPjaY3Dq147oBAAAAwGAJFb2h+1pBAQwAAAAAQKzPCuAJC56Xf7hojxz7g93yR9/eIr/3lR55z5eWy/uOWyrvPWGlvPnsbXL0Jc/IOy/+hfzxhc/Khy/YI/943h75j3P2ylfOel6+f8YvU2Pm0ZJVL7ls73dcEWsvD+3ut/Pq4/4
+
+L270 2026-09-30T11:34:10.592Z apply_patch wall=0.0 outputChars=200
+*** Begin Patch
+*** Update File: C:\diplomamunka\automated-gui-testing-agent-framework\runs\word-20260930-132120\generated\MicrosoftWord.Generated.ps1
+@@
+-        $save = Invoke-StepCommand -Commands $Commands -Command 'click' -Arguments @('-Name','Save','-AutomationId','1','-ControlType','Pane','-ModalOnly','true','-FindFirst','-TimeoutMs','5000','-Method','Mouse')
++        $save = Invoke-StepCommand -Commands $Commands -Command 'click' -Arguments @('-Name','Save','-AutomationId','1','-ClassName','Button','-ControlType','Pane','-FindFirst','-TimeoutMs','5000','-Method','Mouse')
+@@
+-        $openClick = Invoke-StepCommand -Commands $Commands -Command 'click' -Arguments @('-Name','Open','-AutomationId','1','-ControlType','Pane','-ModalOnly','true','-FindFirst','-TimeoutMs','5000','-Method','Mouse')
++        $openClick = Invoke-StepCommand -Commands $Commands -Command 'click' -Arguments @('-Name','Open','-AutomationId','1','-ClassName','Button','-ControlType','Pane','-FindFirst','-TimeoutMs','5000','-Method','Mouse')
+@@
+-        $save = Invoke-StepCommand -Commands $Commands -Command 'click' -Arguments @('-Name','Save','-AutomationId','1','-ControlType','Pane','-ModalOnly','true','-FindFirst','-TimeoutMs','5000','-Method','Mouse')
++        $save = Invoke-StepCommand -Commands $Commands -Command 'click' -Arguments @('-Name','Save','-AutomationId','1','-ClassName','Button','-ControlType','Pane','-FindFirst','-TimeoutMs','5000','-Method','Mouse')
+*** End Patch
+
+=> Exit code: 0
+Wall time: 0 seconds
+Output:
+Success. Updated the following files:
+M C:\diplomamunka\automated-gui-testing-agent-framework\runs\word-20260930-132120\generated\MicrosoftWord.Generated.ps1
+
+
+L274 2026-09-30T11:34:17.998Z shell_command wall=13.8 outputChars=179
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+# Clean up any leftover Word windows from the failed generated run.
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $cli close-window -ProcessName WINWORD -TimeoutMs 3000 | Out-Null
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $cli state -Clear | Out-Null
+$script=(Resolve-Path '.\runs\word-20260930-132120\generated\MicrosoftWord.Generated.ps1').Path
+$csv=(Resolve-Path '.\Microsoft Word.csv').Path
+$explore=(Resolve-Path '.\runs\word-20260930-132120\logs\exploration.json').Path
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Test-GeneratedScript.ps1 -ScriptPath $script -TestCaseCsv $csv -PotatoCliPath $cli -ExplorationPath $explore
+=> Exit code: 0
+Wall time: 13.8 seconds
+Output:
+{"ok":true,"issues":[],"checkedCommands":129,"policyAssessment":"Static checks and recorded CLI actions; not an execution sandbox."}
+
+
+L280 2026-09-30T11:34:43.233Z shell_command wall=33.4 outputChars=40092
+$script=(Resolve-Path '.\runs\word-20260930-132120\generated\MicrosoftWord.Generated.ps1').Path
+$csv=(Resolve-Path '.\Microsoft Word.csv').Path
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+$explore=(Resolve-Path '.\runs\word-20260930-132120\logs\exploration.json').Path
+$run=Join-Path (Get-Location) ('runs\word-generated-exec-' + (Get-Date -Format 'yyyyMMdd-HHmmss'))
+New-Item -ItemType Directory -Path $run -Force | Out-Null
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $script -PotatoCliPath $cli -TestCaseCsv $csv -RunRoot $run -FrameworkRoot (Get-Location).Path -ExplorationPath $explore -InteractionPolicy GuiNavigation | Out-File -FilePath (Join-Path $run 'stdout.json') -Encoding utf8
+$exit=$LASTEXITCODE
+$resultPath=Join-Path $run 'results\result.json'
+if (Test-Path $resultPath) {
+  $r=Get-Content $resultPath -Raw | ConvertFrom-Json
+  [pscustomobject]@{ExitCode=$exit; Ok=$r.ok; Passed=$r.summary.passed; Failed=$r.summary.failed; Skipped=$r.summary.skipped; RunRoot=$run; ResultPath=$resultPath} | ConvertTo-Json -Compress
+  if(-not $r.ok){ Get-Content $resultPath -Raw }
+} else { [pscustomobject]@{ExitCode=$exit; Ok=$false; RunRoot=$run; ResultPath=$resultPath; Error='No result.json'} | ConvertTo-Json -Compress }
+exit $exit
+=> Exit code: 1
+Wall time: 33.4 seconds
+Total output lines: 626
+Output:
+{"ExitCode":1,"Ok":false,"Passed":2,"Failed":1,"Skipped":2,"RunRoot":"C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\word-generated-exec-20260930-133445","ResultPath":"C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\word-generated-exec-20260930-133445\\results\\result.json"}
+{
+    "ok":  false,
+    "interactionPolicy":  {
+                              "compliant":  true,
+                              "scriptAuditPerformed":  true,
+                              "reason":  "",
+                              "mode":  "GuiNavigation",
+                              "assessment":  "Recorded CLI policy and static script checks; external activity is not sandboxed."
+                          },
+    "transport":  "InProcess",
+    "timing":  {
+                   "commandCount":  22,
+                   "wrapperMs":  24798,
+                   "backendMs":  24083,
+                   "waitMs":  9309,
+                   "cleanupMs":  5901,
+                   "totalMs":  27898,
+                   "commandOverheadMs":  715,
+                   "otherMs":  3100
+               },
+    "testCase":  "Microsoft Word.csv",
+    "runRoot":  "C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\word-generated-exec-20260930-133445",
+    "executionId":  "20260930_133448_2476",
+    "startedAt":  "2026-09-30T13:34:48.5840901+02:00",
+    "finishedAt":  "2026-09-30T13:35:16.4807573+02:00",
+    "steps":  [
+                  {
+                      "stepIndex":  1,
+                      "action":  "Open Word",
+                      "expectedResult":  "Word is open and ready to create a blank document.",
+                      "status":  "PASS",
+                      "e
+
+L284 2026-09-30T11:35:20.878Z view_image wall=None outputChars=123710
+{'path': 'C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\word-generated-exec-20260930-133445\\evidence\\20260930_133448_2476\\step-3-failure.png', 'detail': 'high'}
+=> [{"type": "input_image", "image_url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAB4AAAAOECAYAAABAfCzDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAP+lSURBVHhe7N0HuBzlef5/JS6AjTFgMM0Y957iVKw4bqlO/EscO7GT/B3HjolcwQ1swBRjAwLTDgIMGAMChKgSCKEDkhBNoN67dNQ7EsVIYIJt/PyvZ2bfPe88807Z3VN253zv6/pc0tmdeafs7Eq795nZYdu3bxe1bdu2yNatW2XLli2RzZs3y3333Sfd3d0yadKkjnLvvff2u4kTJ1bCPffcUwl33303SrrrrruAIWP8+PHoR3Z/A4PF/luHbBMmTGiY/X9Xp7L/D+5U9n1Jf7Dvr9qdvmfV9676Hta9n9X3tu59rnvfu2PHjsjOnTsjTzzxRGTXrl11u3fvrnvyyScTnnrqqYSnn3460zPPPBP5xS9+AQAAAADAgBqWVf5u2rQpom+k9+7dCwAAAABA29L3rvoettES2BXBoRK4qADOK4FdAUwJDAAAAAAYaMP88lfpm2VX/m7cuDH6bWr7xhoAAAAAgHai7131PaxfArv3uX4JHCqAHVsA2xLYlr95BTAlMAAAAABgsFAAAwAAAAA6HgUwAAAAAAAxCmAAAAAAQMejAAYAAAAAIEYBDAAAAADoeBTAAAAAAADEogJY3xDrm2Nb/m7YsIECGAAAAADQ9vS9q76HdSWwsiWwFsB5JfATTzyRWwCHSmBb+mYVwJTAAAAAAICBQgEMAAAAAOh4FMAAAAAAAMQogAEAAAAAHY8CGAAAAACAGAUwAAAAAKDjUQADAAAAABDrtwJ4/BMvyqfX/Fb+YrnUfWiZyKcWiRw3W+SUx0UufPC3Mnryb+Xee38r65a/kBoDAAAAAIAyKIABAAAAAIj1SwF835O/kq9vFPn7Vb3lb1QALxf5f4tFvjhX5MQZIuc9LHLNlN/KXZN+K49Oeik1DgAAAAAAZVAAAwAAAAAQ65cC+LIdv5WvbRD5O1MAq79bIvL/zRf55kyRHz0qcsUDv5Vb7/utTJ7429Q4AAAAAACUQQEMAAAAAECsXwrgC3eIfDWjAP7YUpF/WyDy1dkipz8mcsmDv5UbJv9W7p5EAQwAAAAAVXLkkUfJddddn7rd0mmOPvqNqdsbQQEMAAAAAEBsmF/+ugLYlb/9UQB/eLnIJxeJfGmuyPdmiIx8WOSqqb+VW+5rvAA+7rjjZNiwYXX6s51mIE2ZMiVaj+uvL/6AAwAAAACqTovdV+3/mtwSuMw0ZbgC2C+B3ftcfc+rBbAtgW0B7EpglVUCt1IAUwIDAAAAAAZCvxTAF+wQ+coGkb9ZKfLBFTG/BP74YpHPzRM5YabIWdNFuib/Vi786QupcfL89V//darwtT8PNF3+m9/85mjd7H0AAAAAMBTlFbx59zWKAhgAAAAAgFj/FMDbRT7x8P/J6658Sva/eLcccsmTctRFT8nbL3pa/uCCZ+Qvzn9G/n7kL+TffvysfOmsPfLd0/fK6ac+lxony9KlS6MzbfVPe99gcuvUjusGAAAAAIMlVPSGbmsFBTAAAAAAALE+K4AnLHhe/uGiPXLsD3bLH317i/zeV3rkPV9aLu87bqm894SV8uazt8nRlzwj77z4F/LHFz4rH75gj/zjeXvkP87ZK18563n5/hm/TI2ZR0tWveSyvd1xRay9PLS73c6r9/t
+
+L288 2026-09-30T11:35:29.730Z shell_command wall=22.5 outputChars=2780
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+# Try targeted selectors against the currently visible Save As dialog to find what PoTATo can match.
+foreach($args in @(
+  @('select','-Name','Save','-AutomationId','1','-TimeoutMs','1000','-MaxResults','5'),
+  @('select','-Name','Save','-ClassName','Button','-TimeoutMs','1000','-MaxResults','5'),
+  @('select','-AutomationId','1','-ClassName','Button','-TimeoutMs','1000','-MaxResults','5'),
+  @('select','-Name','Save','-ControlType','Button','-TimeoutMs','1000','-MaxResults','5'),
+  @('select','-Name','Save','-ControlType','Pane','-TimeoutMs','1000','-MaxResults','5')
+)) {
+  powershell.exe -NoProfile -ExecutionPolicy Bypass -File $cli @args
+}
+=> Exit code: 0
+Wall time: 22.5 seconds
+Output:
+{"ok":true,"command":"select","session":{"statePath":"C:\\diplomamunka\\potato-cli\\.state\\default.json","runId":"488c0aa9-369e-4d70-b407-57fa5f3ff51c","working":null},"data":{"count":0,"elements":[]},"error":null,"durationMs":1703,"logPath":"C:\\diplomamunka\\potato-cli\\runs\\488c0aa9-369e-4d70-b407-57fa5f3ff51c\\potato.log","interactionPolicy":{"mode":"GuiNavigation","shortcutUsed":false,"navigationUsed":false,"opaqueTyping":false,"fallbackReason":"","fallbackEvidence":""},"outcome":"completed","leaseWaitMs":321,"totalDurationMs":2129}
+{"ok":true,"command":"select","session":{"statePath":"C:\\diplomamunka\\potato-cli\\.state\\default.json","r
+
+L294 2026-09-30T11:36:00.490Z shell_command wall=15.0 outputChars=1786
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+foreach($args in @(
+  @('select','-ProcessName','WINWORD','-Name','Save','-TimeoutMs','1000','-MaxResults','5'),
+  @('select','-ProcessName','WINWORD','-Name','Save','-AutomationId','1','-TimeoutMs','1000','-MaxResults','5'),
+  @('click','-ProcessName','WINWORD','-Name','Save','-AutomationId','1','-TimeoutMs','1000','-FindFirst','-Method','Mouse')
+)) { powershell.exe -NoProfile -ExecutionPolicy Bypass -File $cli @args }
+=> Exit code: 0
+Wall time: 15 seconds
+Output:
+{"ok":true,"command":"select","session":{"statePath":"C:\\diplomamunka\\potato-cli\\.state\\default.json","runId":"488c0aa9-369e-4d70-b407-57fa5f3ff51c","working":null},"data":{"count":0,"elements":[]},"error":null,"durationMs":1740,"logPath":"C:\\diplomamunka\\potato-cli\\runs\\488c0aa9-369e-4d70-b407-57fa5f3ff51c\\potato.log","interactionPolicy":{"mode":"GuiNavigation","shortcutUsed":false,"navigationUsed":false,"opaqueTyping":false,"fallbackReason":"","fallbackEvidence":""},"outcome":"completed","leaseWaitMs":313,"totalDurationMs":2164}
+{"ok":true,"command":"select","session":{"statePath":"C:\\diplomamunka\\potato-cli\\.state\\default.json","runId":"488c0aa9-369e-4d70-b407-57fa5f3ff51c","working":null},"data":{"count":0,"elements":[]},"error":null,"durationMs":1640,"logPath":"C:\\diplomamunka\\potato-cli\\runs\\488c0aa9-369e-4d70-b407-57fa5f3ff51c\\potato.log","interactionPolicy":{"mode":"GuiNavigation","shortcutUsed":false,"navigationUsed":false,"opaqueTyping":false,"fallbackReason":"","fallbackEvidence":""},"outcome":"completed","leaseWaitMs":226,"totalDurationMs":2001}
+{"ok":false,"command":"click","session":{"statePath":"C:\\diplomamunka\\potato-cli\\.state\\default.json","runId":"488c0aa9-369e-4d70-b407-57fa5f3ff51c","working":null},"data":null,"error":{"message":"No matching element was found.","type":"System.Management.Automation.RuntimeException","category":"OperationStopped"},"durationMs":1879,"logPath":"C:\\diplomamunka\\potato-cli\\runs\\488c0aa9-369e-4d70-b407-57fa5f3ff51c\\potato.log","interactionPolicy":{"mode":"GuiNavigation","shortcutUsed":false,"navigationUsed":false,"opaqueTyping":false,"fallbackReason":"","fallbackEvidence":""},"outcome":"unknown","leaseWaitMs":266,"totalDurationMs":2232}
+
+
+L298 2026-09-30T11:36:19.582Z shell_command wall=1.8 outputChars=44
+Get-Process WINWORD -ErrorAction SilentlyContinue | Select-Object Id,ProcessName,MainWindowTitle,MainWindowHandle,HasExited
+=> Exit code: 1
+Wall time: 1.8 seconds
+Output:
+
+
+L304 2026-09-30T11:36:41.523Z apply_patch wall=0.0 outputChars=200
+*** Begin Patch
+*** Update File: C:\diplomamunka\automated-gui-testing-agent-framework\runs\word-20260930-132120\generated\MicrosoftWord.Generated.ps1
+@@
+-        $save = Invoke-StepCommand -Commands $Commands -Command 'click' -Arguments @('-Name','Save','-AutomationId','1','-ClassName','Button','-ControlType','Pane','-FindFirst','-TimeoutMs','5000','-Method','Mouse')
+-        Assert-PotatoOk -Result $save -Message 'Could not click Save in the Save As dialog.'
++        $save = Invoke-StepCommand -Commands $Commands -Command 'press-key' -Arguments @('-Key','Enter','-FallbackReason','The Save As dialog file-name field has focus and the native Save button is not reliably exposed through UIA.','-FallbackEvidence','Current Save As dialog screenshot 03-save-as-dialog.png')
++        Assert-PotatoOk -Result $save -Message 'Could not submit the Save As dialog.'
+@@
+-        $openClick = Invoke-StepCommand -Commands $Commands -Command 'click' -Arguments @('-Name','Open','-AutomationId','1','-ClassName','Button','-ControlType','Pane','-FindFirst','-TimeoutMs','5000','-Method','Mouse')
+-        Assert-PotatoOk -Result $openClick -Message 'Could not click Open in the file dialog.'
++        $openClick = Invoke-StepCommand -Commands $Commands -Command 'press-key' -Arguments @('-Key','Enter','-FallbackReason','The Open dialog file-name field has focus and Enter activates the visible Open command.','-FallbackEvidence','Current Open dialog screenshot 04-open-dialog.png')
++        Assert-PotatoOk -Result $openClick -Message 'Could not submit the Open dialog.'
+@@
+-        $save = Invoke-StepCommand -Commands $Commands -Command 'click' -Arguments @('-Name','Save','-AutomationId','1','-ClassName','Button','-ControlType','Pane','-FindFirst','-TimeoutMs','5000','-Method','Mouse')
+-        Assert-PotatoOk -Result $save -Message 'Could not save the PDF output.'
++        $save = Invoke-StepCommand -Commands $Commands -Command 'press-key' -Arguments @('-Key','Enter','-FallbackReason','The Save Print Output As file-name field has focus and Enter activates the visible Save command.','-FallbackEvidence','Current Save Print Output As screenshot 05-save-pdf-dialog.png')
++        Assert-PotatoOk -Result $save -Message 'Could not submit the PDF save dialog.'
+*** End Patch
+
+=> Exit code: 0
+Wall time: 0 seconds
+Output:
+Success. Updated the following files:
+M C:\diplomamunka\automated-gui-testing-agent-framework\runs\word-20260930-132120\generated\MicrosoftWord.Generated.ps1
+
+
+L309 2026-09-30T11:36:49.093Z shell_command wall=12.4 outputChars=179
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $cli close-window -ProcessName WINWORD -TimeoutMs 1000 | Out-Null
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $cli state -Clear | Out-Null
+$script=(Resolve-Path '.\runs\word-20260930-132120\generated\MicrosoftWord.Generated.ps1').Path
+$csv=(Resolve-Path '.\Microsoft Word.csv').Path
+$explore=(Resolve-Path '.\runs\word-20260930-132120\logs\exploration.json').Path
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Test-GeneratedScript.ps1 -ScriptPath $script -TestCaseCsv $csv -PotatoCliPath $cli -ExplorationPath $explore
+=> Exit code: 0
+Wall time: 12.4 seconds
+Output:
+{"ok":true,"issues":[],"checkedCommands":129,"policyAssessment":"Static checks and recorded CLI actions; not an execution sandbox."}
+
+
+L314 2026-09-30T11:37:13.525Z shell_command wall=10.3 outputChars=13805
+$script=(Resolve-Path '.\runs\word-20260930-132120\generated\MicrosoftWord.Generated.ps1').Path
+$csv=(Resolve-Path '.\Microsoft Word.csv').Path
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+$explore=(Resolve-Path '.\runs\word-20260930-132120\logs\exploration.json').Path
+$run=Join-Path (Get-Location) ('runs\word-generated-exec-' + (Get-Date -Format 'yyyyMMdd-HHmmss'))
+New-Item -ItemType Directory -Path $run -Force | Out-Null
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $script -PotatoCliPath $cli -TestCaseCsv $csv -RunRoot $run -FrameworkRoot (Get-Location).Path -ExplorationPath $explore -InteractionPolicy GuiNavigation | Out-File -FilePath (Join-Path $run 'stdout.json') -Encoding utf8
+$exit=$LASTEXITCODE
+$resultPath=Join-Path $run 'results\result.json'
+if (Test-Path $resultPath) {
+  $r=Get-Content $resultPath -Raw | ConvertFrom-Json
+  [pscustomobject]@{ExitCode=$exit; Ok=$r.ok; Passed=$r.summary.passed; Failed=$r.summary.failed; Skipped=$r.summary.skipped; CleanupOk=$r.cleanupOk; RunRoot=$run; ResultPath=$resultPath} | ConvertTo-Json -Compress
+  if(-not $r.ok){ Get-Content $resultPath -Raw }
+} else { [pscustomobject]@{ExitCode=$exit; Ok=$false; RunRoot=$run; ResultPath=$resultPath; Error='No result.json'} | ConvertTo-Json -Compress }
+exit $exit
+=> Exit code: 1
+Wall time: 10.3 seconds
+Output:
+{"ExitCode":1,"Ok":false,"Passed":0,"Failed":1,"Skipped":4,"CleanupOk":true,"RunRoot":"C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\word-generated-exec-20260930-133715","ResultPath":"C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\word-generated-exec-20260930-133715\\results\\result.json"}
+{
+    "ok":  false,
+    "interactionPolicy":  {
+                              "compliant":  true,
+                              "scriptAuditPerformed":  true,
+                              "reason":  "",
+                              "mode":  "GuiNavigation",
+                              "assessment":  "Recorded CLI policy and static script checks; external activity is not sandboxed."
+                          },
+    "transport":  "InProcess",
+    "timing":  {
+                   "commandCount":  7,
+                   "wrapperMs":  4084,
+                   "backendMs":  3679,
+                   "waitMs":  315,
+                   "cleanupMs":  1139,
+                   "totalMs":  4655,
+                   "commandOverheadMs":  405,
+                   "otherMs":  571
+               },
+    "testCase":  "Microsoft Word.csv",
+    "runRoot":  "C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\word-generated-exec-20260930-133715",
+    "executionId":  "20260930_133718_4529",
+    "startedAt":  "2026-09-30T13:37:18.8039359+02:00",
+    "finishedAt":  "2026-09-30T13:37:23.4559368+02:00",
+    "steps":  [
+                  {
+                      "stepIndex":  1,
+                      "action":  "Open Word",
+                      "expectedResult":  "Word is open and ready to create a blank document.",
+                      "status":  "FAIL",
+                      "evidence":  [
+
+L320 2026-09-30T11:37:39.840Z apply_patch wall=0.0 outputChars=200
+*** Begin Patch
+*** Update File: C:\diplomamunka\automated-gui-testing-agent-framework\runs\word-20260930-132120\generated\MicrosoftWord.Generated.ps1
+@@
+ $documentText = "$titleText`r`n$paragraphText"
+ $outputRoot = Join-Path -Path $Context.RunRoot -ChildPath 'outputs'
+ $docxPath = Join-Path -Path $outputRoot -ChildPath 'WordTest.docx'
+ $pdfPath = Join-Path -Path $outputRoot -ChildPath 'WordTest.pdf'
++$script:WordProcessId = $null
+@@
+         $started = Invoke-StepCommand -Commands $Commands -Command 'start' -Arguments @('-ProcessName','winword.exe','-WaitForWindowMs','20000','-Maximize')
+         Assert-PotatoOk -Result $started -Message 'Could not start Microsoft Word.'
+         Assert-ExpectedResult -Condition ([bool]$started.data.windowFound) -Message 'Word must open a visible desktop window.'
++        $script:WordProcessId = [string]$started.data.ownedProcessId
+ 
+-        $blank = Invoke-StepCommand -Commands $Commands -Command 'wait-element' -Arguments @('-Name','Blank document','-ControlType','ListItem','-TimeoutMs','15000')
++        $blank = Invoke-StepCommand -Commands $Commands -Command 'wait-element' -Arguments @('-ProcessId',$script:WordProcessId,'-Name','Blank document','-ControlType','ListItem','-TimeoutMs','15000')
+*** End Patch
+
+=> Exit code: 0
+Wall time: 0 seconds
+Output:
+Success. Updated the following files:
+M C:\diplomamunka\automated-gui-testing-agent-framework\runs\word-20260930-132120\generated\MicrosoftWord.Generated.ps1
+
+
+L325 2026-09-30T11:37:46.927Z shell_command wall=12.0 outputChars=177
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $cli close-window -ProcessName WINWORD -TimeoutMs 1000 | Out-Null
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $cli state -Clear | Out-Null
+$script=(Resolve-Path '.\runs\word-20260930-132120\generated\MicrosoftWord.Generated.ps1').Path
+$csv=(Resolve-Path '.\Microsoft Word.csv').Path
+$explore=(Resolve-Path '.\runs\word-20260930-132120\logs\exploration.json').Path
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Test-GeneratedScript.ps1 -ScriptPath $script -TestCaseCsv $csv -PotatoCliPath $cli -ExplorationPath $explore
+=> Exit code: 0
+Wall time: 12 seconds
+Output:
+{"ok":true,"issues":[],"checkedCommands":129,"policyAssessment":"Static checks and recorded CLI actions; not an execution sandbox."}
+
+
+L330 2026-09-30T11:38:13.662Z shell_command wall=35.2 outputChars=369
+$script=(Resolve-Path '.\runs\word-20260930-132120\generated\MicrosoftWord.Generated.ps1').Path
+$csv=(Resolve-Path '.\Microsoft Word.csv').Path
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+$explore=(Resolve-Path '.\runs\word-20260930-132120\logs\exploration.json').Path
+$run=Join-Path (Get-Location) ('runs\word-generated-exec-' + (Get-Date -Format 'yyyyMMdd-HHmmss'))
+New-Item -ItemType Directory -Path $run -Force | Out-Null
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $script -PotatoCliPath $cli -TestCaseCsv $csv -RunRoot $run -FrameworkRoot (Get-Location).Path -ExplorationPath $explore -InteractionPolicy GuiNavigation | Out-File -FilePath (Join-Path $run 'stdout.json') -Encoding utf8
+$exit=$LASTEXITCODE
+$resultPath=Join-Path $run 'results\result.json'
+if (Test-Path $resultPath) {
+  $r=Get-Content $resultPath -Raw | ConvertFrom-Json
+  [pscustomobject]@{ExitCode=$exit; Ok=$r.ok; Passed=$r.summary.passed; Failed=$r.summary.failed; Skipped=$r.summary.skipped; CleanupOk=$r.cleanupOk; RunRoot=$run; ResultPath=$resultPath} | ConvertTo-Json -Compress
+  if(-not $r.ok){ Get-Content $resultPath -Raw }
+} else { [pscustomobject]@{ExitCode=$exit; Ok=$false; RunRoot=$run; ResultPath=$resultPath; Error='No result.json'} | ConvertTo-Json -Compress }
+exit $exit
+=> Exit code: 0
+Wall time: 35.2 seconds
+Output:
+{"ExitCode":0,"Ok":true,"Passed":5,"Failed":0,"Skipped":0,"CleanupOk":true,"RunRoot":"C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\word-generated-exec-20260930-133815","ResultPath":"C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\word-generated-exec-20260930-133815\\results\\result.json"}
+
+
+L334 2026-09-30T11:38:58.418Z shell_command wall=2.6 outputChars=67
+Get-Content .gitignore
+=> Exit code: 0
+Wall time: 2.6 seconds
+Output:
+runs/
+.state/
+*.log
+
+
+L335 2026-09-30T11:38:58.419Z shell_command wall=2.6 outputChars=68
+git status --short
+=> Exit code: 0
+Wall time: 2.6 seconds
+Output:
+?? "Microsoft Word.csv"
+
+
+L336 2026-09-30T11:38:58.444Z shell_command wall=3.2 outputChars=354
+$r=Get-Content '.\runs\word-generated-exec-20260930-133815\results\result.json' -Raw | ConvertFrom-Json; $r.steps | Select-Object stepIndex,action,status | ConvertTo-Json -Compress
+=> Exit code: 0
+Wall time: 3.2 seconds
+Output:
+[{"stepIndex":1,"action":"Open Word","status":"PASS"},{"stepIndex":2,"action":"Create Test Document","status":"PASS"},{"stepIndex":3,"action":"Save Test Document","status":"PASS"},{"stepIndex":4,"action":"Open Created Document","status":"PASS"},{"stepIndex":5,"action":"Print Test Document","status":"PASS"}]
+
+
+L344 2026-09-30T11:39:14.169Z shell_command wall=5.1 outputChars=216
+New-Item -ItemType Directory -Path '.\generated' -Force | Out-Null
+Copy-Item -LiteralPath '.\runs\word-20260930-132120\generated\MicrosoftWord.Generated.ps1' -Destination '.\generated\MicrosoftWord.Generated.ps1' -Force
+$script=(Resolve-Path '.\generated\MicrosoftWord.Generated.ps1').Path
+$csv=(Resolve-Path '.\Microsoft Word.csv').Path
+$cli=(Resolve-Path '..\potato-cli\potato.ps1').Path
+$explore=(Resolve-Path '.\runs\word-20260930-132120\logs\exploration.json').Path
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Test-GeneratedScript.ps1 -ScriptPath $script -TestCaseCsv $csv -PotatoCliPath $cli -ExplorationPath $explore
+git status --short
+=> Exit code: 0
+Wall time: 5.1 seconds
+Output:
+{"ok":true,"issues":[],"checkedCommands":129,"policyAssessment":"Static checks and recorded CLI actions; not an execution sandbox."}
+?? "Microsoft Word.csv"
+?? generated/
+

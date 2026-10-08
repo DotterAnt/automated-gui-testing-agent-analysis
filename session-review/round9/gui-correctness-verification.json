@@ -1,0 +1,7 @@
+{
+  "test": "potato-cli\\tests\\Gui.Smoke.Tests.ps1",
+  "timingReliable": false,
+  "output": "Pacing fixture (82 UTF-16 units): default=1347 ms; legacy=5090 ms.\nGUI smoke: paced Unicode, focus-change abort, guarded external scope without adoption, literal/focused input, false UIA focus, ownership, paths, relative click, navigation, drag/drop, modal discovery and close prompts passed.",
+  "elapsedMs": 33724,
+  "exitCode": 0
+}

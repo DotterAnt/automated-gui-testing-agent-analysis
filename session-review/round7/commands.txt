@@ -1,0 +1,225 @@
+L11 2026-09-30T13:39:56.554Z shell_command
+rg --files
+
+L12 2026-09-30T13:39:56.583Z shell_command
+Get-Content -LiteralPath 'C:\Users\testuser\Desktop\Microsoft Word.csv' -TotalCount 80
+
+L19 2026-09-30T13:40:07.742Z shell_command
+Get-Content -LiteralPath 'C:\diplomamunka\automated-gui-testing-agent-framework\README.md'
+
+L20 2026-09-30T13:40:07.742Z shell_command
+Get-Content -LiteralPath 'C:\diplomamunka\automated-gui-testing-agent-framework\AGENTS.md'
+
+L21 2026-09-30T13:40:07.743Z shell_command
+Get-Content -LiteralPath 'C:\diplomamunka\automated-gui-testing-agent-framework\docs\GENERATED_SCRIPT_CONTRACT.md'
+
+L22 2026-09-30T13:40:07.743Z shell_command
+Get-Content -LiteralPath 'C:\diplomamunka\automated-gui-testing-agent-framework\templates\GeneratedScript.Template.ps1'
+
+L23 2026-09-30T13:40:07.777Z shell_command
+Get-Content -LiteralPath 'C:\diplomamunka\automated-gui-testing-agent-framework\Microsoft Paint.csv'
+
+L33 2026-09-30T13:40:17.222Z shell_command
+Get-Content -LiteralPath 'C:\diplomamunka\automated-gui-testing-agent-framework\docs\AUTHORING.md'
+
+L34 2026-09-30T13:40:17.222Z shell_command
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\potato-cli\potato.ps1 help -Topics start,observe,click,type,wait-element,press-key,wait-file,read,read-pdf
+
+L35 2026-09-30T13:40:17.223Z shell_command
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\automated-gui-testing-agent-framework\Get-RuntimeHelp.ps1 -Names Invoke-StepCommand,Assert-TextContains,Assert-FileWait,Assert-ExpectedResult,Invoke-EvidenceScreenshot,Register-CreatedExternalPath
+
+L43 2026-09-30T13:40:23.965Z shell_command
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Begin -RunRoot .\runs\word-walkthrough-20260930 -TestCaseCsv 'C:\Users\testuser\Desktop\Microsoft Word.csv'
+
+Exit code: 0
+Wall time: 1.2 seconds
+Output:
+{"ok":true,"next":"Set $OutputEncoding to UTF8Encoding(false), then pipe a JSON request array to powershell.exe -NoProfile -ExecutionPolicy Bypass -File Invoke-Exploration.ps1 -Action Batch -RunRoot \u003cthis-root\u003e -RequestsStdin. This combines request creation and execution in one tool call. RequestsPath JSON files also work. Use RecordSteps for reviewed receipts, then close the owned app and Complete.","steps":[{"Action":"Open Word","Data":"Launch the installed desktop version of Microsoft Word.","Expected Result":"Word is open and ready to create a blank document."},{"Action":"Create Test Document","Data":"Create a blank document. Enter the title \"Word GUI Test\" and the paragraph \"This document tests creating, saving, reopening, and printing in Word.\"","Expected Result":"The document displays the exact title and paragraph."},{"Action":"Save Test Document","Data":"Save as WordTest.docx in a new output folder for this run, using Word Document (.docx) format.","Expected Result":"WordTest.docx exists, is non-empty, and Word shows the saved filename."},{"Action":"Open Created Document","Data":"Close the document. Use Word to open WordTest.docx from this run\u0027s output folder.","Expected Result":"The saved document reopens in Word with the exact title and paragraph from step 2."},{"Action":"Print Test Document","Data":"Print the reopened document using Microsoft Print to PDF. Save as WordTest.pdf in this run\u0027s output folder.","Expected Result":"WordTest.pdf exists, opens successfully, and contains the complete title and paragraph."}],"explorationPath":"C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\word-walkthrough-20260930\\logs\\exploration.json","runRoot":"C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\word-walkthrough-20260930"}
+
+
+L47 2026-09-30T13:40:31.744Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":1,"command":"start","arguments":["-ProcessName","winword.exe","-Maximize","-WaitForWindowMs","20000","-RequireNewProcess"]},
+  {"stepIndex":1,"command":"observe","arguments":["-Depth","4","-MaxElements","160"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\word-walkthrough-20260930 -RequestsStdin
+
+L53 2026-09-30T13:40:52.095Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":1,"command":"click","arguments":["-Name","Blank document","-ControlType","ListItem"]},
+  {"stepIndex":1,"command":"wait-element","arguments":["-Name","Document1 - Word","-ControlType","Window","-TimeoutMs","15000"]},
+  {"stepIndex":2,"command":"observe","arguments":["-Depth","5","-MaxElements","200"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\word-walkthrough-20260930 -RequestsStdin
+
+L57 2026-09-30T13:41:09.567Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":2,"command":"type","arguments":["-Name","Document1","-ControlType","Document","-Text","Word GUI Test\r\nThis document tests creating, saving, reopening, and printing in Word.","-Verify","-VerifyMode","NormalizedContains","-VerifyTimeoutMs","5000"]},
+  {"stepIndex":2,"command":"read","arguments":["-Name","Document1","-ControlType","Document"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\word-walkthrough-20260930 -RequestsStdin
+
+{"ok": true, "command": "type", "data": {"typed": true, "textLength": 85, "verified": true, "verificationPerformed": true, "verification": {"verified": true, "attempts": 4, "elapsedMs": 459, "mode": "NormalizedContains", "observedLength": 84, "readError": null}, "inputMethod": "UnicodeKeyboard", "focusMethod": "UIA", "targetMode": "Writable", "target": {"name": "Document1", "automationId": "", "className": "_WwG", "localizedControlType": "document", "processId": 16208, "nativeWindowHandle": 2294204, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": true, "isKeyboardFocusable": true, "controlType": "Document", "processName": "WINWORD", "boundingRectangle": {"x": 0, "y": 222, "width": 1899, "height": 591}, "boundsStatus": "valid", "supportedPatterns": ["Scroll", "Text"], "isModal": false, "propertyErrors": []}, "clearMethod": null}, "error": null, "outcome": "completed", "durationMs": 1819, "explorationCommandId": "8e5779bb0f644312baf9b08c9cea474e", "verification": {"eligible": true}}
+
+{"ok": true, "command": "read", "data": {"text": "Word GUI Test\rThis document tests creating, saving, reopening, and printing in Word.", "textSource": "TextPattern", "element": {"name": "Document1", "automationId": "", "className": "_WwG", "localizedControlType": "document", "processId": 16208, "nativeWindowHandle": 2294204, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": true, "isKeyboardFocusable": true, "controlType": "Document", "processName": "WINWORD", "boundingRectangle": {"x": 0, "y": 222, "width": 1899, "height": 591}, "boundsStatus": "valid", "supportedPatterns": ["Scroll", "Text"], "isModal": false, "propertyErrors": []}}, "error": null, "outcome": "completed", "durationMs": 140, "explorationCommandId": "9f503a5e3da64bedbe25312d009bd225", "verification": {"eligible": true}}
+
+L63 2026-09-30T13:41:20.901Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":3,"command":"click","arguments":["-Name","File","-AutomationId","FileTabButton"]},
+  {"stepIndex":3,"command":"observe","arguments":["-Depth","5","-MaxElements","200"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\word-walkthrough-20260930 -RequestsStdin
+
+{"ok": false, "command": "click", "data": null, "error": {"message": "No visible enabled element matches the selector.", "type": "System.Management.Automation.RuntimeException", "category": "OperationStopped"}, "outcome": "unknown", "durationMs": 2008, "explorationCommandId": "1701b138226f450ab03336c7176547f7", "verification": {"eligible": false, "note": "Verification needs a successful command."}}
+
+L69 2026-09-30T13:41:31.938Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":3,"command":"select","arguments":["-Name","File","-TimeoutMs","0","-MaxResults","20"]},
+  {"stepIndex":3,"command":"observe","arguments":["-Depth","8","-MaxElements","260"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\word-walkthrough-20260930 -RequestsStdin
+
+L73 2026-09-30T13:41:42.749Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":3,"command":"click","arguments":["-Name","File Tab","-AutomationId","FileTabButton"]},
+  {"stepIndex":3,"command":"observe","arguments":["-Depth","5","-MaxElements","220"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\word-walkthrough-20260930 -RequestsStdin
+
+L77 2026-09-30T13:41:52.888Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":3,"command":"click","arguments":["-Name","Save As","-ControlType","ListItem"]},
+  {"stepIndex":3,"command":"observe","arguments":["-Depth","7","-MaxElements","260"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\word-walkthrough-20260930 -RequestsStdin
+
+L83 2026-09-30T13:42:04.516Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":3,"command":"select","arguments":["-SelectorJson","{\"Name\":[\"Browse\",\"This PC\",\"More options...\",\"OneDrive\"]}","-TimeoutMs","0","-MaxResults","20"]},
+  {"stepIndex":3,"command":"observe","arguments":["-Name","Saving Features","-Depth","10","-MaxElements","220"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\word-walkthrough-20260930 -RequestsStdin
+
+L89 2026-09-30T13:42:15.257Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":3,"command":"click","arguments":["-Name","Browse","-ControlType","Button"]},
+  {"stepIndex":3,"command":"observe","arguments":["-Scope","FocusedWindow","-Depth","5","-MaxElements","200"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\word-walkthrough-20260930 -RequestsStdin
+
+L93 2026-09-30T13:42:42.361Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":3,"command":"type","arguments":["-TargetMode","Focused","-ExpectedFocusJson","{\"AutomationId\":\"1001\"}","-FocusTimeoutMs","2000","-Text","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\word-walkthrough-20260930\\evidence\\WordTest.docx","-FallbackReason","The native Save As file-name edit is focused and exposes no writable pattern in this dialog.","-FallbackEvidence","FocusedWindow observe 4c7dd900a4604a71bbc0c1228c2cf464 showed AutomationId 1001 focused in Save As."]},
+  {"stepIndex":3,"command":"click","arguments":["-Name","Save","-AutomationId","1","-Scope","FocusedWindow"]},
+  {"stepIndex":3,"command":"wait-file","arguments":["-Path","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\word-walkthrough-20260930\\evidence\\WordTest.docx","-TimeoutMs","20000","-MinBytes","1","-StableMs","500"]},
+  {"stepIndex":3,"command":"wait-element","arguments":["-Name","WordTest.docx - Word","-ControlType","Window","-TimeoutMs","15000"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\word-walkthrough-20260930 -RequestsStdin
+
+{"ok": true, "command": "type", "data": {"typed": true, "textLength": 107, "verified": null, "verificationPerformed": false, "verification": null, "inputMethod": "UnicodeKeyboard", "focusMethod": "ExistingFocus", "targetMode": "Focused", "target": {"name": "Word GUI Test", "automationId": "1001", "className": "Edit", "localizedControlType": "pane", "processId": 16208, "nativeWindowHandle": 1246258, "isEnabled": true, "isOffscreen": false, "hasKeyboardFocus": true, "isKeyboardFocusable": false, "controlType": "Pane", "processName": "WINWORD", "boundingRectangle": {"x": 169, "y": 405, "width": 752, "height": 22}, "boundsStatus": "valid", "supportedPatterns": [], "isModal": false, "propertyErrors": []}, "clearMethod": null}, "error": null, "outcome": "completed", "durationMs": 781, "explorationCommandId": "f515e710a9c9424aa22957f53abc10d6", "verification": {"eligible": false, "note": "Typing is evidence only with successful -Verify readback; input dispatch alone is not verification."}}
+
+{"ok": true, "command": "wait-file", "data": {"path": "C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\word-walkthrough-20260930\\evidence\\WordTest.docx", "exists": false, "conditionMet": false, "length": null, "minBytes": 1, "stableMs": 500, "timedOut": true}, "error": null, "outcome": "completed", "durationMs": 20049, "explorationCommandId": "7c44da7acc4a46588bed5f2acbd34131", "verification": {"eligible": false, "note": "The recorded observation did not meet its postcondition."}}
+
+L99 2026-09-30T13:43:14.998Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":3,"command":"observe","arguments":["-Scope","FocusedWindow","-Depth","5","-MaxElements","220"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\word-walkthrough-20260930 -RequestsStdin
+
+L105 2026-09-30T13:43:26.640Z shell_command
+New-Item -ItemType Directory -Force -LiteralPath 'C:\diplomamunka\automated-gui-testing-agent-framework\runs\word-walkthrough-20260930\evidence' | Out-Null; Test-Path -LiteralPath 'C:\diplomamunka\automated-gui-testing-agent-framework\runs\word-walkthrough-20260930\evidence'
+
+Exit code: 0
+Wall time: 0.5 seconds
+Output:
+False
+New-Item : A parameter cannot be found that matches parameter name 'LiteralPath'.
+At line:2 char:37
++ New-Item -ItemType Directory -Force -LiteralPath 'C:\diplomamunka\aut ...
++                                     ~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [New-Item], ParameterBindingException
+    + FullyQualifiedErrorId : NamedParameterNotFound,Microsoft.PowerShell.Commands.NewItemCommand
+ 
+
+
+L111 2026-09-30T13:43:33.097Z shell_command
+New-Item -ItemType Directory -Force -Path 'C:\diplomamunka\automated-gui-testing-agent-framework\runs\word-walkthrough-20260930\evidence' | Out-Null; Test-Path -Path 'C:\diplomamunka\automated-gui-testing-agent-framework\runs\word-walkthrough-20260930\evidence'
+
+Exit code: 0
+Wall time: 0.4 seconds
+Output:
+True
+
+
+L117 2026-09-30T13:43:44.388Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":3,"command":"click","arguments":["-Name","OK","-AutomationId","CommandButton_1","-Scope","FocusedWindow"]},
+  {"stepIndex":3,"command":"observe","arguments":["-Scope","FocusedWindow","-Depth","4","-MaxElements","120"]},
+  {"stepIndex":3,"command":"click","arguments":["-Name","Save","-AutomationId","1","-Scope","FocusedWindow"]},
+  {"stepIndex":3,"command":"wait-file","arguments":["-Path","C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\word-walkthrough-20260930\\evidence\\WordTest.docx","-TimeoutMs","20000","-MinBytes","1","-StableMs","500"]},
+  {"stepIndex":3,"command":"wait-element","arguments":["-Name","WordTest.docx - Word","-ControlType","Window","-TimeoutMs","15000"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\word-walkthrough-20260930 -RequestsStdin
+
+{"ok": true, "command": "wait-file", "data": {"path": "C:\\diplomamunka\\automated-gui-testing-agent-framework\\runs\\word-walkthrough-20260930\\evidence\\WordTest.docx", "exists": true, "conditionMet": true, "length": 13379, "minBytes": 1, "stableMs": 500, "timedOut": false}, "error": null, "outcome": "completed", "durationMs": 1524, "explorationCommandId": "8784000833524a2aaa3bfd8b19f86946", "verification": {"eligible": true}}
+
+L123 2026-09-30T13:44:12.740Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":3,"command":"observe","arguments":["-Depth","3","-MaxElements","80"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\word-walkthrough-20260930 -RequestsStdin
+
+L129 2026-09-30T13:44:26.925Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":4,"command":"click","arguments":["-Name","File Tab","-AutomationId","FileTabButton"]},
+  {"stepIndex":4,"command":"click","arguments":["-Name","Close","-ControlType","ListItem"]},
+  {"stepIndex":4,"command":"observe","arguments":["-Depth","5","-MaxElements","180"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\word-walkthrough-20260930 -RequestsStdin
+
+L133 2026-09-30T13:44:38.050Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":4,"command":"click","arguments":["-Name","File Tab","-AutomationId","FileTabButton"]},
+  {"stepIndex":4,"command":"click","arguments":["-Name","Open","-ControlType","ListItem"]},
+  {"stepIndex":4,"command":"observe","arguments":["-Depth","7","-MaxElements","260"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\word-walkthrough-20260930 -RequestsStdin
+
+L139 2026-09-30T13:44:52.567Z shell_command
+$OutputEncoding = New-Object Text.UTF8Encoding($false)
+@'
+[
+  {"stepIndex":4,"command":"select","arguments":["-SelectorJson","{\"Name\":[\"Browse\",\"This PC\",\"Recent\"]}","-TimeoutMs","0","-MaxResults","20"]},
+  {"stepIndex":4,"command":"observe","arguments":["-Name","Open","-AutomationId","GroupOpenPlaces","-Depth","10","-MaxElements","220"]}
+]
+'@ | powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Invoke-Exploration.ps1 -Action Batch -RunRoot .\runs\word-walkthrough-20260930 -RequestsStdin
