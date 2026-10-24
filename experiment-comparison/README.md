@@ -2,8 +2,14 @@
 
 ## Current native / MCP / AI-only / model report (updated 8 October 2026)
 
+The commands below assume an external archive at `..\experiment-logs`;
+replace that example path with the location of your copied session logs.
+The thesis supplements record the [initial prompts and wording exceptions](initial-prompts-2026-10-24.txt),
+their [session-level provenance](initial-prompts-2026-10-24.json), and the
+[main GPT-5.5 cost assumptions and verified averages](thesis-cost-summary-2026-10-24.json).
+
 ```powershell
-python experiment-comparison/analyze_current.py --source "C:\Users\DottedAnt\Downloads\results" --output analysis-output/batch-2026-10-07
+python experiment-comparison/analyze_current.py --source "..\experiment-logs" --output analysis-output/batch-2026-10-07
 python -m unittest discover -s experiment-comparison -p "test_*.py"
 ```
 
@@ -90,7 +96,7 @@ none are executed. Older reports below are preserved as historical outputs.
 ## Refreshed native / MCP batch (4 October 2026)
 
 ```powershell
-python experiment-comparison/analyze_batch.py --source "C:\Users\DottedAnt\Downloads\results" --output analysis-output/batch-2026-10-04
+python experiment-comparison/analyze_batch.py --source "..\experiment-logs" --output analysis-output/batch-2026-10-04
 python -m unittest discover -s experiment-comparison -p "test_*.py"
 ```
 
@@ -114,7 +120,7 @@ execution ID. The earlier report below is preserved separately.
 Build the offline report from the supplied October result bundles:
 
 ```powershell
-python experiment-comparison/build_report.py --source "C:\Users\DottedAnt\Downloads\results" --output analysis-output
+python experiment-comparison/build_report.py --source "..\experiment-logs" --output analysis-output
 python -m unittest discover -s experiment-comparison -p "test_*.py"
 ```
 

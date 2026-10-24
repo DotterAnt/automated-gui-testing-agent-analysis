@@ -2,24 +2,30 @@
 
 ## Current Experiment Report
 
-The 7 October 2026 analysis covers the current native, MCP, AI-only and new
-Codex model experiments in `C:\Users\DottedAnt\Downloads\results`.
+The 7 October 2026 report, updated on 8 October 2026, covers the current
+native, MCP, AI-only and new Codex model experiments in an external archive
+of session logs.
 Open `analysis-output/batch-2026-10-07/report.html`, or the PDF at
 `output/pdf/experiment-analysis-2026-10-07.pdf`. See
 [experiment-comparison/README.md](experiment-comparison/README.md) for the
 reproducible analysis command, exports and validation checks. Old and CLI
 results are excluded from the current report.
 
+The thesis supplements preserve the [initial experimental prompts](experiment-comparison/initial-prompts-2026-10-24.txt),
+[their session-level provenance](experiment-comparison/initial-prompts-2026-10-24.json),
+and the [GPT-5.5 token-cost calculation](experiment-comparison/thesis-cost-summary-2026-10-24.json).
+Use your own archive location in place of the example `..\experiment-logs` path.
+
 ## Historical Native / CLI + Framework Experiment Report
 
-For the copied experiment bundles in `C:\Users\DottedAnt\Downloads\results`, see [experiment-comparison/README.md](experiment-comparison/README.md). The offline comparison opens at `analysis-output/experiment_comparison.html` and includes per-application graphs, token and iteration metrics, observed progress, sensitivity checks, and source evidence. Its input discovery includes only `native` and `cli`; `old` is excluded.
+For the copied experiment bundles in `..\experiment-logs`, see [experiment-comparison/README.md](experiment-comparison/README.md). The offline comparison opens at `analysis-output/experiment_comparison.html` and includes per-application graphs, token and iteration metrics, observed progress, sensitivity checks, and source evidence. Its input discovery includes only `native` and `cli`; `old` is excluded.
 
 The analysis layer turns framework run folders into an interactive, standalone HTML dashboard.
 
 ## Build A Dashboard
 
 ```powershell
-cd C:\diplomamunka\automated-gui-testing-agent-analysis
+cd .\automated-gui-testing-agent-analysis
 .\Invoke-BuildAnalysisDashboard.ps1 -Open
 ```
 
@@ -28,10 +34,10 @@ By default, the script reads runs from `..\automated-gui-testing-agent-framework
 To compare copied session bundles such as `fullrun2`, `fullrun3`, and `fullrun4`, pass each folder as a run root:
 
 ```powershell
-.\Invoke-BuildAnalysisDashboard.ps1 -RunsRoot C:\diplomamunka\fullrun2,C:\diplomamunka\fullrun3,C:\diplomamunka\fullrun4 -Open
+.\Invoke-BuildAnalysisDashboard.ps1 -RunsRoot ..\experiment-logs\fullrun2,..\experiment-logs\fullrun3,..\experiment-logs\fullrun4 -Open
 ```
 
-The dashboard discovers direct run folders and nested `runs\<runId>` folders inside each supplied root. Pointing `-RunsRoot` at `C:\diplomamunka` is still useful for broad discovery, but it may include older or mock runs.
+The dashboard discovers direct run folders and nested `runs\<runId>` folders inside each supplied root. Pointing `-RunsRoot` at `..` is still useful for broad discovery, but it may include older or mock runs.
 
 ## Captured Metrics
 

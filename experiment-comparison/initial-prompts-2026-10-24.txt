@@ -1,0 +1,34 @@
+INITIAL EXPERIMENTAL PROMPTS
+Dataset: 7 October 2026 report, updated 8 October 2026
+Extraction verified against archived session records on 24 October 2026.
+
+Included tasks: 110 (native 51, mcp 50, aionly 9).
+Template grouping normalizes only whitespace and application names.
+The [application] placeholder stands for the target application. Original request text and session-level provenance are in initial-prompts-2026-10-24.json.
+
+P1 | aionly | 9 sessions
+using the tool described in the project and the provided csv testcase, create an automated test script for [application]. The task is confirmed to be possible. Do not stop until all 5 steps are reported Passed by the automated script through real GUI actions.
+Session IDs: R002, R003, R004, R005, R006, R007, R008, R009, R010
+
+P2 | mcp | 49 sessions
+using the framework described in automated-gui-testing-agent-framework, the agta mcp and the provided csv testcase, create an automated test script for [application]. The task is confirmed to be possible. Do not stop until all 5 steps are reported Passed by the automated script through real GUI actions.
+Session IDs: R011, R012, R013, R014, R015, R016, R017, R018, R019, R020, R021, R022, R023, R024, R025, R026, R027, R028, R029, R030, R031, R032, R033, R034, R035, R036, R037, R038, R039, R040, R041, R042, R043, R045, R046, R047, R048, R049, R086, R087, R088, R093, R096, R097, R098, R105, R107, R108, R109
+
+P3 | mcp | 1 sessions
+using the framework described in automated-gui-testing-agent-framework, mcp and the provided csv testcase, create an automated test script for [application].
+Session IDs: R044
+
+P4 | native | 46 sessions
+Create a repeatable PowerShell script that performs and verifies every step in the attached test case through the application’s GUI. Interact as a user would: use visible buttons, menus, and text fields instead of keyboard shortcuts or the clipboard. Do not use application object models or create the expected outputs directly. Use only built-in PowerShell, .NET, and Windows APIs; do not use or install other dependencies. Save results and evidence, clean up changes made by the test, and report the script path and run results. The task is confirmed to be possible. Do not stop until all 5 steps are reported Passed by the automated script.
+Session IDs: R050, R051, R052, R053, R054, R055, R056, R057, R058, R059, R060, R061, R062, R063, R064, R065, R066, R067, R069, R070, R071, R072, R073, R074, R075, R076, R077, R078, R079, R085, R089, R090, R091, R092, R094, R095, R099, R100, R101, R102, R103, R104, R106, R110, R111, R112
+
+P5 | native | 5 sessions
+Create a repeatable PowerShell script that performs and verifies every step in the attached test case through the application’s GUI. Interact as a user would: use visible buttons, menus, and text fields instead of keyboard shortcuts or the clipboard. Do not use application object models or create the expected outputs directly. Use only built-in PowerShell, .NET, and Windows APIs; do not use or install other dependencies. Save results and evidence, clean up changes made by the test, and report the script path and run results.
+Session IDs: R080, R081, R082, R083, R084
+
+EXCEPTIONS AND INTERPRETATION
+The native prompt explicitly constrained implementation technologies, GUI interaction, dependencies, direct output creation, evidence and cleanup.
+The mcp and aionly prompts referred to the framework or project toolset and supplied CSV.
+The final statement asserting that the task is possible and requesting all five Passed results was present in 104 requests. It was absent in five native Word sessions (R080-R084) and one mcp Word session (R044).
+The shared objective does not establish verbatim prompt equality or equality of instruction context. Repository guidance and environment instructions are additional context.
+The repository SESSION_AGENT_PROMPT.md is a workflow instruction/template; its existence alone does not establish that it was supplied verbatim to every experiment.
