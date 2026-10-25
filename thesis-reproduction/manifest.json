@@ -1,7 +1,9 @@
 {
   "revision": "2026-10-25",
   "data_scope": "processed measurements only",
-  "raw_logs_public": false,
+  "raw_logs_public": true,
+  "raw_logs_included": false,
+  "raw_logs_archive_url": "https://github.com/DotterAnt/automated-gui-testing-agent-analysis/releases/download/tdk-2026-10-25/agata-session-logs.zip",
   "original_company_testcases_public": false,
   "license": "MIT",
   "files": {
