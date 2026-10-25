@@ -27,7 +27,7 @@ The raw session logs are publicly available as `agata-session-logs.zip`, attache
 
 The original company testcase collection is not distributed separately because it contains internal and environment-specific material. Experimental CSV variants can be recovered from the public logs where their contents were recorded; a complete standalone CSV set is not provided. This package supplies processed numeric data and a newly generalized `examples/Word.csv` illustration of the five-step structure instead. The example does not assert that this exact wording was used in every historical run. Original testcase variants remain distinguishable by their recorded hashes.
 
-Initial prompt variants are documented in `../experiment-comparison/initial-prompts-2026-10-24.txt`; analysis and extraction are described in `../experiment-comparison/README.md`. The original `tdk-2026-10-24` tag is preserved, and `tdk-2026-10-25-final` includes this supplement. Neither tag proves the precise historical code revision of every experiment.
+Initial prompt variants are documented in `../experiment-comparison/initial-prompts-2026-10-24.txt`; analysis and extraction are described in `../experiment-comparison/README.md`. The `tdk-2026-10-25` tag identifies the published thesis snapshot and reproduction supplement. This tag does not prove the precise historical code revision of every experiment.
 
 ## License
 

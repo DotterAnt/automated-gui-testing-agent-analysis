@@ -125,10 +125,12 @@ For Codex/Copilot/Hermes-style session agents, keep raw logs under the run folde
 
 The author-developed session-log analysis and public processed data supporting the AGATA thesis.
 
-The `tdk-2026-10-24` tag preserves the first submission snapshot;
-`tdk-2026-10-25-final` records the supplemented documentation and MIT licensing.
-See [LICENSE](LICENSE). The original experiment-time code state cannot always be reconstructed from these later snapshots.
+The `tdk-2026-10-25` tag identifies the published thesis source and documentation snapshot with MIT licensing.
+See [LICENSE](LICENSE). The original experiment-time code state cannot always be reconstructed from this snapshot.
 
 The [thesis reproduction package](thesis-reproduction/README.md) contains
 processed exports, numeric checks, plotting code and a generalized example.
-Raw session logs and original company testcases are not published.
+Raw session logs are publicly available as `agata-session-logs.zip` in the
+[tdk-2026-10-25 release](https://github.com/DotterAnt/automated-gui-testing-agent-analysis/releases/tag/tdk-2026-10-25).
+The original company testcase collection is not distributed separately; see the
+reproduction package for the access details and generalized example.
