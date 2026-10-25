@@ -102,7 +102,7 @@ def build():
               'known_route_bypasses': 5, 'equal_application_means': means,
               'phase_heuristic_estimates': phase_stats, 'error_summary': error_stats,
               'numeric_reference_tables_match': True,
-              'raw_log_independence': 'These checks recompute published summaries, not the extraction or audit of private source logs.'}
+              'raw_log_independence': 'These checks recompute published summaries, not the extraction or audit of source logs.'}
     (ROOT/'output/verification.json').write_text(json.dumps(report, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
     print('Verified five numeric tables, 110 sessions, 353 errors and five known route audits.')
 

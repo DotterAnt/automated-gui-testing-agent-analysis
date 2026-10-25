@@ -1,4 +1,4 @@
-"""Rebuild published thesis measurements without private logs or GUI execution."""
+"""Rebuild published thesis measurements without raw logs or GUI execution."""
 from pathlib import Path
 import subprocess
 import hashlib
