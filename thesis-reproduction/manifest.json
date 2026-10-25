@@ -5,18 +5,19 @@
   "original_company_testcases_public": false,
   "license": "MIT",
   "files": {
-    "application_summary.csv": "57685c6e3bd75907068610fa1515054219688ff1b0b3d9da6634bdd4e0d42b16",
-    "command_errors.csv": "7ee6cbced3cf98f703df1d3ddab3f46eddf5d17c3b73f621f7401f8431329c26",
-    "comparisons.csv": "e47c4c8c4b001700099bf6a7d3a809cf61f09cf6da808087309702e3c0e121e7",
-    "cost_sessions.csv": "aa5891f60f1a5018d569e268fea4eb3ca0029fb274410f4a85f071d84d5fd480",
-    "exploration_completion.csv": "46729fae89d7c48dfadfed800509e7e13dd15f2984252ad185528e3700686683",
-    "metrics.json": "5b9e0f8793d03137428606838fee58078d4611328800f51a4f94b34c62d52143",
-    "phase_sessions.csv": "2bdac1cfd560ee3e3a741ecc77919488bc3cde16811386cf02f231e97fcf40b8",
-    "pooled_model_comparison.csv": "7e6d1e8cdd9bd3485b6db8378e19b77c217599a84bca84c7748fa168cc189821",
-    "progress_curves.csv": "7799f27f864a4fd83f0e357fbce0b54288bc6847e47b76c44d629b3f7159b2c0",
-    "route_audits.csv": "940884511cd013686880767d9801340c589b9405b9dd97efeaff227f899e311d",
-    "schema.json": "b94d0872f1d9e6f2e2f20c240ad8cc10690a5db59f10dcf56964d4600da813d2",
-    "sessions.csv": "7eda6743a693630b1ac8d20b58a048e06a1b7f57556b339069e9691a62f484a9",
-    "summary.csv": "e47af1e55f04298a1c35470cbda2ba1a54629918fc73f01f5732f91e7a581f9c"
-  }
+    "application_summary.csv": "a85a0d3894071df990bfbe4f7693c1b2a03ae2cece04cab3b67ad079dacee3cc",
+    "command_errors.csv": "5c8ef6e662368163a33da23bb1375ab0f75bbd8916898f51b22a9fb864602a00",
+    "comparisons.csv": "30a5e75267f3c5e300f26f41aaaeb1715620c0f9d3d61d844409ab5b1087cc55",
+    "cost_sessions.csv": "b67139524a84a0e6ff419803c1f63743ba19f5f99c7d8bcdb35f647c156c222f",
+    "exploration_completion.csv": "5d5070354884a11c6bb0a9b2b02b7d08e20f64c2718c6274ad0a1c896e63364e",
+    "metrics.json": "354b51d17d72464cf83b0bd7a8b69678db6626a3b84c7264aa9de1d22c928f46",
+    "phase_sessions.csv": "411035677abffe9b19d3c57448fad8414d82d5768f0739a13ef468d34c7cfd81",
+    "pooled_model_comparison.csv": "0167778a423ccb0568a63aa5c57014e7fadea8340c0aca54ecd4e09b37aec354",
+    "progress_curves.csv": "c092b80e4cad04ad2d6b52dee249bca58d4700f87972a6aad49e31e53adcf0a4",
+    "route_audits.csv": "56eda2cf23cea41a1fcd854e21fafe7977a1bd4cd448e5f427f064e67f4f2bf8",
+    "schema.json": "2bd78e5df381fd178a2032bef1cf19810868dc10e5de0bd35b09ccf6f934149e",
+    "sessions.csv": "01bbe1239a08e3fc0a7870d26def24d487c5f0d7a4c83a3efa64799b8f2ab937",
+    "summary.csv": "bf64ce14e9f06148df64492e981fbff31febd2ac005f51c326190eb4cf60932f"
+  },
+  "line_endings": "LF; enforced by .gitattributes"
 }

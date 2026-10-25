@@ -25,8 +25,10 @@ The reproduction checks the 35/39 main-group counts, all progress-curve means ag
 
 The raw session logs and original company-derived testcases are not public because they contain internal or execution-environment-specific material. Numerical summaries can be recomputed from this package; independently repeating raw-event extraction or validating GUI-route audit findings requires the original private records. The general analysis programs in `experiment-comparison` accept an archive supplied by the researcher. The published `examples/Word.csv` is a newly generalized illustration of the five-step structure, not an assertion that this exact wording was used in every historical run. Original testcase variants remain distinguishable by their recorded hashes.
 
-Initial prompt variants are documented in `../experiment-comparison/initial-prompts-2026-10-24.txt`; analysis and extraction are described in `../experiment-comparison/README.md`. The original `tdk-2026-10-24` tag is preserved, and `tdk-2026-10-25` includes this supplement. Neither tag proves the precise historical code revision of every experiment.
+Initial prompt variants are documented in `../experiment-comparison/initial-prompts-2026-10-24.txt`; analysis and extraction are described in `../experiment-comparison/README.md`. The original `tdk-2026-10-24` tag is preserved, and `tdk-2026-10-25-final` includes this supplement. Neither tag proves the precise historical code revision of every experiment.
 
 ## License
 
 MIT, as stated in the repository's root `LICENSE`. The author confirmed applicability to the adapted PoTATo fragments. No third-party font files, raw logs or original company testcases are included.
+
+The final snapshot pins LF line endings with `.gitattributes`; the entrypoint verifies the public data manifest before rebuilding results.

@@ -126,7 +126,7 @@ For Codex/Copilot/Hermes-style session agents, keep raw logs under the run folde
 The author-developed session-log analysis and public processed data supporting the AGATA thesis.
 
 The `tdk-2026-10-24` tag preserves the first submission snapshot;
-`tdk-2026-10-25` records the supplemented documentation and MIT licensing.
+`tdk-2026-10-25-final` records the supplemented documentation and MIT licensing.
 See [LICENSE](LICENSE). The original experiment-time code state cannot always be reconstructed from these later snapshots.
 
 The [thesis reproduction package](thesis-reproduction/README.md) contains
