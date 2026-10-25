@@ -1,0 +1,6 @@
+Action,Data,Expected Result
+Open Word and create a blank document.,,A blank document is ready for input.
+Enter the sample title and paragraph in the document.,Title: AGATA example; Paragraph: This is a generalized demonstration.,The document displays the specified sample text.
+Save the document through the visible Save As controls.,File: agata-example.docx,A new document file exists at the chosen output location.
+Close the document and reopen it through the application GUI.,File: agata-example.docx,The saved document opens and retains the sample text.
+Print through the GUI using Microsoft Print to PDF.,File: agata-example.pdf,A newly completed PDF exists at the chosen output location. PDF content inspection is not required by this example.

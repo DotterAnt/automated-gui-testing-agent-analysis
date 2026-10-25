@@ -1,5 +1,10 @@
 # Experiment comparison reports
 
+The [public thesis supplement](../thesis-reproduction/README.md) reproduces
+processed numeric summaries and figures without the private raw archive.
+It records the later phase/error audits and the fifth known route bypass.
+
+
 ## Current native / MCP / AI-only / model report (updated 8 October 2026)
 
 The commands below assume an external archive at `..\experiment-logs`;

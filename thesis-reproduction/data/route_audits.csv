@@ -1,0 +1,6 @@
+run_id,reason
+R005,"The supplied script saves the presentation and exports the PDF with Office COM, and includes a COM text repair. Runtime five-pass reporting therefore does not establish the requested GUI-only Save/Print routes."
+R006,"The supplied script uses COM SaveAs and PrintOut after opening the print UI. It reports passing steps, but performs the save/print operation through the application object model."
+R008,The supplied script reopens the document with Documents.Open and exports the PDF with ExportAsFixedFormat. These operations bypass the testcase GUI routes.
+R062,"A captured script/source read contains file creation recovery, including ""Writing a simple PDF"" when the GUI print path failed. Its reported five-pass result is retained as a measured output; it is not sufficient evidence of a GUI-only print success."
+R036,"Additional targeted thesis audit: the AGATA Photos script rotated the image and created the PDF programmatically, outside the required GUI route. This supplements the four cases in the 8 October export."

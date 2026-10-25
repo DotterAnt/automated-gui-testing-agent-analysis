@@ -1,0 +1,354 @@
+session,application,model,phase,command,error_type
+R011,Access,gpt-5.5,exploration,windows,WorkerError
+R011,Access,gpt-5.5,exploration,wait-element,WaitBlockedByDialog
+R011,Access,gpt-5.5,exploration,click,System.Management.Automation.MethodInvocationException
+R011,Access,gpt-5.5,exploration,type,InteractionPolicyViolation
+R011,Access,gpt-5.5,exploration,type,System.Management.Automation.RuntimeException
+R011,Access,gpt-5.5,exploration,wait-element,SearchIncomplete
+R011,Access,gpt-5.5,exploration,click,TargetNotFound
+R011,Access,gpt-5.5,exploration,wait-element,WaitBlockedByDialog
+R011,Access,gpt-5.5,replay,click,SearchIncomplete
+R011,Access,gpt-5.5,replay,focus,AmbiguousTarget
+R011,Access,gpt-5.5,replay,click,SearchIncomplete
+R011,Access,gpt-5.5,replay,select,SearchIncomplete
+R011,Access,gpt-5.5,replay,select,SearchIncomplete
+R011,Access,gpt-5.5,replay,type,TargetNotFound
+R011,Access,gpt-5.5,replay,type,System.Management.Automation.RuntimeException
+R011,Access,gpt-5.5,replay,wait-element,SearchIncomplete
+R011,Access,gpt-5.5,replay,type,TextSelectionUnavailable
+R012,Access,gpt-5.5,exploration,wait-element,WaitBlockedByDialog
+R012,Access,gpt-5.5,exploration,observe,InteractionPolicyViolation
+R012,Access,gpt-5.5,exploration,observe,InvalidWindowGuard
+R012,Access,gpt-5.5,exploration,type,PathValidationFailed
+R012,Access,gpt-5.5,exploration,click,System.Management.Automation.MethodInvocationException
+R012,Access,gpt-5.5,exploration,type,System.Management.Automation.RuntimeException
+R012,Access,gpt-5.5,exploration,type,TextSelectionUnavailable
+R012,Access,gpt-5.5,exploration,click,TargetNotFound
+R012,Access,gpt-5.5,exploration,wait-element,WaitBlockedByDialog
+R012,Access,gpt-5.5,exploration,click,TargetNotFound
+R012,Access,gpt-5.5,replay,click,TargetNotFound
+R013,Access,gpt-5.5,exploration,wait-element,WaitBlockedByDialog
+R013,Access,gpt-5.5,exploration,observe,InteractionPolicyViolation
+R013,Access,gpt-5.5,exploration,screenshot,InvalidWindowGuard
+R013,Access,gpt-5.5,exploration,observe,InvalidWindowGuard
+R013,Access,gpt-5.5,exploration,type,PathValidationFailed
+R013,Access,gpt-5.5,exploration,type,InteractionPolicyViolation
+R013,Access,gpt-5.5,exploration,type,System.Management.Automation.RuntimeException
+R013,Access,gpt-5.5,exploration,click,TargetNotFound
+R013,Access,gpt-5.5,replay,click,AmbiguousTarget
+R014,Access,gpt-5.5,exploration,wait-element,WaitBlockedByDialog
+R014,Access,gpt-5.5,exploration,observe,System.Management.Automation.RuntimeException
+R014,Access,gpt-5.5,exploration,focus,InvalidWindowGuard
+R014,Access,gpt-5.5,exploration,observe,ScopeNotReady
+R014,Access,gpt-5.5,exploration,observe,InteractionPolicyViolation
+R014,Access,gpt-5.5,exploration,observe,System.Management.Automation.RuntimeException
+R014,Access,gpt-5.5,exploration,type,System.Management.Automation.RuntimeException
+R014,Access,gpt-5.5,exploration,type,InputFocusChanged
+R014,Access,gpt-5.5,replay,click,TargetNotFound
+R014,Access,gpt-5.5,replay,click,System.Management.Automation.RuntimeException
+R014,Access,gpt-5.5,replay,click,AmbiguousTarget
+R015,Access,gpt-5.5,exploration,observe,TargetNotFound
+R015,Access,gpt-5.5,exploration,wait-element,WaitBlockedByDialog
+R015,Access,gpt-5.5,exploration,observe,InteractionPolicyViolation
+R015,Access,gpt-5.5,exploration,type,PathValidationFailed
+R015,Access,gpt-5.5,exploration,type,TextSelectionUnavailable
+R016,Edge,gpt-5.5,exploration,start,System.Management.Automation.RuntimeException
+R016,Edge,gpt-5.5,exploration,select,SearchIncomplete
+R016,Edge,gpt-5.5,exploration,click,SearchIncomplete
+R016,Edge,gpt-5.5,exploration,wait-element,SearchIncomplete
+R016,Edge,gpt-5.5,exploration,focus,TargetNotFound
+R016,Edge,gpt-5.5,exploration,focus,TargetNotFound
+R016,Edge,gpt-5.5,exploration,wait-element,SearchIncomplete
+R016,Edge,gpt-5.5,exploration,wait-element,SearchIncomplete
+R016,Edge,gpt-5.5,exploration,wait-element,SearchIncomplete
+R016,Edge,gpt-5.5,exploration,click,TargetNotFound
+R016,Edge,gpt-5.5,exploration,close-window,System.Management.Automation.MethodInvocationException
+R017,Edge,gpt-5.5,exploration,start,System.Management.Automation.RuntimeException
+R017,Edge,gpt-5.5,exploration,wait-element,SearchIncomplete
+R017,Edge,gpt-5.5,exploration,observe,InteractionPolicyViolation
+R017,Edge,gpt-5.5,exploration,observe,InvalidWindowGuard
+R017,Edge,gpt-5.5,exploration,click,AmbiguousTarget
+R017,Edge,gpt-5.5,exploration,click,TargetNotFound
+R017,Edge,gpt-5.5,exploration,click,SearchIncomplete
+R017,Edge,gpt-5.5,exploration,click,SearchIncomplete
+R017,Edge,gpt-5.5,exploration,click,SearchIncomplete
+R017,Edge,gpt-5.5,replay,click,SearchIncomplete
+R018,Excel,gpt-5.5,exploration,click,SearchIncomplete
+R018,Excel,gpt-5.5,exploration,type,InteractionPolicyViolation
+R018,Excel,gpt-5.5,exploration,type,InputFocusChanged
+R018,Excel,gpt-5.5,exploration,click,SearchIncomplete
+R018,Excel,gpt-5.5,exploration,observe,InteractionPolicyViolation
+R018,Excel,gpt-5.5,exploration,click,TargetNotFound
+R019,Excel,gpt-5.5,exploration,observe,InteractionPolicyViolation
+R019,Excel,gpt-5.5,exploration,type,VerificationFailed
+R019,Excel,gpt-5.5,exploration,wait-element,SearchIncomplete
+R019,Excel,gpt-5.5,exploration,click,SearchIncomplete
+R019,Excel,gpt-5.5,exploration,click,SearchIncomplete
+R019,Excel,gpt-5.5,replay,type,InputFocusChanged
+R019,Excel,gpt-5.5,replay,close-window,System.Management.Automation.MethodInvocationException
+R020,Excel,gpt-5.5,exploration,type,PathValidationFailed
+R020,Excel,gpt-5.5,exploration,type,VerificationFailed
+R020,Excel,gpt-5.5,exploration,press-key,InteractionPolicyViolation
+R020,Excel,gpt-5.5,exploration,wait-element,SearchIncomplete
+R020,Excel,gpt-5.5,exploration,click,SearchIncomplete
+R020,Excel,gpt-5.5,exploration,wait-element,SearchIncomplete
+R020,Excel,gpt-5.5,exploration,observe,InteractionPolicyViolation
+R020,Excel,gpt-5.5,exploration,type,System.Management.Automation.RuntimeException
+R020,Excel,gpt-5.5,exploration,click,AmbiguousTarget
+R020,Excel,gpt-5.5,exploration,type,InputFocusNotReady
+R020,Excel,gpt-5.5,replay,type,InputFocusChanged
+R020,Excel,gpt-5.5,replay,type,InputFocusChanged
+R021,Excel,gpt-5.5,exploration,type,VerificationFailed
+R021,Excel,gpt-5.5,exploration,select,SearchIncomplete
+R021,Excel,gpt-5.5,exploration,click,SearchIncomplete
+R021,Excel,gpt-5.5,exploration,click,SearchIncomplete
+R021,Excel,gpt-5.5,replay,type,InputFocusChanged
+R022,Excel,gpt-5.5,exploration,type,InputFocusChanged
+R022,Excel,gpt-5.5,exploration,observe,InteractionPolicyViolation
+R022,Excel,gpt-5.5,replay,click,AmbiguousTarget
+R022,Excel,gpt-5.5,replay,type,TargetNotFound
+R022,Excel,gpt-5.5,replay,click,TargetNotFound
+R023,Notepad,gpt-5.5,exploration,type,VerificationFailed
+R023,Notepad,gpt-5.5,exploration,observe,InteractionPolicyViolation
+R023,Notepad,gpt-5.5,exploration,click,TargetNotFound
+R023,Notepad,gpt-5.5,exploration,observe,InvalidWindowGuard
+R023,Notepad,gpt-5.5,exploration,click,TargetNotFound
+R023,Notepad,gpt-5.5,exploration,click,TargetNotFound
+R023,Notepad,gpt-5.5,exploration,press-key,ScopeNotReady
+R023,Notepad,gpt-5.5,exploration,press-key,InvalidWindowGuard
+R023,Notepad,gpt-5.5,replay,type,TextConsumptionFailed
+R024,Notepad,gpt-5.5,exploration,observe,InteractionPolicyViolation
+R024,Notepad,gpt-5.5,exploration,type,VerificationFailed
+R024,Notepad,gpt-5.5,exploration,type,System.Management.Automation.RuntimeException
+R024,Notepad,gpt-5.5,exploration,type,TextConsumptionFailed
+R024,Notepad,gpt-5.5,exploration,type,TextConsumptionFailed
+R024,Notepad,gpt-5.5,exploration,wait-element,WaitBlockedByDialog
+R024,Notepad,gpt-5.5,exploration,click,TargetNotFound
+R024,Notepad,gpt-5.5,exploration,click,InvalidWindowGuard
+R024,Notepad,gpt-5.5,exploration,click,TargetNotFound
+R024,Notepad,gpt-5.5,replay,click,System.Management.Automation.RuntimeException
+R025,Notepad,gpt-5.5,exploration,focus,AmbiguousTarget
+R025,Notepad,gpt-5.5,exploration,observe,InteractionPolicyViolation
+R025,Notepad,gpt-5.5,exploration,click,TargetNotFound
+R025,Notepad,gpt-5.5,exploration,click,TargetNotFound
+R025,Notepad,gpt-5.5,exploration,screenshot,InvalidWindowGuard
+R026,Notepad,gpt-5.5,exploration,start,System.Management.Automation.RuntimeException
+R026,Notepad,gpt-5.5,exploration,type,InputFocusNotReady
+R026,Notepad,gpt-5.5,exploration,type,System.Management.Automation.RuntimeException
+R026,Notepad,gpt-5.5,exploration,type,VerificationFailed
+R026,Notepad,gpt-5.5,exploration,click,InteractionPolicyViolation
+R026,Notepad,gpt-5.5,exploration,observe,System.Management.Automation.RuntimeException
+R026,Notepad,gpt-5.5,replay,start,System.Management.Automation.RuntimeException
+R027,Notepad,gpt-5.5,exploration,focus,InvalidWindowGuard
+R027,Notepad,gpt-5.5,exploration,type,System.Management.Automation.RuntimeException
+R027,Notepad,gpt-5.5,exploration,click,TargetNotFound
+R027,Notepad,gpt-5.5,exploration,click,TargetNotFound
+R027,Notepad,gpt-5.5,exploration,click,TargetNotFound
+R027,Notepad,gpt-5.5,exploration,click,TargetNotFound
+R028,OneNote,gpt-5.5,exploration,observe,InteractionPolicyViolation
+R028,OneNote,gpt-5.5,exploration,observe,InvalidWindowGuard
+R029,OneNote,gpt-5.5,exploration,click,TargetNotFound
+R029,OneNote,gpt-5.5,exploration,start,System.Management.Automation.RuntimeException
+R029,OneNote,gpt-5.5,exploration,click,TargetNotFound
+R029,OneNote,gpt-5.5,exploration,click,TargetNotFound
+R029,OneNote,gpt-5.5,exploration,observe,InteractionPolicyViolation
+R029,OneNote,gpt-5.5,exploration,observe,InvalidWindowGuard
+R029,OneNote,gpt-5.5,replay,type,TargetNotFound
+R029,OneNote,gpt-5.5,replay,type,TargetNotFound
+R029,OneNote,gpt-5.5,replay,start,System.Management.Automation.RuntimeException
+R029,OneNote,gpt-5.5,replay,type,TargetNotFound
+R029,OneNote,gpt-5.5,replay,start,System.Management.Automation.RuntimeException
+R030,OneNote,gpt-5.5,exploration,click,TargetNotFound
+R030,OneNote,gpt-5.5,exploration,click,TargetNotFound
+R030,OneNote,gpt-5.5,exploration,start,System.Management.Automation.RuntimeException
+R030,OneNote,gpt-5.5,exploration,click,TargetNotFound
+R030,OneNote,gpt-5.5,exploration,observe,ScopeNotReady
+R030,OneNote,gpt-5.5,exploration,observe,InteractionPolicyViolation
+R030,OneNote,gpt-5.5,exploration,observe,InvalidWindowGuard
+R030,OneNote,gpt-5.5,replay,start,System.Management.Automation.RuntimeException
+R031,OneNote,gpt-5.5,exploration,observe,InteractionPolicyViolation
+R031,OneNote,gpt-5.5,exploration,click,TargetNotFound
+R031,OneNote,gpt-5.5,exploration,click,TargetNotFound
+R031,OneNote,gpt-5.5,exploration,click,TargetNotFound
+R031,OneNote,gpt-5.5,exploration,click,ScopeNotReady
+R031,OneNote,gpt-5.5,exploration,observe,InteractionPolicyViolation
+R032,Paint,gpt-5.5,exploration,click,TargetNotFound
+R032,Paint,gpt-5.5,exploration,click,TargetNotFound
+R032,Paint,gpt-5.5,exploration,type,InteractionPolicyViolation
+R032,Paint,gpt-5.5,exploration,windows,System.Management.Automation.RuntimeException
+R032,Paint,gpt-5.5,exploration,focus,TargetNotFound
+R032,Paint,gpt-5.5,exploration,click,AmbiguousTarget
+R032,Paint,gpt-5.5,exploration,click,TargetNotFound
+R032,Paint,gpt-5.5,exploration,click,TargetNotFound
+R033,Paint,gpt-5.5,exploration,click,AmbiguousTarget
+R033,Paint,gpt-5.5,exploration,click,System.Management.Automation.RuntimeException
+R033,Paint,gpt-5.5,exploration,click,AmbiguousTarget
+R033,Paint,gpt-5.5,exploration,observe,InteractionPolicyViolation
+R033,Paint,gpt-5.5,exploration,observe,InvalidWindowGuard
+R033,Paint,gpt-5.5,exploration,observe,InvalidWindowGuard
+R033,Paint,gpt-5.5,exploration,click,TargetNotFound
+R034,Photos,gpt-5.5,exploration,start,InteractionPolicyViolation
+R034,Photos,gpt-5.5,exploration,type,InteractionPolicyViolation
+R034,Photos,gpt-5.5,exploration,observe,InteractionPolicyViolation
+R034,Photos,gpt-5.5,exploration,focus,InvalidWindowGuard
+R034,Photos,gpt-5.5,exploration,type,InputFocusNotReady
+R034,Photos,gpt-5.5,exploration,type,TargetNotFound
+R034,Photos,gpt-5.5,exploration,type,InteractionPolicyViolation
+R034,Photos,gpt-5.5,exploration,click,InteractionPolicyViolation
+R034,Photos,gpt-5.5,replay,type,TargetNotFound
+R034,Photos,gpt-5.5,replay,type,TargetNotFound
+R034,Photos,gpt-5.5,replay,type,TargetNotFound
+R034,Photos,gpt-5.5,replay,type,TargetNotFound
+R034,Photos,gpt-5.5,replay,type,InputFocusNotReady
+R034,Photos,gpt-5.5,replay,click,TargetNotFound
+R034,Photos,gpt-5.5,replay,type,InputFocusNotReady
+R034,Photos,gpt-5.5,direct,observe,InteractionPolicyViolation
+R034,Photos,gpt-5.5,direct,observe,InvalidWindowGuard
+R035,Photos,gpt-5.5,exploration,start,System.Management.Automation.RuntimeException
+R035,Photos,gpt-5.5,exploration,click,TargetNotFound
+R035,Photos,gpt-5.5,exploration,click,TargetNotFound
+R035,Photos,gpt-5.5,exploration,click,TargetNotFound
+R035,Photos,gpt-5.5,exploration,observe,InteractionPolicyViolation
+R035,Photos,gpt-5.5,exploration,focus,TargetNotFound
+R035,Photos,gpt-5.5,exploration,focus,AmbiguousTarget
+R035,Photos,gpt-5.5,exploration,select,InteractionPolicyViolation
+R035,Photos,gpt-5.5,exploration,type,VerificationFailed
+R035,Photos,gpt-5.5,exploration,type,VerificationFailed
+R035,Photos,gpt-5.5,exploration,focus,TargetNotFound
+R035,Photos,gpt-5.5,replay,focus,TargetNotFound
+R035,Photos,gpt-5.5,replay,focus,TargetNotFound
+R035,Photos,gpt-5.5,replay,focus,AmbiguousTarget
+R035,Photos,gpt-5.5,replay,focus,TargetNotFound
+R035,Photos,gpt-5.5,replay,focus,TargetNotFound
+R035,Photos,gpt-5.5,replay,focus,TargetNotFound
+R035,Photos,gpt-5.5,replay,focus,TargetNotFound
+R035,Photos,gpt-5.5,replay,focus,AmbiguousTarget
+R036,Photos,gpt-5.5,exploration,start,System.Management.Automation.RuntimeException
+R036,Photos,gpt-5.5,exploration,observe,InteractionPolicyViolation
+R036,Photos,gpt-5.5,exploration,click,TargetNotFound
+R036,Photos,gpt-5.5,exploration,click,TargetNotFound
+R036,Photos,gpt-5.5,exploration,observe,InvalidWindowGuard
+R036,Photos,gpt-5.5,exploration,observe,TargetNotFound
+R036,Photos,gpt-5.5,exploration,type,TargetNotFound
+R036,Photos,gpt-5.5,exploration,type,InputFocusNotReady
+R036,Photos,gpt-5.5,exploration,start,InteractionPolicyViolation
+R036,Photos,gpt-5.5,exploration,observe,InvalidWindowGuard
+R036,Photos,gpt-5.5,exploration,click,WindowActivationFailed
+R036,Photos,gpt-5.5,exploration,focus,InvalidWindowGuard
+R037,PowerPoint,gpt-5.5,exploration,focus,WindowActivationFailed
+R037,PowerPoint,gpt-5.5,exploration,observe,InteractionPolicyViolation
+R037,PowerPoint,gpt-5.5,exploration,wait-element,SearchIncomplete
+R037,PowerPoint,gpt-5.5,exploration,type,System.Management.Automation.RuntimeException
+R037,PowerPoint,gpt-5.5,exploration,click,TargetNotFound
+R037,PowerPoint,gpt-5.5,exploration,click,TargetNotFound
+R037,PowerPoint,gpt-5.5,exploration,click,TargetNotFound
+R037,PowerPoint,gpt-5.5,exploration,click,TargetNotFound
+R037,PowerPoint,gpt-5.5,exploration,click,TargetNotFound
+R037,PowerPoint,gpt-5.5,exploration,click,TargetNotFound
+R037,PowerPoint,gpt-5.5,replay,click,AmbiguousTarget
+R038,PowerPoint,gpt-5.5,exploration,focus,WindowActivationFailed
+R038,PowerPoint,gpt-5.5,exploration,observe,InteractionPolicyViolation
+R038,PowerPoint,gpt-5.5,exploration,type,System.Management.Automation.RuntimeException
+R039,PowerPoint,gpt-5.5,exploration,focus,WindowActivationFailed
+R039,PowerPoint,gpt-5.5,exploration,observe,InteractionPolicyViolation
+R039,PowerPoint,gpt-5.5,exploration,type,System.Management.Automation.RuntimeException
+R039,PowerPoint,gpt-5.5,exploration,type,InputFocusNotReady
+R039,PowerPoint,gpt-5.5,exploration,click,TargetNotFound
+R039,PowerPoint,gpt-5.5,exploration,type,InputFocusNotReady
+R039,PowerPoint,gpt-5.5,exploration,click,TargetNotFound
+R039,PowerPoint,gpt-5.5,exploration,click,AmbiguousTarget
+R040,PowerPoint,gpt-5.5,exploration,focus,WindowActivationFailed
+R040,PowerPoint,gpt-5.5,exploration,observe,InteractionPolicyViolation
+R040,PowerPoint,gpt-5.5,exploration,wait-element,SearchIncomplete
+R040,PowerPoint,gpt-5.5,exploration,type,System.Management.Automation.RuntimeException
+R040,PowerPoint,gpt-5.5,exploration,click,SearchIncomplete
+R040,PowerPoint,gpt-5.5,exploration,click,SearchIncomplete
+R041,PowerPoint,gpt-5.5,exploration,focus,System.Management.Automation.RuntimeException
+R041,PowerPoint,gpt-5.5,exploration,wait-element,SearchIncomplete
+R041,PowerPoint,gpt-5.5,exploration,type,System.Management.Automation.RuntimeException
+R041,PowerPoint,gpt-5.5,exploration,click,SearchIncomplete
+R041,PowerPoint,gpt-5.5,exploration,click,AmbiguousTarget
+R041,PowerPoint,gpt-5.5,exploration,type,InputFocusNotReady
+R041,PowerPoint,gpt-5.5,exploration,observe,InteractionPolicyViolation
+R041,PowerPoint,gpt-5.5,exploration,observe,InvalidWindowGuard
+R042,Snipping Tool,gpt-5.5,exploration,start,InteractionPolicyViolation
+R042,Snipping Tool,gpt-5.5,exploration,type,InteractionPolicyViolation
+R042,Snipping Tool,gpt-5.5,exploration,wait-element,SearchIncomplete
+R042,Snipping Tool,gpt-5.5,exploration,focus,TargetNotFound
+R042,Snipping Tool,gpt-5.5,exploration,observe,InteractionPolicyViolation
+R042,Snipping Tool,gpt-5.5,exploration,observe,InvalidWindowGuard
+R042,Snipping Tool,gpt-5.5,exploration,type,System.Management.Automation.RuntimeException
+R042,Snipping Tool,gpt-5.5,exploration,type,TextSelectionUnavailable
+R042,Snipping Tool,gpt-5.5,exploration,observe,InvalidWindowGuard
+R042,Snipping Tool,gpt-5.5,exploration,click,TargetNotFound
+R042,Snipping Tool,gpt-5.5,exploration,click,TargetNotFound
+R042,Snipping Tool,gpt-5.5,exploration,click,TargetNotFound
+R042,Snipping Tool,gpt-5.5,exploration,type,TargetNotFound
+R042,Snipping Tool,gpt-5.5,exploration,type,InputFocusNotReady
+R042,Snipping Tool,gpt-5.5,exploration,type,TargetNotFound
+R042,Snipping Tool,gpt-5.5,exploration,type,TargetNotFound
+R042,Snipping Tool,gpt-5.5,exploration,type,InputFocusNotReady
+R042,Snipping Tool,gpt-5.5,exploration,observe,InteractionPolicyViolation
+R042,Snipping Tool,gpt-5.5,exploration,observe,ScopeNotReady
+R042,Snipping Tool,gpt-5.5,exploration,type,InteractionPolicyViolation
+R042,Snipping Tool,gpt-5.5,exploration,type,InputFocusNotReady
+R042,Snipping Tool,gpt-5.5,exploration,type,InteractionPolicyViolation
+R042,Snipping Tool,gpt-5.5,exploration,type,VerificationFailed
+R042,Snipping Tool,gpt-5.5,exploration,click,InteractionPolicyViolation
+R042,Snipping Tool,gpt-5.5,exploration,start,InteractionPolicyViolation
+R042,Snipping Tool,gpt-5.5,exploration,focus,AmbiguousTarget
+R042,Snipping Tool,gpt-5.5,replay,focus,TargetNotFound
+R042,Snipping Tool,gpt-5.5,replay,focus,AmbiguousTarget
+R042,Snipping Tool,gpt-5.5,replay,focus,TargetNotFound
+R042,Snipping Tool,gpt-5.5,direct,observe,System.ArgumentException
+R042,Snipping Tool,gpt-5.5,replay,click,WindowActivationFailed
+R042,Snipping Tool,gpt-5.5,direct,wait-element,SearchIncomplete
+R042,Snipping Tool,gpt-5.5,replay,click,SearchIncomplete
+R043,Snipping Tool,gpt-5.5,exploration,start,InteractionPolicyViolation
+R043,Snipping Tool,gpt-5.5,exploration,focus,TargetNotFound
+R043,Snipping Tool,gpt-5.5,exploration,type,System.Management.Automation.RuntimeException
+R043,Snipping Tool,gpt-5.5,exploration,observe,InteractionPolicyViolation
+R043,Snipping Tool,gpt-5.5,exploration,focus,AmbiguousTarget
+R043,Snipping Tool,gpt-5.5,exploration,observe,InvalidWindowGuard
+R043,Snipping Tool,gpt-5.5,exploration,click,TargetNotFound
+R043,Snipping Tool,gpt-5.5,exploration,start,InteractionPolicyViolation
+R043,Snipping Tool,gpt-5.5,exploration,click,TargetNotFound
+R043,Snipping Tool,gpt-5.5,exploration,click,TargetNotFound
+R043,Snipping Tool,gpt-5.5,exploration,press-key,InputFocusNotReady
+R043,Snipping Tool,gpt-5.5,exploration,type,InputFocusNotReady
+R043,Snipping Tool,gpt-5.5,exploration,focus,TargetNotFound
+R043,Snipping Tool,gpt-5.5,exploration,focus,TargetNotFound
+R043,Snipping Tool,gpt-5.5,replay,focus,TargetNotFound
+R043,Snipping Tool,gpt-5.5,replay,focus,AmbiguousTarget
+R043,Snipping Tool,gpt-5.5,replay,start,System.Management.Automation.RuntimeException
+R043,Snipping Tool,gpt-5.5,replay,start,System.Management.Automation.RuntimeException
+R043,Snipping Tool,gpt-5.5,replay,focus,TargetNotFound
+R044,Word,gpt-5.5,exploration,type,System.Management.Automation.RuntimeException
+R044,Word,gpt-5.5,exploration,click,TargetNotFound
+R045,Word,gpt-5.5,exploration,type,InteractionPolicyViolation
+R045,Word,gpt-5.5,exploration,type,System.Management.Automation.RuntimeException
+R045,Word,gpt-5.5,exploration,click,SearchIncomplete
+R045,Word,gpt-5.5,exploration,press-key,InvalidWindowGuard
+R045,Word,gpt-5.5,exploration,observe,InteractionPolicyViolation
+R045,Word,gpt-5.5,exploration,wait-element,SearchIncomplete
+R045,Word,gpt-5.5,exploration,click,TargetNotFound
+R045,Word,gpt-5.5,exploration,screenshot,InteractionPolicyViolation
+R045,Word,gpt-5.5,exploration,screenshot,InvalidWindowGuard
+R046,Word,gpt-5.5,exploration,type,System.Management.Automation.RuntimeException
+R046,Word,gpt-5.5,exploration,click,SearchIncomplete
+R046,Word,gpt-5.5,exploration,wait-element,SearchIncomplete
+R046,Word,gpt-5.5,exploration,observe,InteractionPolicyViolation
+R046,Word,gpt-5.5,exploration,click,AmbiguousTarget
+R047,Word,gpt-5.5,exploration,type,VerificationFailed
+R047,Word,gpt-5.5,exploration,observe,InteractionPolicyViolation
+R048,Word,gpt-5.5,exploration,windows,WorkerError
+R048,Word,gpt-5.5,exploration,observe,InteractionPolicyViolation
+R048,Word,gpt-5.5,exploration,type,VerificationFailed
+R048,Word,gpt-5.5,exploration,click,TargetNotFound
+R048,Word,gpt-5.5,exploration,click,TargetNotFound
+R048,Word,gpt-5.5,exploration,click,AmbiguousTarget
+R049,Word,gpt-5.5,exploration,type,System.Management.Automation.RuntimeException
+R049,Word,gpt-5.5,exploration,click,SearchIncomplete
+R049,Word,gpt-5.5,exploration,observe,InteractionPolicyViolation
+R049,Word,gpt-5.5,exploration,observe,InvalidWindowGuard
+R049,Word,gpt-5.5,exploration,wait-element,SearchIncomplete

@@ -120,3 +120,15 @@ The pricing schema uses rates per 1 million tokens:
 ## External Agent Logs
 
 For Codex/Copilot/Hermes-style session agents, keep raw logs under the run folder's `logs` directory or the parent runs folder. The dashboard consumes normalized framework metrics first and falls back to Codex rollout inference when explicit stage metrics are unavailable.
+
+## AGATA thesis materials
+
+The author-developed session-log analysis and public processed data supporting the AGATA thesis.
+
+The `tdk-2026-10-24` tag preserves the first submission snapshot;
+`tdk-2026-10-25` records the supplemented documentation and MIT licensing.
+See [LICENSE](LICENSE). The original experiment-time code state cannot always be reconstructed from these later snapshots.
+
+The [thesis reproduction package](thesis-reproduction/README.md) contains
+processed exports, numeric checks, plotting code and a generalized example.
+Raw session logs and original company testcases are not published.

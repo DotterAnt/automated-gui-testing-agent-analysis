@@ -1,0 +1,24 @@
+label,left,right,apps,left_n,right_n,left_mean,right_mean,difference_minutes,change_pct,bootstrap_difference_ci,left_successes,right_successes
+GPT-5.5 all common apps,native,mcp,"[""Access"", ""Edge"", ""Excel"", ""Notepad"", ""OneNote"", ""Paint"", ""Photos"", ""PowerPoint"", ""Snipping Tool"", ""Word""]",35,39,40.14721744444444,18.86136586111111,-21.285851583333333,-53.01949409766345,"[-27.450901039583332, -15.030984221527776]",35,39
+GPT-5.5 shared Office apps,native,mcp,"[""Excel"", ""PowerPoint"", ""Word""]",16,16,31.372064074074075,12.185882777777778,-19.186181296296297,-61.15689822319275,"[-24.032308013888887, -14.744949245370368]",16,16
+AI-only versus native on Office,native,aionly,"[""Excel"", ""PowerPoint"", ""Word""]",16,9,31.372064074074075,24.920483333333333,-6.4515807407407415,-20.56473149330439,"[-14.489812749999997, 2.2573968055555573]",16,9
+AI-only versus MCP on Office,mcp,aionly,"[""Excel"", ""PowerPoint"", ""Word""]",16,9,12.185882777777778,24.920483333333333,12.734600555555556,104.50289722775294,"[6.164920606481481, 20.908547597222224]",16,9
+GPT-5.5 exact captured testcase content,native,mcp,"[""Access"", ""Edge"", ""Excel"", ""Notepad"", ""OneNote"", ""Paint"", ""Photos"", ""PowerPoint"", ""Snipping Tool"", ""Word""]",27,39,42.18344941666667,18.86136586111111,-23.322083555555558,-55.2872841791383,"[-29.441212120138893, -17.223972099305552]",27,39
+GPT-5.5 including superseded Paint sensitivity,native,mcp,"[""Access"", ""Edge"", ""Excel"", ""Notepad"", ""OneNote"", ""Paint"", ""Photos"", ""PowerPoint"", ""Snipping Tool"", ""Word""]",36,39,41.137149111111114,18.86136586111111,-22.275783250000003,-54.15004134057343,"[-28.34784372361111, -16.173898118750003]",36,39
+gpt-5.6-luna native versus MCP,native,mcp,"[""Excel"", ""PowerPoint"", ""Word""]",4,3,18.25044722222222,14.169833333333333,-4.080613888888887,-22.358980244167526,,0,3
+gpt-5.6-sol native versus MCP,native,mcp,"[""Excel""]",2,1,32.17701666666667,14.978100000000001,-17.198916666666666,-53.45093625315378,,2,1
+gpt-6-luna native versus MCP,native,mcp,"[""Excel"", ""PowerPoint"", ""Word""]",6,3,30.074383333333333,16.060105555555555,-14.014277777777778,-46.59872032104103,,3,3
+gpt-6-sol native versus MCP,native,mcp,"[""Excel""]",1,1,20.732116666666666,13.064433333333334,-7.667683333333333,-36.98456581455343,,1,1
+gpt-6.1-sol native versus MCP,native,mcp,"[""Excel"", ""PowerPoint"", ""Word""]",3,3,20.318144444444446,6.798072222222222,-13.520072222222224,-66.54186487939351,,3,3
+mcp: gpt-5.6-luna versus gpt-6.1-sol,gpt-5.6-luna,gpt-6.1-sol,"[""Excel"", ""PowerPoint"", ""Word""]",3,3,14.169833333333333,6.798072222222222,-7.371761111111111,-52.02433181602544,,3,3
+native: gpt-5.6-luna versus gpt-6.1-sol,gpt-5.6-luna,gpt-6.1-sol,"[""Excel"", ""PowerPoint"", ""Word""]",4,3,18.25044722222222,20.318144444444446,2.0676972222222254,11.329570158174217,,0,3
+mcp: gpt-6-luna versus gpt-6.1-sol,gpt-6-luna,gpt-6.1-sol,"[""Excel"", ""PowerPoint"", ""Word""]",3,3,16.060105555555555,6.798072222222222,-9.262033333333333,-57.67106138433433,,3,3
+native: gpt-6-luna versus gpt-6.1-sol,gpt-6-luna,gpt-6.1-sol,"[""Excel"", ""PowerPoint"", ""Word""]",6,3,30.074383333333333,20.318144444444446,-9.756238888888888,-32.44036222041312,,3,3
+mcp: gpt-5.6-sol versus gpt-6.1-sol,gpt-5.6-sol,gpt-6.1-sol,"[""Excel""]",1,1,14.978100000000001,5.255233333333334,-9.722866666666668,-64.91388538377142,,1,1
+native: gpt-5.6-sol versus gpt-6.1-sol,gpt-5.6-sol,gpt-6.1-sol,"[""Excel""]",2,1,32.17701666666667,22.672533333333334,-9.504483333333333,-29.538112348306576,,2,1
+mcp: gpt-6-sol versus gpt-6.1-sol,gpt-6-sol,gpt-6.1-sol,"[""Excel""]",1,1,13.064433333333334,5.255233333333334,-7.8092,-59.774502274623465,,1,1
+native: gpt-6-sol versus gpt-6.1-sol,gpt-6-sol,gpt-6.1-sol,"[""Excel""]",1,1,20.732116666666666,22.672533333333334,1.9404166666666676,9.359472059051699,,1,1
+mcp: gpt-5.6-luna versus gpt-6-luna,gpt-5.6-luna,gpt-6-luna,"[""Excel"", ""PowerPoint"", ""Word""]",3,3,14.169833333333333,16.060105555555555,1.8902722222222224,13.340116130904068,,3,3
+MCP older-model reference: gpt-5.5 versus gpt-5.6-luna,gpt-5.5,gpt-5.6-luna,"[""Excel"", ""PowerPoint"", ""Word""]",16,3,12.185882777777778,14.169833333333333,1.9839505555555554,16.280729034859043,,16,3
+MCP older-model reference: gpt-5.5 versus gpt-6-luna,gpt-5.5,gpt-6-luna,"[""Excel"", ""PowerPoint"", ""Word""]",16,3,12.185882777777778,16.060105555555555,3.874222777777778,31.792713325971135,,16,3
+MCP older-model reference: gpt-5.5 versus gpt-6.1-sol,gpt-5.5,gpt-6.1-sol,"[""Excel"", ""PowerPoint"", ""Word""]",16,3,12.185882777777778,6.798072222222222,-5.387810555555555,-44.213543276329446,,16,3

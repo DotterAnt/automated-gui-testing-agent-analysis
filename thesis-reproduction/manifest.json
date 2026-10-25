@@ -1,0 +1,22 @@
+{
+  "revision": "2026-10-25",
+  "data_scope": "processed measurements only",
+  "raw_logs_public": false,
+  "original_company_testcases_public": false,
+  "license": "MIT",
+  "files": {
+    "application_summary.csv": "57685c6e3bd75907068610fa1515054219688ff1b0b3d9da6634bdd4e0d42b16",
+    "command_errors.csv": "7ee6cbced3cf98f703df1d3ddab3f46eddf5d17c3b73f621f7401f8431329c26",
+    "comparisons.csv": "e47c4c8c4b001700099bf6a7d3a809cf61f09cf6da808087309702e3c0e121e7",
+    "cost_sessions.csv": "aa5891f60f1a5018d569e268fea4eb3ca0029fb274410f4a85f071d84d5fd480",
+    "exploration_completion.csv": "46729fae89d7c48dfadfed800509e7e13dd15f2984252ad185528e3700686683",
+    "metrics.json": "5b9e0f8793d03137428606838fee58078d4611328800f51a4f94b34c62d52143",
+    "phase_sessions.csv": "2bdac1cfd560ee3e3a741ecc77919488bc3cde16811386cf02f231e97fcf40b8",
+    "pooled_model_comparison.csv": "7e6d1e8cdd9bd3485b6db8378e19b77c217599a84bca84c7748fa168cc189821",
+    "progress_curves.csv": "7799f27f864a4fd83f0e357fbce0b54288bc6847e47b76c44d629b3f7159b2c0",
+    "route_audits.csv": "940884511cd013686880767d9801340c589b9405b9dd97efeaff227f899e311d",
+    "schema.json": "b94d0872f1d9e6f2e2f20c240ad8cc10690a5db59f10dcf56964d4600da813d2",
+    "sessions.csv": "7eda6743a693630b1ac8d20b58a048e06a1b7f57556b339069e9691a62f484a9",
+    "summary.csv": "e47af1e55f04298a1c35470cbda2ba1a54629918fc73f01f5732f91e7a581f9c"
+  }
+}

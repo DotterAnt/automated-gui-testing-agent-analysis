@@ -1,0 +1,2930 @@
+{
+  "schema_version": "agata-thesis-public-1",
+  "runs": [
+    {
+      "id": "R001",
+      "included": false,
+      "bucket": "aionly",
+      "setup": "aionly",
+      "model": "gpt-5.5",
+      "app": "Access",
+      "minutes": 5.250683333333333,
+      "success": false,
+      "first_pass": {}
+    },
+    {
+      "id": "R002",
+      "included": true,
+      "bucket": "aionly",
+      "setup": "aionly",
+      "model": "gpt-5.5",
+      "app": "Excel",
+      "minutes": 31.08815,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 5.891133333333333
+        },
+        "2": {
+          "minutes": 7.6737166666666665
+        },
+        "3": {
+          "minutes": 24.433566666666664
+        },
+        "4": {
+          "minutes": 25.406183333333335
+        },
+        "5": {
+          "minutes": 28.712283333333335
+        }
+      }
+    },
+    {
+      "id": "R003",
+      "included": true,
+      "bucket": "aionly",
+      "setup": "aionly",
+      "model": "gpt-5.5",
+      "app": "Excel",
+      "minutes": 20.93136666666667,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 3.8744
+        },
+        "2": {
+          "minutes": 7.197066666666667
+        },
+        "3": {
+          "minutes": 7.197066666666667
+        },
+        "4": {
+          "minutes": 7.197066666666667
+        },
+        "5": {
+          "minutes": 20.489233333333335
+        }
+      }
+    },
+    {
+      "id": "R004",
+      "included": true,
+      "bucket": "aionly",
+      "setup": "aionly",
+      "model": "gpt-5.5",
+      "app": "Excel",
+      "minutes": 18.8661,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 8.787666666666667
+        },
+        "2": {
+          "minutes": 15.508566666666667
+        },
+        "3": {
+          "minutes": 16.79305
+        },
+        "4": {
+          "minutes": 16.79305
+        },
+        "5": {
+          "minutes": 16.79305
+        }
+      }
+    },
+    {
+      "id": "R005",
+      "included": true,
+      "bucket": "aionly",
+      "setup": "aionly",
+      "model": "gpt-5.5",
+      "app": "PowerPoint",
+      "minutes": 13.441866666666666,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 9.589366666666667
+        },
+        "2": {
+          "minutes": 10.993966666666667
+        },
+        "3": {
+          "minutes": 10.993966666666667
+        },
+        "4": {
+          "minutes": 10.993966666666667
+        },
+        "5": {
+          "minutes": 12.83965
+        }
+      }
+    },
+    {
+      "id": "R006",
+      "included": true,
+      "bucket": "aionly",
+      "setup": "aionly",
+      "model": "gpt-5.5",
+      "app": "PowerPoint",
+      "minutes": 19.96585,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 6.0793333333333335
+        },
+        "2": {
+          "minutes": 17.074633333333335
+        },
+        "3": {
+          "minutes": 18.405700000000003
+        },
+        "4": {
+          "minutes": 18.405700000000003
+        },
+        "5": {
+          "minutes": 19.585649999999998
+        }
+      }
+    },
+    {
+      "id": "R007",
+      "included": true,
+      "bucket": "aionly",
+      "setup": "aionly",
+      "model": "gpt-5.5",
+      "app": "PowerPoint",
+      "minutes": 57.47966666666667,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 7.710116666666667
+        },
+        "2": {
+          "minutes": 7.710116666666667
+        },
+        "3": {
+          "minutes": 25.203883333333334
+        },
+        "4": {
+          "minutes": 25.203883333333334
+        },
+        "5": {
+          "minutes": 57.027816666666666
+        }
+      }
+    },
+    {
+      "id": "R008",
+      "included": true,
+      "bucket": "aionly",
+      "setup": "aionly",
+      "model": "gpt-5.5",
+      "app": "Word",
+      "minutes": 17.09958333333333,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 13.569566666666667
+        },
+        "2": {
+          "minutes": 15.058666666666666
+        },
+        "3": {
+          "minutes": 15.058666666666666
+        },
+        "4": {
+          "minutes": 15.058666666666666
+        },
+        "5": {
+          "minutes": 15.058666666666666
+        }
+      }
+    },
+    {
+      "id": "R009",
+      "included": true,
+      "bucket": "aionly",
+      "setup": "aionly",
+      "model": "gpt-5.5",
+      "app": "Word",
+      "minutes": 19.803416666666667,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 10.970633333333334
+        },
+        "2": {
+          "minutes": 12.9116
+        },
+        "3": {
+          "minutes": 16.8153
+        },
+        "4": {
+          "minutes": 16.8153
+        },
+        "5": {
+          "minutes": 16.8153
+        }
+      }
+    },
+    {
+      "id": "R010",
+      "included": true,
+      "bucket": "aionly",
+      "setup": "aionly",
+      "model": "gpt-5.5",
+      "app": "Word",
+      "minutes": 25.608349999999998,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 8.552116666666667
+        },
+        "2": {
+          "minutes": 8.552116666666667
+        },
+        "3": {
+          "minutes": 16.05095
+        },
+        "4": {
+          "minutes": 16.05095
+        },
+        "5": {
+          "minutes": 25.183600000000002
+        }
+      }
+    },
+    {
+      "id": "R011",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "Access",
+      "minutes": 37.48865,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 16.02296666666667
+        },
+        "2": {
+          "minutes": 30.860766666666667
+        },
+        "3": {
+          "minutes": 32.97468333333333
+        },
+        "4": {
+          "minutes": 37.361700000000006
+        },
+        "5": {
+          "minutes": 37.361700000000006
+        }
+      }
+    },
+    {
+      "id": "R012",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "Access",
+      "minutes": 19.636333333333333,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 13.4772
+        },
+        "2": {
+          "minutes": 16.350183333333334
+        },
+        "3": {
+          "minutes": 16.350183333333334
+        },
+        "4": {
+          "minutes": 16.350183333333334
+        },
+        "5": {
+          "minutes": 19.466383333333333
+        }
+      }
+    },
+    {
+      "id": "R013",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "Access",
+      "minutes": 18.082483333333336,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 14.296716666666667
+        },
+        "2": {
+          "minutes": 14.296716666666667
+        },
+        "3": {
+          "minutes": 14.296716666666667
+        },
+        "5": {
+          "minutes": 16.69775
+        },
+        "4": {
+          "minutes": 16.69775
+        }
+      }
+    },
+    {
+      "id": "R014",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "Access",
+      "minutes": 20.05933333333333,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 12.59825
+        },
+        "2": {
+          "minutes": 18.711633333333335
+        },
+        "3": {
+          "minutes": 18.711633333333335
+        },
+        "4": {
+          "minutes": 19.817999999999998
+        },
+        "5": {
+          "minutes": 19.817999999999998
+        }
+      }
+    },
+    {
+      "id": "R015",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "Access",
+      "minutes": 12.36965,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 12.241800000000001
+        },
+        "2": {
+          "minutes": 12.241800000000001
+        },
+        "3": {
+          "minutes": 12.241800000000001
+        },
+        "4": {
+          "minutes": 12.241800000000001
+        },
+        "5": {
+          "minutes": 12.241800000000001
+        }
+      }
+    },
+    {
+      "id": "R016",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "Edge",
+      "minutes": 19.269533333333335,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 13.41435
+        },
+        "2": {
+          "minutes": 13.41435
+        },
+        "3": {
+          "minutes": 17.06295
+        },
+        "4": {
+          "minutes": 17.06295
+        },
+        "5": {
+          "minutes": 17.06295
+        }
+      }
+    },
+    {
+      "id": "R017",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "Edge",
+      "minutes": 14.729916666666666,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 11.905383333333333
+        },
+        "2": {
+          "minutes": 11.905383333333333
+        },
+        "3": {
+          "minutes": 14.598749999999999
+        },
+        "4": {
+          "minutes": 14.598749999999999
+        },
+        "5": {
+          "minutes": 14.598749999999999
+        }
+      }
+    },
+    {
+      "id": "R018",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "Excel",
+      "minutes": 11.03035,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 10.951833333333333
+        },
+        "2": {
+          "minutes": 10.951833333333333
+        },
+        "3": {
+          "minutes": 10.951833333333333
+        },
+        "4": {
+          "minutes": 10.951833333333333
+        },
+        "5": {
+          "minutes": 10.951833333333333
+        }
+      }
+    },
+    {
+      "id": "R019",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "Excel",
+      "minutes": 11.7944,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 9.8776
+        },
+        "2": {
+          "minutes": 11.697183333333333
+        },
+        "3": {
+          "minutes": 11.697183333333333
+        },
+        "4": {
+          "minutes": 11.697183333333333
+        },
+        "5": {
+          "minutes": 11.697183333333333
+        }
+      }
+    },
+    {
+      "id": "R020",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "Excel",
+      "minutes": 11.844016666666667,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 9.36135
+        },
+        "2": {
+          "minutes": 11.752749999999999
+        },
+        "3": {
+          "minutes": 11.752749999999999
+        },
+        "4": {
+          "minutes": 11.752749999999999
+        },
+        "5": {
+          "minutes": 11.752749999999999
+        }
+      }
+    },
+    {
+      "id": "R021",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "Excel",
+      "minutes": 10.724400000000001,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 9.19205
+        },
+        "2": {
+          "minutes": 10.621366666666667
+        },
+        "3": {
+          "minutes": 10.621366666666667
+        },
+        "4": {
+          "minutes": 10.621366666666667
+        },
+        "5": {
+          "minutes": 10.621366666666667
+        }
+      }
+    },
+    {
+      "id": "R022",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "Excel",
+      "minutes": 15.590883333333332,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 9.966316666666668
+        },
+        "2": {
+          "minutes": 9.966316666666668
+        },
+        "3": {
+          "minutes": 9.966316666666668
+        },
+        "4": {
+          "minutes": 13.952983333333332
+        },
+        "5": {
+          "minutes": 15.49015
+        }
+      }
+    },
+    {
+      "id": "R023",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "Notepad",
+      "minutes": 14.981616666666667,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 13.16725
+        },
+        "2": {
+          "minutes": 13.16725
+        },
+        "3": {
+          "minutes": 14.710416666666667
+        },
+        "4": {
+          "minutes": 14.710416666666667
+        },
+        "5": {
+          "minutes": 14.710416666666667
+        }
+      }
+    },
+    {
+      "id": "R024",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "Notepad",
+      "minutes": 15.934083333333332,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 14.3157
+        },
+        "2": {
+          "minutes": 14.3157
+        },
+        "3": {
+          "minutes": 15.83265
+        },
+        "4": {
+          "minutes": 15.83265
+        },
+        "5": {
+          "minutes": 15.83265
+        }
+      }
+    },
+    {
+      "id": "R025",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "Notepad",
+      "minutes": 10.184249999999999,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 10.043966666666668
+        },
+        "2": {
+          "minutes": 10.043966666666668
+        },
+        "3": {
+          "minutes": 10.043966666666668
+        },
+        "4": {
+          "minutes": 10.043966666666668
+        },
+        "5": {
+          "minutes": 10.043966666666668
+        }
+      }
+    },
+    {
+      "id": "R026",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "Notepad",
+      "minutes": 11.513833333333334,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 9.842916666666667
+        },
+        "2": {
+          "minutes": 9.842916666666667
+        },
+        "3": {
+          "minutes": 9.842916666666667
+        },
+        "4": {
+          "minutes": 11.405366666666668
+        },
+        "5": {
+          "minutes": 11.405366666666668
+        }
+      }
+    },
+    {
+      "id": "R027",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "Notepad",
+      "minutes": 11.321033333333332,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 11.214366666666667
+        },
+        "2": {
+          "minutes": 11.214366666666667
+        },
+        "3": {
+          "minutes": 11.214366666666667
+        },
+        "4": {
+          "minutes": 11.214366666666667
+        },
+        "5": {
+          "minutes": 11.214366666666667
+        }
+      }
+    },
+    {
+      "id": "R028",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "OneNote",
+      "minutes": 9.5308,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 9.397633333333333
+        },
+        "2": {
+          "minutes": 9.397633333333333
+        },
+        "3": {
+          "minutes": 9.397633333333333
+        },
+        "4": {
+          "minutes": 9.397633333333333
+        },
+        "5": {
+          "minutes": 9.397633333333333
+        }
+      }
+    },
+    {
+      "id": "R029",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "OneNote",
+      "minutes": 17.668,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 10.454933333333335
+        },
+        "2": {
+          "minutes": 12.606383333333333
+        },
+        "3": {
+          "minutes": 12.606383333333333
+        },
+        "4": {
+          "minutes": 12.606383333333333
+        },
+        "5": {
+          "minutes": 17.525266666666667
+        }
+      }
+    },
+    {
+      "id": "R030",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "OneNote",
+      "minutes": 11.912416666666667,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 9.203383333333333
+        },
+        "2": {
+          "minutes": 11.77835
+        },
+        "3": {
+          "minutes": 11.77835
+        },
+        "4": {
+          "minutes": 11.77835
+        },
+        "5": {
+          "minutes": 11.77835
+        }
+      }
+    },
+    {
+      "id": "R031",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "OneNote",
+      "minutes": 10.860800000000001,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 10.542383333333333
+        },
+        "2": {
+          "minutes": 10.542383333333333
+        },
+        "3": {
+          "minutes": 10.542383333333333
+        },
+        "4": {
+          "minutes": 10.542383333333333
+        },
+        "5": {
+          "minutes": 10.542383333333333
+        }
+      }
+    },
+    {
+      "id": "R032",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "Paint",
+      "minutes": 10.868683333333333,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 10.732666666666667
+        },
+        "2": {
+          "minutes": 10.732666666666667
+        },
+        "3": {
+          "minutes": 10.732666666666667
+        },
+        "4": {
+          "minutes": 10.732666666666667
+        },
+        "5": {
+          "minutes": 10.732666666666667
+        }
+      }
+    },
+    {
+      "id": "R033",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "Paint",
+      "minutes": 11.9204,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 11.8071
+        },
+        "2": {
+          "minutes": 11.8071
+        },
+        "3": {
+          "minutes": 11.8071
+        },
+        "4": {
+          "minutes": 11.8071
+        },
+        "5": {
+          "minutes": 11.8071
+        }
+      }
+    },
+    {
+      "id": "R034",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "Photos",
+      "minutes": 43.71728333333333,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 14.30245
+        },
+        "2": {
+          "minutes": 14.30245
+        },
+        "3": {
+          "minutes": 29.028866666666666
+        },
+        "4": {
+          "minutes": 38.3529
+        },
+        "5": {
+          "minutes": 43.59393333333333
+        }
+      }
+    },
+    {
+      "id": "R035",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "Photos",
+      "minutes": 23.55715,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 18.031533333333336
+        },
+        "2": {
+          "minutes": 20.7647
+        },
+        "3": {
+          "minutes": 20.7647
+        },
+        "4": {
+          "minutes": 22.621283333333334
+        },
+        "5": {
+          "minutes": 22.621283333333334
+        }
+      }
+    },
+    {
+      "id": "R036",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "Photos",
+      "minutes": 13.839400000000001,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 13.700116666666666
+        },
+        "2": {
+          "minutes": 13.700116666666666
+        },
+        "3": {
+          "minutes": 13.700116666666666
+        },
+        "4": {
+          "minutes": 13.700116666666666
+        },
+        "5": {
+          "minutes": 13.700116666666666
+        }
+      }
+    },
+    {
+      "id": "R037",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "PowerPoint",
+      "minutes": 13.328,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 11.568066666666665
+        },
+        "2": {
+          "minutes": 11.568066666666665
+        },
+        "3": {
+          "minutes": 11.568066666666665
+        },
+        "4": {
+          "minutes": 13.217583333333332
+        },
+        "5": {
+          "minutes": 13.217583333333332
+        }
+      }
+    },
+    {
+      "id": "R038",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "PowerPoint",
+      "minutes": 10.418333333333333,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 10.309733333333332
+        },
+        "2": {
+          "minutes": 10.309733333333332
+        },
+        "3": {
+          "minutes": 10.309733333333332
+        },
+        "4": {
+          "minutes": 10.309733333333332
+        },
+        "5": {
+          "minutes": 10.309733333333332
+        }
+      }
+    },
+    {
+      "id": "R039",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "PowerPoint",
+      "minutes": 11.6623,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 11.550133333333333
+        },
+        "2": {
+          "minutes": 11.550133333333333
+        },
+        "3": {
+          "minutes": 11.550133333333333
+        },
+        "4": {
+          "minutes": 11.550133333333333
+        },
+        "5": {
+          "minutes": 11.550133333333333
+        }
+      }
+    },
+    {
+      "id": "R040",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "PowerPoint",
+      "minutes": 22.60885,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 14.1717
+        },
+        "2": {
+          "minutes": 16.376183333333334
+        },
+        "3": {
+          "minutes": 16.376183333333334
+        },
+        "4": {
+          "minutes": 18.132133333333336
+        },
+        "5": {
+          "minutes": 22.46375
+        }
+      }
+    },
+    {
+      "id": "R041",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "PowerPoint",
+      "minutes": 14.439083333333334,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 14.299316666666666
+        },
+        "2": {
+          "minutes": 14.299316666666666
+        },
+        "3": {
+          "minutes": 14.299316666666666
+        },
+        "4": {
+          "minutes": 14.299316666666666
+        },
+        "5": {
+          "minutes": 14.299316666666666
+        }
+      }
+    },
+    {
+      "id": "R042",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "Snipping Tool",
+      "minutes": 72.1567,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 24.831116666666667
+        },
+        "2": {
+          "minutes": 24.831116666666667
+        },
+        "3": {
+          "minutes": 24.831116666666667
+        },
+        "4": {
+          "minutes": 36.038716666666666
+        },
+        "5": {
+          "minutes": 71.85725000000001
+        }
+      }
+    },
+    {
+      "id": "R043",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "Snipping Tool",
+      "minutes": 27.476383333333334,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 20.90103333333333
+        },
+        "2": {
+          "minutes": 25.46015
+        },
+        "3": {
+          "minutes": 25.46015
+        },
+        "4": {
+          "minutes": 27.3632
+        },
+        "5": {
+          "minutes": 27.3632
+        }
+      }
+    },
+    {
+      "id": "R044",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "Word",
+      "minutes": 9.030650000000001,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 8.905333333333335
+        },
+        "2": {
+          "minutes": 8.905333333333335
+        },
+        "3": {
+          "minutes": 8.905333333333335
+        },
+        "4": {
+          "minutes": 8.905333333333335
+        },
+        "5": {
+          "minutes": 8.905333333333335
+        }
+      }
+    },
+    {
+      "id": "R045",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "Word",
+      "minutes": 11.731933333333334,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 11.595483333333334
+        },
+        "2": {
+          "minutes": 11.595483333333334
+        },
+        "3": {
+          "minutes": 11.595483333333334
+        },
+        "4": {
+          "minutes": 11.595483333333334
+        },
+        "5": {
+          "minutes": 11.595483333333334
+        }
+      }
+    },
+    {
+      "id": "R046",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "Word",
+      "minutes": 9.398116666666665,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 9.265966666666666
+        },
+        "2": {
+          "minutes": 9.265966666666666
+        },
+        "3": {
+          "minutes": 9.265966666666666
+        },
+        "4": {
+          "minutes": 9.265966666666666
+        },
+        "5": {
+          "minutes": 9.265966666666666
+        }
+      }
+    },
+    {
+      "id": "R047",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "Word",
+      "minutes": 9.48595,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 9.365166666666665
+        },
+        "2": {
+          "minutes": 9.365166666666665
+        },
+        "3": {
+          "minutes": 9.365166666666665
+        },
+        "4": {
+          "minutes": 9.365166666666665
+        },
+        "5": {
+          "minutes": 9.365166666666665
+        }
+      }
+    },
+    {
+      "id": "R048",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "Word",
+      "minutes": 9.764033333333334,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 9.664183333333334
+        },
+        "2": {
+          "minutes": 9.664183333333334
+        },
+        "3": {
+          "minutes": 9.664183333333334
+        },
+        "4": {
+          "minutes": 9.664183333333334
+        },
+        "5": {
+          "minutes": 9.664183333333334
+        }
+      }
+    },
+    {
+      "id": "R049",
+      "included": true,
+      "bucket": "mcp",
+      "setup": "mcp",
+      "model": "gpt-5.5",
+      "app": "Word",
+      "minutes": 9.806466666666667,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 9.684066666666666
+        },
+        "2": {
+          "minutes": 9.684066666666666
+        },
+        "3": {
+          "minutes": 9.684066666666666
+        },
+        "4": {
+          "minutes": 9.684066666666666
+        },
+        "5": {
+          "minutes": 9.684066666666666
+        }
+      }
+    },
+    {
+      "id": "R050",
+      "included": true,
+      "bucket": "native",
+      "setup": "native",
+      "model": "gpt-5.5",
+      "app": "Access",
+      "minutes": 35.547850000000004,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 9.177183333333334
+        },
+        "2": {
+          "minutes": 11.52565
+        },
+        "3": {
+          "minutes": 14.112866666666667
+        },
+        "4": {
+          "minutes": 15.965833333333334
+        },
+        "5": {
+          "minutes": 33.19623333333333
+        }
+      }
+    },
+    {
+      "id": "R051",
+      "included": true,
+      "bucket": "native",
+      "setup": "native",
+      "model": "gpt-5.5",
+      "app": "Access",
+      "minutes": 44.4511,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 19.38845
+        },
+        "2": {
+          "minutes": 19.38845
+        },
+        "3": {
+          "minutes": 36.634933333333336
+        },
+        "4": {
+          "minutes": 36.634933333333336
+        },
+        "5": {
+          "minutes": 42.036233333333335
+        }
+      }
+    },
+    {
+      "id": "R052",
+      "included": true,
+      "bucket": "native",
+      "setup": "native",
+      "model": "gpt-5.5",
+      "app": "Access",
+      "minutes": 45.78061666666667,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 11.763966666666667
+        },
+        "2": {
+          "minutes": 11.763966666666667
+        },
+        "3": {
+          "minutes": 11.763966666666667
+        },
+        "4": {
+          "minutes": 16.415316666666666
+        },
+        "5": {
+          "minutes": 45.27616666666667
+        }
+      }
+    },
+    {
+      "id": "R053",
+      "included": true,
+      "bucket": "native",
+      "setup": "native",
+      "model": "gpt-5.5",
+      "app": "Access",
+      "minutes": 32.618,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 13.883533333333332
+        },
+        "2": {
+          "minutes": 13.883533333333332
+        },
+        "3": {
+          "minutes": 25.889233333333333
+        },
+        "4": {
+          "minutes": 25.889233333333333
+        },
+        "5": {
+          "minutes": 28.699383333333333
+        }
+      }
+    },
+    {
+      "id": "R054",
+      "included": true,
+      "bucket": "native",
+      "setup": "native",
+      "model": "gpt-5.5",
+      "app": "Access",
+      "minutes": 33.596983333333334,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 15.390433333333334
+        },
+        "2": {
+          "minutes": 15.390433333333334
+        },
+        "3": {
+          "minutes": 24.057650000000002
+        },
+        "4": {
+          "minutes": 24.057650000000002
+        },
+        "5": {
+          "minutes": 31.05731666666667
+        }
+      }
+    },
+    {
+      "id": "R055",
+      "included": true,
+      "bucket": "native",
+      "setup": "native",
+      "model": "gpt-5.5",
+      "app": "Edge",
+      "minutes": 49.443933333333334,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 5.255966666666667
+        },
+        "2": {
+          "minutes": 5.255966666666667
+        },
+        "3": {
+          "minutes": 23.93015
+        },
+        "4": {
+          "minutes": 26.014200000000002
+        },
+        "5": {
+          "minutes": 49.19181666666667
+        }
+      }
+    },
+    {
+      "id": "R056",
+      "included": true,
+      "bucket": "native",
+      "setup": "native",
+      "model": "gpt-5.5",
+      "app": "Edge",
+      "minutes": 52.622933333333336,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 5.794933333333334
+        },
+        "2": {
+          "minutes": 5.794933333333334
+        },
+        "3": {
+          "minutes": 26.63628333333333
+        },
+        "4": {
+          "minutes": 26.63628333333333
+        },
+        "5": {
+          "minutes": 52.30116666666667
+        }
+      }
+    },
+    {
+      "id": "R057",
+      "included": true,
+      "bucket": "native",
+      "setup": "native",
+      "model": "gpt-5.5",
+      "app": "Excel",
+      "minutes": 13.772983333333334,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 6.660466666666666
+        },
+        "2": {
+          "minutes": 6.660466666666666
+        },
+        "3": {
+          "minutes": 9.28275
+        },
+        "4": {
+          "minutes": 13.431099999999999
+        },
+        "5": {
+          "minutes": 13.431099999999999
+        }
+      }
+    },
+    {
+      "id": "R058",
+      "included": true,
+      "bucket": "native",
+      "setup": "native",
+      "model": "gpt-5.5",
+      "app": "Excel",
+      "minutes": 33.21645,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 6.4572666666666665
+        },
+        "2": {
+          "minutes": 10.598716666666666
+        },
+        "3": {
+          "minutes": 19.119066666666665
+        },
+        "4": {
+          "minutes": 21.160616666666666
+        },
+        "5": {
+          "minutes": 31.6823
+        }
+      }
+    },
+    {
+      "id": "R059",
+      "included": true,
+      "bucket": "native",
+      "setup": "native",
+      "model": "gpt-5.5",
+      "app": "Excel",
+      "minutes": 23.931566666666665,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 13.400883333333333
+        },
+        "2": {
+          "minutes": 13.400883333333333
+        },
+        "3": {
+          "minutes": 17.993366666666667
+        },
+        "4": {
+          "minutes": 20.435866666666666
+        },
+        "5": {
+          "minutes": 21.860966666666666
+        }
+      }
+    },
+    {
+      "id": "R060",
+      "included": true,
+      "bucket": "native",
+      "setup": "native",
+      "model": "gpt-5.5",
+      "app": "Excel",
+      "minutes": 30.295666666666666,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 15.4527
+        },
+        "2": {
+          "minutes": 15.4527
+        },
+        "3": {
+          "minutes": 19.609416666666668
+        },
+        "4": {
+          "minutes": 25.40468333333333
+        },
+        "5": {
+          "minutes": 30.07176666666667
+        }
+      }
+    },
+    {
+      "id": "R061",
+      "included": true,
+      "bucket": "native",
+      "setup": "native",
+      "model": "gpt-5.5",
+      "app": "Excel",
+      "minutes": 31.84081666666667,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 9.767933333333334
+        },
+        "2": {
+          "minutes": 11.929033333333333
+        },
+        "3": {
+          "minutes": 25.146933333333333
+        },
+        "4": {
+          "minutes": 26.91205
+        },
+        "5": {
+          "minutes": 31.188466666666667
+        }
+      }
+    },
+    {
+      "id": "R062",
+      "included": true,
+      "bucket": "native",
+      "setup": "native",
+      "model": "gpt-5.5",
+      "app": "Notepad",
+      "minutes": 53.92373333333333,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 53.576483333333336
+        },
+        "2": {
+          "minutes": 53.576483333333336
+        },
+        "3": {
+          "minutes": 53.576483333333336
+        },
+        "4": {
+          "minutes": 53.576483333333336
+        },
+        "5": {
+          "minutes": 53.576483333333336
+        }
+      }
+    },
+    {
+      "id": "R063",
+      "included": true,
+      "bucket": "native",
+      "setup": "native",
+      "model": "gpt-5.5",
+      "app": "Notepad",
+      "minutes": 23.062616666666667,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 7.143199999999999
+        },
+        "2": {
+          "minutes": 13.506566666666666
+        },
+        "3": {
+          "minutes": 14.8862
+        },
+        "4": {
+          "minutes": 16.384183333333333
+        },
+        "5": {
+          "minutes": 22.69561666666667
+        }
+      }
+    },
+    {
+      "id": "R064",
+      "included": true,
+      "bucket": "native",
+      "setup": "native",
+      "model": "gpt-5.5",
+      "app": "Notepad",
+      "minutes": 46.16125,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 5.913516666666666
+        },
+        "2": {
+          "minutes": 10.578033333333334
+        },
+        "3": {
+          "minutes": 26.8489
+        },
+        "4": {
+          "minutes": 36.93886666666666
+        },
+        "5": {
+          "minutes": 45.89805
+        }
+      }
+    },
+    {
+      "id": "R065",
+      "included": true,
+      "bucket": "native",
+      "setup": "native",
+      "model": "gpt-5.5",
+      "app": "Notepad",
+      "minutes": 41.796616666666665,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 3.99395
+        },
+        "2": {
+          "minutes": 8.564699999999998
+        },
+        "3": {
+          "minutes": 34.677416666666666
+        },
+        "4": {
+          "minutes": 38.1142
+        },
+        "5": {
+          "minutes": 41.63766666666667
+        }
+      }
+    },
+    {
+      "id": "R066",
+      "included": true,
+      "bucket": "native",
+      "setup": "native",
+      "model": "gpt-5.5",
+      "app": "Notepad",
+      "minutes": 47.98003333333334,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 5.738233333333333
+        },
+        "2": {
+          "minutes": 7.869466666666667
+        },
+        "3": {
+          "minutes": 25.35035
+        },
+        "4": {
+          "minutes": 25.35035
+        },
+        "5": {
+          "minutes": 47.80508333333333
+        }
+      }
+    },
+    {
+      "id": "R067",
+      "included": true,
+      "bucket": "native",
+      "setup": "native",
+      "model": "gpt-5.5",
+      "app": "OneNote",
+      "minutes": 45.04496666666667,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 7.722733333333333
+        },
+        "2": {
+          "minutes": 20.727050000000002
+        },
+        "3": {
+          "minutes": 20.727050000000002
+        },
+        "4": {
+          "minutes": 23.224733333333333
+        },
+        "5": {
+          "minutes": 40.28628333333334
+        }
+      }
+    },
+    {
+      "id": "R068",
+      "included": false,
+      "bucket": "native",
+      "setup": "native",
+      "model": "gpt-5.5",
+      "app": "Paint",
+      "minutes": 37.42228333333333,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 7.5344500000000005
+        },
+        "2": {
+          "minutes": 7.5344500000000005
+        },
+        "3": {
+          "minutes": 21.978150000000003
+        },
+        "4": {
+          "minutes": 21.978150000000003
+        },
+        "5": {
+          "minutes": 37.283833333333334
+        }
+      }
+    },
+    {
+      "id": "R069",
+      "included": true,
+      "bucket": "native",
+      "setup": "native",
+      "model": "gpt-5.5",
+      "app": "Paint",
+      "minutes": 17.62365,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 16.943916666666667
+        },
+        "2": {
+          "minutes": 16.943916666666667
+        },
+        "3": {
+          "minutes": 16.943916666666667
+        },
+        "4": {
+          "minutes": 16.943916666666667
+        },
+        "5": {
+          "minutes": 16.943916666666667
+        }
+      }
+    },
+    {
+      "id": "R070",
+      "included": true,
+      "bucket": "native",
+      "setup": "native",
+      "model": "gpt-5.5",
+      "app": "Photos",
+      "minutes": 40.40513333333333,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 11.133083333333333
+        },
+        "2": {
+          "minutes": 11.133083333333333
+        },
+        "3": {
+          "minutes": 29.112916666666667
+        },
+        "4": {
+          "minutes": 35.27425
+        },
+        "5": {
+          "minutes": 40.256033333333335
+        }
+      }
+    },
+    {
+      "id": "R071",
+      "included": true,
+      "bucket": "native",
+      "setup": "native",
+      "model": "gpt-5.5",
+      "app": "Photos",
+      "minutes": 35.38088333333334,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 17.26546666666667
+        },
+        "2": {
+          "minutes": 17.26546666666667
+        },
+        "3": {
+          "minutes": 35.19551666666667
+        },
+        "4": {
+          "minutes": 35.19551666666667
+        },
+        "5": {
+          "minutes": 35.19551666666667
+        }
+      }
+    },
+    {
+      "id": "R072",
+      "included": true,
+      "bucket": "native",
+      "setup": "native",
+      "model": "gpt-5.5",
+      "app": "Photos",
+      "minutes": 17.1146,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 4.59925
+        },
+        "2": {
+          "minutes": 4.59925
+        },
+        "3": {
+          "minutes": 8.675883333333333
+        },
+        "4": {
+          "minutes": 8.675883333333333
+        },
+        "5": {
+          "minutes": 17.003916666666665
+        }
+      }
+    },
+    {
+      "id": "R073",
+      "included": true,
+      "bucket": "native",
+      "setup": "native",
+      "model": "gpt-5.5",
+      "app": "PowerPoint",
+      "minutes": 32.627316666666665,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 11.764199999999999
+        },
+        "2": {
+          "minutes": 11.764199999999999
+        },
+        "3": {
+          "minutes": 15.368783333333333
+        },
+        "4": {
+          "minutes": 17.47945
+        },
+        "5": {
+          "minutes": 25.70948333333333
+        }
+      }
+    },
+    {
+      "id": "R074",
+      "included": true,
+      "bucket": "native",
+      "setup": "native",
+      "model": "gpt-5.5",
+      "app": "PowerPoint",
+      "minutes": 20.577883333333332,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 13.701683333333333
+        },
+        "2": {
+          "minutes": 13.701683333333333
+        },
+        "3": {
+          "minutes": 13.701683333333333
+        },
+        "4": {
+          "minutes": 15.5944
+        },
+        "5": {
+          "minutes": 20.1928
+        }
+      }
+    },
+    {
+      "id": "R075",
+      "included": true,
+      "bucket": "native",
+      "setup": "native",
+      "model": "gpt-5.5",
+      "app": "PowerPoint",
+      "minutes": 28.126166666666666,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 12.909883333333333
+        },
+        "2": {
+          "minutes": 18.146883333333335
+        },
+        "3": {
+          "minutes": 18.146883333333335
+        },
+        "4": {
+          "minutes": 24.692566666666668
+        },
+        "5": {
+          "minutes": 27.8936
+        }
+      }
+    },
+    {
+      "id": "R076",
+      "included": true,
+      "bucket": "native",
+      "setup": "native",
+      "model": "gpt-5.5",
+      "app": "PowerPoint",
+      "minutes": 31.9246,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 16.141983333333332
+        },
+        "2": {
+          "minutes": 16.141983333333332
+        },
+        "3": {
+          "minutes": 16.141983333333332
+        },
+        "4": {
+          "minutes": 16.141983333333332
+        },
+        "5": {
+          "minutes": 31.645533333333333
+        }
+      }
+    },
+    {
+      "id": "R077",
+      "included": true,
+      "bucket": "native",
+      "setup": "native",
+      "model": "gpt-5.5",
+      "app": "PowerPoint",
+      "minutes": 54.95981666666667,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 5.08775
+        },
+        "2": {
+          "minutes": 28.585933333333333
+        },
+        "3": {
+          "minutes": 28.585933333333333
+        },
+        "4": {
+          "minutes": 33.569966666666666
+        },
+        "5": {
+          "minutes": 49.73515
+        }
+      }
+    },
+    {
+      "id": "R078",
+      "included": true,
+      "bucket": "native",
+      "setup": "native",
+      "model": "gpt-5.5",
+      "app": "Snipping Tool",
+      "minutes": 115.87168333333334,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 10.5517
+        },
+        "2": {
+          "minutes": 10.5517
+        },
+        "3": {
+          "minutes": 55.53358333333333
+        },
+        "4": {
+          "minutes": 82.13671666666667
+        },
+        "5": {
+          "minutes": 115.73698333333333
+        }
+      }
+    },
+    {
+      "id": "R079",
+      "included": true,
+      "bucket": "native",
+      "setup": "native",
+      "model": "gpt-5.5",
+      "app": "Snipping Tool",
+      "minutes": 47.53491666666666,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 7.0274
+        },
+        "2": {
+          "minutes": 47.253616666666666
+        },
+        "3": {
+          "minutes": 47.253616666666666
+        },
+        "4": {
+          "minutes": 47.253616666666666
+        },
+        "5": {
+          "minutes": 47.253616666666666
+        }
+      }
+    },
+    {
+      "id": "R080",
+      "included": true,
+      "bucket": "native",
+      "setup": "native",
+      "model": "gpt-5.5",
+      "app": "Word",
+      "minutes": 31.626966666666664,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 28.266616666666668
+        },
+        "2": {
+          "minutes": 28.266616666666668
+        },
+        "3": {
+          "minutes": 28.266616666666668
+        },
+        "4": {
+          "minutes": 28.266616666666668
+        },
+        "5": {
+          "minutes": 28.266616666666668
+        }
+      }
+    },
+    {
+      "id": "R081",
+      "included": true,
+      "bucket": "native",
+      "setup": "native",
+      "model": "gpt-5.5",
+      "app": "Word",
+      "minutes": 37.12611666666667,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 6.731466666666666
+        },
+        "2": {
+          "minutes": 6.731466666666666
+        },
+        "3": {
+          "minutes": 30.832533333333334
+        },
+        "4": {
+          "minutes": 30.832533333333334
+        },
+        "5": {
+          "minutes": 30.832533333333334
+        }
+      }
+    },
+    {
+      "id": "R082",
+      "included": true,
+      "bucket": "native",
+      "setup": "native",
+      "model": "gpt-5.5",
+      "app": "Word",
+      "minutes": 32.61895,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 6.104683333333333
+        },
+        "2": {
+          "minutes": 6.104683333333333
+        },
+        "3": {
+          "minutes": 19.23215
+        },
+        "4": {
+          "minutes": 32.3443
+        },
+        "5": {
+          "minutes": 32.3443
+        }
+      }
+    },
+    {
+      "id": "R083",
+      "included": true,
+      "bucket": "native",
+      "setup": "native",
+      "model": "gpt-5.5",
+      "app": "Word",
+      "minutes": 20.328133333333334,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 19.915683333333334
+        },
+        "2": {
+          "minutes": 19.915683333333334
+        },
+        "3": {
+          "minutes": 19.915683333333334
+        },
+        "4": {
+          "minutes": 19.915683333333334
+        },
+        "5": {
+          "minutes": 19.915683333333334
+        }
+      }
+    },
+    {
+      "id": "R084",
+      "included": true,
+      "bucket": "native",
+      "setup": "native",
+      "model": "gpt-5.5",
+      "app": "Word",
+      "minutes": 38.06271666666667,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 5.095666666666667
+        },
+        "2": {
+          "minutes": 11.475316666666666
+        },
+        "3": {
+          "minutes": 23.002033333333333
+        },
+        "4": {
+          "minutes": 25.2875
+        },
+        "5": {
+          "minutes": 36.04586666666667
+        }
+      }
+    },
+    {
+      "id": "R085",
+      "included": true,
+      "bucket": "native",
+      "setup": "native",
+      "model": "gpt-5.5",
+      "app": "Word",
+      "minutes": 43.406349999999996,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 10.9954
+        },
+        "2": {
+          "minutes": 10.9954
+        },
+        "3": {
+          "minutes": 23.450533333333333
+        },
+        "4": {
+          "minutes": 23.450533333333333
+        },
+        "5": {
+          "minutes": 42.99675
+        }
+      }
+    },
+    {
+      "id": "R086",
+      "included": true,
+      "bucket": "newcodex",
+      "setup": "mcp",
+      "model": "gpt-5.6-luna",
+      "app": "Excel",
+      "minutes": 8.393416666666667,
+      "success": true,
+      "first_pass": {
+        "2": {
+          "minutes": 5.597533333333333
+        },
+        "3": {
+          "minutes": 5.597533333333333
+        },
+        "1": {
+          "minutes": 6.7853166666666676
+        },
+        "4": {
+          "minutes": 8.35225
+        },
+        "5": {
+          "minutes": 8.35225
+        }
+      }
+    },
+    {
+      "id": "R087",
+      "included": true,
+      "bucket": "newcodex",
+      "setup": "mcp",
+      "model": "gpt-5.6-luna",
+      "app": "PowerPoint",
+      "minutes": 20.41261666666667,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 7.243833333333333
+        },
+        "2": {
+          "minutes": 7.243833333333333
+        },
+        "3": {
+          "minutes": 10.286633333333333
+        },
+        "4": {
+          "minutes": 10.900066666666667
+        },
+        "5": {
+          "minutes": 19.295650000000002
+        }
+      }
+    },
+    {
+      "id": "R088",
+      "included": true,
+      "bucket": "newcodex",
+      "setup": "mcp",
+      "model": "gpt-5.6-luna",
+      "app": "Word",
+      "minutes": 13.703466666666666,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 12.779583333333333
+        },
+        "2": {
+          "minutes": 12.779583333333333
+        },
+        "3": {
+          "minutes": 12.779583333333333
+        },
+        "4": {
+          "minutes": 12.779583333333333
+        },
+        "5": {
+          "minutes": 13.66515
+        }
+      }
+    },
+    {
+      "id": "R089",
+      "included": true,
+      "bucket": "newcodex",
+      "setup": "native",
+      "model": "gpt-5.6-luna",
+      "app": "Excel",
+      "minutes": 11.02765,
+      "success": false,
+      "first_pass": {}
+    },
+    {
+      "id": "R090",
+      "included": true,
+      "bucket": "newcodex",
+      "setup": "native",
+      "model": "gpt-5.6-luna",
+      "app": "PowerPoint",
+      "minutes": 21.627066666666668,
+      "success": false,
+      "first_pass": {}
+    },
+    {
+      "id": "R091",
+      "included": true,
+      "bucket": "newcodex",
+      "setup": "native",
+      "model": "gpt-5.6-luna",
+      "app": "PowerPoint",
+      "minutes": 10.441416666666667,
+      "success": false,
+      "first_pass": {}
+    },
+    {
+      "id": "R092",
+      "included": true,
+      "bucket": "newcodex",
+      "setup": "native",
+      "model": "gpt-5.6-luna",
+      "app": "Word",
+      "minutes": 27.68945,
+      "success": false,
+      "first_pass": {
+        "1": {
+          "minutes": 5.622166666666667
+        },
+        "2": {
+          "minutes": 11.939866666666667
+        }
+      }
+    },
+    {
+      "id": "R093",
+      "included": true,
+      "bucket": "newcodex",
+      "setup": "mcp",
+      "model": "gpt-5.6-sol",
+      "app": "Excel",
+      "minutes": 14.978100000000001,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 10.770000000000001
+        },
+        "2": {
+          "minutes": 14.675083333333333
+        },
+        "3": {
+          "minutes": 14.675083333333333
+        },
+        "4": {
+          "minutes": 14.675083333333333
+        },
+        "5": {
+          "minutes": 14.675083333333333
+        }
+      }
+    },
+    {
+      "id": "R094",
+      "included": true,
+      "bucket": "newcodex",
+      "setup": "native",
+      "model": "gpt-5.6-sol",
+      "app": "Excel",
+      "minutes": 13.06375,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 4.712766666666667
+        },
+        "2": {
+          "minutes": 4.712766666666667
+        },
+        "3": {
+          "minutes": 9.320166666666667
+        },
+        "4": {
+          "minutes": 12.849633333333333
+        },
+        "5": {
+          "minutes": 12.849633333333333
+        }
+      }
+    },
+    {
+      "id": "R095",
+      "included": true,
+      "bucket": "newcodex",
+      "setup": "native",
+      "model": "gpt-5.6-sol",
+      "app": "Excel",
+      "minutes": 51.290283333333335,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 4.808549999999999
+        },
+        "2": {
+          "minutes": 5.44785
+        },
+        "3": {
+          "minutes": 16.9447
+        },
+        "4": {
+          "minutes": 43.366033333333334
+        },
+        "5": {
+          "minutes": 51.175
+        }
+      }
+    },
+    {
+      "id": "R096",
+      "included": true,
+      "bucket": "newcodex",
+      "setup": "mcp",
+      "model": "gpt-6-luna",
+      "app": "Excel",
+      "minutes": 15.873383333333333,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 15.83485
+        },
+        "2": {
+          "minutes": 15.83485
+        },
+        "3": {
+          "minutes": 15.83485
+        },
+        "4": {
+          "minutes": 15.83485
+        },
+        "5": {
+          "minutes": 15.83485
+        }
+      }
+    },
+    {
+      "id": "R097",
+      "included": true,
+      "bucket": "newcodex",
+      "setup": "mcp",
+      "model": "gpt-6-luna",
+      "app": "PowerPoint",
+      "minutes": 22.161883333333332,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 11.823366666666667
+        },
+        "2": {
+          "minutes": 11.823366666666667
+        },
+        "3": {
+          "minutes": 17.651316666666666
+        },
+        "4": {
+          "minutes": 17.651316666666666
+        },
+        "5": {
+          "minutes": 22.071450000000002
+        }
+      }
+    },
+    {
+      "id": "R098",
+      "included": true,
+      "bucket": "newcodex",
+      "setup": "mcp",
+      "model": "gpt-6-luna",
+      "app": "Word",
+      "minutes": 10.14505,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 8.208733333333333
+        },
+        "2": {
+          "minutes": 8.208733333333333
+        },
+        "3": {
+          "minutes": 10.089616666666666
+        },
+        "4": {
+          "minutes": 10.089616666666666
+        },
+        "5": {
+          "minutes": 10.089616666666666
+        }
+      }
+    },
+    {
+      "id": "R099",
+      "included": true,
+      "bucket": "newcodex",
+      "setup": "native",
+      "model": "gpt-6-luna",
+      "app": "Excel",
+      "minutes": 41.30015,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 5.521116666666667
+        },
+        "2": {
+          "minutes": 6.291399999999999
+        },
+        "3": {
+          "minutes": 11.6162
+        },
+        "4": {
+          "minutes": 27.335449999999998
+        },
+        "5": {
+          "minutes": 35.44911666666667
+        }
+      }
+    },
+    {
+      "id": "R100",
+      "included": true,
+      "bucket": "newcodex",
+      "setup": "native",
+      "model": "gpt-6-luna",
+      "app": "Excel",
+      "minutes": 17.03245,
+      "success": false,
+      "first_pass": {
+        "1": {
+          "minutes": 2.0727166666666665
+        },
+        "2": {
+          "minutes": 7.945783333333334
+        }
+      }
+    },
+    {
+      "id": "R101",
+      "included": true,
+      "bucket": "newcodex",
+      "setup": "native",
+      "model": "gpt-6-luna",
+      "app": "PowerPoint",
+      "minutes": 42.616166666666665,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 4.310366666666667
+        },
+        "2": {
+          "minutes": 12.648083333333334
+        },
+        "3": {
+          "minutes": 18.864583333333332
+        },
+        "4": {
+          "minutes": 20.4717
+        },
+        "5": {
+          "minutes": 38.15495
+        }
+      }
+    },
+    {
+      "id": "R102",
+      "included": true,
+      "bucket": "newcodex",
+      "setup": "native",
+      "model": "gpt-6-luna",
+      "app": "Word",
+      "minutes": 5.28655,
+      "success": false,
+      "first_pass": {}
+    },
+    {
+      "id": "R103",
+      "included": true,
+      "bucket": "newcodex",
+      "setup": "native",
+      "model": "gpt-6-luna",
+      "app": "Word",
+      "minutes": 11.100683333333334,
+      "success": false,
+      "first_pass": {
+        "1": {
+          "minutes": 3.8280833333333333
+        },
+        "2": {
+          "minutes": 4.96295
+        }
+      }
+    },
+    {
+      "id": "R104",
+      "included": true,
+      "bucket": "newcodex",
+      "setup": "native",
+      "model": "gpt-6-luna",
+      "app": "Word",
+      "minutes": 38.93481666666666,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 3.9638333333333335
+        },
+        "2": {
+          "minutes": 7.587566666666667
+        },
+        "3": {
+          "minutes": 20.574366666666666
+        },
+        "4": {
+          "minutes": 23.864283333333333
+        },
+        "5": {
+          "minutes": 31.1259
+        }
+      }
+    },
+    {
+      "id": "R105",
+      "included": true,
+      "bucket": "newcodex",
+      "setup": "mcp",
+      "model": "gpt-6-sol",
+      "app": "Excel",
+      "minutes": 13.064433333333334,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 11.250499999999999
+        },
+        "2": {
+          "minutes": 12.924916666666666
+        },
+        "3": {
+          "minutes": 12.924916666666666
+        },
+        "4": {
+          "minutes": 12.924916666666666
+        },
+        "5": {
+          "minutes": 12.924916666666666
+        }
+      }
+    },
+    {
+      "id": "R106",
+      "included": true,
+      "bucket": "newcodex",
+      "setup": "native",
+      "model": "gpt-6-sol",
+      "app": "Excel",
+      "minutes": 20.732116666666666,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 3.0170000000000003
+        },
+        "2": {
+          "minutes": 3.964633333333333
+        },
+        "3": {
+          "minutes": 7.563516666666667
+        },
+        "4": {
+          "minutes": 8.881833333333333
+        },
+        "5": {
+          "minutes": 18.144416666666665
+        }
+      }
+    },
+    {
+      "id": "R107",
+      "included": true,
+      "bucket": "newcodex",
+      "setup": "mcp",
+      "model": "gpt-6.1-sol",
+      "app": "Excel",
+      "minutes": 5.255233333333334,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 5.1982333333333335
+        },
+        "2": {
+          "minutes": 5.1982333333333335
+        },
+        "3": {
+          "minutes": 5.1982333333333335
+        },
+        "4": {
+          "minutes": 5.1982333333333335
+        },
+        "5": {
+          "minutes": 5.1982333333333335
+        }
+      }
+    },
+    {
+      "id": "R108",
+      "included": true,
+      "bucket": "newcodex",
+      "setup": "mcp",
+      "model": "gpt-6.1-sol",
+      "app": "PowerPoint",
+      "minutes": 9.540799999999999,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 6.8566666666666665
+        },
+        "2": {
+          "minutes": 8.146166666666666
+        },
+        "3": {
+          "minutes": 8.146166666666666
+        },
+        "4": {
+          "minutes": 8.146166666666666
+        },
+        "5": {
+          "minutes": 9.454266666666665
+        }
+      }
+    },
+    {
+      "id": "R109",
+      "included": true,
+      "bucket": "newcodex",
+      "setup": "mcp",
+      "model": "gpt-6.1-sol",
+      "app": "Word",
+      "minutes": 5.598183333333334,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 5.489816666666667
+        },
+        "2": {
+          "minutes": 5.489816666666667
+        },
+        "3": {
+          "minutes": 5.489816666666667
+        },
+        "4": {
+          "minutes": 5.489816666666667
+        },
+        "5": {
+          "minutes": 5.489816666666667
+        }
+      }
+    },
+    {
+      "id": "R110",
+      "included": true,
+      "bucket": "newcodex",
+      "setup": "native",
+      "model": "gpt-6.1-sol",
+      "app": "Excel",
+      "minutes": 22.672533333333334,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 6.7724
+        },
+        "2": {
+          "minutes": 6.903766666666667
+        },
+        "3": {
+          "minutes": 8.507433333333333
+        },
+        "4": {
+          "minutes": 10.817233333333332
+        },
+        "5": {
+          "minutes": 17.770183333333332
+        }
+      }
+    },
+    {
+      "id": "R111",
+      "included": true,
+      "bucket": "newcodex",
+      "setup": "native",
+      "model": "gpt-6.1-sol",
+      "app": "PowerPoint",
+      "minutes": 20.866983333333334,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 7.757983333333333
+        },
+        "2": {
+          "minutes": 9.996983333333333
+        },
+        "3": {
+          "minutes": 12.602450000000001
+        },
+        "4": {
+          "minutes": 12.929533333333334
+        },
+        "5": {
+          "minutes": 16.582900000000002
+        }
+      }
+    },
+    {
+      "id": "R112",
+      "included": true,
+      "bucket": "newcodex",
+      "setup": "native",
+      "model": "gpt-6.1-sol",
+      "app": "Word",
+      "minutes": 17.414916666666667,
+      "success": true,
+      "first_pass": {
+        "1": {
+          "minutes": 6.842066666666667
+        },
+        "2": {
+          "minutes": 6.842066666666667
+        },
+        "3": {
+          "minutes": 8.7578
+        },
+        "4": {
+          "minutes": 10.215766666666667
+        },
+        "5": {
+          "minutes": 12.988816666666667
+        }
+      }
+    }
+  ],
+  "baseline_exploration_completion": {
+    "n": 38,
+    "total": 39,
+    "mean_minutes": 8.927389912280702,
+    "missing_ids": [
+      "R036"
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+% K1--K4 eredményösszefoglaló, első táblázatos változat.
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabularx}{\textwidth}{@{}
+>{\hsize=.64\hsize\linewidth=\hsize\raggedright\arraybackslash}X
+>{\hsize=1.40\hsize\linewidth=\hsize\raggedright\arraybackslash}X
+>{\hsize=.80\hsize\linewidth=\hsize\raggedright\arraybackslash}X
+>{\hsize=1.16\hsize\linewidth=\hsize\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{Kérdés} & \textbf{Rövid válasz} & \textbf{Bizonyíték} &
+\textbf{Erősség és korlát} \\
+\midrule
+\textbf{K1.} Elkészítési idő &
+40,15 $\to$ 18,86 perc: 53,0\%-os csökkenés; mind a 10 alkalmazásban
+alacsonyabb átlag. Munkamenetenként átlagolva 56,0\%. &
+\ref{sec:fo-eredmeny}--\ref{sec:alkalmazas-elteresek}.~szakasz;
+\ref{tab:alkalmazasok}.~táblázat. &
+Következetes, leíró eredmény; egyenetlen, néhol alacsony ismétlésszám. \\
+\addlinespace[.5em]
+\textbf{K2.} Hibák és sikerjelzések &
+39 AGATA-futtatásban 353 parancshiba; a teljes mintában
+103/110 teljes ötsoros sikerjelzés, öt ismert GUI-megkerüléssel. &
+\ref{sec:siker-ertelem}.~szakasz;
+\ref{tab:parancshibak}.~táblázat. &
+Célzott audit; a sikerjelzés önmagában nem igazolja a GUI-útvonal betartását. \\
+\addlinespace[.5em]
+\textbf{K3.} Újabb modellek &
+AGATA-val mindháromnál 3/3 teljes sikerjelzés.
+GPT-6.1 Sol: 6,80 perc, 66,5\%-kal kevesebb a saját referenciánál. &
+Közös Office-minta;
+\ref{sec:modell-eredmeny}.~szakasz;
+\ref{tab:modellek}.~táblázat. &
+Előzetes: AGATA-val alkalmazásonként $n=1$;
+a modellváltozat és a gondolkodási szint is eltért. \\
+\addlinespace[.5em]
+\textbf{K4.} MI-eszköz\-készlet &
+MI-eszközkészlet: 24,92 perc; AGATA: 12,19 perc.
+Az MI-eszközkészletnél 9/9 teljes sikerjelzés, három GUI-megkerüléssel. &
+\ref{sec:office-eredmeny}.~szakasz;
+\ref{tab:office-mi-tartomany}.~táblázat. &
+Előzetes: három Office-alkalmazás; az MI-eszközkészletnél
+alkalmazásonként $n=3$. \\
+\bottomrule
+\end{tabularx}

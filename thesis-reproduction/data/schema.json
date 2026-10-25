@@ -1,0 +1,243 @@
+{
+  "application_summary.csv": {
+    "rows": 45,
+    "columns": [
+      "bucket",
+      "model",
+      "setup",
+      "app",
+      "n",
+      "successes",
+      "success_rate",
+      "total_observed_minutes",
+      "spent_minutes_per_success",
+      "minutes_mean",
+      "minutes_median",
+      "minutes_min",
+      "minutes_max",
+      "minutes_n",
+      "successful_minutes_mean",
+      "successful_minutes_median",
+      "successful_minutes_min",
+      "successful_minutes_max",
+      "successful_minutes_n",
+      "total_tokens_mean",
+      "total_tokens_median",
+      "total_tokens_min",
+      "total_tokens_max",
+      "total_tokens_n",
+      "uncached_input_tokens_mean",
+      "uncached_input_tokens_median",
+      "uncached_input_tokens_min",
+      "uncached_input_tokens_max",
+      "uncached_input_tokens_n",
+      "output_tokens_mean",
+      "output_tokens_median",
+      "output_tokens_min",
+      "output_tokens_max",
+      "output_tokens_n",
+      "script_launches_mean",
+      "script_launches_median",
+      "script_launches_min",
+      "script_launches_max",
+      "script_launches_n",
+      "best_passed_steps_mean",
+      "best_passed_steps_median",
+      "best_passed_steps_min",
+      "best_passed_steps_max",
+      "best_passed_steps_n"
+    ]
+  },
+  "summary.csv": {
+    "rows": 13,
+    "columns": [
+      "bucket",
+      "model",
+      "setup",
+      "n",
+      "successes",
+      "success_rate",
+      "total_observed_minutes",
+      "spent_minutes_per_success",
+      "minutes_mean",
+      "minutes_median",
+      "minutes_min",
+      "minutes_max",
+      "minutes_n",
+      "successful_minutes_mean",
+      "successful_minutes_median",
+      "successful_minutes_min",
+      "successful_minutes_max",
+      "successful_minutes_n",
+      "total_tokens_mean",
+      "total_tokens_median",
+      "total_tokens_min",
+      "total_tokens_max",
+      "total_tokens_n",
+      "uncached_input_tokens_mean",
+      "uncached_input_tokens_median",
+      "uncached_input_tokens_min",
+      "uncached_input_tokens_max",
+      "uncached_input_tokens_n",
+      "output_tokens_mean",
+      "output_tokens_median",
+      "output_tokens_min",
+      "output_tokens_max",
+      "output_tokens_n",
+      "script_launches_mean",
+      "script_launches_median",
+      "script_launches_min",
+      "script_launches_max",
+      "script_launches_n",
+      "best_passed_steps_mean",
+      "best_passed_steps_median",
+      "best_passed_steps_min",
+      "best_passed_steps_max",
+      "best_passed_steps_n"
+    ]
+  },
+  "comparisons.csv": {
+    "rows": 23,
+    "columns": [
+      "label",
+      "left",
+      "right",
+      "apps",
+      "left_n",
+      "right_n",
+      "left_mean",
+      "right_mean",
+      "difference_minutes",
+      "change_pct",
+      "bootstrap_difference_ci",
+      "left_successes",
+      "right_successes"
+    ]
+  },
+  "pooled_model_comparison.csv": {
+    "rows": 8,
+    "columns": [
+      "model",
+      "setup",
+      "n",
+      "successes",
+      "applications",
+      "application_counts",
+      "application_mean_minutes",
+      "mean_minutes",
+      "task_weighted_mean_minutes",
+      "weighting",
+      "run_ids"
+    ]
+  },
+  "progress_curves.csv": {
+    "rows": 1470,
+    "columns": [
+      "comparison",
+      "application",
+      "setup",
+      "minutes",
+      "mean_observed_rows",
+      "tasks"
+    ]
+  },
+  "sessions.csv": {
+    "rows": 112,
+    "columns": [
+      "id",
+      "included",
+      "bucket",
+      "setup",
+      "model",
+      "efforts",
+      "app",
+      "minutes",
+      "success",
+      "status",
+      "best_passed_steps",
+      "first_all_pass_minutes",
+      "total_tokens",
+      "cached_input_tokens",
+      "uncached_input_tokens",
+      "output_tokens",
+      "reasoning_output_tokens",
+      "script_launches",
+      "tool_calls",
+      "final_replay_seconds",
+      "testcase_sha256"
+    ]
+  },
+  "cost_sessions.csv": {
+    "rows": 110,
+    "columns": [
+      "run_id",
+      "model",
+      "setup",
+      "application",
+      "success",
+      "minutes",
+      "input_tokens",
+      "ordinary_input_tokens",
+      "cached_read_tokens",
+      "cache_write_tokens",
+      "cache_write_field_recorded",
+      "output_tokens",
+      "reasoning_output_tokens_included",
+      "total_tokens",
+      "ordinary_input_usd",
+      "cached_read_usd",
+      "cache_write_usd",
+      "output_usd",
+      "total_usd",
+      "no_cache_usd",
+      "price_date",
+      "tier_assumption",
+      "context_band",
+      "max_request_input_tokens",
+      "request_usage_samples",
+      "recorded_service_tiers"
+    ]
+  },
+  "exploration_completion.csv": {
+    "rows": 50,
+    "columns": [
+      "run_id",
+      "application",
+      "model",
+      "status",
+      "minutes_from_task_start"
+    ]
+  },
+  "phase_sessions.csv": {
+    "rows": 50,
+    "columns": [
+      "id",
+      "app",
+      "model",
+      "phase_partition_available",
+      "preparation_minutes",
+      "exploration_minutes",
+      "post_completion_minutes",
+      "total_minutes",
+      "runtime_minutes"
+    ]
+  },
+  "command_errors.csv": {
+    "rows": 353,
+    "columns": [
+      "session",
+      "application",
+      "model",
+      "phase",
+      "command",
+      "error_type"
+    ]
+  },
+  "route_audits.csv": {
+    "rows": 5,
+    "columns": [
+      "run_id",
+      "reason"
+    ]
+  }
+}
